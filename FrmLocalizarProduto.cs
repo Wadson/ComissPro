@@ -10,7 +10,7 @@ using MetroFramework.Forms;
 
 namespace ComissPro
 {
-    public partial class FrmPesquisarProduto : ComissPro.FrmModelo
+    public partial class FrmLocalizarProduto : ComissPro.FrmModelo
     {
         protected int LinhaAtual = -1;
         public int ProdutoID { get; set; }
@@ -20,7 +20,7 @@ namespace ComissPro
         private int QuantidadePorBloco;
         public string produtoSelecionado { get; set; }
         public Form FormChamador { get; set; }
-        public FrmPesquisarProduto(Form formChamador, string textoDigitado)
+        public FrmLocalizarProduto(Form formChamador, string textoDigitado)
         {
             InitializeComponent();
         }

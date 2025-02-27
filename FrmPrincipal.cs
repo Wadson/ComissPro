@@ -92,12 +92,5 @@ namespace ComissPro
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
         }
-
-        private void btnRelatorios_Click(object sender, EventArgs e)
-        {
-            FrmControleEntregas frm = new FrmControleEntregas();
-            StatusOperacao = "NOVO";
-            AbrirFormEnPanel(frm);
-        }
     }
 }

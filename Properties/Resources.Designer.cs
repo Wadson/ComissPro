@@ -63,6 +63,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AdicionarProuto {
+            get {
+                object obj = ResourceManager.GetObject("AdicionarProuto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap aplicativo {
             get {
                 object obj = ResourceManager.GetObject("aplicativo", resourceCulture);
@@ -127,6 +137,16 @@ namespace ComissPro.Properties {
             get {
                 object obj = ResourceManager.GetObject("Ferramentas64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
+        /// </summary>
+        internal static System.Drawing.Icon LogoTrevo {
+            get {
+                object obj = ResourceManager.GetObject("LogoTrevo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -246,6 +266,16 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap Vendedor64 {
             get {
                 object obj = ResourceManager.GetObject("Vendedor64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap verificar24 {
+            get {
+                object obj = ResourceManager.GetObject("verificar24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

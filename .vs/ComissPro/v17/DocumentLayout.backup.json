@@ -3,28 +3,31 @@
   "WorkspaceRootPath": "D:\\ComissPro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmlocalicarvendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmlocalicarvendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmpesquisarproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmpesquisarproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmlocalicarvendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmlocalicarvendedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmpesquisarproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmpesquisarproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmcontroleentregas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmcontroleentregas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmcontroleentregas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmcontroleentregas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmcontroleentregas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmcontroleentregas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ComissPro||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +37,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +45,15 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
@@ -50,7 +61,19 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:10:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:1068738024:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
             },
             {
               "$type": "Bookmark",
@@ -58,57 +81,43 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmLocalicarVendedor.cs",
-              "DocumentMoniker": "D:\\ComissPro\\FrmLocalicarVendedor.cs",
-              "RelativeDocumentMoniker": "FrmLocalicarVendedor.cs",
-              "ToolTip": "D:\\ComissPro\\FrmLocalicarVendedor.cs",
-              "RelativeToolTip": "FrmLocalicarVendedor.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAIwBwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:45:21.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmPesquisarProduto.cs",
-              "DocumentMoniker": "D:\\ComissPro\\FrmPesquisarProduto.cs",
-              "RelativeDocumentMoniker": "FrmPesquisarProduto.cs",
-              "ToolTip": "D:\\ComissPro\\FrmPesquisarProduto.cs",
-              "RelativeToolTip": "FrmPesquisarProduto.cs",
-              "ViewState": "AgIAALgAAAAAAAAAAAAmwMkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:45:05.628Z",
-              "EditorCaption": ""
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmLocalicarVendedor.cs [Design]",
-              "DocumentMoniker": "D:\\ComissPro\\FrmLocalicarVendedor.cs",
-              "RelativeDocumentMoniker": "FrmLocalicarVendedor.cs",
-              "ToolTip": "D:\\ComissPro\\FrmLocalicarVendedor.cs [Design]",
-              "RelativeToolTip": "FrmLocalicarVendedor.cs [Design]",
+              "Title": "FrmPrincipal.cs [Design]",
+              "DocumentMoniker": "D:\\ComissPro\\FrmPrincipal.cs",
+              "RelativeDocumentMoniker": "FrmPrincipal.cs",
+              "ToolTip": "D:\\ComissPro\\FrmPrincipal.cs [Design]",
+              "RelativeToolTip": "FrmPrincipal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:43:48.85Z",
+              "WhenOpened": "2025-02-27T22:10:28.314Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmPesquisarProduto.cs [Design]",
-              "DocumentMoniker": "D:\\ComissPro\\FrmPesquisarProduto.cs",
-              "RelativeDocumentMoniker": "FrmPesquisarProduto.cs",
-              "ToolTip": "D:\\ComissPro\\FrmPesquisarProduto.cs [Design]",
-              "RelativeToolTip": "FrmPesquisarProduto.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "FrmPrincipal.cs",
+              "DocumentMoniker": "D:\\ComissPro\\FrmPrincipal.cs",
+              "RelativeDocumentMoniker": "FrmPrincipal.cs",
+              "ToolTip": "D:\\ComissPro\\FrmPrincipal.cs",
+              "RelativeToolTip": "FrmPrincipal.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAQwF0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:32:23.404Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-27T22:09:32.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "DocumentMoniker": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "RelativeDocumentMoniker": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "ToolTip": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "RelativeToolTip": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIIAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T22:06:29.415Z"
             },
             {
               "$type": "Document",
@@ -118,10 +127,31 @@
               "RelativeDocumentMoniker": "FrmControleEntregas.cs",
               "ToolTip": "D:\\ComissPro\\FrmControleEntregas.cs",
               "RelativeToolTip": "FrmControleEntregas.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAgwGsAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAALIAAAAAAAAAAAAQwLwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:28:58.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T22:06:02.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ComissPro",
+              "DocumentMoniker": "D:\\ComissPro\\ComissPro.csproj",
+              "RelativeDocumentMoniker": "ComissPro.csproj",
+              "ToolTip": "D:\\ComissPro\\ComissPro.csproj",
+              "RelativeToolTip": "ComissPro.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-27T22:04:25.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs [Design]",
+              "DocumentMoniker": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "RelativeDocumentMoniker": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
+              "ToolTip": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs [Design]",
+              "RelativeToolTip": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-27T22:00:02.821Z"
             },
             {
               "$type": "Document",
@@ -132,8 +162,7 @@
               "ToolTip": "D:\\ComissPro\\FrmControleEntregas.cs [Design]",
               "RelativeToolTip": "FrmControleEntregas.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T19:27:36.082Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-27T21:59:11.637Z"
             }
           ]
         }

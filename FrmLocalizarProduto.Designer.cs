@@ -1,6 +1,6 @@
 ﻿namespace ComissPro
 {
-    partial class FrmPesquisarProduto
+    partial class FrmLocalizarProduto
     {
         /// <summary>
         /// Variável de designer necessária.

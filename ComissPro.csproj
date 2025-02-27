@@ -36,6 +36,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\LogoTrevo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Docking">
       <HintPath>..\GVC\bin\Debug\ComponentFactory.Krypton.Docking.dll</HintPath>
@@ -126,6 +129,12 @@
     <Compile Include="FrmLocalicarVendedor.Designer.cs">
       <DependentUpon>FrmLocalicarVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmManutençãodeEntregaBilhetes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmManutençãodeEntregaBilhetes.Designer.cs">
+      <DependentUpon>FrmManutençãodeEntregaBilhetes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmManutProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,11 +147,11 @@
     <Compile Include="FrmManutVendedor.Designer.cs">
       <DependentUpon>FrmManutVendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPesquisarProduto.cs">
+    <Compile Include="FrmLocalizarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPesquisarProduto.Designer.cs">
-      <DependentUpon>FrmPesquisarProduto.cs</DependentUpon>
+    <Compile Include="FrmLocalizarProduto.Designer.cs">
+      <DependentUpon>FrmLocalizarProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -179,14 +188,17 @@
     <EmbeddedResource Include="FrmLocalicarVendedor.resx">
       <DependentUpon>FrmLocalicarVendedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmManutençãodeEntregaBilhetes.resx">
+      <DependentUpon>FrmManutençãodeEntregaBilhetes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmManutProduto.resx">
       <DependentUpon>FrmManutProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManutVendedor.resx">
       <DependentUpon>FrmManutVendedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPesquisarProduto.resx">
-      <DependentUpon>FrmPesquisarProduto.cs</DependentUpon>
+    <EmbeddedResource Include="FrmLocalizarProduto.resx">
+      <DependentUpon>FrmLocalizarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -271,6 +283,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sair24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoTrevo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdicionarProuto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\verificar24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

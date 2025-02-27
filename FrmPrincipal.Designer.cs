@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
             this.lblEstacao = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,7 +49,6 @@
             this.btnFerramentas = new System.Windows.Forms.Button();
             this.panelConteiner = new System.Windows.Forms.Panel();
             this.timerH = new System.Windows.Forms.Timer(this.components);
-            this.kryptonStatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -79,15 +79,6 @@
             // kryptonStatusStrip1
             // 
             this.kryptonStatusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kryptonStatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblEstacao,
-            this.toolStripStatusLabel4,
-            this.lblData,
-            this.lblHoraAtual,
-            this.toolStripStatusLabel5,
-            this.lblUsuarioLogadoo,
-            this.toolStripStatusLabel6,
-            this.lblTipoUsuarioo});
             this.kryptonStatusStrip1.Location = new System.Drawing.Point(0, 707);
             this.kryptonStatusStrip1.Name = "kryptonStatusStrip1";
             this.kryptonStatusStrip1.ProgressBars = null;
@@ -231,7 +222,6 @@
             this.btnRelatorios.TabIndex = 9;
             this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRelatorios.UseVisualStyleBackColor = false;
-            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // btnProduto
             // 
@@ -295,6 +285,7 @@
             this.Controls.Add(this.kryptonStatusStrip1);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.panelConteiner);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
@@ -302,8 +293,6 @@
             this.Text = "ComissPro - Sistema de Controle de Comissão";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
-            this.kryptonStatusStrip1.ResumeLayout(false);
-            this.kryptonStatusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.ResumeLayout(false);

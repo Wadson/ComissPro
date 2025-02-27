@@ -61,6 +61,7 @@
             this.txtPesquisa.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtPesquisa.TabIndex = 639;
             this.txtPesquisa.TabStop = false;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // btnSair
             // 
@@ -81,6 +82,7 @@
             this.btnSair.TabIndex = 638;
             this.btnSair.Text = "&OK";
             this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // groupBox1
             // 
@@ -146,6 +148,8 @@
             this.dataGridPesquisar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridPesquisar.Size = new System.Drawing.Size(571, 199);
             this.dataGridPesquisar.TabIndex = 635;
+            this.dataGridPesquisar.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPesquisar_CellContentDoubleClick);
+            this.dataGridPesquisar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPesquisar_CellDoubleClick);
             this.dataGridPesquisar.SelectionChanged += new System.EventHandler(this.dataGridPesquisar_SelectionChanged);
             // 
             // FrmLocalicarVendedor
@@ -160,6 +164,7 @@
             this.Name = "FrmLocalicarVendedor";
             this.Text = "LOCALIZAR VENDEDOR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLocalicarVendedor_FormClosing);
+            this.Load += new System.EventHandler(this.FrmLocalicarVendedor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).EndInit();

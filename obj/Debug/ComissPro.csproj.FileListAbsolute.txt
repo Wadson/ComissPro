@@ -43,4 +43,6 @@ D:\ComissPro\obj\Debug\ComissPro.FrmManutVendedor.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmCadProdutos.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmManutProduto.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmControleEntregas.resources
-D:\ComissPro\obj\Debug\ComissPro.FrmPesquisarProduto.resources
+D:\ComissPro\obj\Debug\ComissPro.FrmLocalicarVendedor.resources
+D:\ComissPro\obj\Debug\ComissPro.FrmLocalizarProduto.resources
+D:\ComissPro\obj\Debug\ComissPro.FrmManutençãodeEntregaBilhetes.resources
