@@ -11,6 +11,8 @@ namespace ComissPro
 {
 	public partial class FrmManutençãodeEntregaBilhetes : ComissPro.FrmModelo
 	{
+        private bool bloqueiaEventosTextChanged = false;
+
         private new string StatusOperacao;
         public FrmManutençãodeEntregaBilhetes(string statusOperacao)
 		{
@@ -71,72 +73,23 @@ namespace ComissPro
             dgv.ReadOnly = true; // Torna o DataGridView somente leitura
         }
 
-
-
-
         private void CarregaDados()
-        {   
+        {
             FrmControleEntregas formEntregas = new FrmControleEntregas(StatusOperacao);
 
-            if (StatusOperacao == "NOVO")
-            {
-                formEntregas.lblStatus.Text = "NOVA ENTREGA DE BILHETES";
-                formEntregas.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
-                formEntregas.ShowDialog();
-            }
-            if (StatusOperacao == "ALTERAR")
+            if (StatusOperacao == "ALTERAR" || StatusOperacao == "EXCLUSÃO")
             {
                 try
                 {
-                    // Verificar se a DataGridView contém alguma linha
                     if (dataGridManutencaoEntregas.Rows.Count == 0)
                     {
-                        // Lançar exceção personalizada
-                        //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
                         MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        return;
                     }
-                    // Execução do código desejado
-                    MessageBox.Show(formEntregas.Name);
 
-                    MessageBox.Show($"Formulário Atual: {formEntregas.Name}");
-                    MessageBox.Show($"Status da Operação: {StatusOperacao}");
+                    // Bloqueia os eventos temporariamente
+                    formEntregas.bloqueiaEventosTextChanged = true;
 
-                    formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
-                    formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                    formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
-                    formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value.ToString();
-                    formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
-                    formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString(); 
-                    formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
-                    formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].ToString());
-                    formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
-                    formEntregas.lblStatus.Text = "ALTERAR CADASTRO";
-                    formEntregas.lblStatus.ForeColor = Color.Orange;
-                    StatusOperacao = "ALTERAR";
-                    formEntregas.btnNovo.Enabled = false;
-                    formEntregas.btnSalvar.Text = "Alterar";
-                    formEntregas.ShowDialog();
-                }
-                catch (Exception ex)
-                {
-                    // Exibir uma mensagem de erro para o usuário
-                    MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            if (StatusOperacao == "EXCLUSÃO")
-            {
-                try
-                {
-                    // Verificar se a DataGridView contém alguma linha
-                    if (dataGridManutencaoEntregas.Rows.Count == 0)
-                    {
-                        // Lançar exceção personalizada
-                        //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
-                        MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    }
-                    else
-                        // Exemplo: Acessar a primeira célula de cada linha
-                        //  var valor = row.Cells[0].Value;
                     formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
                     formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
                     formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
@@ -144,32 +97,147 @@ namespace ComissPro
                     formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
                     formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString();
                     formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
-                    formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].ToString());
+                    formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].Value.ToString());
                     formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
 
-                    formEntregas.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
-                    formEntregas.lblStatus.ForeColor = Color.Red;
-                    StatusOperacao = "EXCLUSÃO";
+                    if (StatusOperacao == "ALTERAR")
+                    {
+                        formEntregas.lblStatus.Text = "Alterar: quantidade e valor";
+                        formEntregas.lblStatus.ForeColor = Color.Orange;
+                        formEntregas.btnSalvar.Text = "Alterar";
+                        formEntregas.btnSalvar.ForeColor = Color.Orange;
+                        formEntregas.btnSalvar.BackColor = Color.OrangeRed;
+                        formEntregas.btnNovo.Enabled = false;
+                        formEntregas.txtNomeVendedor.Enabled = false;
+                        formEntregas.txtNomeProduto.Enabled = false;
+                        formEntregas.btnLocalizarVendedor.Enabled = false;
+                        formEntregas.btnLocalizarProduto.Enabled = false;
 
-                    formEntregas.btnNovo.Enabled = false;
+                    }
+                    else if (StatusOperacao == "EXCLUSÃO")
+                    {
+                        formEntregas.lblStatus.Text = "Exluir registro!";
+                        formEntregas.lblStatus.ForeColor = Color.Red;
+                        formEntregas.btnSalvar.Text = "Excluir";
 
-                    formEntregas.txtEntregaID.Enabled = false;
-                    formEntregas.txtNomeVendedor.Enabled = false;
-                    formEntregas.txtNomeProduto.Enabled = false;
-                    formEntregas.txtQuantidade.Enabled = false;
-                    formEntregas.txtPrecoUnit.Enabled = false;
-                    formEntregas.txtTotal.Enabled = false;
+                        formEntregas.txtEntregaID.Enabled = false;
+                        formEntregas.txtNomeVendedor.Enabled = false;
+                        formEntregas.txtNomeProduto.Enabled = false;
+                        formEntregas.txtQuantidade.Enabled = false;
+                        formEntregas.txtPrecoUnit.Enabled = false;
+                        formEntregas.txtTotal.Enabled = false;
+                    }
 
-                    formEntregas.btnSalvar.Text = "Excluir";
+                    // Reativa os eventos após preencher os dados
+                    formEntregas.bloqueiaEventosTextChanged = false;
+
                     formEntregas.ShowDialog();
                 }
                 catch (Exception ex)
                 {
-                    // Exibir uma mensagem de erro para o usuário
                     MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
+
+
+        //private void CarregaDados()
+        //{   
+        //    FrmControleEntregas formEntregas = new FrmControleEntregas(StatusOperacao);
+
+        //    if (StatusOperacao == "NOVO")
+        //    {
+        //        formEntregas.lblStatus.Text = "NOVA ENTREGA DE BILHETES";
+        //        formEntregas.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
+        //        formEntregas.ShowDialog();
+        //    }
+        //    if (StatusOperacao == "ALTERAR")
+        //    {
+        //        try
+        //        {
+        //            // Verificar se a DataGridView contém alguma linha
+        //            if (dataGridManutencaoEntregas.Rows.Count == 0)
+        //            {
+        //                // Lançar exceção personalizada
+        //                //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
+        //                MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        //            }
+        //            // Execução do código desejado
+        //            //MessageBox.Show(formEntregas.Name);
+
+        //            //MessageBox.Show($"Formulário Atual: {formEntregas.Name}");
+        //            //MessageBox.Show($"Status da Operação: {StatusOperacao}");
+
+        //            formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
+        //            formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
+        //            formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
+        //            formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value.ToString();
+        //            formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
+        //            formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString(); 
+        //            formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
+        //            formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].ToString());
+        //            formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
+        //            formEntregas.lblStatus.Text = "ALTERAR CADASTRO";
+        //            formEntregas.lblStatus.ForeColor = Color.Orange;
+        //            StatusOperacao = "ALTERAR";
+        //            formEntregas.btnNovo.Enabled = false;
+        //            formEntregas.btnSalvar.Text = "Alterar";
+        //            formEntregas.ShowDialog();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Exibir uma mensagem de erro para o usuário
+        //            MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    if (StatusOperacao == "EXCLUSÃO")
+        //    {
+        //        try
+        //        {
+        //            // Verificar se a DataGridView contém alguma linha
+        //            if (dataGridManutencaoEntregas.Rows.Count == 0)
+        //            {
+        //                // Lançar exceção personalizada
+        //                //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
+        //                MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        //            }
+        //            else
+        //                // Exemplo: Acessar a primeira célula de cada linha
+        //                //  var valor = row.Cells[0].Value;
+        //            formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
+        //            formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
+        //            formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
+        //            formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value.ToString();
+        //            formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
+        //            formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString();
+        //            formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
+        //            formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].ToString());
+        //            formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
+
+        //            formEntregas.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
+        //            formEntregas.lblStatus.ForeColor = Color.Red;
+        //            StatusOperacao = "EXCLUSÃO";
+
+        //            formEntregas.btnNovo.Enabled = false;
+
+        //            formEntregas.txtEntregaID.Enabled = false;
+        //            formEntregas.txtNomeVendedor.Enabled = false;
+        //            formEntregas.txtNomeProduto.Enabled = false;
+        //            formEntregas.txtQuantidade.Enabled = false;
+        //            formEntregas.txtPrecoUnit.Enabled = false;
+        //            formEntregas.txtTotal.Enabled = false;
+
+        //            formEntregas.btnSalvar.Text = "Excluir";
+        //            formEntregas.ShowDialog();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Exibir uma mensagem de erro para o usuário
+        //            MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
         public void Listar()
         {
             EntregasDal objetoDAL = new EntregasDal();

@@ -1,6 +1,6 @@
 ﻿namespace ComissPro
 {
-    partial class FrmControleEntregas
+    partial class FrmPrestacaoDeContas
     {
         /// <summary>
         /// Variável de designer necessária.

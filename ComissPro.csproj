@@ -118,6 +118,12 @@
     <Compile Include="FrmCadVendedor.Designer.cs">
       <DependentUpon>FrmCadVendedor.cs</DependentUpon>
     </Compile>
+    <None Include="FrmPrestacaoDeContas">
+      <SubType>Form</SubType>
+    </None>
+    <Compile Include="FrmControleEntregas - Cópia .Designer.cs">
+      <DependentUpon>FrmPrestacaoDeContas</DependentUpon>
+    </Compile>
     <Compile Include="FrmControleEntregas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCadVendedor.resx">
       <DependentUpon>FrmCadVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmControleEntregas - Cópia .resx">
+      <DependentUpon>FrmPrestacaoDeContas</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmControleEntregas.resx">
       <DependentUpon>FrmControleEntregas.cs</DependentUpon>
