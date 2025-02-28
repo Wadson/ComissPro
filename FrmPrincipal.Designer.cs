@@ -223,7 +223,7 @@
             this.btnPrestacaoContas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPrestacaoContas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnPrestacaoContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrestacaoContas.Image = global::ComissPro.Properties.Resources.PrestacaoDeconta64;
+            this.btnPrestacaoContas.Image = global::ComissPro.Properties.Resources.EntregaBilhete64;
             this.btnPrestacaoContas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPrestacaoContas.Location = new System.Drawing.Point(346, 4);
             this.btnPrestacaoContas.Name = "btnPrestacaoContas";
@@ -266,15 +266,15 @@
             this.btnManutencaoEntregas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnManutencaoEntregas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnManutencaoEntregas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManutencaoEntregas.Image = global::ComissPro.Properties.Resources.EntregaBilhete64;
+            this.btnManutencaoEntregas.Image = global::ComissPro.Properties.Resources.PrestacaoDeconta64;
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnManutencaoEntregas.Location = new System.Drawing.Point(261, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
             this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 95);
             this.btnManutencaoEntregas.TabIndex = 6;
-            this.btnManutencaoEntregas.Text = "&Controle";
+            this.btnManutencaoEntregas.Text = "&Vendas";
             this.btnManutencaoEntregas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnManutencaoEntregas, "Entrega de bilhetes para vendedores");
+            this.toolTip1.SetToolTip(this.btnManutencaoEntregas, "Entrega de bilhetes e Prestação de contas");
             this.btnManutencaoEntregas.UseVisualStyleBackColor = false;
             this.btnManutencaoEntregas.Click += new System.EventHandler(this.btnManutencaoEntregas_Click);
             // 

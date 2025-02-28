@@ -23,7 +23,55 @@ namespace ComissPro
         {
             PrestacaoDeContasDAL objetoDAL = new PrestacaoDeContasDAL();
             dataGridPrestacaoContas.DataSource = objetoDAL.listaEntregas();
-            //PersonalizarDataGridView(dataGridPrestacaoContas);
+            PersonalizarDataGridView();
+        }
+        public void PersonalizarDataGridView()
+        {
+            if (dataGridPrestacaoContas.Columns.Count >= 9)
+            {
+                // Renomeia as colunas
+                dataGridPrestacaoContas.Columns[0].Name = "PrestacaoID";
+                dataGridPrestacaoContas.Columns[1].Name = "EntregaID";
+                dataGridPrestacaoContas.Columns[2].Name = "QuantidadeVendida";
+                dataGridPrestacaoContas.Columns[3].Name = "QuantidadeDevolvida";
+                dataGridPrestacaoContas.Columns[4].Name = "ValorRecebido";
+                dataGridPrestacaoContas.Columns[5].Name = "Comissao";
+                dataGridPrestacaoContas.Columns[6].Name = "DataPrestacao";               
+
+                // Define larguras fixas específicas para as colunas
+                dataGridPrestacaoContas.Columns["PrestacaoID"].Width = 250;
+                dataGridPrestacaoContas.Columns["EntregaID"].Width = 200;
+                dataGridPrestacaoContas.Columns["QuantidadeVendida"].Width = 160;
+                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].Width = 160;
+                dataGridPrestacaoContas.Columns["ValorRecebido"].Width = 120;
+                dataGridPrestacaoContas.Columns["Comissao"].Width = 130;
+                dataGridPrestacaoContas.Columns["DataPrestacao"].Width = 130;
+
+                // Formatar valores monetários (N2) para Preco e Total
+                dataGridPrestacaoContas.Columns["ValorRecebido"].DefaultCellStyle.Format = "N2";
+                dataGridPrestacaoContas.Columns["Comissao"].DefaultCellStyle.Format = "N2";
+
+                // Formatar DataEntrega como data curta
+                dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.Format = "d"; // Formato de data curta (short date)
+
+                // Centralizar a coluna QuantidadeEntregue
+                dataGridPrestacaoContas.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                // Ocultar as colunas VendedorID e ProdutoID
+                dataGridPrestacaoContas.Columns["PrestacaoID"].Visible = false;
+                dataGridPrestacaoContas.Columns["EntregaID"].Visible = false;
+
+                // Centralizar cabeçalhos das colunas
+                foreach (DataGridViewColumn column in dataGridPrestacaoContas.Columns)
+                {
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
+                }
+            }
+
+            // Configurações adicionais
+            dataGridPrestacaoContas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None; // Desativa ajuste automático
+            dataGridPrestacaoContas.ReadOnly = true; // Torna o DataGridView somente leitura
         }
         private void CarregaDados()
         {
@@ -143,6 +191,11 @@ namespace ComissPro
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmManutencaoPrestacaoDeContas_Load(object sender, EventArgs e)
+        {
+            Listar();
         }
     }
 }

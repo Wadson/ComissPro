@@ -81,6 +81,8 @@ namespace ComissPro
             public double ValorRecebido { get; set; }
             public double Comissao { get; set; }
             public DateTime DataPrestacao { get; set; } = DateTime.Now;
+            public string NomeVendedor { get; set; }
+            public int VendedorID { get; set; }
         }
     }
 }

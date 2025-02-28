@@ -44,12 +44,14 @@ namespace ComissPro
                     return;
                 }
 
+                // Limpar e configurar o ComboBox
                 cmbEntregasPendentes.DataSource = null;
                 cmbEntregasPendentes.Items.Clear();
-                cmbEntregasPendentes.DataSource = entregas;
-                cmbEntregasPendentes.DisplayMember = "ToString"; // Usa o ToString de EntregasModel
+                cmbEntregasPendentes.DisplayMember = "ToString"; // Define antes do DataSource
                 cmbEntregasPendentes.ValueMember = "EntregaID";
+                cmbEntregasPendentes.DataSource = entregas;
 
+                // Selecionar o primeiro item
                 if (entregas.Count > 0)
                 {
                     cmbEntregasPendentes.SelectedIndex = 0;

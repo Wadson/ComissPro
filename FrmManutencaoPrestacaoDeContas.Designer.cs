@@ -394,6 +394,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(784, 408);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.lblTotalRegistros);
@@ -406,6 +407,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManutencaoPrestacaoDeContas";
             this.Text = "FrmManutencaoPrestacaoDeContas";
+            this.Load += new System.EventHandler(this.FrmManutencaoPrestacaoDeContas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmManutencaoPrestacaoDeContas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);

@@ -405,7 +405,7 @@
             this.cmbEntregasPendentes.FormattingEnabled = true;
             this.cmbEntregasPendentes.Location = new System.Drawing.Point(9, 48);
             this.cmbEntregasPendentes.Name = "cmbEntregasPendentes";
-            this.cmbEntregasPendentes.Size = new System.Drawing.Size(317, 21);
+            this.cmbEntregasPendentes.Size = new System.Drawing.Size(671, 21);
             this.cmbEntregasPendentes.TabIndex = 672;
             this.cmbEntregasPendentes.SelectedIndexChanged += new System.EventHandler(this.cmbEntregasPendentes_SelectedIndexChanged);
             // 
@@ -443,7 +443,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label14.Location = new System.Drawing.Point(329, 29);
+            this.label14.Location = new System.Drawing.Point(6, 79);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(87, 16);
             this.label14.TabIndex = 675;
@@ -452,7 +452,7 @@
             // txtNomeVendedor
             // 
             this.txtNomeVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeVendedor.Location = new System.Drawing.Point(332, 48);
+            this.txtNomeVendedor.Location = new System.Drawing.Point(98, 75);
             this.txtNomeVendedor.Name = "txtNomeVendedor";
             this.txtNomeVendedor.ReadOnly = true;
             this.txtNomeVendedor.Size = new System.Drawing.Size(348, 24);
