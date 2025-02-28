@@ -32,13 +32,10 @@
             this.dataGridPesquisar = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.label28 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbtDescricao = new System.Windows.Forms.RadioButton();
-            this.rbtCodigo = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridPesquisar
@@ -63,6 +60,7 @@
             // 
             // label28
             // 
+            this.label28.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
@@ -93,51 +91,13 @@
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbtDescricao);
-            this.groupBox1.Controls.Add(this.rbtCodigo);
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(18, 34);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(153, 42);
-            this.groupBox1.TabIndex = 603;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtro:";
-            // 
-            // rbtDescricao
-            // 
-            this.rbtDescricao.AutoSize = true;
-            this.rbtDescricao.Checked = true;
-            this.rbtDescricao.Location = new System.Drawing.Point(72, 15);
-            this.rbtDescricao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rbtDescricao.Name = "rbtDescricao";
-            this.rbtDescricao.Size = new System.Drawing.Size(73, 17);
-            this.rbtDescricao.TabIndex = 5;
-            this.rbtDescricao.TabStop = true;
-            this.rbtDescricao.Text = "Descrição";
-            this.rbtDescricao.UseVisualStyleBackColor = true;
-            // 
-            // rbtCodigo
-            // 
-            this.rbtCodigo.AutoSize = true;
-            this.rbtCodigo.Location = new System.Drawing.Point(6, 15);
-            this.rbtCodigo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rbtCodigo.Name = "rbtCodigo";
-            this.rbtCodigo.Size = new System.Drawing.Size(58, 17);
-            this.rbtCodigo.TabIndex = 4;
-            this.rbtCodigo.Text = "Código";
-            this.rbtCodigo.UseVisualStyleBackColor = true;
-            // 
             // txtPesquisa
             // 
             this.txtPesquisa.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtPesquisa.Location = new System.Drawing.Point(177, 50);
+            this.txtPesquisa.Location = new System.Drawing.Point(98, 50);
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtPesquisa.Size = new System.Drawing.Size(406, 27);
+            this.txtPesquisa.Size = new System.Drawing.Size(485, 27);
             this.txtPesquisa.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtPesquisa.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtPesquisa.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -155,21 +115,61 @@
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             // 
+            // kryptonPalette1
+            // 
+            this.kryptonPalette1.ButtonSpecs.FormClose.Image = global::ComissPro.Properties.Resources.Exit;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Sairr24;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Sairr24;
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.None;
+            this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Rounding = 12;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
+            this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.label1.Location = new System.Drawing.Point(8, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 24);
+            this.label1.TabIndex = 605;
+            this.label1.Text = "Localizar";
+            // 
             // FrmLocalizarProduto
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(588, 335);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.dataGridPesquisar);
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmLocalizarProduto";
+            this.Palette = this.kryptonPalette1;
+            this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
+            this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "Localizar Produto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPesquisarProduto_FormClosing);
             this.Load += new System.EventHandler(this.FrmPesquisarProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,10 +180,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridPesquisar;
         private System.Windows.Forms.Label label28;
         public System.Windows.Forms.Button btnSair;
-        public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.RadioButton rbtDescricao;
-        public System.Windows.Forms.RadioButton rbtCodigo;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPesquisa;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private System.Windows.Forms.Label label1;
     }
 }

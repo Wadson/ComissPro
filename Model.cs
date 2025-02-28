@@ -40,6 +40,7 @@ namespace ComissPro
             public string Nome { get; set; }
             public string CPF { get; set; }
             public string Telefone { get; set; }
+            public double Comissao { get; set; }
         }
 
         public class ProdutoMODEL
@@ -51,7 +52,6 @@ namespace ComissPro
             public int QuantidadePorBloco { get; set; }
         }
 
-
         public class EntregasModel
         {
             public int EntregaID { get; set; }
@@ -60,14 +60,18 @@ namespace ComissPro
             public long QuantidadeEntregue { get; set; }
             public DateTime? DataEntrega { get; set; } = DateTime.Now;
             public bool PrestacaoRealizada { get; set; } = false;
-
-            // Campos adicionais para a consulta
             public string NomeVendedor { get; set; }
             public string NomeProduto { get; set; }
             public double Preco { get; set; }
             public double Total { get; set; }
+            public double Comissao { get; set; } // Percentual direto (ex.: 40 para 40%)
+
+            public override string ToString()
+            {
+                return $"{NomeVendedor} - Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
+            }
         }
-              
+
         public class PrestacaoContasModel
         {
             public int PrestacaoID { get; set; }

@@ -32,6 +32,7 @@ namespace ComissPro
                 objetoModel.Nome = txtNomeVendedor.Text;
                 objetoModel.CPF = txtCpf.Text;
                 objetoModel.Telefone = txtTelefone.Text;
+                objetoModel.Comissao = double.Parse(txtPercentualComissao.Text);
 
                 VendedorBLL objetoBll = new VendedorBLL();
 
@@ -59,6 +60,7 @@ namespace ComissPro
                 objetoModel.Nome = txtNomeVendedor.Text;
                 objetoModel.CPF = txtCpf.Text;
                 objetoModel.Telefone = txtTelefone.Text;
+                objetoModel.Comissao = double.Parse(txtPercentualComissao.Text);
 
 
                 VendedorBLL objetoBll = new VendedorBLL();

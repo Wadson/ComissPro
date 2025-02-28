@@ -201,5 +201,11 @@ namespace ComissPro
             Listar();
             timer1.Enabled = false;
         }
+
+        private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
+        {
+            FrmPrestacaoDeContas formPrestacao = new FrmPrestacaoDeContas(StatusOperacao);            
+            formPrestacao.ShowDialog();
+        }
     }
 }

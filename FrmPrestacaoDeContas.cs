@@ -17,36 +17,43 @@ namespace ComissPro
     public partial class FrmPrestacaoDeContas : KryptonForm
     {
         private EntregasModel entregaSelecionada;
-        private string StatusOperacao;
+        public string StatusOperacao { get; set; }
         private string QueryPrestacao = "SELECT MAX(PrestacaoID) FROM PrestacaoContas";
-        private int PrestacaoID;
+        public int PrestacaoID { get; set; }
         public int EntregaID { get; set; }
         public int VendedorID { get; set; }
         public int ProdutoID { get; set; }
         public int QuantidadeEntregue { get; set; }
         public DateTime DataEntrega { get; set; }
+        private double percentualComissao = 0;
 
         public FrmPrestacaoDeContas(string statusOperacao)
         {
             this.StatusOperacao = statusOperacao;
             InitializeComponent();
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
         private void CarregarComboEntregas()
         {
             try
             {
-                var entregas = CarregarEntregasNaoPrestadas();
+                var entregas = new EntregasDal().CarregarEntregasNaoPrestadas();
                 if (entregas == null || entregas.Count == 0)
                 {
                     MessageBox.Show("Nenhuma entrega pendente encontrada.");
                     return;
                 }
 
-                cmbEntregasPendentes.DataSource = null; // Limpa o DataSource atual
-                cmbEntregasPendentes.Items.Clear();     // Limpa os itens existentes
+                cmbEntregasPendentes.DataSource = null;
+                cmbEntregasPendentes.Items.Clear();
                 cmbEntregasPendentes.DataSource = entregas;
-                cmbEntregasPendentes.DisplayMember = "ToString"; // Usa o método ToString
-                cmbEntregasPendentes.ValueMember = "EntregaID";  // Valor retornado
+                cmbEntregasPendentes.DisplayMember = "ToString"; // Usa o ToString de EntregasModel
+                cmbEntregasPendentes.ValueMember = "EntregaID";
+
+                if (entregas.Count > 0)
+                {
+                    cmbEntregasPendentes.SelectedIndex = 0;
+                }
             }
             catch (Exception ex)
             {
@@ -126,14 +133,27 @@ namespace ComissPro
                 }
             }
         }
-
+        private double BuscarPercentualComissao(long vendedorID)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT Comissao FROM Vendedores WHERE VendedorID = @VendedorID";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@VendedorID", vendedorID);
+                    object resultado = cmd.ExecuteScalar();
+                    return resultado != null ? Convert.ToDouble(resultado) : 10; // 10% padrão
+                }
+            }
+        }
         public void SalvarRegistro()
         {
             try
             {
                 Model.PrestacaoContasModel objetoModel = new Model.PrestacaoContasModel();
 
-                objetoModel.PrestacaoID = Convert.ToInt32(txtPrestacaoID.Text);
+                objetoModel.PrestacaoID = PrestacaoID;
                 objetoModel.EntregaID = EntregaID;
                 objetoModel.QuantidadeVendida = int.Parse(txtQuantidadeVendida.Text);
                 objetoModel.QuantidadeDevolvida = int.Parse(txtQtdDevolvida.Text);
@@ -162,7 +182,7 @@ namespace ComissPro
             {
                 Model.PrestacaoContasModel objetoModel = new Model.PrestacaoContasModel();
 
-                objetoModel.PrestacaoID = Convert.ToInt32(txtPrestacaoID.Text);
+                objetoModel.PrestacaoID = PrestacaoID;
                 objetoModel.EntregaID = EntregaID;
                 objetoModel.QuantidadeVendida = int.Parse(txtQuantidadeVendida.Text);
                 objetoModel.QuantidadeDevolvida = int.Parse(txtQtdDevolvida.Text);
@@ -217,7 +237,6 @@ namespace ComissPro
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            // Validação antes de salvar
             if (entregaSelecionada == null)
             {
                 MessageBox.Show("Selecione uma entrega antes de salvar!");
@@ -227,28 +246,19 @@ namespace ComissPro
             if (string.IsNullOrWhiteSpace(txtQuantidadeVendida.Text) ||
                 string.IsNullOrWhiteSpace(txtQtdDevolvida.Text) ||
                 string.IsNullOrWhiteSpace(txtValorRecebido.Text) ||
-                string.IsNullOrWhiteSpace(txtComissao.Text))
+                string.IsNullOrWhiteSpace(txtValorComissao.Text))
             {
                 MessageBox.Show("Preencha todos os campos antes de salvar!");
-                return;
-            }
-
-            if (!int.TryParse(txtQuantidadeVendida.Text, out int qtdVendida) ||
-                !int.TryParse(txtQtdDevolvida.Text, out int qtdDevolvida) ||
-                !double.TryParse(txtValorRecebido.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out double valorRecebido) ||
-                !double.TryParse(txtComissao.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out double comissao))
-            {
-                MessageBox.Show("Valores inválidos nos campos numéricos!");
                 return;
             }
 
             var prestacao = new PrestacaoContasModel
             {
                 EntregaID = entregaSelecionada.EntregaID,
-                QuantidadeVendida = qtdVendida,
-                QuantidadeDevolvida = qtdDevolvida,
-                ValorRecebido = valorRecebido,
-                Comissao = comissao,
+                QuantidadeVendida = int.Parse(txtQuantidadeVendida.Text),
+                QuantidadeDevolvida = int.Parse(txtQtdDevolvida.Text),
+                ValorRecebido = double.Parse(txtValorRecebido.Text, NumberStyles.Currency),
+                Comissao = double.Parse(txtValorComissao.Text, NumberStyles.Currency),
                 DataPrestacao = dtpDataPrestacaoContas.Value
             };
 
@@ -271,9 +281,9 @@ namespace ComissPro
             if (StatusOperacao == "NOVO")
             {
                 int NovoCodigo = Utilitario.GerarProximoCodigo(QueryPrestacao);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
-                string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
+                //string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
                 PrestacaoID = NovoCodigo;
-                txtPrestacaoID.Text = numeroComZeros;
+                
             }
             CarregarComboEntregas();
         }
@@ -282,32 +292,23 @@ namespace ComissPro
         {
             if (cmbEntregasPendentes.SelectedItem != null)
             {
-                var comboItem = (EntregaComboItem)cmbEntregasPendentes.SelectedItem;
-                entregaSelecionada = new EntregasModel
-                {
-                    EntregaID = comboItem.EntregaID,
-                    VendedorID = comboItem.VendedorID,
-                    ProdutoID = comboItem.ProdutoID,
-                    QuantidadeEntregue = comboItem.QuantidadeEntregue,
-                    DataEntrega = comboItem.DataEntrega,
-                    PrestacaoRealizada = false
-                };
+                entregaSelecionada = (EntregasModel)cmbEntregasPendentes.SelectedItem;
 
-                txtNomeVendedor.Text = BuscarNomeVendedor(entregaSelecionada.VendedorID);
-                txtNomeProduto.Text = BuscarNomeProduto(entregaSelecionada.ProdutoID);
+                txtNomeVendedor.Text = entregaSelecionada.NomeVendedor;
+                txtNomeProduto.Text = entregaSelecionada.NomeProduto;
                 txtQuantidadeEntregue.Text = entregaSelecionada.QuantidadeEntregue.ToString();
-
                 EntregaID = entregaSelecionada.EntregaID;
-                double preco = BuscarPrecoProduto(entregaSelecionada.ProdutoID);
-                txtPrecoUnit.Text = preco.ToString("C");
-                txtTotal.Text = (entregaSelecionada.QuantidadeEntregue * preco).ToString("C");
+                txtPrecoUnit.Text = entregaSelecionada.Preco.ToString("C");
+                txtTotal.Text = entregaSelecionada.Total.ToString("C");
                 dtpDataEntrega.Value = entregaSelecionada.DataEntrega.Value;
 
-                // Limpar campos dependentes ao mudar a seleção
+                percentualComissao = entregaSelecionada.Comissao;
+                txtPercentualComissao.Text = percentualComissao.ToString("F2") + "%";
+
                 txtQtdDevolvida.Text = "0";
                 txtQuantidadeVendida.Text = entregaSelecionada.QuantidadeEntregue.ToString();
                 txtValorRecebido.Text = "";
-                txtComissao.Text = "";
+                txtValorComissao.Text = "";
             }
         }
         private void txtQtdDevolvida_Leave(object sender, EventArgs e)
@@ -319,18 +320,16 @@ namespace ComissPro
                 return;
             }
 
-            // Validação: Não permitir vazio ou não numérico
             if (string.IsNullOrWhiteSpace(txtQtdDevolvida.Text) || !int.TryParse(txtQtdDevolvida.Text, out int devolvida))
             {
                 MessageBox.Show("Digite uma quantidade válida!");
                 txtQtdDevolvida.Text = "0";
                 txtQuantidadeVendida.Text = entregaSelecionada.QuantidadeEntregue.ToString();
                 txtValorRecebido.Text = "";
-                txtComissao.Text = "";
+                txtValorComissao.Text = "";
                 return;
             }
 
-            // Validação: Não permitir negativo
             if (devolvida < 0)
             {
                 MessageBox.Show("A quantidade devolvida não pode ser negativa!");
@@ -344,12 +343,12 @@ namespace ComissPro
                 int vendida = entregue - devolvida;
                 txtQuantidadeVendida.Text = vendida.ToString();
 
-                double precoProduto = BuscarPrecoProduto(entregaSelecionada.ProdutoID);
+                double precoProduto = entregaSelecionada.Preco; // Já está no modelo
                 double valorRecebido = vendida * precoProduto;
                 txtValorRecebido.Text = valorRecebido.ToString("C");
 
-                double comissao = valorRecebido * 0.10;
-                txtComissao.Text = comissao.ToString("C");
+                double comissao = valorRecebido * (percentualComissao / 100);
+                txtValorComissao.Text = comissao.ToString("C");
             }
             else
             {
@@ -357,7 +356,56 @@ namespace ComissPro
                 txtQtdDevolvida.Text = "0";
                 txtQuantidadeVendida.Text = entregaSelecionada.QuantidadeEntregue.ToString();
                 txtValorRecebido.Text = "";
-                txtComissao.Text = "";
+                txtValorComissao.Text = "";
+            }
+        }
+
+        private void FrmPrestacaoDeContas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                if (this.GetNextControl(ActiveControl, true) != null)
+                {
+                    e.Handled = true;
+                    this.GetNextControl(ActiveControl, true).Focus();
+                }
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                //this.Close();
+                if (MessageBox.Show("Deseja sair?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+        }
+        private void RecalcularComissao()
+        {
+            if (!string.IsNullOrWhiteSpace(txtValorRecebido.Text))
+            {
+                double valorRecebido = double.Parse(txtValorRecebido.Text, NumberStyles.Currency);
+                double comissao = valorRecebido * (percentualComissao / 100); // Divide por 100 para cálculo
+                txtValorComissao.Text = comissao.ToString("N2");
+            }
+        }
+        private void txtPercentualComissao_Leave(object sender, EventArgs e)
+        {
+            if (entregaSelecionada == null)
+            {
+                return;
+            }
+
+            string texto = txtPercentualComissao.Text.Replace("%", "").Trim();
+            if (double.TryParse(texto, out double novoPercentual) && novoPercentual >= 0 && novoPercentual <= 100)
+            {
+                percentualComissao = novoPercentual;
+                RecalcularComissao();
+            }
+            else
+            {
+                MessageBox.Show("Digite um percentual válido entre 0 e 100!");
+                txtPercentualComissao.Text = percentualComissao.ToString("F2") + "%";
             }
         }
     }
@@ -368,10 +416,12 @@ namespace ComissPro
         public long ProdutoID { get; set; }
         public long QuantidadeEntregue { get; set; }
         public DateTime DataEntrega { get; set; }
+        public double Comissao { get; set; }
+        public string NomeVendedor { get; set; } // Adicionado para o ToString
 
         public override string ToString()
         {
-            return $"Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
+            return $"{NomeVendedor} - Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
         }
     }
 

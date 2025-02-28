@@ -39,12 +39,13 @@ namespace ComissPro
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "INSERT INTO Vendedores (Nome, CPF, Telefone) VALUES (@Nome, @CPF, @Telefone)";
+                string sql = "INSERT INTO Vendedores (Nome, CPF, Telefone, Comissao) VALUES (@Nome, @CPF, @Telefone, @Comissao)";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
                     cmd.Parameters.AddWithValue("@Nome", vendedor.Nome);
                     cmd.Parameters.AddWithValue("@CPF", vendedor.CPF);
                     cmd.Parameters.AddWithValue("@Telefone", vendedor.Telefone);
+                    cmd.Parameters.AddWithValue("@Comissao", vendedor.Comissao);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -55,12 +56,13 @@ namespace ComissPro
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "UPDATE Vendedores SET Nome=@Nome, CPF=@CPF, Telefone=@Telefone WHERE VendedorID=@VendedorID";
+                string sql = "UPDATE Vendedores SET Nome=@Nome, CPF=@CPF, Telefone=@Telefone, Comissao=@Comissao WHERE VendedorID=@VendedorID";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
                     cmd.Parameters.AddWithValue("@Nome", vendedor.Nome);
                     cmd.Parameters.AddWithValue("@CPF", vendedor.CPF);
                     cmd.Parameters.AddWithValue("@Telefone", vendedor.Telefone);
+                    cmd.Parameters.AddWithValue("@Comissao", vendedor.Comissao);
                     cmd.Parameters.AddWithValue("@VendedorID", vendedor.VendedorID);
                     cmd.ExecuteNonQuery();
                 }
@@ -88,7 +90,7 @@ namespace ComissPro
             try
             {
                 DataTable dt = new DataTable();
-                string sqlconn = "SELECT VendedorID, Nome, CPF, Telefone FROM Vendedores WHERE Nome LIKE @Nome";
+                string sqlconn = "SELECT VendedorID, Nome, CPF, Telefone, Comissao FROM Vendedores WHERE Nome LIKE @Nome";
                 SQLiteCommand cmd = new SQLiteCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@Nome", "%" + nome + "%");
                 conn.Open();
@@ -111,7 +113,7 @@ namespace ComissPro
             try
             {
                 DataTable dt = new DataTable();
-                string sqlconn = "SELECT VendedorID, Nome, CPF, Telefone FROM Vendedores WHERE VendedorID LIKE @Codigo";
+                string sqlconn = "SELECT VendedorID, Nome, CPF, Telefone, Comissao FROM Vendedores WHERE VendedorID LIKE @Codigo";
                 SQLiteCommand cmd = new SQLiteCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@Codigo", "%" + codigo + "%");
                 conn.Open();

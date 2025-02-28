@@ -33,6 +33,7 @@ namespace ComissPro
             dgv.Columns[1].Name = "Nome";
             dgv.Columns[2].Name = "Cpf";            
             dgv.Columns[3].Name = "Telefone";
+            dgv.Columns[4].Name = "Comissao";
 
             //dgv.Columns["FornecedorID"].Visible = false;
             //dgv.Columns["CidadeID"].Visible = false;
@@ -181,16 +182,8 @@ namespace ComissPro
             string nome = "%" + txtPesquisa.Text + "%";
             VendedorDAL dao = new VendedorDAL();
 
-            if (rbtCodigo.Checked)
-            {
-                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
-                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
-            }
-            else
-            {
-                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
-                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
-            }
+            dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
         }
     }
 }

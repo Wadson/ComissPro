@@ -190,38 +190,7 @@ namespace ComissPro
                     LinhaAtual = dataGridPesquisar.CurrentRow.Index; // Atualiza a linha atual corretamente
                     SelecionarProduto();
                 }
-            }
-            //if (e.KeyCode == Keys.Up && dataGridPesquisar.CurrentCell.RowIndex == 0)
-            //{
-            //    txtPesquisa.Focus();
-            //}
-
-            //if (dataGridPesquisar.CurrentRow != null)
-            //{
-            //    LinhaAtual = dataGridPesquisar.CurrentRow.Index;
-            //}
-            //// Verifica se a tecla pressionada foi a seta para baixo
-            //if (e.KeyCode == Keys.Down)
-            //{
-            //    // Move o foco para o DataGridView
-            //    dataGridPesquisar.Focus();
-
-            //    // Seleciona a primeira linha se houver linhas
-            //    if (dataGridPesquisar.Rows.Count > 0)
-            //    {
-            //        dataGridPesquisar.ClearSelection();
-            //        dataGridPesquisar.Rows[0].Selected = true;
-            //    }
-            //}
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    // Supondo que a seleção está habilitada em FullRowSelect para capturar a linha completa
-            //    var selectedRow = dataGridPesquisar.CurrentRow;
-            //    if (selectedRow != null)
-            //    {
-            //        this.Close();
-            //    }
-            //}
+            }           
         }
 
         private void dataGridPesquisar_SelectionChanged(object sender, EventArgs e)

@@ -164,14 +164,8 @@ namespace ComissPro
             string nome = "%" + txtPesquisa.Text + "%";
             VendedorDAL dao = new VendedorDAL();
 
-            if (rbtCodigo.Checked)
-            {
-                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
-            }
-            else
-            {
-                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
-            }
+            dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+            PersonalizarDataGridView(dataGridPesquisar);
         }
 
         private void dataGridPesquisar_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

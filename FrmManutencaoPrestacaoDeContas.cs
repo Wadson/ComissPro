@@ -45,7 +45,7 @@ namespace ComissPro
                     formPrestacaoContas.txtTotal.Text = dataGridPrestacaoContas.CurrentRow.Cells["Total"].Value.ToString();
                     formPrestacaoContas.dtpDataPrestacaoContas.Text = dataGridPrestacaoContas.CurrentRow.Cells["DataPrestacao"].Value.ToString();
                     formPrestacaoContas.txtQuantidadeVendida.Text = dataGridPrestacaoContas.CurrentRow.Cells["QuantidadeVendida"].Value.ToString();
-                    formPrestacaoContas.txtPrestacaoID.Text = dataGridPrestacaoContas.CurrentRow.Cells["PrestacaoID"].Value.ToString();
+                    formPrestacaoContas.PrestacaoID = int.Parse(dataGridPrestacaoContas.CurrentRow.Cells["PrestacaoID"].Value.ToString());
                     formPrestacaoContas.EntregaID = int.Parse(dataGridPrestacaoContas.CurrentRow.Cells["EntregaID"].Value.ToString());
 
                     if (StatusOperacao == "ALTERAR")
@@ -64,8 +64,7 @@ namespace ComissPro
                     {
                         formPrestacaoContas.lblStatus.Text = "Exluir registro!";
                         formPrestacaoContas.lblStatus.ForeColor = Color.Red;
-                        formPrestacaoContas.btnSalvar.Text = "Excluir";
-                        formPrestacaoContas.txtPrestacaoID.Enabled = false;
+                        formPrestacaoContas.btnSalvar.Text = "Excluir";                        
                         formPrestacaoContas.txtNomeVendedor.Enabled = false;
                         formPrestacaoContas.txtNomeProduto.Enabled = false;
                         formPrestacaoContas.txtQuantidadeEntregue.Enabled = false;

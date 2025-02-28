@@ -33,6 +33,7 @@
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.dataGridManutencaoEntregas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -41,7 +42,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnPrestacaoDeContas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -87,7 +88,7 @@
             this.dataGridManutencaoEntregas.Name = "dataGridManutencaoEntregas";
             this.dataGridManutencaoEntregas.ReadOnly = true;
             this.dataGridManutencaoEntregas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridManutencaoEntregas.Size = new System.Drawing.Size(644, 287);
+            this.dataGridManutencaoEntregas.Size = new System.Drawing.Size(613, 287);
             this.dataGridManutencaoEntregas.TabIndex = 619;
             // 
             // kryptonPanel1
@@ -102,6 +103,18 @@
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
             this.kryptonPanel1.Size = new System.Drawing.Size(767, 47);
             this.kryptonPanel1.TabIndex = 618;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 24);
+            this.label1.TabIndex = 601;
+            this.label1.Text = "Pesquisar";
             // 
             // txtPesquisa
             // 
@@ -181,7 +194,7 @@
             // btnExcluir
             // 
             this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Location = new System.Drawing.Point(662, 189);
+            this.btnExcluir.Location = new System.Drawing.Point(631, 189);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.OverrideDefault.Back.Color1 = System.Drawing.Color.Red;
             this.btnExcluir.OverrideDefault.Back.Color2 = System.Drawing.Color.Red;
@@ -196,7 +209,7 @@
             this.btnExcluir.OverrideDefault.Border.Rounding = 20;
             this.btnExcluir.OverrideDefault.Border.Width = 1;
             this.btnExcluir.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnExcluir.Size = new System.Drawing.Size(117, 43);
+            this.btnExcluir.Size = new System.Drawing.Size(148, 43);
             this.btnExcluir.StateCommon.Back.Color1 = System.Drawing.Color.Red;
             this.btnExcluir.StateCommon.Back.Color2 = System.Drawing.Color.Red;
             this.btnExcluir.StateCommon.Back.ColorAngle = 45F;
@@ -243,7 +256,7 @@
             // btnNovo
             // 
             this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovo.Location = new System.Drawing.Point(662, 91);
+            this.btnNovo.Location = new System.Drawing.Point(631, 91);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -258,7 +271,7 @@
             this.btnNovo.OverrideDefault.Border.Rounding = 20;
             this.btnNovo.OverrideDefault.Border.Width = 1;
             this.btnNovo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNovo.Size = new System.Drawing.Size(117, 43);
+            this.btnNovo.Size = new System.Drawing.Size(148, 43);
             this.btnNovo.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnNovo.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnNovo.StateCommon.Back.ColorAngle = 45F;
@@ -303,7 +316,7 @@
             // btnAlterar
             // 
             this.btnAlterar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAlterar.Location = new System.Drawing.Point(662, 140);
+            this.btnAlterar.Location = new System.Drawing.Point(631, 140);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -318,7 +331,7 @@
             this.btnAlterar.OverrideDefault.Border.Rounding = 20;
             this.btnAlterar.OverrideDefault.Border.Width = 1;
             this.btnAlterar.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnAlterar.Size = new System.Drawing.Size(117, 43);
+            this.btnAlterar.Size = new System.Drawing.Size(148, 43);
             this.btnAlterar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAlterar.StateCommon.Back.ColorAngle = 45F;
@@ -380,21 +393,30 @@
             this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
             this.kryptonPanel2.TabIndex = 626;
             // 
-            // label1
+            // btnPrestacaoDeContas
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(3, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 24);
-            this.label1.TabIndex = 601;
-            this.label1.Text = "Pesquisar";
+            this.btnPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrestacaoDeContas.BackColor = System.Drawing.Color.Khaki;
+            this.btnPrestacaoDeContas.FlatAppearance.BorderColor = System.Drawing.Color.Khaki;
+            this.btnPrestacaoDeContas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnPrestacaoDeContas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrestacaoDeContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrestacaoDeContas.Image = global::ComissPro.Properties.Resources.PrestacaoContas32;
+            this.btnPrestacaoDeContas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrestacaoDeContas.Location = new System.Drawing.Point(631, 238);
+            this.btnPrestacaoDeContas.Name = "btnPrestacaoDeContas";
+            this.btnPrestacaoDeContas.Size = new System.Drawing.Size(148, 45);
+            this.btnPrestacaoDeContas.TabIndex = 628;
+            this.btnPrestacaoDeContas.Text = "Prestação de Contas";
+            this.btnPrestacaoDeContas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrestacaoDeContas.UseVisualStyleBackColor = false;
+            this.btnPrestacaoDeContas.Click += new System.EventHandler(this.btnPrestacaoDeContas_Click);
             // 
             // FrmManutençãodeEntregaBilhetes
             // 
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.btnPrestacaoDeContas);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.lblTotalRegistros);
             this.Controls.Add(this.dataGridManutencaoEntregas);
@@ -405,6 +427,8 @@
             this.Controls.Add(this.btnAlterar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmManutençãodeEntregaBilhetes";
+            this.Palette = this.kryptonPalette1;
+            this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Load += new System.EventHandler(this.FrmManutençãodeEntregaBilhetes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -432,5 +456,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnPrestacaoDeContas;
     }
 }

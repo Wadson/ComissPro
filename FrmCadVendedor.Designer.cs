@@ -43,6 +43,8 @@
             this.txtTelefone = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNomeVendedor = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
+            this.txtPercentualComissao = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -159,7 +161,7 @@
             this.btnSair.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateTracking.Border.Rounding = 20;
             this.btnSair.StateTracking.Border.Width = 1;
-            this.btnSair.TabIndex = 5;
+            this.btnSair.TabIndex = 6;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
@@ -219,7 +221,7 @@
             this.btnNovo.StateTracking.Border.Rounding = 20;
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNovo.TabIndex = 4;
+            this.btnNovo.TabIndex = 5;
             this.btnNovo.Values.Text = "&Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
@@ -278,7 +280,7 @@
             this.btnSalvar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalvar.StateTracking.Border.Rounding = 20;
             this.btnSalvar.StateTracking.Border.Width = 1;
-            this.btnSalvar.TabIndex = 3;
+            this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Values.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
@@ -332,7 +334,7 @@
             this.txtCpf.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.txtCpf.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtCpf.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtCpf.TabIndex = 2;
+            this.txtCpf.TabIndex = 3;
             // 
             // txtTelefone
             // 
@@ -351,14 +353,14 @@
             this.txtTelefone.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.txtTelefone.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtTelefone.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtTelefone.TabIndex = 1;
+            this.txtTelefone.TabIndex = 2;
             // 
             // txtNomeVendedor
             // 
             this.txtNomeVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeVendedor.Location = new System.Drawing.Point(6, 100);
             this.txtNomeVendedor.Name = "txtNomeVendedor";
-            this.txtNomeVendedor.Size = new System.Drawing.Size(538, 30);
+            this.txtNomeVendedor.Size = new System.Drawing.Size(358, 30);
             this.txtNomeVendedor.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeVendedor.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -390,10 +392,43 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
+            // txtPercentualComissao
+            // 
+            this.txtPercentualComissao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPercentualComissao.Location = new System.Drawing.Point(370, 100);
+            this.txtPercentualComissao.Name = "txtPercentualComissao";
+            this.txtPercentualComissao.Size = new System.Drawing.Size(174, 30);
+            this.txtPercentualComissao.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.txtPercentualComissao.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtPercentualComissao.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtPercentualComissao.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtPercentualComissao.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtPercentualComissao.StateCommon.Border.Rounding = 20;
+            this.txtPercentualComissao.StateCommon.Border.Width = 1;
+            this.txtPercentualComissao.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
+            this.txtPercentualComissao.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtPercentualComissao.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtPercentualComissao.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.label1.Location = new System.Drawing.Point(381, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 16);
+            this.label1.TabIndex = 274;
+            this.label1.Text = "( % ) COMISSÃO";
+            // 
             // FrmCadVendedor
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(547, 261);
+            this.ClientSize = new System.Drawing.Size(561, 261);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPercentualComissao);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnNovo);
@@ -412,6 +447,11 @@
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
+            this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "Cadastro de Vendedores";
             this.Load += new System.EventHandler(this.FrmCadVendedor_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadVendedor_KeyDown);
@@ -439,5 +479,7 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtTelefone;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeVendedor;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPercentualComissao;
+        private System.Windows.Forms.Label label1;
     }
 }

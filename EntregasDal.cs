@@ -33,7 +33,7 @@ namespace ComissPro
                         INNER JOIN
                             Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
                         INNER JOIN
-                            Produtos ON Entregas.ProdutoID = Produtos.ProdutoID;
+                            Produtos ON Entregas.ProdutoID = Produtos.ProdutoID WHERE PrestacaoRealizada = 0;
 ";
 
                 SQLiteCommand sqlcomando = new SQLiteCommand(query, conn);
@@ -52,7 +52,59 @@ namespace ComissPro
                 conn.Close();
             }
         }
-        public void SalvarEntregas(EntregasModel entrega)
+        public List<EntregasModel> CarregarEntregasNaoPrestadas()
+        {
+            List<EntregasModel> entregas = new List<EntregasModel>();
+            string query = @"
+            SELECT
+                Vendedores.Nome AS NomeVendedor,
+                Produtos.NomeProduto,
+                Entregas.QuantidadeEntregue,
+                Produtos.Preco,
+                (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
+                Entregas.DataEntrega,
+                Entregas.EntregaID,
+                Entregas.VendedorID,
+                Entregas.ProdutoID,
+                Vendedores.Comissao
+            FROM
+                Entregas
+            INNER JOIN
+                Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
+            INNER JOIN
+                Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
+            WHERE
+                Entregas.PrestacaoRealizada = 0";
+
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            entregas.Add(new EntregasModel
+                            {
+                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                NomeProduto = reader["NomeProduto"].ToString(),
+                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                Preco = Convert.ToDouble(reader["Preco"]),
+                                Total = Convert.ToDouble(reader["Total"]),
+                                DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
+                                EntregaID = Convert.ToInt32(reader["EntregaID"]),
+                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                ProdutoID = Convert.ToInt64(reader["ProdutoID"]),
+                                Comissao = Convert.ToDouble(reader["Comissao"]) // Percentual direto (ex.: 40)
+                            });
+                        }
+                    }
+                }
+            }
+            return entregas;
+        }
+        public void SalvarEntregas(Model.EntregasModel entrega)
         {
             using (var conn = Conexao.Conex())
             {

@@ -139,7 +139,7 @@
             this.txtPesquisa.Location = new System.Drawing.Point(141, 19);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(615, 22);
+            this.txtPesquisa.Size = new System.Drawing.Size(503, 22);
             this.txtPesquisa.TabIndex = 425;
             // 
             // btnSair

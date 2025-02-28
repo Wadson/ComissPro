@@ -337,6 +337,12 @@
   <ItemGroup>
     <None Include="Resources\Sairr24.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrestacaoContas32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\POST_02_PRESTACAO_DE_CONTAS_IMG_BLOG %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

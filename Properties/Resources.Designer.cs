@@ -223,6 +223,26 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap POST_02_PRESTACAO_DE_CONTAS_IMG_BLOG__1_ {
+            get {
+                object obj = ResourceManager.GetObject("POST_02_PRESTACAO_DE_CONTAS_IMG_BLOG__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PrestacaoContas32 {
+            get {
+                object obj = ResourceManager.GetObject("PrestacaoContas32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PrestacaoDeconta64 {
             get {
                 object obj = ResourceManager.GetObject("PrestacaoDeconta64", resourceCulture);
