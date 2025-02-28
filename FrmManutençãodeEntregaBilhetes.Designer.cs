@@ -32,7 +32,7 @@
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.label28 = new System.Windows.Forms.Label();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
-            this.dataGridPesquisar = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dataGridManutencaoEntregas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtDescricao = new System.Windows.Forms.RadioButton();
@@ -45,7 +45,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -87,21 +87,21 @@
             this.lblTotalRegistros.TabIndex = 620;
             this.lblTotalRegistros.Text = "Total de Registros";
             // 
-            // dataGridPesquisar
+            // dataGridManutencaoEntregas
             // 
-            this.dataGridPesquisar.AllowUserToAddRows = false;
-            this.dataGridPesquisar.AllowUserToDeleteRows = false;
-            this.dataGridPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridManutencaoEntregas.AllowUserToAddRows = false;
+            this.dataGridManutencaoEntregas.AllowUserToDeleteRows = false;
+            this.dataGridManutencaoEntregas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridPesquisar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPesquisar.Location = new System.Drawing.Point(12, 88);
-            this.dataGridPesquisar.MultiSelect = false;
-            this.dataGridPesquisar.Name = "dataGridPesquisar";
-            this.dataGridPesquisar.ReadOnly = true;
-            this.dataGridPesquisar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPesquisar.Size = new System.Drawing.Size(644, 287);
-            this.dataGridPesquisar.TabIndex = 619;
+            this.dataGridManutencaoEntregas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridManutencaoEntregas.Location = new System.Drawing.Point(12, 88);
+            this.dataGridManutencaoEntregas.MultiSelect = false;
+            this.dataGridManutencaoEntregas.Name = "dataGridManutencaoEntregas";
+            this.dataGridManutencaoEntregas.ReadOnly = true;
+            this.dataGridManutencaoEntregas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridManutencaoEntregas.Size = new System.Drawing.Size(644, 287);
+            this.dataGridManutencaoEntregas.TabIndex = 619;
             // 
             // kryptonPanel1
             // 
@@ -422,7 +422,7 @@
             this.ClientSize = new System.Drawing.Size(800, 400);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.lblTotalRegistros);
-            this.Controls.Add(this.dataGridPesquisar);
+            this.Controls.Add(this.dataGridManutencaoEntregas);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnExcluir);
@@ -434,7 +434,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -450,7 +450,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label lblTotalRegistros;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridPesquisar;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridManutencaoEntregas;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.RadioButton rbtDescricao;

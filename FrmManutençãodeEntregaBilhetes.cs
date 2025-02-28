@@ -75,47 +75,47 @@ namespace ComissPro
 
 
         private void CarregaDados()
-        {
-            FrmControleEntregas frm = new FrmControleEntregas(StatusOperacao);
+        {   
+            FrmControleEntregas formEntregas = new FrmControleEntregas(StatusOperacao);
 
             if (StatusOperacao == "NOVO")
             {
-                frm.lblStatus.Text = "NOVA ENTREGA DE BILHETES";
-                frm.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
-                frm.ShowDialog();
+                formEntregas.lblStatus.Text = "NOVA ENTREGA DE BILHETES";
+                formEntregas.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
+                formEntregas.ShowDialog();
             }
             if (StatusOperacao == "ALTERAR")
             {
                 try
                 {
                     // Verificar se a DataGridView contém alguma linha
-                    if (dataGridPesquisar.Rows.Count == 0)
+                    if (dataGridManutencaoEntregas.Rows.Count == 0)
                     {
                         // Lançar exceção personalizada
                         //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
                         MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     // Execução do código desejado
+                    MessageBox.Show(formEntregas.Name);
 
-                    frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["NomeVendedor"].Value.ToString();
-                    frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                    frm.txtQuantidade.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
-                    frm.txtPrecoUnit.Text = dataGridPesquisar.CurrentRow.Cells["Preco"].Value.ToString();
-                    frm.txtTotal.Text = dataGridPesquisar.CurrentRow.Cells["Total"].Value.ToString();
-                    frm.dtpDataEntregaBilhete.Text = dataGridPesquisar.CurrentRow.Cells["DataEntrega"].Value.ToString(); 
-                    frm.txtEntregaID.Text = dataGridPesquisar.CurrentRow.Cells["EntregaID"].Value.ToString();
-                    frm.VendedorID = int.Parse(dataGridPesquisar.CurrentRow.Cells["VendedorID"].ToString());
-                    frm.ProdutoID = int.Parse(dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString());
+                    MessageBox.Show($"Formulário Atual: {formEntregas.Name}");
+                    MessageBox.Show($"Status da Operação: {StatusOperacao}");
 
-
-                    frm.lblStatus.Text = "ALTERAR CADASTRO";
-                    frm.lblStatus.ForeColor = Color.Orange;
+                    formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
+                    formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
+                    formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
+                    formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value.ToString();
+                    formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
+                    formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString(); 
+                    formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
+                    formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].ToString());
+                    formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
+                    formEntregas.lblStatus.Text = "ALTERAR CADASTRO";
+                    formEntregas.lblStatus.ForeColor = Color.Orange;
                     StatusOperacao = "ALTERAR";
-
-                    frm.btnNovo.Enabled = false;
-                    frm.btnSalvar.Text = "Alterar";
-
-                    frm.ShowDialog();
+                    formEntregas.btnNovo.Enabled = false;
+                    formEntregas.btnSalvar.Text = "Alterar";
+                    formEntregas.ShowDialog();
                 }
                 catch (Exception ex)
                 {
@@ -128,7 +128,7 @@ namespace ComissPro
                 try
                 {
                     // Verificar se a DataGridView contém alguma linha
-                    if (dataGridPesquisar.Rows.Count == 0)
+                    if (dataGridManutencaoEntregas.Rows.Count == 0)
                     {
                         // Lançar exceção personalizada
                         //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
@@ -137,32 +137,31 @@ namespace ComissPro
                     else
                         // Exemplo: Acessar a primeira célula de cada linha
                         //  var valor = row.Cells[0].Value;
-                        frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["NomeVendedor"].Value.ToString();
-                    frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                    frm.txtQuantidade.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
-                    frm.txtPrecoUnit.Text = dataGridPesquisar.CurrentRow.Cells["Preco"].Value.ToString();
-                    frm.txtTotal.Text = dataGridPesquisar.CurrentRow.Cells["Total"].Value.ToString();
-                    frm.dtpDataEntregaBilhete.Text = dataGridPesquisar.CurrentRow.Cells["DataEntrega"].Value.ToString();
-                    frm.txtEntregaID.Text = dataGridPesquisar.CurrentRow.Cells["EntregaID"].Value.ToString();
-                    frm.VendedorID = int.Parse(dataGridPesquisar.CurrentRow.Cells["VendedorID"].ToString());
-                    frm.ProdutoID = int.Parse(dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString());
+                    formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
+                    formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
+                    formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
+                    formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value.ToString();
+                    formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
+                    formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString();
+                    formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
+                    formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].ToString());
+                    formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
 
-                    frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
-                    frm.lblStatus.ForeColor = Color.Red;
+                    formEntregas.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
+                    formEntregas.lblStatus.ForeColor = Color.Red;
                     StatusOperacao = "EXCLUSÃO";
 
-                    frm.btnNovo.Enabled = false;
+                    formEntregas.btnNovo.Enabled = false;
 
+                    formEntregas.txtEntregaID.Enabled = false;
+                    formEntregas.txtNomeVendedor.Enabled = false;
+                    formEntregas.txtNomeProduto.Enabled = false;
+                    formEntregas.txtQuantidade.Enabled = false;
+                    formEntregas.txtPrecoUnit.Enabled = false;
+                    formEntregas.txtTotal.Enabled = false;
 
-                    frm.txtEntregaID.Enabled = false;
-                    frm.txtNomeVendedor.Enabled = false;
-                    frm.txtNomeProduto.Enabled = false;
-                    frm.txtQuantidade.Enabled = false;
-                    frm.txtPrecoUnit.Enabled = false;
-                    frm.txtTotal.Enabled = false;
-
-                    frm.btnSalvar.Text = "Excluir";
-                    frm.ShowDialog();
+                    formEntregas.btnSalvar.Text = "Excluir";
+                    formEntregas.ShowDialog();
                 }
                 catch (Exception ex)
                 {
@@ -174,8 +173,8 @@ namespace ComissPro
         public void Listar()
         {
             EntregasDal objetoDAL = new EntregasDal();
-            dataGridPesquisar.DataSource = objetoDAL.listaEntregas();
-            PersonalizarDataGridView(dataGridPesquisar);
+            dataGridManutencaoEntregas.DataSource = objetoDAL.listaEntregas();
+            PersonalizarDataGridView(dataGridManutencaoEntregas);
         }
         public void HabilitarTimer(bool habilitar)
         {
@@ -207,7 +206,7 @@ namespace ComissPro
         private void FrmManutençãodeEntregaBilhetes_Load(object sender, EventArgs e)
         {
             Listar();
-            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
@@ -219,13 +218,13 @@ namespace ComissPro
 
             if (rbtCodigo.Checked)
             {
-                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
-                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
+                dataGridManutencaoEntregas.DataSource = dao.PesquisarPorCodigo(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
             }
             else
             {
-                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
-                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
+                dataGridManutencaoEntregas.DataSource = dao.PesquisarPorNome(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
             }
         }
     }
