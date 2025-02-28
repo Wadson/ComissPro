@@ -1,2 +1,0 @@
-28/02/2025 05:14:45: Iniciando exclusão do Entregas com Código: 1
-28/02/2025 05:14:45: Entrega excluída com sucesso.

@@ -33,7 +33,7 @@ namespace ComissPro
             try
             {
                 entregasDAL = new EntregasDal();
-                entregasDAL.InserirEntrega(entregas);
+                entregasDAL.SalvarEntregas(entregas);
             }
             catch (Exception erro)
             {

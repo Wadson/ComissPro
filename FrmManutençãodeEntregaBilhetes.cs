@@ -140,8 +140,7 @@ namespace ComissPro
             }
             else if (StatusOperacao == "NOVO")
             {
-                formEntregas.lblStatus.Text = "NOVA ENTREGA DE BILHETES";
-                formEntregas.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
+                formEntregas.lblStatus.Text = "ENTREGA DE BILHETES";                
                 formEntregas.ShowDialog();
             }
         }

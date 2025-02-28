@@ -103,7 +103,7 @@ namespace ComissPro
 
         private void btnPrestacaoContas_Click(object sender, EventArgs e)
         {
-            FrmManutPrestacaoDeContas frm = new FrmManutPrestacaoDeContas(StatusOperacao);
+            FrmManutencaoPrestacaoDeContas frm = new FrmManutencaoPrestacaoDeContas(StatusOperacao);
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
         }

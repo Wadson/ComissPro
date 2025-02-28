@@ -33,7 +33,7 @@ namespace ComissPro
             try
             {
                 prestacaoContasDal = new PrestacaoDeContasDAL();
-                prestacaoContasDal.InserirPrestacao(entregas);
+                prestacaoContasDal.SalvarPrestacaoDeContas(entregas);
             }
             catch (Exception erro)
             {

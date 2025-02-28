@@ -1,6 +1,0 @@
-27/02/2025 13:00:53: Iniciando exclusão do Vendedores com ID: 1
-27/02/2025 13:00:53: Vendedor excluído com sucesso.
-27/02/2025 13:07:09: Iniciando exclusão do Vendedores com ID: 3
-27/02/2025 13:07:10: Vendedor excluído com sucesso.
-27/02/2025 14:42:32: Iniciando exclusão do Vendedores com ID: 1
-27/02/2025 14:42:32: Vendedor excluído com sucesso.

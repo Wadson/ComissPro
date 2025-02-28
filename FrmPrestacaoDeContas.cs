@@ -16,16 +16,117 @@ namespace ComissPro
 {
     public partial class FrmPrestacaoDeContas : KryptonForm
     {
-        private EntregasModel entregaSelecionada; // Variável de instância
+        private EntregasModel entregaSelecionada;
         private string StatusOperacao;
         private string QueryPrestacao = "SELECT MAX(PrestacaoID) FROM PrestacaoContas";
         private int PrestacaoID;
-        private int EntregaID;
-        private int VendedorID;
-        public FrmPrestacaoDeContas()
+        public int EntregaID { get; set; }
+        public int VendedorID { get; set; }
+        public int ProdutoID { get; set; }
+        public int QuantidadeEntregue { get; set; }
+        public DateTime DataEntrega { get; set; }
+
+        public FrmPrestacaoDeContas(string statusOperacao)
         {
+            this.StatusOperacao = statusOperacao;
             InitializeComponent();
         }
+        private void CarregarComboEntregas()
+        {
+            try
+            {
+                var entregas = CarregarEntregasNaoPrestadas();
+                if (entregas == null || entregas.Count == 0)
+                {
+                    MessageBox.Show("Nenhuma entrega pendente encontrada.");
+                    return;
+                }
+
+                cmbEntregasPendentes.DataSource = null; // Limpa o DataSource atual
+                cmbEntregasPendentes.Items.Clear();     // Limpa os itens existentes
+                cmbEntregasPendentes.DataSource = entregas;
+                cmbEntregasPendentes.DisplayMember = "ToString"; // Usa o método ToString
+                cmbEntregasPendentes.ValueMember = "EntregaID";  // Valor retornado
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao carregar entregas: {ex.Message}");
+            }
+        }
+
+        private List<EntregaComboItem> CarregarEntregasNaoPrestadas()
+        {
+            List<EntregaComboItem> entregas = new List<EntregaComboItem>();
+            string query = @"SELECT EntregaID, VendedorID, ProdutoID, QuantidadeEntregue, DataEntrega 
+                            FROM Entregas WHERE PrestacaoRealizada = 0";
+
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            entregas.Add(new EntregaComboItem
+                            {
+                                EntregaID = reader.GetInt32(0),
+                                VendedorID = reader.GetInt64(1),
+                                ProdutoID = reader.GetInt64(2),
+                                QuantidadeEntregue = reader.GetInt64(3),
+                                DataEntrega = reader.GetDateTime(4)
+                            });
+                        }
+                    }
+                }
+            }
+            return entregas;
+        }
+
+        private double BuscarPrecoProduto(long produtoID)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT Preco FROM Produtos WHERE ProdutoID = @ProdutoID";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
+                    object resultado = cmd.ExecuteScalar();
+                    return resultado != null ? Convert.ToDouble(resultado) : 0.0;
+                }
+            }
+        }
+
+        private string BuscarNomeVendedor(long vendedorID)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT Nome FROM Vendedores WHERE VendedorID = @VendedorID";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@VendedorID", vendedorID);
+                    return cmd.ExecuteScalar()?.ToString() ?? "Vendedor não encontrado";
+                }
+            }
+        }
+
+        private string BuscarNomeProduto(long produtoID)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT NomeProduto FROM Produtos WHERE ProdutoID = @ProdutoID";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
+                    return cmd.ExecuteScalar()?.ToString() ?? "Produto não encontrado";
+                }
+            }
+        }
+
         public void SalvarRegistro()
         {
             try
@@ -44,7 +145,7 @@ namespace ComissPro
 
                 objetoBll.Salvar(objetoModel);
                 MessageBox.Show("REGISTRO gravado com sucesso! ", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                Utilitario.LimpaCampo(this);                
+                Utilitario.LimpaCampo(this);
             }
             catch (OverflowException ov)
             {
@@ -98,7 +199,7 @@ namespace ComissPro
                 // Limpa os campos
                 Utilitario.LimpaCampo(this);
                 this.Close();
-                var frmManutPrestacaodeContas = Application.OpenForms["FrmManutPrestacaoDeContas"] as FrmManutPrestacaoDeContas;
+                var frmManutPrestacaodeContas = Application.OpenForms["FrmManutPrestacaoDeContas"] as FrmManutencaoPrestacaoDeContas;
 
                 if (frmManutPrestacaodeContas != null)
                 {
@@ -114,107 +215,6 @@ namespace ComissPro
                 MessageBox.Show("Erro ao Excluir o registro: " + erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void CarregarComboEntregas()
-        {
-            // Declara e inicializa a lista de entregas com a consulta
-            var entregas = CarregarEntregasNaoPrestadas();
-
-            // Associa ao ComboBox
-            cmbEntregasPendentes.DataSource = entregas;
-            cmbEntregasPendentes.DisplayMember = "ToString"; // Usa o método ToString personalizado
-            cmbEntregasPendentes.ValueMember = "EntregaID";  // Define o valor retornado
-        }
-        public class EntregaComboItem
-        {
-            public int EntregaID { get; set; }
-            public long VendedorID { get; set; }
-            public long ProdutoID { get; set; }
-            public long QuantidadeEntregue { get; set; }
-            public DateTime DataEntrega { get; set; }
-
-            public override string ToString()
-            {
-                return $"Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
-            }
-        }
-
-
-        // Método auxiliar para buscar entregas não prestadas
-        private List<EntregaComboItem> CarregarEntregasNaoPrestadas()
-        {
-            string connectionString = "Data Source=seu_banco.db;Version=3;";
-            List<EntregaComboItem> entregas = new List<EntregaComboItem>();
-            string query = @"SELECT EntregaID, VendedorID, ProdutoID, QuantidadeEntregue, DataEntrega 
-                     FROM Entregas 
-                     WHERE PrestacaoRealizada = 0"; // Filtra entregas não prestadas
-
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
-            {
-                conn.Open();
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            entregas.Add(new EntregaComboItem
-                            {
-                                EntregaID = reader.GetInt32(0),           // EntregaID
-                                VendedorID = reader.GetInt64(1),          // VendedorID
-                                ProdutoID = reader.GetInt64(2),           // ProdutoID
-                                QuantidadeEntregue = reader.GetInt64(3),  // QuantidadeEntregue
-                                DataEntrega = reader.GetDateTime(4)       // DataEntrega
-                            });
-                        }
-                    }
-                }
-            }
-            return entregas;
-        }
-
-        // Métodos auxiliares (exemplo)
-        private string BuscarNomeVendedor(long vendedorID)
-        {
-            using (var conn = Conexao.Conex())
-            {
-                conn.Open();
-                string query = "SELECT Nome FROM Vendedor WHERE VendedorID = @VendedorID";
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@VendedorID", vendedorID);
-                    return cmd.ExecuteScalar()?.ToString() ?? "Vendedor não encontrado";
-                }
-            }
-        }
-
-        private string BuscarNomeProduto(long produtoID)
-        {
-            using (var conn = Conexao.Conex())
-            {
-                conn.Open();
-                string query = "SELECT NomeProduto FROM Produto WHERE ProdutoID = @ProdutoID";
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
-                    return cmd.ExecuteScalar()?.ToString() ?? "Produto não encontrado";
-                }
-            }
-        }
-        private double BuscarPrecoProduto(long produtoID)
-        {
-            string connectionString = "Data Source=seu_banco.db;Version=3;";
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
-            {
-                conn.Open();
-                string query = "SELECT Preco FROM Produto WHERE ProdutoID = @ProdutoID";
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
-                    object resultado = cmd.ExecuteScalar();
-                    return resultado != null ? Convert.ToDouble(resultado) : 0.0; // Retorna 0 se não encontrar
-                }
-            }
-        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var prestacao = new PrestacaoContasModel
@@ -227,22 +227,56 @@ namespace ComissPro
                 DataPrestacao = dtpDataPrestacaoContas.Value
             };
 
-            // Chama o método da DAL
-            var prestacaoContas = new PrestacaoDeContasDAL();
-            prestacaoContas.SalvarPrestacaoDeContas(prestacao);
-
-            // Atualiza o ComboBox
+            var entregasDAL = new PrestacaoDeContasDAL();
+            entregasDAL.SalvarPrestacaoDeContas(prestacao);
             CarregarComboEntregas();
         }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }            
+        private void FrmPrestacaoDeContas_Load(object sender, EventArgs e)
+        {
+            CarregarComboEntregas();
+        }
+
+        private void cmbEntregasPendentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEntregasPendentes.SelectedItem != null)
+            {
+                var comboItem = (EntregaComboItem)cmbEntregasPendentes.SelectedItem;
+                entregaSelecionada = new EntregasModel
+                {
+                    EntregaID = comboItem.EntregaID,
+                    VendedorID = comboItem.VendedorID,
+                    ProdutoID = comboItem.ProdutoID,
+                    QuantidadeEntregue = comboItem.QuantidadeEntregue,
+                    DataEntrega = comboItem.DataEntrega,
+                    PrestacaoRealizada = false
+                };
+
+                // Depuração para verificar os valores retornados
+                string nomeVendedor = BuscarNomeVendedor(entregaSelecionada.VendedorID);
+                string nomeProduto = BuscarNomeProduto(entregaSelecionada.ProdutoID);
+                string quantidade = entregaSelecionada.QuantidadeEntregue.ToString();
+
+                txtNomeVendedor.Text = nomeVendedor;
+                txtNomeProduto.Text = nomeProduto;
+                txtQuantidadeEntregue.Text = quantidade;
+
+                // Preencher os campos faltantes
+                EntregaID = entregaSelecionada.EntregaID;
+                double preco = BuscarPrecoProduto(entregaSelecionada.ProdutoID);
+                txtPrecoUnit.Text = preco.ToString("C"); // Formato monetário
+                txtTotal.Text = (entregaSelecionada.QuantidadeEntregue * preco).ToString("C"); // Total = QuantidadeEntregue * Preço
+                dtpDataEntrega.Value = entregaSelecionada.DataEntrega.Value;
+
+                // Verificar se os valores estão sendo atribuídos
+                if (string.IsNullOrEmpty(nomeVendedor) || string.IsNullOrEmpty(nomeProduto))
+                {
+                    MessageBox.Show("Nome do vendedor ou produto não encontrado no banco.");
+                }
+            }
         }
 
         private void txtQtdDevolvida_TextChanged(object sender, EventArgs e)
@@ -265,27 +299,29 @@ namespace ComissPro
                     double valorRecebido = vendida * precoProduto;
                     txtValorRecebido.Text = valorRecebido.ToString("C");
 
-                    double comissao = valorRecebido * 0.10; // 10% configurável
+                    double comissao = valorRecebido * 0.10;
                     txtComissao.Text = comissao.ToString("C");
                 }
                 else
                 {
                     MessageBox.Show("Quantidade devolvida não pode ser maior que a entregue!");
+                    txtQtdDevolvida.Text = "0";
                 }
             }
         }
+    }
+    public class EntregaComboItem
+    {
+        public int EntregaID { get; set; }
+        public long VendedorID { get; set; }
+        public long ProdutoID { get; set; }
+        public long QuantidadeEntregue { get; set; }
+        public DateTime DataEntrega { get; set; }
 
-        private void cmbEntregasPendentes_SelectedIndexChanged(object sender, EventArgs e)
+        public override string ToString()
         {
-            entregaSelecionada = (EntregasModel)cmbEntregasPendentes.SelectedItem;
-            txtVendedor.Text = BuscarNomeVendedor(entregaSelecionada.VendedorID);
-            txtProduto.Text = BuscarNomeProduto(entregaSelecionada.ProdutoID);
-            txtQuantidadeEntregue.Text = entregaSelecionada.QuantidadeEntregue.ToString();
-        }
-
-        private void FrmPrestacaoDeContas_Load(object sender, EventArgs e)
-        {
-            CarregarComboEntregas();
+            return $"Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
         }
     }
+
 }
