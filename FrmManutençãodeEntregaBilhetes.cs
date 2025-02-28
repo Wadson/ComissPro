@@ -41,7 +41,7 @@ namespace ComissPro
                 // Define larguras fixas específicas para as colunas
                 dgv.Columns["NomeVendedor"].Width = 250;
                 dgv.Columns["NomeProduto"].Width = 200;
-                dgv.Columns["QuantidadeEntregue"].Width = 120;
+                dgv.Columns["QuantidadeEntregue"].Width = 140;
                 dgv.Columns["Preco"].Width = 120;
                 dgv.Columns["Total"].Width = 120;
                 dgv.Columns["DataEntrega"].Width = 130;
@@ -190,18 +190,10 @@ namespace ComissPro
             string textoPesquisa = txtPesquisa.Text.ToLower();
 
             string nome = "%" + txtPesquisa.Text + "%";
-            ProdutoDAL dao = new ProdutoDAL();
+            EntregasDal dao = new EntregasDal();
 
-            if (rbtCodigo.Checked)
-            {
-                dataGridManutencaoEntregas.DataSource = dao.PesquisarPorCodigo(nome);
-                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
-            }
-            else
-            {
-                dataGridManutencaoEntregas.DataSource = dao.PesquisarPorNome(nome);
-                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
-            }
+            dataGridManutencaoEntregas.DataSource = dao.PesquisarEntrega(nome);
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
         }
 
         private void timer1_Tick(object sender, EventArgs e)

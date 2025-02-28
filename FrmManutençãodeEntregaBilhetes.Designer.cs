@@ -33,9 +33,6 @@
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.dataGridManutencaoEntregas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbtDescricao = new System.Windows.Forms.RadioButton();
-            this.rbtCodigo = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -44,10 +41,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +94,7 @@
             // 
             this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonPanel1.Controls.Add(this.groupBox1);
+            this.kryptonPanel1.Controls.Add(this.label1);
             this.kryptonPanel1.Controls.Add(this.txtPesquisa);
             this.kryptonPanel1.Location = new System.Drawing.Point(12, 38);
             this.kryptonPanel1.Name = "kryptonPanel1";
@@ -105,44 +102,6 @@
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
             this.kryptonPanel1.Size = new System.Drawing.Size(767, 47);
             this.kryptonPanel1.TabIndex = 618;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbtDescricao);
-            this.groupBox1.Controls.Add(this.rbtCodigo);
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(10, 1);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(150, 42);
-            this.groupBox1.TabIndex = 434;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtro:";
-            // 
-            // rbtDescricao
-            // 
-            this.rbtDescricao.AutoSize = true;
-            this.rbtDescricao.Checked = true;
-            this.rbtDescricao.Location = new System.Drawing.Point(72, 15);
-            this.rbtDescricao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rbtDescricao.Name = "rbtDescricao";
-            this.rbtDescricao.Size = new System.Drawing.Size(73, 17);
-            this.rbtDescricao.TabIndex = 5;
-            this.rbtDescricao.TabStop = true;
-            this.rbtDescricao.Text = "Descrição";
-            this.rbtDescricao.UseVisualStyleBackColor = true;
-            // 
-            // rbtCodigo
-            // 
-            this.rbtCodigo.AutoSize = true;
-            this.rbtCodigo.Location = new System.Drawing.Point(6, 15);
-            this.rbtCodigo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rbtCodigo.Name = "rbtCodigo";
-            this.rbtCodigo.Size = new System.Drawing.Size(58, 17);
-            this.rbtCodigo.TabIndex = 4;
-            this.rbtCodigo.Text = "Código";
-            this.rbtCodigo.UseVisualStyleBackColor = true;
             // 
             // txtPesquisa
             // 
@@ -152,10 +111,10 @@
             this.txtPesquisa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisa.ForeColor = System.Drawing.Color.OrangeRed;
-            this.txtPesquisa.Location = new System.Drawing.Point(164, 19);
+            this.txtPesquisa.Location = new System.Drawing.Point(102, 19);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(592, 22);
+            this.txtPesquisa.Size = new System.Drawing.Size(654, 22);
             this.txtPesquisa.TabIndex = 425;
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
@@ -421,6 +380,18 @@
             this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
             this.kryptonPanel2.TabIndex = 626;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 24);
+            this.label1.TabIndex = 601;
+            this.label1.Text = "Pesquisar";
+            // 
             // FrmManutençãodeEntregaBilhetes
             // 
             this.ClientSize = new System.Drawing.Size(800, 400);
@@ -439,8 +410,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
@@ -454,9 +423,6 @@
         private System.Windows.Forms.Label lblTotalRegistros;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridManutencaoEntregas;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.RadioButton rbtDescricao;
-        public System.Windows.Forms.RadioButton rbtCodigo;
         public System.Windows.Forms.TextBox txtPesquisa;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluir;
@@ -465,5 +431,6 @@
         private System.Windows.Forms.Timer timer1;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private System.Windows.Forms.Label label1;
     }
 }

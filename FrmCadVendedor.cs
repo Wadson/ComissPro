@@ -161,7 +161,27 @@ namespace ComissPro
                     ExcluirRegistro();
                 }
             }
-        }       
+        }
 
+        private void FrmCadVendedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                if (this.GetNextControl(ActiveControl, true) != null)
+                {
+                    e.Handled = true;
+                    this.GetNextControl(ActiveControl, true).Focus();
+                }
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                //this.Close();
+                if (MessageBox.Show("Deseja sair?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+        }
     }
 }

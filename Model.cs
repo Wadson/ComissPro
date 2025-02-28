@@ -59,7 +59,13 @@ namespace ComissPro
             public long ProdutoID { get; set; }
             public long QuantidadeEntregue { get; set; }
             public DateTime? DataEntrega { get; set; } = DateTime.Now;
-            public bool PrestacaoRealizada { get; set; } = false; // Novo campo
+            public bool PrestacaoRealizada { get; set; } = false;
+
+            // Campos adicionais para a consulta
+            public string NomeVendedor { get; set; }
+            public string NomeProduto { get; set; }
+            public double Preco { get; set; }
+            public double Total { get; set; }
         }
               
         public class PrestacaoContasModel

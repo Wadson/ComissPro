@@ -101,38 +101,94 @@ namespace ComissPro
                 }
             }
         }
-        public EntregasModel PesquisarPorCodigoEntrega(string pesquisa)
+        public List<EntregasModel> PesquisarEntrega(string pesquisa)
         {
-            EntregasModel entrega = null;
+            List<EntregasModel> entregas = new List<EntregasModel>();
 
             using (var conn = Conexao.Conex())
             {
                 conn.Open();
-                string query = "SELECT * FROM Entregas WHERE EntregaID = @Pesquisa";
+                string query = @"
+                SELECT
+                    Vendedores.Nome AS NomeVendedor,
+                    Produtos.NomeProduto,
+                    Entregas.QuantidadeEntregue,
+                    Produtos.Preco,
+                    (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
+                    Entregas.DataEntrega,
+                    Entregas.EntregaID,
+                    Entregas.VendedorID,
+                    Entregas.ProdutoID
+                FROM
+                    Entregas
+                INNER JOIN
+                    Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
+                INNER JOIN
+                    Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
+                WHERE 
+                    Vendedores.Nome LIKE @Pesquisa";
 
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Pesquisa", pesquisa);
+                    cmd.Parameters.AddWithValue("@Pesquisa", "%" + pesquisa + "%"); // Pesquisa parcial com LIKE
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            entrega = new EntregasModel
+                            entregas.Add(new EntregasModel
                             {
+                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                NomeProduto = reader["NomeProduto"].ToString(),
+                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                Preco = Convert.ToDouble(reader["Preco"]),
+                                Total = Convert.ToDouble(reader["Total"]),
+                                DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
-                                VendedorID = Convert.ToInt32(reader["VendedorID"]),
-                                ProdutoID = Convert.ToInt32(reader["ProdutoID"]),
-                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
-                                DataEntrega = Convert.ToDateTime(reader["DataEntrega"])
-                            };
+                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                ProdutoID = Convert.ToInt64(reader["ProdutoID"])
+                                // PrestacaoRealizada não está na query; se precisar, adicione ao SELECT
+                            });
                         }
                     }
                 }
             }
 
-            return entrega;
+            return entregas;
         }
+
+        //public EntregasModel PesquisarEntrega(string pesquisa)
+        //{
+        //    EntregasModel entrega = null;
+
+        //    using (var conn = Conexao.Conex())
+        //    {
+        //        conn.Open();
+        //        string query = "SELECT * FROM Entregas WHERE Vendedores.Nome = @Pesquisa";
+
+        //        using (var cmd = new SQLiteCommand(query, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@Pesquisa", pesquisa);
+
+        //            using (var reader = cmd.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
+        //                    entrega = new EntregasModel
+        //                    {
+        //                        EntregaID = Convert.ToInt32(reader["EntregaID"]),
+        //                        VendedorID = Convert.ToInt32(reader["VendedorID"]),
+        //                        ProdutoID = Convert.ToInt32(reader["ProdutoID"]),
+        //                        QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
+        //                        DataEntrega = Convert.ToDateTime(reader["DataEntrega"])
+        //                    };
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return entrega;
+        //}
 
     }
 }

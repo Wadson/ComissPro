@@ -107,29 +107,6 @@ namespace ComissPro
                 MessageBox.Show("Erro ao executar a pesquisa: " + ex.Message);
                 return null;
             }
-        }
-        public DataTable PesquisarPorCodigo(string nome)
-        {
-            var conn = Conexao.Conex();
-            try
-            {
-                DataTable dt = new DataTable();
-                string sql = "SELECT ProdutoID, NomeProduto, Preco, Tipo, QuantidadePorBloco FROM Produtos WHERE ProdutoID LIKE @Nome";
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@NomeProduto", "%" + nome + "%");
-                conn.Open();
-                using (SQLiteDataReader reader = cmd.ExecuteReader())
-                {
-                    dt.Load(reader);
-                }
-                conn.Close();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao executar a pesquisa: " + ex.Message);
-                return null;
-            }
-        }
+        }       
     }
 }

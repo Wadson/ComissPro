@@ -217,19 +217,46 @@ namespace ComissPro
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            // Validação antes de salvar
+            if (entregaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma entrega antes de salvar!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtQuantidadeVendida.Text) ||
+                string.IsNullOrWhiteSpace(txtQtdDevolvida.Text) ||
+                string.IsNullOrWhiteSpace(txtValorRecebido.Text) ||
+                string.IsNullOrWhiteSpace(txtComissao.Text))
+            {
+                MessageBox.Show("Preencha todos os campos antes de salvar!");
+                return;
+            }
+
+            if (!int.TryParse(txtQuantidadeVendida.Text, out int qtdVendida) ||
+                !int.TryParse(txtQtdDevolvida.Text, out int qtdDevolvida) ||
+                !double.TryParse(txtValorRecebido.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out double valorRecebido) ||
+                !double.TryParse(txtComissao.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out double comissao))
+            {
+                MessageBox.Show("Valores inválidos nos campos numéricos!");
+                return;
+            }
+
             var prestacao = new PrestacaoContasModel
             {
                 EntregaID = entregaSelecionada.EntregaID,
-                QuantidadeVendida = int.Parse(txtQuantidadeVendida.Text),
-                QuantidadeDevolvida = int.Parse(txtQtdDevolvida.Text),
-                ValorRecebido = double.Parse(txtValorRecebido.Text, NumberStyles.Currency),
-                Comissao = double.Parse(txtComissao.Text, NumberStyles.Currency),
+                QuantidadeVendida = qtdVendida,
+                QuantidadeDevolvida = qtdDevolvida,
+                ValorRecebido = valorRecebido,
+                Comissao = comissao,
                 DataPrestacao = dtpDataPrestacaoContas.Value
             };
 
             var entregasDAL = new PrestacaoDeContasDAL();
             entregasDAL.SalvarPrestacaoDeContas(prestacao);
+            MessageBox.Show("Prestação de contas salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CarregarComboEntregas();
+            Utilitario.LimpaCampoKrypton(this);
         }
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -237,6 +264,17 @@ namespace ComissPro
         }            
         private void FrmPrestacaoDeContas_Load(object sender, EventArgs e)
         {
+            if (StatusOperacao == "ALTERAR")
+            {
+                return;
+            }
+            if (StatusOperacao == "NOVO")
+            {
+                int NovoCodigo = Utilitario.GerarProximoCodigo(QueryPrestacao);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
+                string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
+                PrestacaoID = NovoCodigo;
+                txtPrestacaoID.Text = numeroComZeros;
+            }
             CarregarComboEntregas();
         }
 
@@ -255,58 +293,71 @@ namespace ComissPro
                     PrestacaoRealizada = false
                 };
 
-                // Depuração para verificar os valores retornados
-                string nomeVendedor = BuscarNomeVendedor(entregaSelecionada.VendedorID);
-                string nomeProduto = BuscarNomeProduto(entregaSelecionada.ProdutoID);
-                string quantidade = entregaSelecionada.QuantidadeEntregue.ToString();
+                txtNomeVendedor.Text = BuscarNomeVendedor(entregaSelecionada.VendedorID);
+                txtNomeProduto.Text = BuscarNomeProduto(entregaSelecionada.ProdutoID);
+                txtQuantidadeEntregue.Text = entregaSelecionada.QuantidadeEntregue.ToString();
 
-                txtNomeVendedor.Text = nomeVendedor;
-                txtNomeProduto.Text = nomeProduto;
-                txtQuantidadeEntregue.Text = quantidade;
-
-                // Preencher os campos faltantes
                 EntregaID = entregaSelecionada.EntregaID;
                 double preco = BuscarPrecoProduto(entregaSelecionada.ProdutoID);
-                txtPrecoUnit.Text = preco.ToString("C"); // Formato monetário
-                txtTotal.Text = (entregaSelecionada.QuantidadeEntregue * preco).ToString("C"); // Total = QuantidadeEntregue * Preço
+                txtPrecoUnit.Text = preco.ToString("C");
+                txtTotal.Text = (entregaSelecionada.QuantidadeEntregue * preco).ToString("C");
                 dtpDataEntrega.Value = entregaSelecionada.DataEntrega.Value;
 
-                // Verificar se os valores estão sendo atribuídos
-                if (string.IsNullOrEmpty(nomeVendedor) || string.IsNullOrEmpty(nomeProduto))
-                {
-                    MessageBox.Show("Nome do vendedor ou produto não encontrado no banco.");
-                }
+                // Limpar campos dependentes ao mudar a seleção
+                txtQtdDevolvida.Text = "0";
+                txtQuantidadeVendida.Text = entregaSelecionada.QuantidadeEntregue.ToString();
+                txtValorRecebido.Text = "";
+                txtComissao.Text = "";
             }
         }
-
-        private void txtQtdDevolvida_TextChanged(object sender, EventArgs e)
+        private void txtQtdDevolvida_Leave(object sender, EventArgs e)
         {
             if (entregaSelecionada == null)
             {
                 MessageBox.Show("Selecione uma entrega primeiro!");
+                txtQtdDevolvida.Text = "0";
                 return;
             }
 
-            if (int.TryParse(txtQtdDevolvida.Text, out int devolvida) &&
-                int.TryParse(txtQuantidadeEntregue.Text, out int entregue))
+            // Validação: Não permitir vazio ou não numérico
+            if (string.IsNullOrWhiteSpace(txtQtdDevolvida.Text) || !int.TryParse(txtQtdDevolvida.Text, out int devolvida))
             {
-                if (devolvida <= entregue)
-                {
-                    int vendida = entregue - devolvida;
-                    txtQuantidadeVendida.Text = vendida.ToString();
+                MessageBox.Show("Digite uma quantidade válida!");
+                txtQtdDevolvida.Text = "0";
+                txtQuantidadeVendida.Text = entregaSelecionada.QuantidadeEntregue.ToString();
+                txtValorRecebido.Text = "";
+                txtComissao.Text = "";
+                return;
+            }
 
-                    double precoProduto = BuscarPrecoProduto(entregaSelecionada.ProdutoID);
-                    double valorRecebido = vendida * precoProduto;
-                    txtValorRecebido.Text = valorRecebido.ToString("C");
+            // Validação: Não permitir negativo
+            if (devolvida < 0)
+            {
+                MessageBox.Show("A quantidade devolvida não pode ser negativa!");
+                txtQtdDevolvida.Text = "0";
+                devolvida = 0;
+            }
 
-                    double comissao = valorRecebido * 0.10;
-                    txtComissao.Text = comissao.ToString("C");
-                }
-                else
-                {
-                    MessageBox.Show("Quantidade devolvida não pode ser maior que a entregue!");
-                    txtQtdDevolvida.Text = "0";
-                }
+            int entregue = int.Parse(txtQuantidadeEntregue.Text);
+            if (devolvida <= entregue)
+            {
+                int vendida = entregue - devolvida;
+                txtQuantidadeVendida.Text = vendida.ToString();
+
+                double precoProduto = BuscarPrecoProduto(entregaSelecionada.ProdutoID);
+                double valorRecebido = vendida * precoProduto;
+                txtValorRecebido.Text = valorRecebido.ToString("C");
+
+                double comissao = valorRecebido * 0.10;
+                txtComissao.Text = comissao.ToString("C");
+            }
+            else
+            {
+                MessageBox.Show("Quantidade devolvida não pode ser maior que a entregue!");
+                txtQtdDevolvida.Text = "0";
+                txtQuantidadeVendida.Text = entregaSelecionada.QuantidadeEntregue.ToString();
+                txtValorRecebido.Text = "";
+                txtComissao.Text = "";
             }
         }
     }

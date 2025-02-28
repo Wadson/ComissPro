@@ -48,11 +48,18 @@
             this.btnProduto = new System.Windows.Forms.Button();
             this.btnManutencaoEntregas = new System.Windows.Forms.Button();
             this.panelConteiner = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.timerH = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            this.panelConteiner.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -138,11 +145,11 @@
             this.kryptonPanel2.Controls.Add(this.btnPrestacaoContas);
             this.kryptonPanel2.Controls.Add(this.btnProduto);
             this.kryptonPanel2.Controls.Add(this.btnManutencaoEntregas);
-            this.kryptonPanel2.Location = new System.Drawing.Point(-1, 13);
+            this.kryptonPanel2.Location = new System.Drawing.Point(-1, 26);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridDataCellCustom1;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 100);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 110);
             this.kryptonPanel2.TabIndex = 610;
             // 
             // btnUsuario
@@ -162,6 +169,7 @@
             this.btnUsuario.TabIndex = 1;
             this.btnUsuario.Text = "&Usuários";
             this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnUsuario, "Cadastro de Usuários");
             this.btnUsuario.UseVisualStyleBackColor = false;
             // 
             // btnVendedor
@@ -175,12 +183,13 @@
             this.btnVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVendedor.Image = global::ComissPro.Properties.Resources.Vendedores64;
             this.btnVendedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVendedor.Location = new System.Drawing.Point(91, 4);
+            this.btnVendedor.Location = new System.Drawing.Point(91, 2);
             this.btnVendedor.Name = "btnVendedor";
             this.btnVendedor.Size = new System.Drawing.Size(75, 95);
             this.btnVendedor.TabIndex = 2;
             this.btnVendedor.Text = "&Vendedor";
             this.btnVendedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnVendedor, "Cadastro de Vendedores");
             this.btnVendedor.UseVisualStyleBackColor = false;
             this.btnVendedor.Click += new System.EventHandler(this.btnVendedor_Click);
             // 
@@ -222,6 +231,7 @@
             this.btnPrestacaoContas.TabIndex = 9;
             this.btnPrestacaoContas.Text = "&Prestação de Contas";
             this.btnPrestacaoContas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnPrestacaoContas, "Prestação de contas");
             this.btnPrestacaoContas.UseVisualStyleBackColor = false;
             this.btnPrestacaoContas.Click += new System.EventHandler(this.btnPrestacaoContas_Click);
             // 
@@ -243,6 +253,7 @@
             this.btnProduto.TabIndex = 4;
             this.btnProduto.Text = "&Produto";
             this.btnProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnProduto, "Cadastro de Produtos / Bilhetes");
             this.btnProduto.UseVisualStyleBackColor = false;
             this.btnProduto.Click += new System.EventHandler(this.btnProduto_Click);
             // 
@@ -263,6 +274,7 @@
             this.btnManutencaoEntregas.TabIndex = 6;
             this.btnManutencaoEntregas.Text = "&Controle";
             this.btnManutencaoEntregas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnManutencaoEntregas, "Entrega de bilhetes para vendedores");
             this.btnManutencaoEntregas.UseVisualStyleBackColor = false;
             this.btnManutencaoEntregas.Click += new System.EventHandler(this.btnManutencaoEntregas_Click);
             // 
@@ -273,25 +285,65 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelConteiner.Controls.Add(this.toolStrip1);
-            this.panelConteiner.Location = new System.Drawing.Point(3, 119);
+            this.panelConteiner.Location = new System.Drawing.Point(3, 142);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 552);
+            this.panelConteiner.Size = new System.Drawing.Size(1002, 529);
             this.panelConteiner.TabIndex = 609;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1002, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // timerH
             // 
             this.timerH.Interval = 1000;
             this.timerH.Tick += new System.EventHandler(this.timerH_Tick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrosToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+            this.menuStrip1.TabIndex = 612;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // cadastrosToolStripMenuItem
+            // 
+            this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usuáriosToolStripMenuItem,
+            this.vendedoresToolStripMenuItem,
+            this.produtosToolStripMenuItem});
+            this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            // 
+            // usuáriosToolStripMenuItem
+            // 
+            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.usuáriosToolStripMenuItem.Text = "&Usuários";
+            // 
+            // vendedoresToolStripMenuItem
+            // 
+            this.vendedoresToolStripMenuItem.Name = "vendedoresToolStripMenuItem";
+            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.vendedoresToolStripMenuItem.Text = "&Vendedores";
+            this.vendedoresToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
+            // 
+            // produtosToolStripMenuItem
+            // 
+            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.produtosToolStripMenuItem.Text = "&Produtos";
+            this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel1.Location = new System.Drawing.Point(-14, 131);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(1030, 8);
+            this.kryptonPanel1.TabIndex = 0;
             // 
             // FrmPrincipal
             // 
@@ -299,10 +351,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.kryptonStatusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.panelConteiner);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
@@ -312,8 +367,9 @@
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            this.panelConteiner.ResumeLayout(false);
-            this.panelConteiner.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,6 +397,12 @@
         private System.Windows.Forms.Panel panelConteiner;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer timerH;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

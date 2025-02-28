@@ -745,6 +745,10 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                 {
                     LimpaCampo(groupBox); // Recursivamente limpar os controles dentro do groupBox
                 }
+                else if (c is GroupBox groupBoxx)
+                {
+                    LimpaCampo(groupBoxx); // Recursivamente limpar os controles dentro do groupBox
+                }
             }
         }
 

@@ -162,14 +162,7 @@ namespace ComissPro
             string nome = "%" + txtPesquisa.Text + "%";
             ProdutoDAL dao = new ProdutoDAL();
 
-            if (rbtCodigo.Checked)
-            {
-                dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
-            }
-            else
-            {
-                dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
-            }
+            dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
         }
 
         private void btnSair_Click(object sender, EventArgs e)

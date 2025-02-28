@@ -107,5 +107,19 @@ namespace ComissPro
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
         }
+
+        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmManutVendedor frm = new FrmManutVendedor(StatusOperacao);
+            StatusOperacao = "NOVO";
+            AbrirFormEnPanel(frm);
+        }
+
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmManutProduto frm = new FrmManutProduto(StatusOperacao);
+            StatusOperacao = "NOVO";
+            AbrirFormEnPanel(frm);
+        }
     }
 }

@@ -455,7 +455,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(110)))), ((int)(((byte)(255)))));
-            this.label8.Location = new System.Drawing.Point(19, 8);
+            this.label8.Location = new System.Drawing.Point(19, 6);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(115, 16);
             this.label8.TabIndex = 663;
@@ -567,7 +567,7 @@
             this.txtNomeVendedor.Location = new System.Drawing.Point(115, 137);
             this.txtNomeVendedor.Name = "txtNomeVendedor";
             this.txtNomeVendedor.ReadOnly = true;
-            this.txtNomeVendedor.Size = new System.Drawing.Size(341, 30);
+            this.txtNomeVendedor.Size = new System.Drawing.Size(341, 36);
             this.txtNomeVendedor.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeVendedor.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -578,7 +578,7 @@
             this.txtNomeVendedor.StateCommon.Border.Rounding = 20;
             this.txtNomeVendedor.StateCommon.Border.Width = 1;
             this.txtNomeVendedor.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeVendedor.TabIndex = 674;
             // 
@@ -588,7 +588,7 @@
             this.txtNomeProduto.Location = new System.Drawing.Point(462, 137);
             this.txtNomeProduto.Name = "txtNomeProduto";
             this.txtNomeProduto.ReadOnly = true;
-            this.txtNomeProduto.Size = new System.Drawing.Size(322, 30);
+            this.txtNomeProduto.Size = new System.Drawing.Size(322, 36);
             this.txtNomeProduto.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeProduto.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeProduto.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -599,7 +599,7 @@
             this.txtNomeProduto.StateCommon.Border.Rounding = 20;
             this.txtNomeProduto.StateCommon.Border.Width = 1;
             this.txtNomeProduto.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 676;
             // 
@@ -609,7 +609,7 @@
             this.txtQuantidadeEntregue.Location = new System.Drawing.Point(2, 193);
             this.txtQuantidadeEntregue.Name = "txtQuantidadeEntregue";
             this.txtQuantidadeEntregue.ReadOnly = true;
-            this.txtQuantidadeEntregue.Size = new System.Drawing.Size(150, 30);
+            this.txtQuantidadeEntregue.Size = new System.Drawing.Size(150, 36);
             this.txtQuantidadeEntregue.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtQuantidadeEntregue.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtQuantidadeEntregue.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -620,7 +620,7 @@
             this.txtQuantidadeEntregue.StateCommon.Border.Rounding = 20;
             this.txtQuantidadeEntregue.StateCommon.Border.Width = 1;
             this.txtQuantidadeEntregue.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtQuantidadeEntregue.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtQuantidadeEntregue.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantidadeEntregue.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtQuantidadeEntregue.TabIndex = 677;
             this.txtQuantidadeEntregue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -631,7 +631,7 @@
             this.txtPrecoUnit.Location = new System.Drawing.Point(154, 193);
             this.txtPrecoUnit.Name = "txtPrecoUnit";
             this.txtPrecoUnit.ReadOnly = true;
-            this.txtPrecoUnit.Size = new System.Drawing.Size(150, 30);
+            this.txtPrecoUnit.Size = new System.Drawing.Size(150, 36);
             this.txtPrecoUnit.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtPrecoUnit.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtPrecoUnit.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -642,7 +642,7 @@
             this.txtPrecoUnit.StateCommon.Border.Rounding = 20;
             this.txtPrecoUnit.StateCommon.Border.Width = 1;
             this.txtPrecoUnit.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtPrecoUnit.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtPrecoUnit.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecoUnit.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtPrecoUnit.TabIndex = 678;
             this.txtPrecoUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -653,7 +653,7 @@
             this.txtTotal.Location = new System.Drawing.Point(311, 193);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
-            this.txtTotal.Size = new System.Drawing.Size(150, 30);
+            this.txtTotal.Size = new System.Drawing.Size(150, 36);
             this.txtTotal.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtTotal.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtTotal.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -664,7 +664,7 @@
             this.txtTotal.StateCommon.Border.Rounding = 20;
             this.txtTotal.StateCommon.Border.Width = 1;
             this.txtTotal.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtTotal.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtTotal.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtTotal.TabIndex = 679;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -674,7 +674,7 @@
             this.txtQtdDevolvida.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQtdDevolvida.Location = new System.Drawing.Point(12, 23);
             this.txtQtdDevolvida.Name = "txtQtdDevolvida";
-            this.txtQtdDevolvida.Size = new System.Drawing.Size(130, 30);
+            this.txtQtdDevolvida.Size = new System.Drawing.Size(130, 36);
             this.txtQtdDevolvida.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtQtdDevolvida.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtQtdDevolvida.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -685,18 +685,18 @@
             this.txtQtdDevolvida.StateCommon.Border.Rounding = 20;
             this.txtQtdDevolvida.StateCommon.Border.Width = 1;
             this.txtQtdDevolvida.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtQtdDevolvida.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtQtdDevolvida.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQtdDevolvida.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtQtdDevolvida.TabIndex = 680;
             this.txtQtdDevolvida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtQtdDevolvida.TextChanged += new System.EventHandler(this.txtQtdDevolvida_TextChanged);
+            this.txtQtdDevolvida.Leave += new System.EventHandler(this.txtQtdDevolvida_Leave);
             // 
             // txtQuantidadeVendida
             // 
             this.txtQuantidadeVendida.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQuantidadeVendida.Location = new System.Drawing.Point(145, 23);
             this.txtQuantidadeVendida.Name = "txtQuantidadeVendida";
-            this.txtQuantidadeVendida.Size = new System.Drawing.Size(130, 30);
+            this.txtQuantidadeVendida.Size = new System.Drawing.Size(130, 36);
             this.txtQuantidadeVendida.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtQuantidadeVendida.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtQuantidadeVendida.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -707,7 +707,7 @@
             this.txtQuantidadeVendida.StateCommon.Border.Rounding = 20;
             this.txtQuantidadeVendida.StateCommon.Border.Width = 1;
             this.txtQuantidadeVendida.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtQuantidadeVendida.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtQuantidadeVendida.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantidadeVendida.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtQuantidadeVendida.TabIndex = 681;
             this.txtQuantidadeVendida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -715,9 +715,9 @@
             // txtValorRecebido
             // 
             this.txtValorRecebido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorRecebido.Location = new System.Drawing.Point(4, 27);
+            this.txtValorRecebido.Location = new System.Drawing.Point(4, 25);
             this.txtValorRecebido.Name = "txtValorRecebido";
-            this.txtValorRecebido.Size = new System.Drawing.Size(150, 30);
+            this.txtValorRecebido.Size = new System.Drawing.Size(150, 36);
             this.txtValorRecebido.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtValorRecebido.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtValorRecebido.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -728,7 +728,7 @@
             this.txtValorRecebido.StateCommon.Border.Rounding = 20;
             this.txtValorRecebido.StateCommon.Border.Width = 1;
             this.txtValorRecebido.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtValorRecebido.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtValorRecebido.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorRecebido.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtValorRecebido.TabIndex = 682;
             this.txtValorRecebido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -738,7 +738,7 @@
             this.txtComissao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComissao.Location = new System.Drawing.Point(12, 24);
             this.txtComissao.Name = "txtComissao";
-            this.txtComissao.Size = new System.Drawing.Size(130, 30);
+            this.txtComissao.Size = new System.Drawing.Size(130, 36);
             this.txtComissao.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtComissao.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtComissao.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -749,7 +749,7 @@
             this.txtComissao.StateCommon.Border.Rounding = 20;
             this.txtComissao.StateCommon.Border.Width = 1;
             this.txtComissao.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtComissao.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtComissao.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComissao.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtComissao.TabIndex = 683;
             this.txtComissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -759,7 +759,7 @@
             this.txtValorComissao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorComissao.Location = new System.Drawing.Point(150, 24);
             this.txtValorComissao.Name = "txtValorComissao";
-            this.txtValorComissao.Size = new System.Drawing.Size(130, 30);
+            this.txtValorComissao.Size = new System.Drawing.Size(130, 36);
             this.txtValorComissao.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtValorComissao.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtValorComissao.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -770,7 +770,7 @@
             this.txtValorComissao.StateCommon.Border.Rounding = 20;
             this.txtValorComissao.StateCommon.Border.Width = 1;
             this.txtValorComissao.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtValorComissao.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtValorComissao.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorComissao.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtValorComissao.TabIndex = 684;
             this.txtValorComissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -789,7 +789,7 @@
             this.kryptonGroupBox1.Panel.Controls.Add(this.label3);
             this.kryptonGroupBox1.Panel.Controls.Add(this.label12);
             this.kryptonGroupBox1.Panel.Controls.Add(this.txtQtdDevolvida);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(289, 87);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(289, 90);
             this.kryptonGroupBox1.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.kryptonGroupBox1.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -809,7 +809,7 @@
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.txtValorRecebido);
             this.kryptonGroupBox2.Panel.Controls.Add(this.label8);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(166, 87);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(166, 90);
             this.kryptonGroupBox2.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.kryptonGroupBox2.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -831,7 +831,7 @@
             this.kryptonGroupBox3.Panel.Controls.Add(this.label11);
             this.kryptonGroupBox3.Panel.Controls.Add(this.label10);
             this.kryptonGroupBox3.Panel.Controls.Add(this.txtComissao);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(306, 87);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(306, 90);
             this.kryptonGroupBox3.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.kryptonGroupBox3.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
