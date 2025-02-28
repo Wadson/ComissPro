@@ -9,7 +9,7 @@ using ComponentFactory.Krypton.Toolkit;
 
 namespace ComissPro
 {
-    public partial class FrmManutProduto : ComissPro.FrmModelo
+    public partial class FrmManutProduto : KryptonForm
     {
         private new string StatusOperacao;
         public FrmManutProduto(string statusOperacao)

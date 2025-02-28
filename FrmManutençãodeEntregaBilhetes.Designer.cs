@@ -43,6 +43,7 @@
             this.btnNovo = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAlterar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
@@ -80,10 +81,11 @@
             // 
             this.lblTotalRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.lblTotalRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.lblTotalRegistros.Location = new System.Drawing.Point(12, 378);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(93, 13);
+            this.lblTotalRegistros.Size = new System.Drawing.Size(146, 20);
             this.lblTotalRegistros.TabIndex = 620;
             this.lblTotalRegistros.Text = "Total de Registros";
             // 
@@ -415,10 +417,10 @@
             // timer1
             // 
             this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmManutençãodeEntregaBilhetes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(800, 400);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.lblTotalRegistros);
@@ -461,5 +463,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnNovo;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnAlterar;
         private System.Windows.Forms.Timer timer1;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
     }
 }

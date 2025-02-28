@@ -44,26 +44,19 @@
             this.btnUsuario = new System.Windows.Forms.Button();
             this.btnVendedor = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
-            this.btnRelatorios = new System.Windows.Forms.Button();
+            this.btnPrestacaoContas = new System.Windows.Forms.Button();
             this.btnProduto = new System.Windows.Forms.Button();
-            this.btnFerramentas = new System.Windows.Forms.Button();
+            this.btnManutencaoEntregas = new System.Windows.Forms.Button();
             this.panelConteiner = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.timerH = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            this.panelConteiner.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
             // 
-            this.kryptonPalette1.ButtonSpecs.FormClose.Image = global::ComissPro.Properties.Resources.Exit;
-            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Sair24;
-            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Sair24;
-            this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::ComissPro.Properties.Resources.Maximize;
-            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Minimiza24;
-            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Minimiza24;
-            this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::ComissPro.Properties.Resources.Minimize;
-            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Minimizar24;
-            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Minimizar24;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -142,14 +135,14 @@
             this.kryptonPanel2.Controls.Add(this.btnUsuario);
             this.kryptonPanel2.Controls.Add(this.btnVendedor);
             this.kryptonPanel2.Controls.Add(this.btnSair);
-            this.kryptonPanel2.Controls.Add(this.btnRelatorios);
+            this.kryptonPanel2.Controls.Add(this.btnPrestacaoContas);
             this.kryptonPanel2.Controls.Add(this.btnProduto);
-            this.kryptonPanel2.Controls.Add(this.btnFerramentas);
+            this.kryptonPanel2.Controls.Add(this.btnManutencaoEntregas);
             this.kryptonPanel2.Location = new System.Drawing.Point(-1, 13);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridDataCellCustom1;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 73);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 100);
             this.kryptonPanel2.TabIndex = 610;
             // 
             // btnUsuario
@@ -161,11 +154,13 @@
             this.btnUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuario.Image = global::ComissPro.Properties.Resources.Usuario64;
-            this.btnUsuario.Location = new System.Drawing.Point(6, 4);
+            this.btnUsuario.Image = global::ComissPro.Properties.Resources.adicionar_usuario;
+            this.btnUsuario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUsuario.Location = new System.Drawing.Point(10, 3);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(75, 65);
+            this.btnUsuario.Size = new System.Drawing.Size(75, 95);
             this.btnUsuario.TabIndex = 1;
+            this.btnUsuario.Text = "&Usuários";
             this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUsuario.UseVisualStyleBackColor = false;
             // 
@@ -178,11 +173,13 @@
             this.btnVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVendedor.Image = global::ComissPro.Properties.Resources.Vendedor64;
+            this.btnVendedor.Image = global::ComissPro.Properties.Resources.Vendedores64;
+            this.btnVendedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVendedor.Location = new System.Drawing.Point(91, 4);
             this.btnVendedor.Name = "btnVendedor";
-            this.btnVendedor.Size = new System.Drawing.Size(75, 65);
+            this.btnVendedor.Size = new System.Drawing.Size(75, 95);
             this.btnVendedor.TabIndex = 2;
+            this.btnVendedor.Text = "&Vendedor";
             this.btnVendedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVendedor.UseVisualStyleBackColor = false;
             this.btnVendedor.Click += new System.EventHandler(this.btnVendedor_Click);
@@ -197,32 +194,36 @@
             this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Image = global::ComissPro.Properties.Resources.Sair64;
+            this.btnSair.Image = global::ComissPro.Properties.Resources.Ssair64;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSair.Location = new System.Drawing.Point(931, 3);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(75, 65);
+            this.btnSair.Size = new System.Drawing.Size(75, 95);
             this.btnSair.TabIndex = 7;
+            this.btnSair.Text = "&Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // btnRelatorios
+            // btnPrestacaoContas
             // 
-            this.btnRelatorios.BackColor = System.Drawing.Color.Transparent;
-            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnRelatorios.FlatAppearance.BorderSize = 0;
-            this.btnRelatorios.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorios.Image = global::ComissPro.Properties.Resources.Entrega;
-            this.btnRelatorios.Location = new System.Drawing.Point(346, 4);
-            this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(75, 65);
-            this.btnRelatorios.TabIndex = 9;
-            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnRelatorios.UseVisualStyleBackColor = false;
-            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
+            this.btnPrestacaoContas.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrestacaoContas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnPrestacaoContas.FlatAppearance.BorderSize = 0;
+            this.btnPrestacaoContas.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrestacaoContas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPrestacaoContas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnPrestacaoContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrestacaoContas.Image = global::ComissPro.Properties.Resources.PrestacaoDeconta64;
+            this.btnPrestacaoContas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPrestacaoContas.Location = new System.Drawing.Point(346, 4);
+            this.btnPrestacaoContas.Name = "btnPrestacaoContas";
+            this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 95);
+            this.btnPrestacaoContas.TabIndex = 9;
+            this.btnPrestacaoContas.Text = "&Prestação de Contas";
+            this.btnPrestacaoContas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrestacaoContas.UseVisualStyleBackColor = false;
+            this.btnPrestacaoContas.Click += new System.EventHandler(this.btnPrestacaoContas_Click);
             // 
             // btnProduto
             // 
@@ -234,31 +235,36 @@
             this.btnProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduto.Image = global::ComissPro.Properties.Resources.Bilhete;
+            this.btnProduto.Image = global::ComissPro.Properties.Resources.Bilhete64;
+            this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnProduto.Location = new System.Drawing.Point(176, 3);
             this.btnProduto.Name = "btnProduto";
-            this.btnProduto.Size = new System.Drawing.Size(75, 66);
+            this.btnProduto.Size = new System.Drawing.Size(75, 95);
             this.btnProduto.TabIndex = 4;
+            this.btnProduto.Text = "&Produto";
             this.btnProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProduto.UseVisualStyleBackColor = false;
             this.btnProduto.Click += new System.EventHandler(this.btnProduto_Click);
             // 
-            // btnFerramentas
+            // btnManutencaoEntregas
             // 
-            this.btnFerramentas.BackColor = System.Drawing.Color.Transparent;
-            this.btnFerramentas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnFerramentas.FlatAppearance.BorderSize = 0;
-            this.btnFerramentas.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnFerramentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnFerramentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnFerramentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFerramentas.Image = global::ComissPro.Properties.Resources.Ferramentas64;
-            this.btnFerramentas.Location = new System.Drawing.Point(261, 4);
-            this.btnFerramentas.Name = "btnFerramentas";
-            this.btnFerramentas.Size = new System.Drawing.Size(75, 65);
-            this.btnFerramentas.TabIndex = 6;
-            this.btnFerramentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFerramentas.UseVisualStyleBackColor = false;
+            this.btnManutencaoEntregas.BackColor = System.Drawing.Color.Transparent;
+            this.btnManutencaoEntregas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnManutencaoEntregas.FlatAppearance.BorderSize = 0;
+            this.btnManutencaoEntregas.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnManutencaoEntregas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnManutencaoEntregas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnManutencaoEntregas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManutencaoEntregas.Image = global::ComissPro.Properties.Resources.EntregaBilhete64;
+            this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnManutencaoEntregas.Location = new System.Drawing.Point(261, 4);
+            this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
+            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 95);
+            this.btnManutencaoEntregas.TabIndex = 6;
+            this.btnManutencaoEntregas.Text = "&Controle";
+            this.btnManutencaoEntregas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnManutencaoEntregas.UseVisualStyleBackColor = false;
+            this.btnManutencaoEntregas.Click += new System.EventHandler(this.btnManutencaoEntregas_Click);
             // 
             // panelConteiner
             // 
@@ -267,10 +273,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelConteiner.Location = new System.Drawing.Point(3, 87);
+            this.panelConteiner.Controls.Add(this.toolStrip1);
+            this.panelConteiner.Location = new System.Drawing.Point(3, 119);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 584);
+            this.panelConteiner.Size = new System.Drawing.Size(1002, 552);
             this.panelConteiner.TabIndex = 609;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1002, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // timerH
             // 
@@ -296,6 +312,8 @@
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
+            this.panelConteiner.ResumeLayout(false);
+            this.panelConteiner.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,11 +335,12 @@
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Button btnVendedor;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Button btnRelatorios;
+        private System.Windows.Forms.Button btnPrestacaoContas;
         private System.Windows.Forms.Button btnProduto;
-        private System.Windows.Forms.Button btnFerramentas;
+        private System.Windows.Forms.Button btnManutencaoEntregas;
         private System.Windows.Forms.Panel panelConteiner;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer timerH;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

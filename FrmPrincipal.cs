@@ -93,10 +93,17 @@ namespace ComissPro
             AbrirFormEnPanel(frm);
         }
 
-        private void btnRelatorios_Click(object sender, EventArgs e)
+        private void btnManutencaoEntregas_Click(object sender, EventArgs e)
         {
             FrmManutençãodeEntregaBilhetes frm = new FrmManutençãodeEntregaBilhetes(StatusOperacao);
 
+            StatusOperacao = "NOVO";
+            AbrirFormEnPanel(frm);
+        }
+
+        private void btnPrestacaoContas_Click(object sender, EventArgs e)
+        {
+            FrmManutPrestacaoDeContas frm = new FrmManutPrestacaoDeContas(StatusOperacao);
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
         }

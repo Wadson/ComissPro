@@ -17,6 +17,22 @@ namespace ComissPro
             public string Senha { get; set; }
             public string TipoUsuario { get; set; }
         }
+        public class VendaMODEL
+        {
+            public int VendaID { get; set; }
+            public int VendedorID { get; set; }
+            public int ProdutoID { get; set; }
+            public int QuantidadeVendida { get; set; }
+            public DateTime DataVenda { get; set; }
+        }
+        public class ComissaoMODEL
+        {
+            public int ComissaoID { get; set; }
+            public int VendedorID { get; set; }
+            public double ValorComissao { get; set; }
+            public DateTime DataGeracao { get; set; }
+        }
+
 
         public class VendedorMODEL
         {
@@ -35,22 +51,7 @@ namespace ComissPro
             public int QuantidadePorBloco { get; set; }
         }
 
-        public class VendaMODEL
-        {
-            public int VendaID { get; set; }
-            public int VendedorID { get; set; }
-            public int ProdutoID { get; set; }
-            public int QuantidadeVendida { get; set; }
-            public DateTime DataVenda { get; set; }
-        }
 
-        public class ComissaoMODEL
-        {
-            public int ComissaoID { get; set; }
-            public int VendedorID { get; set; }
-            public double ValorComissao { get; set; }
-            public DateTime DataGeracao { get; set; }
-        }
         public class EntregasModel
         {
             public int EntregaID { get; set; }
@@ -58,7 +59,9 @@ namespace ComissPro
             public long ProdutoID { get; set; }
             public long QuantidadeEntregue { get; set; }
             public DateTime? DataEntrega { get; set; } = DateTime.Now;
+            public bool PrestacaoRealizada { get; set; } = false; // Novo campo
         }
+              
         public class PrestacaoContasModel
         {
             public int PrestacaoID { get; set; }

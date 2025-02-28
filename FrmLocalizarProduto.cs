@@ -10,7 +10,7 @@ using MetroFramework.Forms;
 
 namespace ComissPro
 {
-    public partial class FrmLocalizarProduto : ComissPro.FrmModelo
+    public partial class FrmLocalizarProduto : KryptonForm
     {
         protected int LinhaAtual = -1;
         public int ProdutoID { get; set; }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.txtProdutoID = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.txtPreco = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNome = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.cmbTipo = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipo)).BeginInit();
@@ -370,7 +372,6 @@
             // 
             // FrmCadProdutos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(547, 261);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.kryptonPanel2);
@@ -385,7 +386,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadProdutos";
-            this.ShowIcon = true;
             this.ShowInTaskbar = false;
             this.Text = "Cadastro de Bilhetes";
             this.Load += new System.EventHandler(this.FrmCadProdutos_Load);
@@ -413,5 +413,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPreco;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNome;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbTipo;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
     }
 }

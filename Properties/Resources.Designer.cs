@@ -63,6 +63,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap adicionar_usuario {
+            get {
+                object obj = ResourceManager.GetObject("adicionar_usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AdicionarProuto {
             get {
                 object obj = ResourceManager.GetObject("AdicionarProuto", resourceCulture);
@@ -83,9 +93,9 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bilhete {
+        internal static System.Drawing.Bitmap Bilhete64 {
             get {
-                object obj = ResourceManager.GetObject("Bilhete", resourceCulture);
+                object obj = ResourceManager.GetObject("Bilhete64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +113,19 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Entrega {
+        internal static System.Drawing.Bitmap Comissao64 {
             get {
-                object obj = ResourceManager.GetObject("Entrega", resourceCulture);
+                object obj = ResourceManager.GetObject("Comissao64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EntregaBilhete64 {
+            get {
+                object obj = ResourceManager.GetObject("EntregaBilhete64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,16 +146,6 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap fechando {
             get {
                 object obj = ResourceManager.GetObject("fechando", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Ferramentas64 {
-            get {
-                object obj = ResourceManager.GetObject("Ferramentas64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +223,9 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Receber64 {
+        internal static System.Drawing.Bitmap PrestacaoDeconta64 {
             get {
-                object obj = ResourceManager.GetObject("Receber64", resourceCulture);
+                object obj = ResourceManager.GetObject("PrestacaoDeconta64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +253,9 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sair64 {
+        internal static System.Drawing.Bitmap Sairr24 {
             get {
-                object obj = ResourceManager.GetObject("Sair64", resourceCulture);
+                object obj = ResourceManager.GetObject("Sairr24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +263,9 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Usuario64 {
+        internal static System.Drawing.Bitmap Ssair64 {
             get {
-                object obj = ResourceManager.GetObject("Usuario64", resourceCulture);
+                object obj = ResourceManager.GetObject("Ssair64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +273,9 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Vendedor64 {
+        internal static System.Drawing.Bitmap Vendedores64 {
             get {
-                object obj = ResourceManager.GetObject("Vendedor64", resourceCulture);
+                object obj = ResourceManager.GetObject("Vendedores64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

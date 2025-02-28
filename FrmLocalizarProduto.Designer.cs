@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridPesquisar = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.label28 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.rbtDescricao = new System.Windows.Forms.RadioButton();
             this.rbtCodigo = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -155,14 +157,12 @@
             // 
             // FrmLocalizarProduto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(588, 335);
             this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.dataGridPesquisar);
-            this.KeyPreview = false;
             this.Name = "FrmLocalizarProduto";
             this.Text = "Localizar Produto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPesquisarProduto_FormClosing);
@@ -184,5 +184,6 @@
         public System.Windows.Forms.RadioButton rbtDescricao;
         public System.Windows.Forms.RadioButton rbtCodigo;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPesquisa;
+        private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
     }
 }

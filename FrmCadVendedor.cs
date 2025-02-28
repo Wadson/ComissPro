@@ -5,10 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace ComissPro
 {
-    public partial class FrmCadVendedor : ComissPro.FrmModelo
+    public partial class FrmCadVendedor : KryptonForm
     {
         private string StatusOperacao;
         private string QueryVendedor = "SELECT MAX(VendedorID) FROM Vendedores";

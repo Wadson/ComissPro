@@ -118,12 +118,6 @@
     <Compile Include="FrmCadVendedor.Designer.cs">
       <DependentUpon>FrmCadVendedor.cs</DependentUpon>
     </Compile>
-    <None Include="FrmPrestacaoDeContas">
-      <SubType>Form</SubType>
-    </None>
-    <Compile Include="FrmControleEntregas - Cópia .Designer.cs">
-      <DependentUpon>FrmPrestacaoDeContas</DependentUpon>
-    </Compile>
     <Compile Include="FrmControleEntregas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +154,18 @@
     <Compile Include="FrmLocalizarProduto.Designer.cs">
       <DependentUpon>FrmLocalizarProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmManutPrestacaoDeContas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModelo - Cópia .Designer.cs">
+      <DependentUpon>FrmManutPrestacaoDeContas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrestacaoDeContas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrestacaoDeContas.Designer.cs">
+      <DependentUpon>FrmPrestacaoDeContas.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,12 +178,18 @@
     <Compile Include="FrmModelo.Designer.cs">
       <DependentUpon>FrmModelo.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrestacaoContasDal.cs" />
+    <Compile Include="PrestacaoDeContasDAL.cs" />
+    <Compile Include="PrestacaoDeContasBLL.cs" />
     <Compile Include="ProdutoBLL.cs" />
     <Compile Include="ProdutoDAL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SqliteConnection.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="Utilitario.cs" />
@@ -189,9 +201,6 @@
     <EmbeddedResource Include="FrmCadVendedor.resx">
       <DependentUpon>FrmCadVendedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmControleEntregas - Cópia .resx">
-      <DependentUpon>FrmPrestacaoDeContas</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmControleEntregas.resx">
       <DependentUpon>FrmControleEntregas.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManutençãodeEntregaBilhetes.resx">
       <DependentUpon>FrmManutençãodeEntregaBilhetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmManutPrestacaoDeContas.resx">
+      <DependentUpon>FrmManutPrestacaoDeContas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmManutProduto.resx">
       <DependentUpon>FrmManutProduto.cs</DependentUpon>
@@ -210,6 +222,12 @@
     <EmbeddedResource Include="FrmLocalizarProduto.resx">
       <DependentUpon>FrmLocalizarProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmModelo - Cópia .resx">
+      <DependentUpon>FrmManutPrestacaoDeContas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrestacaoDeContas.resx">
+      <DependentUpon>FrmPrestacaoDeContas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,14 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -302,6 +315,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\verificar24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ssair64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Comissao64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PrestacaoDeconta64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EntregaBilhete64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bilhete64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adicionar-usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vendedores64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sairr24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

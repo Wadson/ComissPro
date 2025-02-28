@@ -428,9 +428,9 @@
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.label28.Location = new System.Drawing.Point(236, 1);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(243, 24);
+            this.label28.Size = new System.Drawing.Size(217, 24);
             this.label28.TabIndex = 600;
-            this.label28.Text = "CADASTRO DE PRODUTO";
+            this.label28.Text = "Cadastro de vendedores";
             // 
             // FrmManutVendedor
             // 

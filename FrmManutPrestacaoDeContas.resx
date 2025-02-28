@@ -120,36 +120,10 @@
   <metadata name="kryptonPalette1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="kryptonStatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>638, 17</value>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
   </metadata>
-  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 54</value>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>242, 17</value>
   </metadata>
-  <metadata name="timerH.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>795, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAGBoAAAEAIAAaBAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAYAAAAGggGAAAArb+c8wAAA+FJ
-        REFUeJxjYCASNDU1sboF2ZiERAbwEauHaCDbFeQvPS/grtyawP9mS/0+xkzwc6Ga4Sr5Pnass/zeMSwL
-        /A/D5gv9rqU0+IiRbah7QgiXVo6PqVit1xTmmb5fkQ0HYeFVgf+jZvgnwNRbpfuzubd4+ydM8C/LrA7j
-        wWnw1KlTmSRLPLLYu7zuMM3y/cOwFNVgGGYEYpsZ/nUgPfolgfLc0/x3sS4J+CO4MvB/wkzvPpwWyBd6
-        +TJP8P6Jy2BkLNjv06JWH6TFPjvgDkyMY0Xg/+T5/r04LZAo89zMMMeXoOEgzN/mOZt9lv8bZDFeoA+y
-        5ga0Hz58mBGrBSo5XjZs9a7vGCZ7/WeY6/efYUkARDPIRyD+NC8If7H/f5YpXv/gckiW6K0N+Oe/0GdH
-        RLu7IYYFbiUxAqolvmni1V73WKod/zG0u/5n6PP4zzDT5z/DAn8g2/0/w2ygD6d4/meYBRSbAOQv8MPw
-        HfPywP+qs/xOwA3WLQ/klegLqmOfG/CScVHAP7jiRUBDQUHW4fKfocn5P0Mn0MAy2/8MjY7/GfrdMVyP
-        jFkmeb0AG3706FEmzql+m3Ep5lke8F9kjtd/lqlAVxfb/GcI1vnPUGX/n2mi+3+hKe7/+frdgD7ygvgM
-        hGf6/mfp8fwuUeGVDwl3R2MtxoX+/7C6AuhV4UVADQuh8dEM8gUw2NqBPloc8J9jacB/caC88mzP/+oT
-        XP4L1zh+E6hwX6CQ5+nglBzMDLbANsBdg3G6D+GUA3JdnSMkWEBBB4oHtLyhvdr/T3S/b+q1a9dQU5Fk
-        qWcNS6v7T5D3sBoOdC1DkfV/hm53hNh8oK/mYaqXWBHwN3ZaQARGClLM8/JibHb9i5EPFgJd2+n2n9lH
-        8y9DvydhnwKx5aKAAxl5yewoFjjFBvBwVrs+YGh3gwQHKBhAybPD7T9nqdNP8WDzKyg+wIOV5wdcjkj2
-        48fwhVyBZwhjk8sfhhZgREIxc73LV8Uk51kaaZ4lQB9CgguX4UA5ptm+v+U6gjKw5mTzQBcm6RKvbNY6
-        1w8gw9lrXV9IZblYKqe6lflkx0iy17i8wYgnYBAyTvT6y9XkfkWgwq1bOdfLMiwphgmrBTCgkeerJZLj
-        5KGe76sA4qtme9WCaKEil3kMHdDcPB8YhNO8/zM1uf4UKXTNs07wE8BrKD4gm+PeAKKN4j0F+cpcTzE0
-        Q4KPvdr5pXqmlznZBsOAelkgvIyvr69ntk0O0LJMDTDKy8vjothwEJDL9+xsaGhgpoph2IBsiXelcYqv
-        Ls0sUCj1dREu82ikmQXa+f7CEoXubTdv3sSf/AYCAAAeRWMDcw3bRQAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

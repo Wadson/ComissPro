@@ -9,7 +9,7 @@ using ComponentFactory.Krypton.Toolkit;
 
 namespace ComissPro
 {
-    public partial class FrmLocalicarVendedor : ComissPro.FrmModelo
+    public partial class FrmLocalicarVendedor : KryptonForm
     {
         protected int LinhaAtual = -1;
         public int VendedorID { get; set; }

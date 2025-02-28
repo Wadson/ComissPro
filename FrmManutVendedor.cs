@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace ComissPro
 {
@@ -51,7 +52,7 @@ namespace ComissPro
 
             if (StatusOperacao == "NOVO")
             {
-                frm.lblStatus.Text = "NOVO CADASTRO DE VENDEDORES";
+                frm.lblStatus.Text = "Novo cadastro de vendedores";
                 frm.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
                 frm.ShowDialog();
             }

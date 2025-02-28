@@ -52,18 +52,20 @@ namespace ComissPro
                 conn.Close();
             }
         }
-        public void InserirEntrega(EntregasModel entrega)
+        public void SalvarEntregas(EntregasModel entrega)
         {
             using (var conn = Conexao.Conex())
             {
                 conn.Open();
-                string query = "INSERT INTO Entregas (VendedorID, ProdutoID, QuantidadeEntregue, DataEntrega) VALUES (@VendedorID, @ProdutoID, @QuantidadeEntregue, @DataEntrega)";
+                string query = @"INSERT INTO Entregas (VendedorID, ProdutoID, QuantidadeEntregue, DataEntrega, PrestacaoRealizada) 
+                            VALUES (@VendedorID, @ProdutoID, @QuantidadeEntregue, @DataEntrega, @PrestacaoRealizada)";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@VendedorID", entrega.VendedorID);
                     cmd.Parameters.AddWithValue("@ProdutoID", entrega.ProdutoID);
                     cmd.Parameters.AddWithValue("@QuantidadeEntregue", entrega.QuantidadeEntregue);
                     cmd.Parameters.AddWithValue("@DataEntrega", entrega.DataEntrega);
+                    cmd.Parameters.AddWithValue("@PrestacaoRealizada", entrega.PrestacaoRealizada ? 1 : 0); // 0 para nova entrega
                     cmd.ExecuteNonQuery();
                 }
             }

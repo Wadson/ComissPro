@@ -13,7 +13,7 @@ using Guna.UI2.WinForms;
 
 namespace ComissPro
 {
-    public partial class FrmControleEntregas : ComissPro.FrmModelo
+    public partial class FrmControleEntregas : KryptonForm
     {
         public bool bloqueiaEventosTextChanged = false;
 
@@ -111,26 +111,27 @@ namespace ComissPro
             {
                 Model.EntregasModel objetoModel = new Model.EntregasModel();
 
-                objetoModel.EntregaID = Convert.ToInt32(txtEntregaID.Text);
+                objetoModel.EntregaID = Convert.ToInt32(txtEntregaID.Text); // Se EntregaID é autoincremento, esse campo não deveria ser preenchido manualmente
                 objetoModel.VendedorID = VendedorID;
                 objetoModel.ProdutoID = ProdutoID;
                 objetoModel.QuantidadeEntregue = int.Parse(txtQuantidade.Text);
                 objetoModel.DataEntrega = dtpDataEntregaBilhete.Value;
+                // PrestacaoRealizada já é false por padrão no modelo, então não precisa setar aqui
 
                 EntregasBLL objetoBll = new EntregasBLL();
-
                 objetoBll.Salvar(objetoModel);
-                MessageBox.Show("Registro gravado com sucesso! ", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                MessageBox.Show("Registro gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Utilitario.LimpaCampo(this);
                 ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"]).HabilitarTimer(true);
             }
             catch (OverflowException ov)
             {
-                MessageBox.Show("Overfow Exeção deu erro! " + ov);
+                MessageBox.Show("Overflow Exception deu erro! " + ov);
             }
             catch (Win32Exception erro)
             {
-                MessageBox.Show("Win32 Win32!!! \n" + erro);
+                MessageBox.Show("Win32 Exception!!! \n" + erro);
             }
         }
         public void AlterarRegistro()
@@ -318,33 +319,6 @@ namespace ComissPro
             });
 
             txtQuantidade.Select();
-
-            //if (bloqueiaPesquisa || string.IsNullOrEmpty(txtNomeProduto.Text))
-            //    return;
-
-            //bloqueiaPesquisa = true; // Bloqueia novas pesquisas para evitar loops
-
-            //using (FrmLocalizarProduto pesquisaProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text))
-            //{
-            //    pesquisaProduto.Owner = this; // Define o formulário principal como "dono"
-
-            //    if (pesquisaProduto.ShowDialog() == DialogResult.OK)
-            //    {
-            //        // Atualiza somente se o texto mudou
-            //        if (txtNomeProduto.Text != pesquisaProduto.produtoSelecionado)
-            //        {
-            //            txtNomeProduto.Text = pesquisaProduto.produtoSelecionado;
-            //            txtQuantidade.Focus();
-            //        }
-            //    }
-            //}
-
-            //// Aguarda a finalização do método antes de liberar
-            //Task.Delay(100).ContinueWith(t =>
-            //{
-            //    Invoke(new Action(() => bloqueiaPesquisa = false));
-            //});            
-            //txtQuantidade.Select();
         }
 
         private void btnSair_Click(object sender, EventArgs e)

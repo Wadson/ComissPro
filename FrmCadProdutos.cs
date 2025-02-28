@@ -6,10 +6,11 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace ComissPro
 {
-    public partial class FrmCadProdutos : ComissPro.FrmModelo
+    public partial class FrmCadProdutos : KryptonForm
     {
         private string StatusOperacao;
         private string QueryProduto = "SELECT MAX(ProdutoID) FROM Produtos";
