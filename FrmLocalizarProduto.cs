@@ -23,6 +23,20 @@ namespace ComissPro
         public FrmLocalizarProduto(Form formChamador, string textoDigitado)
         {
             InitializeComponent();
+            // Verifica se o formulário chamador é válido
+            if (formChamador != null)
+            {
+                this.FormChamador = formChamador;
+            }
+            this.Owner = formChamador;
+
+            txtPesquisa.Text = textoDigitado; // Define a letra pressionada no campo de pesquisa
+            txtPesquisa.SelectionStart = txtPesquisa.Text.Length; // Coloca o cursor no final
+            txtPesquisa.Focus(); // Foca o campo para continuar digitando
+
+            // Configurar o TextBox para capturar o evento KeyDown
+            this.txtPesquisa.KeyDown += new KeyEventHandler(dataGridPesquisar_KeyDown);
+            this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
         }
 
         // No FrmLocalizarProduto, após selecionar o produto e fechar o formulário
@@ -144,6 +158,7 @@ namespace ComissPro
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
+            string textoPesquisa = txtPesquisa.Text.ToLower();
             string nome = "%" + txtPesquisa.Text + "%";
             ProdutoDAL dao = new ProdutoDAL();
 
@@ -173,33 +188,47 @@ namespace ComissPro
             {
                 txtPesquisa.Focus();
             }
-
-            if (dataGridPesquisar.CurrentRow != null)
+            else if (e.KeyCode == Keys.Enter)
             {
-                LinhaAtual = dataGridPesquisar.CurrentRow.Index;
-            }
-            // Verifica se a tecla pressionada foi a seta para baixo
-            if (e.KeyCode == Keys.Down)
-            {
-                // Move o foco para o DataGridView
-                dataGridPesquisar.Focus();
+                e.SuppressKeyPress = true; // Evita o "beep" do Enter no DataGridView
 
-                // Seleciona a primeira linha se houver linhas
-                if (dataGridPesquisar.Rows.Count > 0)
+                if (dataGridPesquisar.CurrentRow != null)
                 {
-                    dataGridPesquisar.ClearSelection();
-                    dataGridPesquisar.Rows[0].Selected = true;
+                    LinhaAtual = dataGridPesquisar.CurrentRow.Index; // Atualiza a linha atual corretamente
+                    SelecionarProduto();
                 }
             }
-            if (e.KeyCode == Keys.Enter)
-            {
-                // Supondo que a seleção está habilitada em FullRowSelect para capturar a linha completa
-                var selectedRow = dataGridPesquisar.CurrentRow;
-                if (selectedRow != null)
-                {
-                    this.Close();
-                }
-            }
+            //if (e.KeyCode == Keys.Up && dataGridPesquisar.CurrentCell.RowIndex == 0)
+            //{
+            //    txtPesquisa.Focus();
+            //}
+
+            //if (dataGridPesquisar.CurrentRow != null)
+            //{
+            //    LinhaAtual = dataGridPesquisar.CurrentRow.Index;
+            //}
+            //// Verifica se a tecla pressionada foi a seta para baixo
+            //if (e.KeyCode == Keys.Down)
+            //{
+            //    // Move o foco para o DataGridView
+            //    dataGridPesquisar.Focus();
+
+            //    // Seleciona a primeira linha se houver linhas
+            //    if (dataGridPesquisar.Rows.Count > 0)
+            //    {
+            //        dataGridPesquisar.ClearSelection();
+            //        dataGridPesquisar.Rows[0].Selected = true;
+            //    }
+            //}
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    // Supondo que a seleção está habilitada em FullRowSelect para capturar a linha completa
+            //    var selectedRow = dataGridPesquisar.CurrentRow;
+            //    if (selectedRow != null)
+            //    {
+            //        this.Close();
+            //    }
+            //}
         }
 
         private void dataGridPesquisar_SelectionChanged(object sender, EventArgs e)
@@ -211,6 +240,38 @@ namespace ComissPro
         }
 
         private void FrmPesquisarProduto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SelecionarProduto();
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                dataGridPesquisar.Focus();
+                if (dataGridPesquisar.Rows.Count > 0)
+                {
+                    // Verificar se a célula é visível antes de defini-la como CurrentCell
+                    DataGridViewCell primeiraCelulaVisivel = null;
+
+                    foreach (DataGridViewCell celula in dataGridPesquisar.Rows[0].Cells)
+                    {
+                        if (celula.Visible)
+                        {
+                            primeiraCelulaVisivel = celula;
+                            break;
+                        }
+                    }
+
+                    if (primeiraCelulaVisivel != null)
+                    {
+                        dataGridPesquisar.CurrentCell = primeiraCelulaVisivel;
+                    }
+                }
+            }
+        }
+
+        private void dataGridPesquisar_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             SelecionarProduto();
         }

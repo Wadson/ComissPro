@@ -34,30 +34,16 @@ namespace ComissPro
                 conn.Close();
             }
         }
-        //public void Inserir(Model.ProdutoMODEL produto)
-        //{
-        //    using (var conexao = Conexao.Conex())
-        //    {
-        //        conexao.Open();
-        //        string sql = "INSERT INTO Produtos (Nome, Preco, Tipo) VALUES (@Nome, @Preco, @Tipo)";
-        //        using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
-        //        {
-        //            cmd.Parameters.AddWithValue("@Nome", produto.Nome);
-        //            cmd.Parameters.AddWithValue("@Preco", produto.Preco);
-        //            cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+       
         public void Inserir(Model.ProdutoMODEL produto)
         {
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "INSERT INTO Produtos (Nome, Preco, Tipo, QuantidadePorBloco) VALUES (@Nome, @Preco, @Tipo, @QuantidadePorBloco)";
+                string sql = "INSERT INTO Produtos (NomeProduto, Preco, Tipo, QuantidadePorBloco) VALUES (@NomeProduto, @Preco, @Tipo, @QuantidadePorBloco)";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@Nome", produto.Nome);
+                    cmd.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     cmd.Parameters.AddWithValue("@Preco", produto.Preco);
                     cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
                     cmd.Parameters.AddWithValue("@QuantidadePorBloco", produto.QuantidadePorBloco);
@@ -72,10 +58,10 @@ namespace ComissPro
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "UPDATE Produtos SET Nome=@Nome, Preco=@Preco, Tipo=@Tipo WHERE ProdutoID=@ProdutoID";
+                string sql = "UPDATE Produtos SET NomeProduto =@NomeProduto, Preco = @Preco, Tipo = @Tipo WHERE ProdutoID = @ProdutoID";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@Nome", produto.Nome);
+                    cmd.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     cmd.Parameters.AddWithValue("@Preco", produto.Preco);
                     cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
                     cmd.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
@@ -105,9 +91,9 @@ namespace ComissPro
             try
             {
                 DataTable dt = new DataTable();
-                string sql = "SELECT ProdutoID, Nome, Preco, Tipo, QuantidadePorBloco FROM Produtos WHERE Nome LIKE @Nome";
+                string sql = "SELECT ProdutoID, NomeProduto, Preco, Tipo, QuantidadePorBloco FROM Produtos WHERE NomeProduto LIKE @NomeProduto";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@Nome", "%" + nome + "%");
+                cmd.Parameters.AddWithValue("@NomeProduto", "%" + nome + "%");
                 conn.Open();
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
@@ -128,9 +114,9 @@ namespace ComissPro
             try
             {
                 DataTable dt = new DataTable();
-                string sql = "SELECT ProdutoID, Nome, Preco, Tipo, QuantidadePorBloco FROM Produtos WHERE ProdutoID LIKE @Nome";
+                string sql = "SELECT ProdutoID, NomeProduto, Preco, Tipo, QuantidadePorBloco FROM Produtos WHERE ProdutoID LIKE @Nome";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@Nome", "%" + nome + "%");
+                cmd.Parameters.AddWithValue("@NomeProduto", "%" + nome + "%");
                 conn.Open();
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {

@@ -222,6 +222,7 @@
             this.btnRelatorios.TabIndex = 9;
             this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRelatorios.UseVisualStyleBackColor = false;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // btnProduto
             // 

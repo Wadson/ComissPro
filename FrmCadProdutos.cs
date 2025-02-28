@@ -53,7 +53,7 @@ namespace ComissPro
                 Model.ProdutoMODEL objetoModel = new Model.ProdutoMODEL();
 
                 objetoModel.ProdutoID = string.IsNullOrEmpty(txtProdutoID.Text) ? 0 : Convert.ToInt32(txtProdutoID.Text);
-                objetoModel.Nome = txtNome.Text;
+                objetoModel.NomeProduto = txtNome.Text;
                 objetoModel.Preco = Double.Parse(txtPreco.Text);
                 objetoModel.Tipo = cmbTipo.Text;
 
@@ -84,7 +84,7 @@ namespace ComissPro
                 Model.ProdutoMODEL objetoModel = new Model.ProdutoMODEL();
 
                 objetoModel.ProdutoID = Convert.ToInt32(txtProdutoID.Text);
-                objetoModel.Nome = txtNome.Text;
+                objetoModel.NomeProduto = txtNome.Text;
                 objetoModel.Preco = double.Parse(txtPreco.Text);
                 objetoModel.Tipo = cmbTipo.Text;
 

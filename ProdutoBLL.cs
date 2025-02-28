@@ -95,7 +95,7 @@ namespace ComissPro
                     else
                     {
                         objeto.ProdutoID = Convert.ToInt32(datareader["ProdutoID"]);
-                        objeto.Nome = datareader["Nome"].ToString();
+                        objeto.NomeProduto = datareader["NomeProduto"].ToString();
                     }
                 }
                 return objeto;
@@ -110,7 +110,7 @@ namespace ComissPro
             }
         }
        
-        public Model.ProdutoMODEL PesquisaFornecedorCodigo(string pesquisa)
+        public Model.ProdutoMODEL PesquisaProdutoCodigo(string pesquisa)
         {
             var conn = Conexao.Conex();
 
@@ -132,7 +132,7 @@ namespace ComissPro
                         Console.WriteLine(erros);
                     }
                     else
-                        objetoVendedor.Nome = datareader["Nome"].ToString();
+                        objetoVendedor.NomeProduto = datareader["NomeProduto"].ToString();
                 }
                 return objetoVendedor;
             }

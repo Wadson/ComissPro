@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,47 @@ namespace ComissPro
 {
     internal class EntregasDal
     {
+        public DataTable listaEntregas()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT
+                            Vendedores.Nome AS NomeVendedor,
+                            Produtos.NomeProduto,
+                            Entregas.QuantidadeEntregue,
+                            Produtos.Preco,
+                            (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
+                            Entregas.DataEntrega,
+                            Entregas.EntregaID,
+                            Entregas.VendedorID,
+                            Entregas.ProdutoID
+                        FROM
+                            Entregas
+                        INNER JOIN
+                            Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
+                        INNER JOIN
+                            Produtos ON Entregas.ProdutoID = Produtos.ProdutoID;
+";
+
+                SQLiteCommand sqlcomando = new SQLiteCommand(query, conn);
+                SQLiteDataAdapter daFornecedor = new SQLiteDataAdapter();
+                daFornecedor.SelectCommand = sqlcomando;
+                DataTable dtFornecedor = new DataTable();
+                daFornecedor.Fill(dtFornecedor);
+                return dtFornecedor;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public void InserirEntrega(EntregasModel entrega)
         {
             using (var conn = Conexao.Conex())
@@ -43,16 +85,16 @@ namespace ComissPro
                 }
             }
         }
-
-        public void ExcluirEntrega(int entregaID)
+               
+        public void Excluir(Model.EntregasModel entrega)
         {
-            using (var conn = Conexao.Conex())
+            using (var conexao = Conexao.Conex())
             {
-                conn.Open();
-                string query = "DELETE FROM Entregas WHERE EntregaID = @EntregaID";
-                using (var cmd = new SQLiteCommand(query, conn))
+                conexao.Open();
+                string sql = "DELETE FROM Entregas WHERE EntregaID = @EntregaID";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@EntregaID", entregaID);
+                    cmd.Parameters.AddWithValue("@EntregaID", entrega.EntregaID);
                     cmd.ExecuteNonQuery();
                 }
             }

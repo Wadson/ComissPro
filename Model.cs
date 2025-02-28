@@ -29,7 +29,7 @@ namespace ComissPro
         public class ProdutoMODEL
         {
             public int ProdutoID { get; set; }
-            public string Nome { get; set; }
+            public string NomeProduto { get; set; }
             public double Preco { get; set; }
             public string Tipo { get; set; }
             public int QuantidadePorBloco { get; set; }

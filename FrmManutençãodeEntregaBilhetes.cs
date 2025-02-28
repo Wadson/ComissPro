@@ -23,32 +23,57 @@ namespace ComissPro
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
-            //Alinhar o as colunas
-            dgv.Columns["EntregaID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["VendedorID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["DataEntrega"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            if (dgv.Columns.Count >= 9)
+            {
+                // Renomeia as colunas
+                dgv.Columns[0].Name = "NomeVendedor";
+                dgv.Columns[1].Name = "NomeProduto";
+                dgv.Columns[2].Name = "QuantidadeEntregue";
+                dgv.Columns[3].Name = "Preco";
+                dgv.Columns[4].Name = "Total";
+                dgv.Columns[5].Name = "DataEntrega";
+                dgv.Columns[6].Name = "EntregaID";
+                dgv.Columns[7].Name = "VendedorID";
+                dgv.Columns[8].Name = "ProdutoID";
 
-            dgv.Columns[0].Name = "EntregaID";
-            dgv.Columns[1].Name = "VendedorID";
-            dgv.Columns[2].Name = "ProdutoID";
-            dgv.Columns[3].Name = "QuantidadeEntregue";
-            dgv.Columns[4].Name = "DataEntrega";            
+                // Define larguras fixas específicas para as colunas
+                dgv.Columns["NomeVendedor"].Width = 150;
+                dgv.Columns["NomeProduto"].Width = 200;
+                dgv.Columns["QuantidadeEntregue"].Width = 100;
+                dgv.Columns["Preco"].Width = 120;
+                dgv.Columns["Total"].Width = 120;
+                dgv.Columns["DataEntrega"].Width = 130;
 
-            //dgv.Columns["FornecedorID"].Visible = false;
-            //dgv.Columns["CidadeID"].Visible = false;
+                // Formatar valores monetários (N2) para Preco e Total
+                dgv.Columns["Preco"].DefaultCellStyle.Format = "N2";
+                dgv.Columns["Total"].DefaultCellStyle.Format = "N2";
 
-            // Ajustar colunas automaticamente
-            //dataGridPesquisar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            // Redimensionar as colunas manualmente
-            dgv.Columns["EntregaID"].Width = 100;
-            dgv.Columns["VendedorID"].Width = 100;
-            dgv.Columns["ProdutoID"].Width = 100;
-            dgv.Columns["QuantidadeEntregue"].Width = 150;
-            dgv.Columns["DataEntrega"].Width = 100;
+                // Formatar DataEntrega como data curta
+                dgv.Columns["DataEntrega"].DefaultCellStyle.Format = "d"; // Formato de data curta (short date)
 
+                // Centralizar a coluna QuantidadeEntregue
+                dgv.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                // Ocultar as colunas VendedorID e ProdutoID
+                dgv.Columns["VendedorID"].Visible = false;
+                dgv.Columns["ProdutoID"].Visible = false;
+
+                // Centralizar cabeçalhos das colunas
+                foreach (DataGridViewColumn column in dgv.Columns)
+                {
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
+                }
+            }
+
+            // Configurações adicionais
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None; // Desativa ajuste automático
+            dgv.ReadOnly = true; // Torna o DataGridView somente leitura
         }
+
+
+
+
         private void CarregaDados()
         {
             FrmControleEntregas frm = new FrmControleEntregas(StatusOperacao);
@@ -72,18 +97,23 @@ namespace ComissPro
                     }
                     // Execução do código desejado
 
-                    frm.txtEntregaID.Text = dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString();
-                    frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["Nome"].Value.ToString();
+                    frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["NomeVendedor"].Value.ToString();
                     frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["NomeProduto"].Value.ToString();
+                    frm.txtQuantidade.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
                     frm.txtPrecoUnit.Text = dataGridPesquisar.CurrentRow.Cells["Preco"].Value.ToString();
-                    frm.txtQuantidade.Text = dataGridPesquisar.CurrentRow.Cells["Quantidade"].Value.ToString();
+                    frm.txtTotal.Text = dataGridPesquisar.CurrentRow.Cells["Total"].Value.ToString();
+                    frm.dtpDataEntregaBilhete.Text = dataGridPesquisar.CurrentRow.Cells["DataEntrega"].Value.ToString(); 
+                    frm.txtEntregaID.Text = dataGridPesquisar.CurrentRow.Cells["EntregaID"].Value.ToString();
+                    frm.VendedorID = int.Parse(dataGridPesquisar.CurrentRow.Cells["VendedorID"].ToString());
+                    frm.ProdutoID = int.Parse(dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString());
+
 
                     frm.lblStatus.Text = "ALTERAR CADASTRO";
                     frm.lblStatus.ForeColor = Color.Orange;
                     StatusOperacao = "ALTERAR";
 
                     frm.btnNovo.Enabled = false;
-                    frm.btnConfirmar.Text = "Alterar";
+                    frm.btnSalvar.Text = "Alterar";
 
                     frm.ShowDialog();
                 }
@@ -107,12 +137,15 @@ namespace ComissPro
                     else
                         // Exemplo: Acessar a primeira célula de cada linha
                         //  var valor = row.Cells[0].Value;
-                    frm.txtEntregaID.Text = dataGridPesquisar.CurrentRow.Cells["EntregaID"].Value.ToString();
-                    frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["Nome"].Value.ToString();
+                        frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["NomeVendedor"].Value.ToString();
                     frm.txtNomeProduto.Text = dataGridPesquisar.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                    frm.txtQuantidade.Text = dataGridPesquisar.CurrentRow.Cells["Quantidade"].Value.ToString();
+                    frm.txtQuantidade.Text = dataGridPesquisar.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
                     frm.txtPrecoUnit.Text = dataGridPesquisar.CurrentRow.Cells["Preco"].Value.ToString();
                     frm.txtTotal.Text = dataGridPesquisar.CurrentRow.Cells["Total"].Value.ToString();
+                    frm.dtpDataEntregaBilhete.Text = dataGridPesquisar.CurrentRow.Cells["DataEntrega"].Value.ToString();
+                    frm.txtEntregaID.Text = dataGridPesquisar.CurrentRow.Cells["EntregaID"].Value.ToString();
+                    frm.VendedorID = int.Parse(dataGridPesquisar.CurrentRow.Cells["VendedorID"].ToString());
+                    frm.ProdutoID = int.Parse(dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString());
 
                     frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
                     frm.lblStatus.ForeColor = Color.Red;
@@ -128,7 +161,7 @@ namespace ComissPro
                     frm.txtPrecoUnit.Enabled = false;
                     frm.txtTotal.Enabled = false;
 
-                    frm.btnConfirmar.Text = "Excluir";
+                    frm.btnSalvar.Text = "Excluir";
                     frm.ShowDialog();
                 }
                 catch (Exception ex)
@@ -140,8 +173,8 @@ namespace ComissPro
         }
         public void Listar()
         {
-            ProdutoDAL objetoDAL = new ProdutoDAL();
-            dataGridPesquisar.DataSource = objetoDAL.listarProduto();
+            EntregasDal objetoDAL = new EntregasDal();
+            dataGridPesquisar.DataSource = objetoDAL.listaEntregas();
             PersonalizarDataGridView(dataGridPesquisar);
         }
         public void HabilitarTimer(bool habilitar)

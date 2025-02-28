@@ -22,6 +22,20 @@ namespace ComissPro
             InitializeComponent();
 
             Utilitario.AdicionarEfeitoFocoEmTodos(this);
+            // Verifica se o formulário chamador é válido
+            if (formChamador != null)
+            {
+                this.FormChamador = formChamador;
+            }
+            this.Owner = formChamador;
+
+            txtPesquisa.Text = textoDigitado; // Define a letra pressionada no campo de pesquisa
+            txtPesquisa.SelectionStart = txtPesquisa.Text.Length; // Coloca o cursor no final
+            txtPesquisa.Focus(); // Foca o campo para continuar digitando
+
+            // Configurar o TextBox para capturar o evento KeyDown
+            this.txtPesquisa.KeyDown += new KeyEventHandler(dataGridPesquisar_KeyDown);
+            this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
         }
         // No FrmLocalizarProduto, após selecionar o produto e fechar o formulário
         private bool isSelectingVendedor = false;
@@ -99,7 +113,7 @@ namespace ComissPro
             dgv.Columns[3].Name = "Telefone";
 
             // Ajustar colunas automaticamente
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
             // Tornar o grid somente leitura
             dgv.ReadOnly = true;
@@ -123,6 +137,14 @@ namespace ComissPro
                 column.HeaderCell.Style.WrapMode = DataGridViewTriState.False; // Evitar quebra de texto no cabeçalho
                 column.Width = 100; // Definir largura específica para cada coluna
             }
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                if (column.Name == "Nome")
+                    column.Width = 250; // Largura maior para a coluna "Nome"
+                else
+                    column.Width = 100; // Largura padrão para as demais colunas
+            }
+
         }
         public void Listar()
         {
@@ -165,6 +187,51 @@ namespace ComissPro
         private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             SelecionarVendedor();
+        }
+
+        private void dataGridPesquisar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up && dataGridPesquisar.CurrentCell.RowIndex == 0)
+            {
+                txtPesquisa.Focus();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita o "beep" do Enter no DataGridView
+
+                if (dataGridPesquisar.CurrentRow != null)
+                {
+                    LinhaAtual = dataGridPesquisar.CurrentRow.Index; // Atualiza a linha atual corretamente
+                    SelecionarVendedor();
+                }
+            }
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down)
+            {
+                dataGridPesquisar.Focus();
+                if (dataGridPesquisar.Rows.Count > 0)
+                {
+                    // Verificar se a célula é visível antes de defini-la como CurrentCell
+                    DataGridViewCell primeiraCelulaVisivel = null;
+
+                    foreach (DataGridViewCell celula in dataGridPesquisar.Rows[0].Cells)
+                    {
+                        if (celula.Visible)
+                        {
+                            primeiraCelulaVisivel = celula;
+                            break;
+                        }
+                    }
+
+                    if (primeiraCelulaVisivel != null)
+                    {
+                        dataGridPesquisar.CurrentCell = primeiraCelulaVisivel;
+                    }
+                }
+            }
         }
     }
 }

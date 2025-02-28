@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexao.cs" />
+    <Compile Include="EntregasBLL.cs" />
     <Compile Include="EntregasDal.cs" />
     <Compile Include="FrmCadProdutos.cs">
       <SubType>Form</SubType>

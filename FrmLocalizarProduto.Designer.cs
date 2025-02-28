@@ -54,6 +54,7 @@
             this.dataGridPesquisar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridPesquisar.Size = new System.Drawing.Size(571, 199);
             this.dataGridPesquisar.TabIndex = 600;
+            this.dataGridPesquisar.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPesquisar_CellContentDoubleClick);
             this.dataGridPesquisar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPesquisar_CellDoubleClick);
             this.dataGridPesquisar.SelectionChanged += new System.EventHandler(this.dataGridPesquisar_SelectionChanged);
             this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
@@ -148,11 +149,11 @@
             this.txtPesquisa.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
             this.txtPesquisa.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtPesquisa.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtPesquisa.TabIndex = 634;
-            this.txtPesquisa.TabStop = false;
+            this.txtPesquisa.TabIndex = 0;
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             // 
-            // FrmPesquisarProduto
+            // FrmLocalizarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(588, 335);
@@ -161,7 +162,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.dataGridPesquisar);
-            this.Name = "FrmPesquisarProduto";
+            this.KeyPreview = false;
+            this.Name = "FrmLocalizarProduto";
             this.Text = "Localizar Produto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPesquisarProduto_FormClosing);
             this.Load += new System.EventHandler(this.FrmPesquisarProduto_Load);
