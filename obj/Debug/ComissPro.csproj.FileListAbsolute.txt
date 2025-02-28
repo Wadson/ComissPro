@@ -48,3 +48,4 @@ D:\ComissPro\bin\Debug\System.Data.SQLite.xml
 D:\ComissPro\obj\Debug\ComissPro.csproj.Up2Date
 D:\ComissPro\obj\Debug\ComissPro.exe
 D:\ComissPro\obj\Debug\ComissPro.pdb
+D:\ComissPro\obj\Debug\ComissPro.FrmRelatoriosComissoes.resources

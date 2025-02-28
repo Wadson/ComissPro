@@ -207,5 +207,11 @@ namespace ComissPro
             FrmPrestacaoDeContas formPrestacao = new FrmPrestacaoDeContas(StatusOperacao);            
             formPrestacao.ShowDialog();
         }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            FrmRelatoriosComissoes formRelatorios = new FrmRelatoriosComissoes();
+            formRelatorios.ShowDialog();
+        }
     }
 }

@@ -86,7 +86,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(476, 288);
+            this.btnSair.Location = new System.Drawing.Point(491, 78);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -139,13 +139,13 @@
             this.btnSair.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateTracking.Border.Rounding = 20;
             this.btnSair.StateTracking.Border.Width = 1;
-            this.btnSair.TabIndex = 648;
+            this.btnSair.TabIndex = 4;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(324, 288);
+            this.btnNovo.Location = new System.Drawing.Point(339, 78);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -199,12 +199,12 @@
             this.btnNovo.StateTracking.Border.Rounding = 20;
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNovo.TabIndex = 647;
+            this.btnNovo.TabIndex = 3;
             this.btnNovo.Values.Text = "&Novo";
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(172, 288);
+            this.btnSalvar.Location = new System.Drawing.Point(187, 78);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalvar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -257,7 +257,7 @@
             this.btnSalvar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalvar.StateTracking.Border.Rounding = 20;
             this.btnSalvar.StateTracking.Border.Width = 1;
-            this.btnSalvar.TabIndex = 646;
+            this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Values.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
@@ -624,7 +624,8 @@
             this.txtValorRecebido.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.txtValorRecebido.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorRecebido.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtValorRecebido.TabIndex = 2;
+            this.txtValorRecebido.TabIndex = 201;
+            this.txtValorRecebido.TabStop = false;
             this.txtValorRecebido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPercentualComissao
@@ -646,6 +647,7 @@
             this.txtPercentualComissao.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPercentualComissao.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtPercentualComissao.TabIndex = 683;
+            this.txtPercentualComissao.TabStop = false;
             this.txtPercentualComissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPercentualComissao.Leave += new System.EventHandler(this.txtPercentualComissao_Leave);
             // 
@@ -692,7 +694,10 @@
             this.kryptonGroupBox4.Panel.Controls.Add(this.txtPercentualComissao);
             this.kryptonGroupBox4.Panel.Controls.Add(this.label12);
             this.kryptonGroupBox4.Panel.Controls.Add(this.txtQtdDevolvida);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(810, 93);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.btnSair);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.btnSalvar);
+            this.kryptonGroupBox4.Panel.Controls.Add(this.btnNovo);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(810, 159);
             this.kryptonGroupBox4.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.kryptonGroupBox4.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -744,11 +749,8 @@
             this.Controls.Add(this.txtPrecoUnit);
             this.Controls.Add(this.txtNomeProduto);
             this.Controls.Add(this.label);
-            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.txtQuantidadeEntregue);
-            this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.dtpDataEntrega);
             this.KeyPreview = true;

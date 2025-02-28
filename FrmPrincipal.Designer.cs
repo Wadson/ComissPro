@@ -41,6 +41,7 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTipoUsuarioo = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnRelatorios = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.btnVendedor = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -139,6 +140,7 @@
             // 
             this.kryptonPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel2.Controls.Add(this.btnRelatorios);
             this.kryptonPanel2.Controls.Add(this.btnUsuario);
             this.kryptonPanel2.Controls.Add(this.btnVendedor);
             this.kryptonPanel2.Controls.Add(this.btnSair);
@@ -151,6 +153,27 @@
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridDataCellCustom1;
             this.kryptonPanel2.Size = new System.Drawing.Size(1010, 110);
             this.kryptonPanel2.TabIndex = 610;
+            // 
+            // btnRelatorios
+            // 
+            this.btnRelatorios.BackColor = System.Drawing.Color.Transparent;
+            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelatorios.FlatAppearance.BorderSize = 0;
+            this.btnRelatorios.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorios.Image = global::ComissPro.Properties.Resources.comissao;
+            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRelatorios.Location = new System.Drawing.Point(415, 4);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Size = new System.Drawing.Size(75, 95);
+            this.btnRelatorios.TabIndex = 10;
+            this.btnRelatorios.Text = "&Relatórios";
+            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnRelatorios, "Prestação de contas");
+            this.btnRelatorios.UseVisualStyleBackColor = false;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // btnUsuario
             // 
@@ -225,7 +248,7 @@
             this.btnPrestacaoContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrestacaoContas.Image = global::ComissPro.Properties.Resources.EntregaBilhete64;
             this.btnPrestacaoContas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrestacaoContas.Location = new System.Drawing.Point(346, 4);
+            this.btnPrestacaoContas.Location = new System.Drawing.Point(334, 4);
             this.btnPrestacaoContas.Name = "btnPrestacaoContas";
             this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 95);
             this.btnPrestacaoContas.TabIndex = 9;
@@ -247,7 +270,7 @@
             this.btnProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProduto.Image = global::ComissPro.Properties.Resources.Bilhete64;
             this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnProduto.Location = new System.Drawing.Point(176, 3);
+            this.btnProduto.Location = new System.Drawing.Point(172, 3);
             this.btnProduto.Name = "btnProduto";
             this.btnProduto.Size = new System.Drawing.Size(75, 95);
             this.btnProduto.TabIndex = 4;
@@ -268,7 +291,7 @@
             this.btnManutencaoEntregas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManutencaoEntregas.Image = global::ComissPro.Properties.Resources.PrestacaoDeconta64;
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnManutencaoEntregas.Location = new System.Drawing.Point(261, 4);
+            this.btnManutencaoEntregas.Location = new System.Drawing.Point(253, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
             this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 95);
             this.btnManutencaoEntregas.TabIndex = 6;
@@ -404,5 +427,6 @@
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnRelatorios;
     }
 }

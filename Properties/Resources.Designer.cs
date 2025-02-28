@@ -113,6 +113,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap comissao {
+            get {
+                object obj = ResourceManager.GetObject("comissao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Comissao64 {
             get {
                 object obj = ResourceManager.GetObject("Comissao64", resourceCulture);
@@ -246,6 +256,16 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap PrestacaoDeconta64 {
             get {
                 object obj = ResourceManager.GetObject("PrestacaoDeconta64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Relatorio32 {
+            get {
+                object obj = ResourceManager.GetObject("Relatorio32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

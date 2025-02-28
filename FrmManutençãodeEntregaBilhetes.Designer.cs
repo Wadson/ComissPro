@@ -43,6 +43,7 @@
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnPrestacaoDeContas = new System.Windows.Forms.Button();
+            this.btnRelatorios = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -405,17 +406,37 @@
             this.btnPrestacaoDeContas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrestacaoDeContas.Location = new System.Drawing.Point(631, 238);
             this.btnPrestacaoDeContas.Name = "btnPrestacaoDeContas";
-            this.btnPrestacaoDeContas.Size = new System.Drawing.Size(148, 45);
+            this.btnPrestacaoDeContas.Size = new System.Drawing.Size(148, 40);
             this.btnPrestacaoDeContas.TabIndex = 628;
             this.btnPrestacaoDeContas.Text = "Prestação de Contas";
             this.btnPrestacaoDeContas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrestacaoDeContas.UseVisualStyleBackColor = false;
             this.btnPrestacaoDeContas.Click += new System.EventHandler(this.btnPrestacaoDeContas_Click);
             // 
+            // btnRelatorios
+            // 
+            this.btnRelatorios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRelatorios.BackColor = System.Drawing.Color.Khaki;
+            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.Khaki;
+            this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorios.Image = global::ComissPro.Properties.Resources.Relatorio32;
+            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelatorios.Location = new System.Drawing.Point(631, 282);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Size = new System.Drawing.Size(148, 40);
+            this.btnRelatorios.TabIndex = 629;
+            this.btnRelatorios.Text = "&Relatórios";
+            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRelatorios.UseVisualStyleBackColor = false;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
+            // 
             // FrmManutençãodeEntregaBilhetes
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.btnRelatorios);
             this.Controls.Add(this.btnPrestacaoDeContas);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.lblTotalRegistros);
@@ -457,5 +478,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPrestacaoDeContas;
+        private System.Windows.Forms.Button btnRelatorios;
     }
 }

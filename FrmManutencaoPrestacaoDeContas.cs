@@ -13,7 +13,7 @@ namespace ComissPro
 {
     public partial class FrmManutencaoPrestacaoDeContas : KryptonForm
     {
-        private new string StatusOperacao;
+        private string StatusOperacao;
         public FrmManutencaoPrestacaoDeContas(string statusOperacao)
         {
             InitializeComponent();
