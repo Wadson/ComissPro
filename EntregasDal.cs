@@ -38,24 +38,20 @@ namespace ComissPro
                 conn.Open();
 
                 string query = @"
-                SELECT
-                    Vendedores.Nome AS NomeVendedor,
-                    Produtos.NomeProduto,
-                    Entregas.QuantidadeEntregue,
-                    Produtos.Preco,
-                    (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
-                    Entregas.DataEntrega,
-                    Entregas.EntregaID,
-                    Entregas.VendedorID,
-                    Entregas.ProdutoID
-                FROM
-                    Entregas
-                INNER JOIN
-                    Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
-                INNER JOIN
-                    Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
-                WHERE
-                    Entregas.PrestacaoRealizada = 0";
+            SELECT 
+                e.EntregaID, 
+                e.VendedorID, 
+                COALESCE(v.Nome, 'Vendedor Excluído') AS NomeVendedor, 
+                e.ProdutoID, 
+                p.NomeProduto, 
+                e.QuantidadeEntregue, 
+                e.DataEntrega, 
+                e.PrestacaoRealizada,
+                (e.QuantidadeEntregue * COALESCE(p.Preco, 0)) AS Total
+            FROM Entregas e
+            LEFT JOIN Vendedores v ON e.VendedorID = v.VendedorID
+            LEFT JOIN Produtos p ON e.ProdutoID = p.ProdutoID
+            WHERE e.PrestacaoRealizada = 0;";
 
                 SQLiteCommand sqlcomando = new SQLiteCommand(query, conn);
                 SQLiteDataAdapter daFornecedor = new SQLiteDataAdapter();
@@ -66,13 +62,21 @@ namespace ComissPro
                 // Calcular totais
                 if (dtFornecedor.Rows.Count > 0)
                 {
-                    long totalQuantidadeEntregue = dtFornecedor.AsEnumerable().Sum(row => Convert.ToInt64(row["QuantidadeEntregue"]));
-                    double totalTotal = dtFornecedor.AsEnumerable().Sum(row => Convert.ToDouble(row["Total"]));
+                    long totalQuantidadeEntregue = dtFornecedor.AsEnumerable()
+                        .Sum(row => row["QuantidadeEntregue"] is DBNull ? 0 : Convert.ToInt64(row["QuantidadeEntregue"]));
+                    double totalTotal = dtFornecedor.AsEnumerable()
+                        .Sum(row => row["Total"] is DBNull ? 0.0 : Convert.ToDouble(row["Total"]));
 
-                    // Adicionar linha de totais
+                    // Adicionar linha de totais com valores padrão para todas as colunas
                     DataRow totalRow = dtFornecedor.NewRow();
+                    totalRow["EntregaID"] = DBNull.Value; // ou 0, dependendo do seu uso
+                    totalRow["VendedorID"] = DBNull.Value; // ou -1 para indicar "sem vendedor"
                     totalRow["NomeVendedor"] = "Totais";
+                    totalRow["ProdutoID"] = DBNull.Value; // ou -1
+                    totalRow["NomeProduto"] = DBNull.Value; // ou "N/A"
                     totalRow["QuantidadeEntregue"] = totalQuantidadeEntregue;
+                    totalRow["DataEntrega"] = DBNull.Value; // ou DateTime.Now, se preferir
+                    totalRow["PrestacaoRealizada"] = DBNull.Value; // ou 0
                     totalRow["Total"] = totalTotal;
                     dtFornecedor.Rows.Add(totalRow);
                 }

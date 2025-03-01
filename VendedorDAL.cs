@@ -48,13 +48,9 @@ namespace ComissPro
                     {
                         cmd.Parameters.AddWithValue("@Nome", vendedor.Nome);
                         cmd.Parameters.AddWithValue("@CPF", vendedor.CPF);
-                        cmd.Parameters.AddWithValue("@Telefone", vendedor.Telefone); // Telefone sem máscara
+                        cmd.Parameters.AddWithValue("@Telefone", vendedor.Telefone);
                         cmd.Parameters.AddWithValue("@Comissao", vendedor.Comissao);
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected == 0)
-                        {
-                            throw new Exception("Nenhum registro foi inserido.");
-                        }
+                        cmd.ExecuteNonQuery();
                     }
                 }
             }
@@ -64,7 +60,25 @@ namespace ComissPro
                 throw;
             }
         }
-        public bool VerificarVendedorExistente(string nome, string telefone)
+
+        // Verifica se o nome já existe
+        public bool NomeExiste(string nome)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                string sql = "SELECT COUNT(*) FROM Vendedores WHERE Nome = @Nome";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", nome);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+
+        // Verifica se o telefone já existe
+        public bool TelefoneExiste(string telefone)
         {
             using (var conexao = Conexao.Conex())
             {
@@ -78,27 +92,28 @@ namespace ComissPro
                 }
             }
         }
-        //public bool VerificarVendedorExistente(string nome, string telefone)
-        //{
-        //    using (var conexao = Conexao.Conex())
-        //    {
-        //        conexao.Open();
-        //        string sql = "SELECT COUNT(*) FROM Vendedores WHERE Nome = @Nome AND REPLACE(REPLACE(REPLACE(REPLACE(Telefone, '(', ''), ')', ''), ' ', ''), '-', '') = @Telefone";
-        //        using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
-        //        {
-        //            cmd.Parameters.AddWithValue("@Nome", nome);
-        //            cmd.Parameters.AddWithValue("@Telefone", telefone); // Telefone já vem sem máscara do formulário
-        //            int count = Convert.ToInt32(cmd.ExecuteScalar());
-        //            return count > 0;
-        //        }
-        //    }
-        //}
+
+        // Busca o nome do vendedor associado a um telefone
+        public string BuscarNomePorTelefone(string telefone)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                string sql = "SELECT Nome FROM Vendedores WHERE Telefone = @Telefone LIMIT 1";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@Telefone", telefone);
+                    var resultado = cmd.ExecuteScalar();
+                    return resultado != null ? resultado.ToString() : null;
+                }
+            }
+        }
+
         public string BuscarNomeParecido(string nome)
         {
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                // Compara nomes ignorando espaços e considerando partes principais
                 string sql = "SELECT Nome FROM Vendedores WHERE REPLACE(Nome, ' ', '') LIKE '%' || REPLACE(@Nome, ' ', '') || '%' OR REPLACE(@Nome, ' ', '') LIKE '%' || REPLACE(Nome, ' ', '') || '%'";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
@@ -108,6 +123,7 @@ namespace ComissPro
                 }
             }
         }
+         
 
         public void Alterar(Model.VendedorMODEL vendedor)
         {
@@ -127,20 +143,57 @@ namespace ComissPro
             }
         }
 
-        public void Excluir(Model.VendedorMODEL vendedor)
+        //public void Excluir(Model.VendedorMODEL vendedor)
+        //{
+        //    using (var conexao = Conexao.Conex())
+        //    {
+        //        conexao.Open();
+        //        string sql = "DELETE FROM Vendedores WHERE VendedorID=@VendedorID";
+        //        using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+        //        {
+        //            cmd.Parameters.AddWithValue("@VendedorID", vendedor.VendedorID);
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
+        public int ContarEntregasPendentes(int vendedorID)
         {
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "DELETE FROM Vendedores WHERE VendedorID=@VendedorID";
+                string sql = "SELECT COUNT(*) FROM Entregas WHERE VendedorID = @VendedorID AND PrestacaoRealizada = 0";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@VendedorID", vendedor.VendedorID);
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@VendedorID", vendedorID);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }
 
+        public void Excluir(int vendedorID)
+        {
+            try
+            {
+                using (var conexao = Conexao.Conex())
+                {
+                    conexao.Open();
+                    string sql = "DELETE FROM Vendedores WHERE VendedorID = @VendedorID";
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@VendedorID", vendedorID);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception("Nenhum vendedor foi excluído.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao excluir vendedor: " + ex.Message);
+            }
+        }
 
         public DataTable PesquisarPorNome(string nome)
         {

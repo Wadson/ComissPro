@@ -37,24 +37,38 @@ namespace ComissPro
             vendedorDal.Salvar(vendedor);
         }
 
-        public bool VendedorExiste(string nome, string telefone)
+        public bool ValidarDuplicata(string nome, string telefone, out string mensagem)
         {
-            bool existe = vendedorDal.VerificarVendedorExistente(nome, telefone);
-            // Para depuração: exibe se encontrou duplicata
-            if (existe)
-                MessageBox.Show($"Duplicata detectada: Nome = {nome}, Telefone = {telefone}");
-            return existe;
+            bool nomeDuplicado = vendedorDal.NomeExiste(nome);
+            bool telefoneDuplicado = !string.IsNullOrEmpty(telefone) && vendedorDal.TelefoneExiste(telefone); // Ignora validação se telefone estiver vazio
+
+            if (nomeDuplicado && telefoneDuplicado)
+            {
+                mensagem = "Já existe um vendedor cadastrado com este Nome e Telefone!";
+                return true;
+            }
+            else if (nomeDuplicado)
+            {
+                mensagem = "Já existe um vendedor cadastrado com este Nome!";
+                return true;
+            }
+            else if (telefoneDuplicado)
+            {
+                string nomeExistente = vendedorDal.BuscarNomePorTelefone(telefone);
+                mensagem = $"O telefone {telefone} já está cadastrado para o vendedor '{nomeExistente}'!";
+                return true;
+            }
+            else
+            {
+                mensagem = string.Empty;
+                return false;
+            }
         }
 
         public string VerificarNomeParecido(string nome)
         {
-            string nomeParecido = vendedorDal.BuscarNomeParecido(nome);
-            // Para depuração: exibe se encontrou nome parecido
-            if (nomeParecido != null)
-                MessageBox.Show($"Nome parecido encontrado: {nomeParecido}");
-            return nomeParecido;
+            return vendedorDal.BuscarNomeParecido(nome);
         }
-
 
 
         private void Log(string message)
@@ -63,17 +77,12 @@ namespace ComissPro
         }
         public void Excluir(Model.VendedorMODEL vendedor)
         {
-            try
+            int entregasPendentes = vendedorDal.ContarEntregasPendentes(vendedor.VendedorID);
+            if (entregasPendentes > 0)
             {
-                Log($"Iniciando exclusão do Vendedores com ID: {vendedor.VendedorID}");
-                vendedorDal = new VendedorDAL();
-                vendedorDal.Excluir(vendedor);
-                Log("Vendedor excluído com sucesso.");
+                throw new Exception($"Não é possível excluir o vendedor. Há {entregasPendentes} entrega(s) pendente(s) de prestação de contas!");
             }
-            catch (Exception erro)
-            {
-                Log($"Erro ao limpar o formulário: {erro.Message}");
-            }
+            vendedorDal.Excluir(vendedor.VendedorID);
         }
 
         public void Alterar(Model.VendedorMODEL vendedor)

@@ -25,29 +25,27 @@ namespace ComissPro
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
-            if (dgv.Columns.Count >= 9)
+            if (dgv.Columns.Count >= 9) // Verifica se há pelo menos 9 colunas (conforme listaEntregas)
             {
-                // Renomeia as colunas
-                dgv.Columns[0].Name = "NomeVendedor";
-                dgv.Columns[1].Name = "NomeProduto";
-                dgv.Columns[2].Name = "QuantidadeEntregue";
-                dgv.Columns[3].Name = "Preco";
-                dgv.Columns[4].Name = "Total";
-                dgv.Columns[5].Name = "DataEntrega";
-                dgv.Columns[6].Name = "EntregaID";
-                dgv.Columns[7].Name = "VendedorID";
-                dgv.Columns[8].Name = "ProdutoID";
+                // Renomeia as colunas de acordo com a ordem real retornada por listaEntregas()
+                dgv.Columns[0].Name = "EntregaID";
+                dgv.Columns[1].Name = "VendedorID";
+                dgv.Columns[2].Name = "NomeVendedor";
+                dgv.Columns[3].Name = "ProdutoID";
+                dgv.Columns[4].Name = "NomeProduto";
+                dgv.Columns[5].Name = "QuantidadeEntregue";
+                dgv.Columns[6].Name = "DataEntrega";
+                dgv.Columns[7].Name = "PrestacaoRealizada";
+                dgv.Columns[8].Name = "Total";
 
-                // Define larguras fixas específicas para as colunas
+                // Define larguras fixas específicas para as colunas visíveis
                 dgv.Columns["NomeVendedor"].Width = 250;
                 dgv.Columns["NomeProduto"].Width = 200;
                 dgv.Columns["QuantidadeEntregue"].Width = 140;
-                dgv.Columns["Preco"].Width = 120;
                 dgv.Columns["Total"].Width = 120;
                 dgv.Columns["DataEntrega"].Width = 130;
 
-                // Formatar valores monetários (N2) para Preco e Total
-                dgv.Columns["Preco"].DefaultCellStyle.Format = "N2";
+                // Formatar valores monetários (N2) para Total
                 dgv.Columns["Total"].DefaultCellStyle.Format = "N2";
 
                 // Formatar DataEntrega como data curta
@@ -56,9 +54,11 @@ namespace ComissPro
                 // Centralizar a coluna QuantidadeEntregue
                 dgv.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                // Ocultar as colunas VendedorID e ProdutoID
+                // Ocultar as colunas não necessárias
                 dgv.Columns["VendedorID"].Visible = false;
                 dgv.Columns["ProdutoID"].Visible = false;
+                dgv.Columns["PrestacaoRealizada"].Visible = false;
+                dgv.Columns["EntregaID"].Visible = false; // Opcional, já que é usado no txtEntregaID
 
                 // Centralizar cabeçalhos das colunas
                 foreach (DataGridViewColumn column in dgv.Columns)
@@ -84,11 +84,40 @@ namespace ComissPro
             };
         }
 
+        public void CarregarEntregasNoGrid()
+        {
+            try
+            {
+                EntregasDal objetoDAL = new EntregasDal();
+                DataTable dt = objetoDAL.listaEntregas();
+                dataGridManutencaoEntregas.DataSource = dt;
+
+                // Ajustar nomes das colunas visíveis (HeaderText, não Name)
+                dataGridManutencaoEntregas.Columns["EntregaID"].HeaderText = "ID Entrega";
+                dataGridManutencaoEntregas.Columns["NomeVendedor"].HeaderText = "Vendedor";
+                dataGridManutencaoEntregas.Columns["NomeProduto"].HeaderText = "Produto";
+                dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade";
+                dataGridManutencaoEntregas.Columns["Total"].HeaderText = "Total";
+                dataGridManutencaoEntregas.Columns["DataEntrega"].HeaderText = "Data";
+
+                // Opcional: ocultar colunas não necessárias
+                dataGridManutencaoEntregas.Columns["VendedorID"].Visible = false;
+                dataGridManutencaoEntregas.Columns["ProdutoID"].Visible = false;
+                dataGridManutencaoEntregas.Columns["PrestacaoRealizada"].Visible = false;
+
+                // Chamar personalização
+                PersonalizarDataGridView(dataGridManutencaoEntregas);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar entregas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Remover ou ajustar o método Listar para evitar duplicação
         public void Listar()
         {
-            EntregasDal objetoDAL = new EntregasDal();
-            dataGridManutencaoEntregas.DataSource = objetoDAL.listaEntregas();
-            PersonalizarDataGridView(dataGridManutencaoEntregas);
+            CarregarEntregasNoGrid(); // Redireciona para o método consolidado
         }
 
         private void CarregaDados()
@@ -108,15 +137,18 @@ namespace ComissPro
                     // Bloqueia os eventos temporariamente
                     formEntregas.bloqueiaEventosTextChanged = true;
 
-                    formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
-                    formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                    formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
-                    formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value.ToString();
-                    formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value.ToString();
-                    formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value.ToString();
-                    formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value.ToString();
-                    formEntregas.VendedorID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].Value.ToString());
-                    formEntregas.ProdutoID = int.Parse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value.ToString());
+                    // Atribuir valores às TextBox usando as colunas corretas
+                    formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value?.ToString() ?? "Vendedor Excluído";
+                    formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value?.ToString() ?? "Produto Desconhecido";
+                    formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value?.ToString() ?? "0";
+                    formEntregas.txtPrecoUnit.Text = "0"; // Preço não está na query, ajustar se necessário
+                    formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value?.ToString() ?? "0.00";
+                    formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value?.ToString() ?? DateTime.Now.ToString("dd/MM/yyyy");
+                    formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value?.ToString() ?? "0";
+
+                    // Tratar conversão de VendedorID e ProdutoID com TryParse
+                    formEntregas.VendedorID = int.TryParse(dataGridManutencaoEntregas.CurrentRow.Cells["VendedorID"].Value?.ToString(), out int vendedorID) ? vendedorID : -1;
+                    formEntregas.ProdutoID = int.TryParse(dataGridManutencaoEntregas.CurrentRow.Cells["ProdutoID"].Value?.ToString(), out int produtoID) ? produtoID : -1;
 
                     if (StatusOperacao == "ALTERAR")
                     {
@@ -130,11 +162,10 @@ namespace ComissPro
                         formEntregas.txtNomeProduto.Enabled = false;
                         formEntregas.btnLocalizarVendedor.Enabled = false;
                         formEntregas.btnLocalizarProduto.Enabled = false;
-
                     }
                     else if (StatusOperacao == "EXCLUSÃO")
                     {
-                        formEntregas.lblStatus.Text = "Exluir registro!";
+                        formEntregas.lblStatus.Text = "Excluir registro!";
                         formEntregas.lblStatus.ForeColor = Color.Red;
                         formEntregas.btnSalvar.Text = "Excluir";
 
@@ -158,18 +189,10 @@ namespace ComissPro
             }
             else if (StatusOperacao == "NOVO")
             {
-                formEntregas.lblStatus.Text = "ENTREGA DE BILHETES";                
+                formEntregas.lblStatus.Text = "ENTREGA DE BILHETES";
                 formEntregas.ShowDialog();
             }
         }
-
-
-        //public void Listar()
-        //{
-        //    EntregasDal objetoDAL = new EntregasDal();
-        //    dataGridManutencaoEntregas.DataSource = objetoDAL.listaEntregas();
-        //    PersonalizarDataGridView(dataGridManutencaoEntregas);
-        //}
         public void HabilitarTimer(bool habilitar)
         {
             timer1.Enabled = habilitar;

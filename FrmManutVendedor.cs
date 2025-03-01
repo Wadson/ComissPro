@@ -24,28 +24,39 @@ namespace ComissPro
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
-            //Alinhar o as colunas
+            // Alinhar as colunas
             dgv.Columns["VendedorID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dgv.Columns["Cpf"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dgv.Columns["Telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
 
             dgv.Columns[0].Name = "VendedorID";
             dgv.Columns[1].Name = "Nome";
-            dgv.Columns[2].Name = "Cpf";            
+            dgv.Columns[2].Name = "Cpf";
             dgv.Columns[3].Name = "Telefone";
             dgv.Columns[4].Name = "Comissao";
 
-            //dgv.Columns["FornecedorID"].Visible = false;
-            //dgv.Columns["CidadeID"].Visible = false;
-
-            // Ajustar colunas automaticamente
-            //dataGridPesquisar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            // Redimensionar as colunas manualmente
+            // Ajustar largura das colunas
             dgv.Columns["VendedorID"].Width = 100;
             dgv.Columns["Nome"].Width = 400;
             dgv.Columns["Cpf"].Width = 150;
             dgv.Columns["Telefone"].Width = 150;
 
+            // Adicionar evento CellFormatting para formatar o telefone
+            dgv.CellFormatting += (sender, e) =>
+            {
+                if (e.ColumnIndex == dgv.Columns["Telefone"].Index && e.Value != null)
+                {
+                    e.Value = FormatarTelefone(e.Value.ToString());
+                    e.FormattingApplied = true; // Indica que a formatação foi aplicada
+                }
+            };
+        }
+        private string FormatarTelefone(string telefone)
+        {
+            if (string.IsNullOrEmpty(telefone) || telefone.Length != 11)
+                return telefone; // Retorna sem formatação se estiver vazio ou tiver tamanho inválido
+            return $"({telefone.Substring(0, 2)}) {telefone.Substring(2, 1)} {telefone.Substring(3, 4)}-{telefone.Substring(7, 4)}";
+            // Ex.: "94992253948" vira "(94) 9 9225-3948"
         }
         private void CarregaDados()
         {
@@ -61,19 +72,19 @@ namespace ComissPro
             {
                 try
                 {
-                    // Verificar se a DataGridView contém alguma linha
                     if (dataGridPesquisar.Rows.Count == 0)
                     {
-                        // Lançar exceção personalizada
-                        //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
                         MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        return;
                     }
-                    // Execução do código desejado
 
                     frm.txtVendedorID.Text = dataGridPesquisar.CurrentRow.Cells["VendedorID"].Value.ToString();
                     frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["Nome"].Value.ToString();
-                    frm.txtCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cpf"].Value.ToString();                    
-                    frm.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
+                    frm.txtCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cpf"].Value.ToString();
+                    // Formatar o telefone ao carregar
+                    string telefoneSemMascara = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
+                    frm.txtTelefone.Text = FormatarTelefone(telefoneSemMascara);
+                    frm.txtPercentualComissao.Text = dataGridPesquisar.CurrentRow.Cells["Comissao"].Value.ToString();
 
                     frm.lblStatus.Text = "ALTERAR CADASTRO";
                     frm.lblStatus.ForeColor = Color.Orange;
@@ -86,7 +97,6 @@ namespace ComissPro
                 }
                 catch (Exception ex)
                 {
-                    // Exibir uma mensagem de erro para o usuário
                     MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -94,20 +104,19 @@ namespace ComissPro
             {
                 try
                 {
-                    // Verificar se a DataGridView contém alguma linha
                     if (dataGridPesquisar.Rows.Count == 0)
                     {
-                        // Lançar exceção personalizada
-                        //throw new Exception("A DataGridView está vazia. Não há dados para serem processados.");
                         MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        return;
                     }
-                    else
-                        // Exemplo: Acessar a primeira célula de cada linha
-                        //  var valor = row.Cells[0].Value;
+
                     frm.txtVendedorID.Text = dataGridPesquisar.CurrentRow.Cells["VendedorID"].Value.ToString();
                     frm.txtNomeVendedor.Text = dataGridPesquisar.CurrentRow.Cells["Nome"].Value.ToString();
                     frm.txtCpf.Text = dataGridPesquisar.CurrentRow.Cells["Cpf"].Value.ToString();
-                    frm.txtTelefone.Text = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
+                    // Formatar o telefone ao carregar
+                    string telefoneSemMascara = dataGridPesquisar.CurrentRow.Cells["Telefone"].Value.ToString();
+                    frm.txtTelefone.Text = FormatarTelefone(telefoneSemMascara);
+                    frm.txtPercentualComissao.Text = dataGridPesquisar.CurrentRow.Cells["Comissao"].Value.ToString();
 
                     frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
                     frm.lblStatus.ForeColor = Color.Red;
@@ -115,19 +124,17 @@ namespace ComissPro
 
                     frm.btnNovo.Enabled = false;
 
-
                     frm.txtVendedorID.Enabled = false;
                     frm.txtNomeVendedor.Enabled = false;
                     frm.txtPercentualComissao.Enabled = false;
                     frm.txtCpf.Enabled = false;
                     frm.txtTelefone.Enabled = false;
-                    
+
                     frm.btnSalvar.Text = "Excluir";
                     frm.ShowDialog();
                 }
                 catch (Exception ex)
                 {
-                    // Exibir uma mensagem de erro para o usuário
                     MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

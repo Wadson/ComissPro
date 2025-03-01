@@ -34,3 +34,29 @@ UNIQUE constraint failed: Vendedores.CPF
 01/03/2025 10:47:02: Vendedor excluído com sucesso.
 01/03/2025 10:51:50: Iniciando exclusão do Vendedores com ID: 19
 01/03/2025 10:51:51: Vendedor excluído com sucesso.
+01/03/2025 11:25:35: Iniciando exclusão do Vendedores com ID: 15
+01/03/2025 11:25:35: Vendedor excluído com sucesso.
+01/03/2025 11:25:39: Iniciando exclusão do Vendedores com ID: 2
+01/03/2025 11:25:40: Vendedor excluído com sucesso.
+01/03/2025 11:25:45: Iniciando exclusão do Vendedores com ID: 21
+01/03/2025 11:25:45: Vendedor excluído com sucesso.
+01/03/2025 11:25:50: Iniciando exclusão do Vendedores com ID: 23
+01/03/2025 11:25:50: Vendedor excluído com sucesso.
+01/03/2025 11:25:54: Iniciando exclusão do Vendedores com ID: 24
+01/03/2025 11:25:54: Vendedor excluído com sucesso.
+01/03/2025 11:25:59: Iniciando exclusão do Vendedores com ID: 22
+01/03/2025 11:25:59: Vendedor excluído com sucesso.
+01/03/2025 11:26:03: Iniciando exclusão do Vendedores com ID: 25
+01/03/2025 11:26:03: Vendedor excluído com sucesso.
+01/03/2025 11:26:08: Iniciando exclusão do Vendedores com ID: 18
+01/03/2025 11:26:08: Vendedor excluído com sucesso.
+01/03/2025 11:26:12: Iniciando exclusão do Vendedores com ID: 9
+01/03/2025 11:26:12: Vendedor excluído com sucesso.
+01/03/2025 11:26:17: Iniciando exclusão do Vendedores com ID: 20
+01/03/2025 11:26:17: Vendedor excluído com sucesso.
+01/03/2025 11:44:16: Iniciando exclusão do Vendedores com ID: 4
+01/03/2025 11:44:16: Vendedor excluído com sucesso.
+01/03/2025 11:44:19: Iniciando exclusão do Vendedores com ID: 6
+01/03/2025 11:44:20: Vendedor excluído com sucesso.
+01/03/2025 11:44:24: Iniciando exclusão do Vendedores com ID: 28
+01/03/2025 11:44:24: Vendedor excluído com sucesso.

@@ -32,20 +32,15 @@ namespace ComissPro
                 objetoModel.VendedorID = Convert.ToInt32(txtVendedorID.Text);
                 objetoModel.Nome = txtNomeVendedor.Text;
                 objetoModel.CPF = txtCpf.Text;
-                string telefoneSemMascara = Regex.Replace(txtTelefone.Text, "[^0-9]", ""); // Remove máscara
-                objetoModel.Telefone = telefoneSemMascara;
+                objetoModel.Telefone = Regex.Replace(txtTelefone.Text, "[^0-9]", ""); // Remove máscara
                 objetoModel.Comissao = double.Parse(txtPercentualComissao.Text);
-
-                // Para depuração: verificar o valor do telefone sem máscara
-                MessageBox.Show($"Telefone sem máscara: {telefoneSemMascara}");
 
                 VendedorBLL objetoBll = new VendedorBLL();
 
-                // Verificar duplicata exata (nome + telefone)
-                if (objetoBll.VendedorExiste(objetoModel.Nome, objetoModel.Telefone))
+                // Verificar duplicata com mensagem específica
+                if (objetoBll.ValidarDuplicata(objetoModel.Nome, objetoModel.Telefone, out string mensagemDuplicata))
                 {
-                    MessageBox.Show("Já existe um vendedor cadastrado com este Nome e Telefone!",
-                        "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(mensagemDuplicata, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -83,15 +78,15 @@ namespace ComissPro
                 objetoModel.VendedorID = Convert.ToInt32(txtVendedorID.Text);
                 objetoModel.Nome = txtNomeVendedor.Text;
                 objetoModel.CPF = txtCpf.Text;
-                objetoModel.Telefone = txtTelefone.Text;
+                // Remove a máscara do telefone antes de atribuir ao modelo
+                objetoModel.Telefone = Regex.Replace(txtTelefone.Text, "[^0-9]", "");
                 objetoModel.Comissao = double.Parse(txtPercentualComissao.Text);
-
 
                 VendedorBLL objetoBll = new VendedorBLL();
                 objetoBll.Alterar(objetoModel);
 
                 MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
+                ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
                 Utilitario.LimpaCampo(this);
                 this.Close();
             }
@@ -106,29 +101,19 @@ namespace ComissPro
             {
                 Model.VendedorMODEL objetoModel = new Model.VendedorMODEL();
 
-                objetoModel.VendedorID = Convert.ToInt32(txtVendedorID.Text.Trim());
+                objetoModel.VendedorID = Convert.ToInt32(txtVendedorID.Text);
+                
                 VendedorBLL objetoBll = new VendedorBLL();
-
                 objetoBll.Excluir(objetoModel);
-                MessageBox.Show("Registro Excluído com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                // Limpa os campos
+                MessageBox.Show("Registro excluído com sucesso!", "Exclusão!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
                 Utilitario.LimpaCampo(this);
                 this.Close();
-                var frmManutFornecedor = Application.OpenForms["FrmManutVendedor"] as FrmManutVendedor;
-
-                if (frmManutFornecedor != null)
-                {
-                    frmManutFornecedor.HabilitarTimer(true);
-                }
-                else
-                {
-                    MessageBox.Show("FrmManutVendedor não está aberto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro ao Excluir o registro: " + erro.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao excluir o registro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void FrmCadVendedor_Load(object sender, EventArgs e)
