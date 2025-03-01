@@ -18,29 +18,46 @@ namespace ComissPro
             {
                 conn.Open();
 
-                string query = @"SELECT
-                            Vendedores.Nome AS NomeVendedor,
-                            Produtos.NomeProduto,
-                            Entregas.QuantidadeEntregue,
-                            Produtos.Preco,
-                            (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
-                            Entregas.DataEntrega,
-                            Entregas.EntregaID,
-                            Entregas.VendedorID,
-                            Entregas.ProdutoID
-                        FROM
-                            Entregas
-                        INNER JOIN
-                            Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
-                        INNER JOIN
-                            Produtos ON Entregas.ProdutoID = Produtos.ProdutoID WHERE PrestacaoRealizada = 0;
-";
+                string query = @"
+                SELECT
+                    Vendedores.Nome AS NomeVendedor,
+                    Produtos.NomeProduto,
+                    Entregas.QuantidadeEntregue,
+                    Produtos.Preco,
+                    (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
+                    Entregas.DataEntrega,
+                    Entregas.EntregaID,
+                    Entregas.VendedorID,
+                    Entregas.ProdutoID
+                FROM
+                    Entregas
+                INNER JOIN
+                    Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
+                INNER JOIN
+                    Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
+                WHERE
+                    Entregas.PrestacaoRealizada = 0";
 
                 SQLiteCommand sqlcomando = new SQLiteCommand(query, conn);
                 SQLiteDataAdapter daFornecedor = new SQLiteDataAdapter();
                 daFornecedor.SelectCommand = sqlcomando;
                 DataTable dtFornecedor = new DataTable();
                 daFornecedor.Fill(dtFornecedor);
+
+                // Calcular totais
+                if (dtFornecedor.Rows.Count > 0)
+                {
+                    long totalQuantidadeEntregue = dtFornecedor.AsEnumerable().Sum(row => Convert.ToInt64(row["QuantidadeEntregue"]));
+                    double totalTotal = dtFornecedor.AsEnumerable().Sum(row => Convert.ToDouble(row["Total"]));
+
+                    // Adicionar linha de totais
+                    DataRow totalRow = dtFornecedor.NewRow();
+                    totalRow["NomeVendedor"] = "Totais";
+                    totalRow["QuantidadeEntregue"] = totalQuantidadeEntregue;
+                    totalRow["Total"] = totalTotal;
+                    dtFornecedor.Rows.Add(totalRow);
+                }
+
                 return dtFornecedor;
             }
             catch (Exception erro)

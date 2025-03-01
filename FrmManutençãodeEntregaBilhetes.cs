@@ -51,7 +51,7 @@ namespace ComissPro
                 dgv.Columns["Total"].DefaultCellStyle.Format = "N2";
 
                 // Formatar DataEntrega como data curta
-                dgv.Columns["DataEntrega"].DefaultCellStyle.Format = "d"; // Formato de data curta (short date)
+                dgv.Columns["DataEntrega"].DefaultCellStyle.Format = "d";
 
                 // Centralizar a coluna QuantidadeEntregue
                 dgv.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -69,8 +69,26 @@ namespace ComissPro
             }
 
             // Configurações adicionais
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None; // Desativa ajuste automático
-            dgv.ReadOnly = true; // Torna o DataGridView somente leitura
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgv.ReadOnly = true;
+
+            // Adicionar evento DataBindingComplete para estilizar a linha de totais
+            dgv.DataBindingComplete += (s, e) =>
+            {
+                if (dgv.Rows.Count > 0)
+                {
+                    int ultimaLinha = dgv.Rows.Count - 1;
+                    dgv.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.LightGray;
+                    dgv.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+                }
+            };
+        }
+
+        public void Listar()
+        {
+            EntregasDal objetoDAL = new EntregasDal();
+            dataGridManutencaoEntregas.DataSource = objetoDAL.listaEntregas();
+            PersonalizarDataGridView(dataGridManutencaoEntregas);
         }
 
         private void CarregaDados()
@@ -146,12 +164,12 @@ namespace ComissPro
         }
 
 
-        public void Listar()
-        {
-            EntregasDal objetoDAL = new EntregasDal();
-            dataGridManutencaoEntregas.DataSource = objetoDAL.listaEntregas();
-            PersonalizarDataGridView(dataGridManutencaoEntregas);
-        }
+        //public void Listar()
+        //{
+        //    EntregasDal objetoDAL = new EntregasDal();
+        //    dataGridManutencaoEntregas.DataSource = objetoDAL.listaEntregas();
+        //    PersonalizarDataGridView(dataGridManutencaoEntregas);
+        //}
         public void HabilitarTimer(bool habilitar)
         {
             timer1.Enabled = habilitar;
