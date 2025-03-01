@@ -203,6 +203,180 @@ namespace ComissPro
             // Outros métodos como PesquisarEntrega e CarregarEntregasNaoPrestadas permanecem iguais
         }
 
+        // Novo: Relatório de Entregas Pendentes por Vendedor
+        public List<EntregasModel> RelatorioEntregasPendentes(string nomeVendedor = null)
+        {
+            List<EntregasModel> entregas = new List<EntregasModel>();
+            string query = @"
+            SELECT 
+                v.VendedorID,
+                v.Nome AS NomeVendedor,
+                e.EntregaID,
+                e.QuantidadeEntregue,
+                e.DataEntrega,
+                p.NomeProduto
+            FROM 
+                Entregas e
+            INNER JOIN 
+                Vendedores v ON e.VendedorID = v.VendedorID
+            INNER JOIN 
+                Produtos p ON e.ProdutoID = p.ProdutoID
+            WHERE 
+                e.PrestacaoRealizada = 0";
+
+            if (!string.IsNullOrEmpty(nomeVendedor))
+                query += " AND v.Nome LIKE @NomeVendedor";
+
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    if (!string.IsNullOrEmpty(nomeVendedor))
+                        cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            entregas.Add(new EntregasModel
+                            {
+                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                EntregaID = Convert.ToInt32(reader["EntregaID"]),
+                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
+                                NomeProduto = reader["NomeProduto"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            return entregas;
+        }
+
+        // Novo: Relatório de Desempenho de Vendas
+        public List<DesempenhoVendasModel> RelatorioDesempenhoVendas(DateTime? dataInicio = null, DateTime? dataFim = null, string nomeVendedor = null)
+        {
+            List<DesempenhoVendasModel> desempenho = new List<DesempenhoVendasModel>();
+            string query = @"
+            SELECT 
+                v.VendedorID,
+                v.Nome AS NomeVendedor,
+                e.EntregaID,
+                e.QuantidadeEntregue,
+                COALESCE(pc.QuantidadeVendida, 0) AS QuantidadeVendida,
+                COALESCE(pc.QuantidadeDevolvida, 0) AS QuantidadeDevolvida,
+                COALESCE(pc.ValorRecebido, 0) AS ValorRecebido,
+                COALESCE(pc.Comissao, 0) AS Comissao
+            FROM 
+                Entregas e
+            INNER JOIN 
+                Vendedores v ON e.VendedorID = v.VendedorID
+            LEFT JOIN 
+                PrestacaoContas pc ON e.EntregaID = pc.EntregaID
+            WHERE 
+                1 = 1";
+
+            if (dataInicio.HasValue)
+                query += " AND (pc.DataPrestacao >= @DataInicio OR pc.DataPrestacao IS NULL)";
+            if (dataFim.HasValue)
+                query += " AND (pc.DataPrestacao <= @DataFim OR pc.DataPrestacao IS NULL)";
+            if (!string.IsNullOrEmpty(nomeVendedor))
+                query += " AND v.Nome LIKE @NomeVendedor";
+
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
+                    if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            desempenho.Add(new DesempenhoVendasModel
+                            {
+                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                EntregaID = Convert.ToInt32(reader["EntregaID"]),
+                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                QuantidadeVendida = Convert.ToInt32(reader["QuantidadeVendida"]),
+                                QuantidadeDevolvida = Convert.ToInt32(reader["QuantidadeDevolvida"]),
+                                ValorRecebido = Convert.ToDouble(reader["ValorRecebido"]),
+                                Comissao = Convert.ToDouble(reader["Comissao"])
+                            });
+                        }
+                    }
+                }
+            }
+            return desempenho;
+        }
+
+        // Novo: Relatório Geral de Vendas e Comissões
+        public List<GeralVendasComissoesModel> RelatorioGeralVendasComissoes(DateTime? dataInicio = null, DateTime? dataFim = null, string nomeVendedor = null)
+        {
+            List<GeralVendasComissoesModel> geral = new List<GeralVendasComissoesModel>();
+            string query = @"
+            SELECT 
+                v.VendedorID,
+                v.Nome AS NomeVendedor,
+                SUM(e.QuantidadeEntregue) AS TotalEntregue,
+                SUM(COALESCE(pc.QuantidadeVendida, 0)) AS TotalVendido,
+                SUM(COALESCE(pc.QuantidadeDevolvida, 0)) AS TotalDevolvido,
+                SUM(COALESCE(pc.ValorRecebido, 0)) AS TotalRecebido,
+                SUM(COALESCE(pc.Comissao, 0)) AS TotalComissao
+            FROM 
+                Entregas e
+            INNER JOIN 
+                Vendedores v ON e.VendedorID = v.VendedorID
+            LEFT JOIN 
+                PrestacaoContas pc ON e.EntregaID = pc.EntregaID
+            WHERE 
+                1 = 1
+            GROUP BY 
+                v.VendedorID, v.Nome";
+
+            if (dataInicio.HasValue)
+                query = query.Replace("WHERE 1 = 1", "WHERE (pc.DataPrestacao >= @DataInicio OR pc.DataPrestacao IS NULL)");
+            if (dataFim.HasValue)
+                query += " AND (pc.DataPrestacao <= @DataFim OR pc.DataPrestacao IS NULL)";
+            if (!string.IsNullOrEmpty(nomeVendedor))
+                query += " AND v.Nome LIKE @NomeVendedor";
+
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
+                    if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            geral.Add(new GeralVendasComissoesModel
+                            {
+                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                TotalEntregue = Convert.ToInt64(reader["TotalEntregue"]),
+                                TotalVendido = Convert.ToInt64(reader["TotalVendido"]),
+                                TotalDevolvido = Convert.ToInt64(reader["TotalDevolvido"]),
+                                TotalRecebido = Convert.ToDouble(reader["TotalRecebido"]),
+                                TotalComissao = Convert.ToDouble(reader["TotalComissao"])
+                            });
+                        }
+                    }
+                }
+            }
+            return geral;
+        }
+
 
 
     }

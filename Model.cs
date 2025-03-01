@@ -84,5 +84,29 @@ namespace ComissPro
             public string NomeVendedor { get; set; }
             public int VendedorID { get; set; }
         }
+        // Para Relatório de Desempenho de Vendas
+        public class DesempenhoVendasModel
+        {
+            public long VendedorID { get; set; }
+            public string NomeVendedor { get; set; }
+            public int EntregaID { get; set; }
+            public long QuantidadeEntregue { get; set; }
+            public int QuantidadeVendida { get; set; }
+            public int QuantidadeDevolvida { get; set; }
+            public double ValorRecebido { get; set; }
+            public double Comissao { get; set; }
+        }
+
+        // Para Relatório Geral de Vendas e Comissões
+        public class GeralVendasComissoesModel
+        {
+            public long VendedorID { get; set; }
+            public string NomeVendedor { get; set; }
+            public long TotalEntregue { get; set; }
+            public long TotalVendido { get; set; }
+            public long TotalDevolvido { get; set; }
+            public double TotalRecebido { get; set; }
+            public double TotalComissao { get; set; }
+        }
     }
 }
