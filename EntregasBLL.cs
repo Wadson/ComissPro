@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using static ComissPro.VendedorDAL;
 
 namespace ComissPro
 {
@@ -40,7 +41,10 @@ namespace ComissPro
                 throw erro;
             }
         }
-
+        public int ExcluirEntregasOrfas()
+        {
+            return entregasDAL.ExcluirEntregasOrfas();
+        }
         private void Log(string message)
         {
             File.AppendAllText("logExcluirEntregasDeBilhetes.txt", $"{DateTime.Now}: {message}\n");

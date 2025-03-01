@@ -94,6 +94,32 @@ namespace ComissPro
                 conn.Close();
             }
         }
+        // Novo método para excluir entregas órfãs
+        public int ExcluirEntregasOrfas()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                conn.Open();
+
+                string query = @"
+                DELETE FROM Entregas 
+                WHERE VendedorID NOT IN (SELECT VendedorID FROM Vendedores);";
+
+                SQLiteCommand sqlcomando = new SQLiteCommand(query, conn);
+                int rowsAffected = sqlcomando.ExecuteNonQuery();
+
+                return rowsAffected; // Retorna o número de entregas excluídas
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro ao excluir entregas órfãs: " + erro.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public List<EntregasModel> CarregarEntregasNaoPrestadas()
         {
             List<EntregasModel> entregas = new List<EntregasModel>();

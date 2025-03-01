@@ -17,6 +17,10 @@ namespace ComissPro
         public FrmManutençãodeEntregaBilhetes(string statusOperacao)
 		{
 			InitializeComponent();
+
+            timer1.Interval = 1000; // Confirma o intervalo
+            timer1.Tick += timer1_Tick; // Garante que o evento está associado
+
             this.StatusOperacao = statusOperacao;
             //Centraliza o Label dentro do Panel
             label28.Location = new Point(
@@ -87,6 +91,7 @@ namespace ComissPro
             };
         }
 
+        // Método existente
         public void CarregarEntregasNoGrid()
         {
             try
@@ -95,21 +100,18 @@ namespace ComissPro
                 DataTable dt = objetoDAL.listaEntregas();
                 dataGridManutencaoEntregas.DataSource = dt;
 
-                // Ajustar nomes das colunas visíveis (HeaderText)
                 dataGridManutencaoEntregas.Columns["EntregaID"].HeaderText = "ID Entrega";
                 dataGridManutencaoEntregas.Columns["NomeVendedor"].HeaderText = "Vendedor";
                 dataGridManutencaoEntregas.Columns["NomeProduto"].HeaderText = "Produto";
                 dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade";
-                dataGridManutencaoEntregas.Columns["Preco"].HeaderText = "Preço Unitário"; // Novo
+                dataGridManutencaoEntregas.Columns["Preco"].HeaderText = "Preço Unitário";
                 dataGridManutencaoEntregas.Columns["Total"].HeaderText = "Total";
                 dataGridManutencaoEntregas.Columns["DataEntrega"].HeaderText = "Data";
 
-                // Opcional: ocultar colunas não necessárias
                 dataGridManutencaoEntregas.Columns["VendedorID"].Visible = false;
                 dataGridManutencaoEntregas.Columns["ProdutoID"].Visible = false;
                 dataGridManutencaoEntregas.Columns["PrestacaoRealizada"].Visible = false;
 
-                // Chamar personalização
                 PersonalizarDataGridView(dataGridManutencaoEntregas);
             }
             catch (Exception ex)
@@ -118,6 +120,26 @@ namespace ComissPro
             }
         }
 
+        // Novo método para excluir entregas órfãs e recarregar o grid
+        public void ExcluirEntregasOrfasEAtualizar()
+        {
+            try
+            {
+                EntregasDal objetoDAL = new EntregasDal();
+                int rowsDeleted = objetoDAL.ExcluirEntregasOrfas();
+
+                MessageBox.Show($"{rowsDeleted} entrega(s) órfã(s) excluída(s) com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Recarregar o DataGridView após a exclusão
+                CarregarEntregasNoGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir entregas órfãs: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
         // Remover ou ajustar o método Listar para evitar duplicação
         public void Listar()
         {
@@ -197,10 +219,7 @@ namespace ComissPro
                 formEntregas.ShowDialog();
             }
         }
-        public void HabilitarTimer(bool habilitar)
-        {
-            timer1.Enabled = habilitar;
-        }
+      
         private void btnNovo_Click(object sender, EventArgs e)
         {
             StatusOperacao = "NOVO";
@@ -232,15 +251,26 @@ namespace ComissPro
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            string textoPesquisa = txtPesquisa.Text.ToLower();
+            string textoPesquisa = txtPesquisa.Text.Trim(); // Remove espaços em branco no início e fim
 
-            string nome = "%" + txtPesquisa.Text + "%";
-            EntregasDal dao = new EntregasDal();
+            if (string.IsNullOrEmpty(textoPesquisa))
+            {
+                Listar(); // Chama Listar() quando o campo está vazio
+            }
+            else
+            {
+                string nome = "%" + textoPesquisa + "%"; // Adiciona wildcards para LIKE
+                EntregasDal dao = new EntregasDal();
+                dataGridManutencaoEntregas.DataSource = dao.PesquisarEntrega(nome);
+            }
 
-            dataGridManutencaoEntregas.DataSource = dao.PesquisarEntrega(nome);
             Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
         }
-
+        public void HabilitarTimer(bool habilitar)
+        {
+            timer1.Enabled = habilitar;
+            Listar();
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             Listar();
@@ -257,6 +287,11 @@ namespace ComissPro
         {
             FrmRelatoriosComissoes formRelatorios = new FrmRelatoriosComissoes();
             formRelatorios.ShowDialog();
+        }
+
+        private void btnExcluirOrfaos_Click(object sender, EventArgs e)
+        {
+            ExcluirEntregasOrfasEAtualizar();
         }
     }
 }
