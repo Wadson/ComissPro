@@ -6,6 +6,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using ClosedXML.Excel; // Para Excel
+using iText.Kernel.Pdf; // Para PDF (iText7)
+using iText.Layout;
+using iText.Layout.Element;
 
 namespace ComissPro
 {
@@ -238,11 +242,6 @@ namespace ComissPro
             CarregaDados();
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void FrmManutençãodeEntregaBilhetes_Load(object sender, EventArgs e)
         {
             Listar();
@@ -277,9 +276,14 @@ namespace ComissPro
             timer1.Enabled = false;
         }
 
+        private void btnExcluirOrfaos_Click(object sender, EventArgs e)
+        {
+            ExcluirEntregasOrfasEAtualizar();
+        }
+
         private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
         {
-            FrmPrestacaoDeContas formPrestacao = new FrmPrestacaoDeContas(StatusOperacao);            
+            FrmPrestacaoDeContas formPrestacao = new FrmPrestacaoDeContas(StatusOperacao);
             formPrestacao.ShowDialog();
         }
 
@@ -289,9 +293,9 @@ namespace ComissPro
             formRelatorios.ShowDialog();
         }
 
-        private void btnExcluirOrfaos_Click(object sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
-            ExcluirEntregasOrfasEAtualizar();
+            this.Close();
         }
     }
 }

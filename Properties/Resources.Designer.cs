@@ -223,6 +223,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pdf {
+            get {
+                object obj = ResourceManager.GetObject("pdf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pesquisar {
             get {
                 object obj = ResourceManager.GetObject("Pesquisar", resourceCulture);
@@ -236,6 +246,16 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap POST_02_PRESTACAO_DE_CONTAS_IMG_BLOG__1_ {
             get {
                 object obj = ResourceManager.GetObject("POST_02_PRESTACAO_DE_CONTAS_IMG_BLOG__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PrestacaoConta32 {
+            get {
+                object obj = ResourceManager.GetObject("PrestacaoConta32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,6 +313,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sair32 {
+            get {
+                object obj = ResourceManager.GetObject("sair32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sairr24 {
             get {
                 object obj = ResourceManager.GetObject("Sairr24", resourceCulture);
@@ -326,6 +356,16 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap verificar24 {
             get {
                 object obj = ResourceManager.GetObject("verificar24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap xls {
+            get {
+                object obj = ResourceManager.GetObject("xls", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
