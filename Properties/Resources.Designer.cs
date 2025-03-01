@@ -103,6 +103,46 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backup_de_dados_32 {
+            get {
+                object obj = ResourceManager.GetObject("backup_de_dados_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backup_de_dados256 {
+            get {
+                object obj = ResourceManager.GetObject("backup_de_dados256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backup_de_dados32 {
+            get {
+                object obj = ResourceManager.GetObject("backup_de_dados32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backup_de_dados512 {
+            get {
+                object obj = ResourceManager.GetObject("backup_de_dados512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bilhete64 {
             get {
                 object obj = ResourceManager.GetObject("Bilhete64", resourceCulture);
@@ -153,6 +193,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap engrenagem64 {
+            get {
+                object obj = ResourceManager.GetObject("engrenagem64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EntregaBilhete64 {
             get {
                 object obj = ResourceManager.GetObject("EntregaBilhete64", resourceCulture);
@@ -176,6 +226,16 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap fechando {
             get {
                 object obj = ResourceManager.GetObject("fechando", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flash_usb {
+            get {
+                object obj = ResourceManager.GetObject("flash_usb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,6 +296,16 @@ namespace ComissPro.Properties {
         internal static System.Drawing.Bitmap Novo24 {
             get {
                 object obj = ResourceManager.GetObject("Novo24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pasta {
+            get {
+                object obj = ResourceManager.GetObject("pasta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -96,3 +96,6 @@ D:\ComissPro\bin\Debug\System.Numerics.Vectors.xml
 D:\ComissPro\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\ComissPro\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\ComissPro\bin\Debug\System.ValueTuple.xml
+D:\ComissPro\obj\Debug\ComissPro.FrmRestaurarBackup.resources
+D:\ComissPro\obj\Debug\ComissPro.FrmBackup.resources
+D:\ComissPro\obj\Debug\ComissPro.FrmFerramentas.resources

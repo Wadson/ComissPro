@@ -177,6 +177,12 @@
     <Compile Include="Conexao.cs" />
     <Compile Include="EntregasBLL.cs" />
     <Compile Include="EntregasDal.cs" />
+    <Compile Include="FrmRestaurarBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRestaurarBackup.Designer.cs">
+      <DependentUpon>FrmRestaurarBackup.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCadProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,18 @@
     </Compile>
     <Compile Include="FrmControleEntregas.Designer.cs">
       <DependentUpon>FrmControleEntregas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBackup.Designer.cs">
+      <DependentUpon>FrmBackup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFerramentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFerramentas.Designer.cs">
+      <DependentUpon>FrmFerramentas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLocalicarVendedor.cs">
       <SubType>Form</SubType>
@@ -272,6 +290,9 @@
     <Compile Include="Utilitario.cs" />
     <Compile Include="VendedorBLL.cs" />
     <Compile Include="VendedorDAL.cs" />
+    <EmbeddedResource Include="FrmRestaurarBackup.resx">
+      <DependentUpon>FrmRestaurarBackup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCadProdutos.resx">
       <DependentUpon>FrmCadProdutos.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmControleEntregas.resx">
       <DependentUpon>FrmControleEntregas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBackup.resx">
+      <DependentUpon>FrmBackup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFerramentas.resx">
+      <DependentUpon>FrmFerramentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLocalicarVendedor.resx">
       <DependentUpon>FrmLocalicarVendedor.cs</DependentUpon>
@@ -440,6 +467,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Venda64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\engrenagem64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup-de-dados 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup-de-dados512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pasta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flash-usb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup-de-dados32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup-de-dados256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

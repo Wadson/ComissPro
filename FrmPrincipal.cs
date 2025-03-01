@@ -127,5 +127,11 @@ namespace ComissPro
             FrmRelatoriosComissoes frm = new FrmRelatoriosComissoes();
             AbrirFormEnPanel(frm);
         }
+
+        private void btnFerramentas_Click(object sender, EventArgs e)
+        {
+            FrmFerramentas frm = new FrmFerramentas();
+            AbrirFormEnPanel(frm);
+        }
     }
 }
