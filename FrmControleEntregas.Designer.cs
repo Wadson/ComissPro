@@ -441,7 +441,6 @@
             this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 1;
-            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             // 
             // label7
             // 
@@ -477,7 +476,6 @@
             this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtNomeVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeVendedor.TabIndex = 0;
-            this.txtNomeVendedor.TextChanged += new System.EventHandler(this.txtNomeVendedor_TextChanged);
             // 
             // btnSair
             // 

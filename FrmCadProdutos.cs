@@ -55,26 +55,32 @@ namespace ComissPro
 
                 objetoModel.ProdutoID = string.IsNullOrEmpty(txtProdutoID.Text) ? 0 : Convert.ToInt32(txtProdutoID.Text);
                 objetoModel.NomeProduto = txtNome.Text;
-                objetoModel.Preco = Double.Parse(txtPreco.Text);
                 objetoModel.Tipo = cmbTipo.Text;
 
+                // Preço unitário informado pelo usuário
+                objetoModel.Preco = Double.Parse(txtPreco.Text);
+
                 // Definir quantidade automaticamente
-                objetoModel.QuantidadePorBloco = (cmbTipo.Text == "Unidade") ? 1 : 50;
+                objetoModel.QuantidadePorBloco = (cmbTipo.Text == "Unidade") ? 1 : 50; 
 
                 ProdutoBLL objetoBll = new ProdutoBLL();
 
                 objetoBll.Salvar(objetoModel);
-                MessageBox.Show("REGISTRO gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                
                 Utilitario.LimpaCampo(this);
                 ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
             }
             catch (OverflowException ov)
             {
-                MessageBox.Show("Overfow Exeção deu erro! " + ov);
+                MessageBox.Show("Overflow Exceção deu erro! " + ov);
             }
             catch (Win32Exception erro)
             {
                 MessageBox.Show("Win32 Win32!!! \n" + erro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar registro: " + ex.Message);
             }
         }
 

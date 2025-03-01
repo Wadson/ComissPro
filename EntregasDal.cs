@@ -11,6 +11,25 @@ namespace ComissPro
 {
     internal class EntregasDal
     {
+
+        // Em EntregasDal
+        public void Inserir(Model.EntregasModel entrega)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                string sql = "INSERT INTO Entregas (VendedorID, ProdutoID, QuantidadeEntregue, DataEntrega, ValorTotal) " +
+                             "VALUES (@VendedorID, @ProdutoID, @QuantidadeEntregue, @DataEntrega, @ValorTotal)";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@VendedorID", entrega.VendedorID);
+                    cmd.Parameters.AddWithValue("@ProdutoID", entrega.ProdutoID);
+                    cmd.Parameters.AddWithValue("@QuantidadeEntregue", entrega.QuantidadeEntregue);
+                    cmd.Parameters.AddWithValue("@DataEntrega", entrega.DataEntrega);                    
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         public DataTable listaEntregas()
         {
             var conn = Conexao.Conex();
@@ -106,13 +125,13 @@ namespace ComissPro
                             {
                                 NomeVendedor = reader["NomeVendedor"].ToString(),
                                 NomeProduto = reader["NomeProduto"].ToString(),
-                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 Preco = Convert.ToDouble(reader["Preco"]),
                                 Total = Convert.ToDouble(reader["Total"]),
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
-                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
-                                ProdutoID = Convert.ToInt64(reader["ProdutoID"]),
+                                VendedorID = Convert.ToInt32(reader["VendedorID"]),
+                                ProdutoID = Convert.ToInt32(reader["ProdutoID"]),
                                 Comissao = Convert.ToDouble(reader["Comissao"]) // Percentual direto (ex.: 40)
                             });
                         }
@@ -209,13 +228,13 @@ namespace ComissPro
                             {
                                 NomeVendedor = reader["NomeVendedor"].ToString(),
                                 NomeProduto = reader["NomeProduto"].ToString(),
-                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 Preco = Convert.ToDouble(reader["Preco"]),
                                 Total = Convert.ToDouble(reader["Total"]),
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
-                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
-                                ProdutoID = Convert.ToInt64(reader["ProdutoID"])
+                                VendedorID = Convert.ToInt32(reader["VendedorID"]),
+                                ProdutoID = Convert.ToInt32(reader["ProdutoID"])
                                 // PrestacaoRealizada não está na query; se precisar, adicione ao SELECT
                             });
                         }
@@ -328,10 +347,10 @@ namespace ComissPro
                         {
                             entregas.Add(new EntregasModel
                             {
-                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                VendedorID = Convert.ToInt32(reader["VendedorID"]),
                                 NomeVendedor = reader["NomeVendedor"].ToString(),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
-                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
                                 NomeProduto = reader["NomeProduto"].ToString()
                             });

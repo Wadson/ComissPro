@@ -70,6 +70,7 @@
             // 
             // btnSair
             // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.Location = new System.Drawing.Point(676, 406);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));

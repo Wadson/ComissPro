@@ -45,6 +45,7 @@ namespace ComissPro
             dgv.Columns["Nome"].Width = 400;
             dgv.Columns["Preco"].Width = 150;
             dgv.Columns["Tipo"].Width = 150;
+            dgv.Columns["QuantidadePorBloco"].Width = 150;
 
         }
         private void CarregaDados()

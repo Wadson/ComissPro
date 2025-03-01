@@ -107,7 +107,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(332, 212);
+            this.btnSair.Location = new System.Drawing.Point(358, 206);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -166,7 +166,7 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(180, 212);
+            this.btnNovo.Location = new System.Drawing.Point(206, 206);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -226,7 +226,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(28, 212);
+            this.btnSalvar.Location = new System.Drawing.Point(54, 206);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalvar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -310,7 +310,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label13.Location = new System.Drawing.Point(387, 136);
+            this.label13.Location = new System.Drawing.Point(223, 136);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 16);
             this.label13.TabIndex = 280;
@@ -318,7 +318,7 @@
             // 
             // txtPreco
             // 
-            this.txtPreco.Location = new System.Drawing.Point(377, 154);
+            this.txtPreco.Location = new System.Drawing.Point(213, 154);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(165, 30);
             this.txtPreco.StateCommon.Back.Color1 = System.Drawing.Color.White;

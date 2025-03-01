@@ -118,6 +118,7 @@ namespace ComissPro
 
                     frm.txtVendedorID.Enabled = false;
                     frm.txtNomeVendedor.Enabled = false;
+                    frm.txtPercentualComissao.Enabled = false;
                     frm.txtCpf.Enabled = false;
                     frm.txtTelefone.Enabled = false;
                     

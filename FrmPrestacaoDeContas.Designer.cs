@@ -47,8 +47,6 @@
             this.cmbEntregasPendentes = new System.Windows.Forms.ComboBox();
             this.dtpDataEntrega = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtNomeVendedor = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNomeProduto = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtQuantidadeEntregue = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtPrecoUnit = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -61,6 +59,8 @@
             this.kryptonGroupBox4 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtNomeVendedor = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox4.Panel)).BeginInit();
             this.kryptonGroupBox4.Panel.SuspendLayout();
@@ -438,39 +438,6 @@
             this.label13.TabIndex = 673;
             this.label13.Text = "DATA DA ENTREGA";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label14.Location = new System.Drawing.Point(6, 79);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 16);
-            this.label14.TabIndex = 675;
-            this.label14.Text = "VENDEDOR:";
-            // 
-            // txtNomeVendedor
-            // 
-            this.txtNomeVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeVendedor.Location = new System.Drawing.Point(98, 75);
-            this.txtNomeVendedor.Name = "txtNomeVendedor";
-            this.txtNomeVendedor.ReadOnly = true;
-            this.txtNomeVendedor.Size = new System.Drawing.Size(348, 24);
-            this.txtNomeVendedor.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.txtNomeVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
-            this.txtNomeVendedor.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
-            this.txtNomeVendedor.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtNomeVendedor.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.txtNomeVendedor.StateCommon.Border.Rounding = 1;
-            this.txtNomeVendedor.StateCommon.Border.Width = 1;
-            this.txtNomeVendedor.StateCommon.Content.Color1 = System.Drawing.Color.White;
-            this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtNomeVendedor.TabIndex = 674;
-            this.txtNomeVendedor.TabStop = false;
-            // 
             // txtNomeProduto
             // 
             this.txtNomeProduto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -729,6 +696,39 @@
             this.label2.TabIndex = 690;
             this.label2.Text = "CÓDIGO DE ENTREGA";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.label14.Location = new System.Drawing.Point(6, 79);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 16);
+            this.label14.TabIndex = 675;
+            this.label14.Text = "VENDEDOR:";
+            // 
+            // txtNomeVendedor
+            // 
+            this.txtNomeVendedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeVendedor.Location = new System.Drawing.Point(98, 75);
+            this.txtNomeVendedor.Name = "txtNomeVendedor";
+            this.txtNomeVendedor.ReadOnly = true;
+            this.txtNomeVendedor.Size = new System.Drawing.Size(348, 24);
+            this.txtNomeVendedor.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.txtNomeVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
+            this.txtNomeVendedor.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
+            this.txtNomeVendedor.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtNomeVendedor.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtNomeVendedor.StateCommon.Border.Rounding = 1;
+            this.txtNomeVendedor.StateCommon.Border.Width = 1;
+            this.txtNomeVendedor.StateCommon.Content.Color1 = System.Drawing.Color.White;
+            this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtNomeVendedor.TabIndex = 674;
+            this.txtNomeVendedor.TabStop = false;
+            // 
             // FrmPrestacaoDeContas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,8 +799,6 @@
         private System.Windows.Forms.ComboBox cmbEntregasPendentes;
         public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpDataEntrega;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeVendedor;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeProduto;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtQuantidadeEntregue;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPrecoUnit;
@@ -813,5 +811,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox4;
         public System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label14;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeVendedor;
     }
 }

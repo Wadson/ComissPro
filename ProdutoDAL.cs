@@ -12,6 +12,34 @@ namespace ComissPro
 {
     internal class ProdutoDAL
     {
+        // Em ProdutoDal
+        public Model.ProdutoMODEL BuscarPorId(int produtoId)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                string sql = "SELECT * FROM Produtos WHERE ProdutoID = @ProdutoID";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@ProdutoID", produtoId);
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Model.ProdutoMODEL
+                            {
+                                ProdutoID = reader.GetInt32(0),
+                                NomeProduto = reader.GetString(1),
+                                Preco = reader.GetDouble(2),
+                                Tipo = reader.GetString(3),
+                                QuantidadePorBloco = (int)(reader.IsDBNull(4) ? 50 : reader.GetInt64(4))
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
         public DataTable listarProduto()
         {
             var conn = Conexao.Conex();

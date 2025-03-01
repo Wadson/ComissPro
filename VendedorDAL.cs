@@ -241,10 +241,10 @@ namespace ComissPro
                         {
                             entregas.Add(new EntregasModel
                             {
-                                VendedorID = Convert.ToInt64(reader["VendedorID"]),
+                                VendedorID = Convert.ToInt32(reader["VendedorID"]),
                                 NomeVendedor = reader["NomeVendedor"].ToString(),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
-                                QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
+                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
                                 NomeProduto = reader["NomeProduto"].ToString()
                             });

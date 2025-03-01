@@ -146,5 +146,17 @@ namespace ComissPro
             }
 
         }
+        // Em ProdutoBLL
+        public Model.ProdutoMODEL BuscarPorId(int produtoId)
+        {
+            ProdutoDAL dal = new ProdutoDAL();
+            return dal.BuscarPorId(produtoId);
+        }
+
+       
+
+
+
+
     }
 }

@@ -55,9 +55,9 @@ namespace ComissPro
         public class EntregasModel
         {
             public int EntregaID { get; set; }
-            public long VendedorID { get; set; }
-            public long ProdutoID { get; set; }
-            public long QuantidadeEntregue { get; set; }
+            public int VendedorID { get; set; }
+            public int ProdutoID { get; set; }
+            public int QuantidadeEntregue { get; set; }
             public DateTime? DataEntrega { get; set; } = DateTime.Now;
             public bool PrestacaoRealizada { get; set; } = false;
             public string NomeVendedor { get; set; }

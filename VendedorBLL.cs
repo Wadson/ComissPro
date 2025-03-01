@@ -35,16 +35,18 @@ namespace ComissPro
             {
                 vendedorDal = new VendedorDAL();
                 vendedorDal.Inserir(vendedor);
+                Log($"Salvando Vendedor, : {vendedor.VendedorID}");   
             }
             catch (Exception erro)
             {
+                Log($"Erro ao salvar vendedor: {erro.Message}");
                 throw erro;
             }
         }
 
         private void Log(string message)
         {
-            File.AppendAllText("logExcluirVendedor.txt", $"{DateTime.Now}: {message}\n");
+            File.AppendAllText("logTavelaVendedor.txt", $"{DateTime.Now}: {message}\n");
         }
         public void Excluir(Model.VendedorMODEL vendedor)
         {

@@ -6,3 +6,9 @@
 28/02/2025 13:41:45: Vendedor excluído com sucesso.
 28/02/2025 13:41:50: Iniciando exclusão do Vendedores com ID: 2
 28/02/2025 13:41:50: Vendedor excluído com sucesso.
+28/02/2025 23:24:41: Iniciando exclusão do Vendedores com ID: 4
+28/02/2025 23:24:41: Vendedor excluído com sucesso.
+28/02/2025 23:51:24: Iniciando exclusão do Vendedores com ID: 6
+28/02/2025 23:51:25: Vendedor excluído com sucesso.
+01/03/2025 00:43:45: Iniciando exclusão do Vendedores com ID: 5
+01/03/2025 00:43:45: Vendedor excluído com sucesso.
