@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Data.SQLite;
+using System.Windows.Forms;
 
 namespace ComissPro
 {
     internal class VendedorBLL
     {
-        VendedorDAL vendedorDal = null;
+        private VendedorDAL vendedorDal = new VendedorDAL();
 
         public DataTable Listar()
         {
@@ -29,20 +30,32 @@ namespace ComissPro
             return dtable;
         }
 
+
+
         public void Salvar(Model.VendedorMODEL vendedor)
         {
-            try
-            {
-                vendedorDal = new VendedorDAL();
-                vendedorDal.Inserir(vendedor);
-                Log($"Salvando Vendedor, : {vendedor.VendedorID}");   
-            }
-            catch (Exception erro)
-            {
-                Log($"Erro ao salvar vendedor: {erro.Message}");
-                throw erro;
-            }
+            vendedorDal.Salvar(vendedor);
         }
+
+        public bool VendedorExiste(string nome, string telefone)
+        {
+            bool existe = vendedorDal.VerificarVendedorExistente(nome, telefone);
+            // Para depuração: exibe se encontrou duplicata
+            if (existe)
+                MessageBox.Show($"Duplicata detectada: Nome = {nome}, Telefone = {telefone}");
+            return existe;
+        }
+
+        public string VerificarNomeParecido(string nome)
+        {
+            string nomeParecido = vendedorDal.BuscarNomeParecido(nome);
+            // Para depuração: exibe se encontrou nome parecido
+            if (nomeParecido != null)
+                MessageBox.Show($"Nome parecido encontrado: {nomeParecido}");
+            return nomeParecido;
+        }
+
+
 
         private void Log(string message)
         {
@@ -52,8 +65,6 @@ namespace ComissPro
         {
             try
             {
-
-
                 Log($"Iniciando exclusão do Vendedores com ID: {vendedor.VendedorID}");
                 vendedorDal = new VendedorDAL();
                 vendedorDal.Excluir(vendedor);

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static ComissPro.Model;
+using System.Runtime.Remoting.Contexts;
 
 namespace ComissPro
 {
@@ -35,19 +36,75 @@ namespace ComissPro
                 conn.Close();
             }
         }
-        public void Inserir(Model.VendedorMODEL vendedor)
+        public void Salvar(Model.VendedorMODEL vendedor)
+        {
+            try
+            {
+                using (var conexao = Conexao.Conex())
+                {
+                    conexao.Open();
+                    string sql = "INSERT INTO Vendedores (Nome, CPF, Telefone, Comissao) VALUES (@Nome, @CPF, @Telefone, @Comissao)";
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                    {
+                        cmd.Parameters.AddWithValue("@Nome", vendedor.Nome);
+                        cmd.Parameters.AddWithValue("@CPF", vendedor.CPF);
+                        cmd.Parameters.AddWithValue("@Telefone", vendedor.Telefone); // Telefone sem máscara
+                        cmd.Parameters.AddWithValue("@Comissao", vendedor.Comissao);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception("Nenhum registro foi inserido.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar no banco: " + ex.Message);
+                throw;
+            }
+        }
+        public bool VerificarVendedorExistente(string nome, string telefone)
         {
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "INSERT INTO Vendedores (Nome, CPF, Telefone, Comissao) VALUES (@Nome, @CPF, @Telefone, @Comissao)";
+                string sql = "SELECT COUNT(*) FROM Vendedores WHERE Telefone = @Telefone";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
-                    cmd.Parameters.AddWithValue("@Nome", vendedor.Nome);
-                    cmd.Parameters.AddWithValue("@CPF", vendedor.CPF);
-                    cmd.Parameters.AddWithValue("@Telefone", vendedor.Telefone);
-                    cmd.Parameters.AddWithValue("@Comissao", vendedor.Comissao);
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@Telefone", telefone);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
+        //public bool VerificarVendedorExistente(string nome, string telefone)
+        //{
+        //    using (var conexao = Conexao.Conex())
+        //    {
+        //        conexao.Open();
+        //        string sql = "SELECT COUNT(*) FROM Vendedores WHERE Nome = @Nome AND REPLACE(REPLACE(REPLACE(REPLACE(Telefone, '(', ''), ')', ''), ' ', ''), '-', '') = @Telefone";
+        //        using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+        //        {
+        //            cmd.Parameters.AddWithValue("@Nome", nome);
+        //            cmd.Parameters.AddWithValue("@Telefone", telefone); // Telefone já vem sem máscara do formulário
+        //            int count = Convert.ToInt32(cmd.ExecuteScalar());
+        //            return count > 0;
+        //        }
+        //    }
+        //}
+        public string BuscarNomeParecido(string nome)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                // Compara nomes ignorando espaços e considerando partes principais
+                string sql = "SELECT Nome FROM Vendedores WHERE REPLACE(Nome, ' ', '') LIKE '%' || REPLACE(@Nome, ' ', '') || '%' OR REPLACE(@Nome, ' ', '') LIKE '%' || REPLACE(Nome, ' ', '') || '%'";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@Nome", nome);
+                    var resultado = cmd.ExecuteScalar();
+                    return resultado != null ? resultado.ToString() : null;
                 }
             }
         }

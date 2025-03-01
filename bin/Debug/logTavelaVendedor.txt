@@ -19,3 +19,18 @@ UNIQUE constraint failed: Vendedores.CPF
 28/02/2025 23:48:22: Salvando Vendedor, : 10
 28/02/2025 23:49:18: Iniciando exclusão do Vendedores com ID: 10
 28/02/2025 23:49:18: Vendedor excluído com sucesso.
+01/03/2025 10:22:56: Salvando Vendedor, : 10
+01/03/2025 10:32:29: Iniciando exclusão do Vendedores com ID: 11
+01/03/2025 10:32:29: Vendedor excluído com sucesso.
+01/03/2025 10:46:39: Iniciando exclusão do Vendedores com ID: 13
+01/03/2025 10:46:39: Vendedor excluído com sucesso.
+01/03/2025 10:46:44: Iniciando exclusão do Vendedores com ID: 14
+01/03/2025 10:46:44: Vendedor excluído com sucesso.
+01/03/2025 10:46:50: Iniciando exclusão do Vendedores com ID: 16
+01/03/2025 10:46:50: Vendedor excluído com sucesso.
+01/03/2025 10:46:55: Iniciando exclusão do Vendedores com ID: 8
+01/03/2025 10:46:55: Vendedor excluído com sucesso.
+01/03/2025 10:47:02: Iniciando exclusão do Vendedores com ID: 12
+01/03/2025 10:47:02: Vendedor excluído com sucesso.
+01/03/2025 10:51:50: Iniciando exclusão do Vendedores com ID: 19
+01/03/2025 10:51:51: Vendedor excluído com sucesso.
