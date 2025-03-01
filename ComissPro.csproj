@@ -388,24 +388,6 @@
     <None Include="Resources\Minimize.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Ferramentas64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Receber64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Sair64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Usuario64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Vendedor64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Bilhete.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Pesquisar.png" />
   </ItemGroup>
   <ItemGroup>
@@ -476,6 +458,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PrestacaoConta32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tarefa32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

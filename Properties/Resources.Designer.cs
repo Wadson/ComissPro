@@ -343,6 +343,16 @@ namespace ComissPro.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap tarefa32 {
+            get {
+                object obj = ResourceManager.GetObject("tarefa32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Vendedores64 {
             get {
                 object obj = ResourceManager.GetObject("Vendedores64", resourceCulture);

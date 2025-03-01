@@ -3,23 +3,15 @@
   "WorkspaceRootPath": "D:\\ComissPro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmprestacaodecontas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmprestacaodecontas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|D:\\ComissPro\\frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:frmmanuten\u00E7\u00E3odeentregabilhetes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|ComissPro||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|d:\\comisspro\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{8422D6EF-1D73-4F85-9C01-048781709C18}|ComissPro.csproj|solutionrelative:properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,7 +21,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,44 +53,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmPrestacaoDeContas.cs [Design]",
-              "DocumentMoniker": "D:\\ComissPro\\FrmPrestacaoDeContas.cs",
-              "RelativeDocumentMoniker": "FrmPrestacaoDeContas.cs",
-              "ToolTip": "D:\\ComissPro\\FrmPrestacaoDeContas.cs [Design]",
-              "RelativeToolTip": "FrmPrestacaoDeContas.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T17:21:13.816Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ComissPro",
               "DocumentMoniker": "D:\\ComissPro\\ComissPro.csproj",
               "RelativeDocumentMoniker": "ComissPro.csproj",
               "ToolTip": "D:\\ComissPro\\ComissPro.csproj",
               "RelativeToolTip": "ComissPro.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-01T17:12:26.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T17:12:26.589Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
               "DocumentMoniker": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
               "RelativeDocumentMoniker": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
               "ToolTip": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
               "RelativeToolTip": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
-              "ViewState": "AgIAABwBAAAAAAAAAAAIwCkBAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAFIBAAAAAAAAAAAEwFoBAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-01T15:49:48.813Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs [Design]",
               "DocumentMoniker": "D:\\ComissPro\\FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
               "RelativeDocumentMoniker": "FrmManuten\u00E7\u00E3odeEntregaBilhetes.cs",
