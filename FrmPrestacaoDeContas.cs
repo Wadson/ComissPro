@@ -268,6 +268,8 @@ namespace ComissPro
             entregasDAL.SalvarPrestacaoDeContas(prestacao);
             MessageBox.Show("Prestação de contas salva com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CarregarComboEntregas();
+            
+            ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"]).HabilitarTimer(true);
             Utilitario.LimpaCampoKrypton(this);
         }
         private void btnSair_Click(object sender, EventArgs e)

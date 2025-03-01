@@ -7,14 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using ClosedXML.Excel; // Para Excel
-using iText.Kernel.Pdf; // Para PDF (iText7)
-using iText.Kernel.Exceptions;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
-using iText.IO.Font.Constants;
-using iText.Kernel.Font;
-using System.Diagnostics; // Para abrir os arquivos
+using System.Diagnostics;
+using System.IO; // Para abrir os arquivos
 
 namespace ComissPro
 {
@@ -228,7 +222,7 @@ namespace ComissPro
                 formEntregas.ShowDialog();
             }
         }
-        // Exportar para Excel
+
         // Exportar para Excel
         private void ExportarParaExcel()
         {
@@ -270,112 +264,9 @@ namespace ComissPro
                 MessageBox.Show("Erro ao exportar para Excel: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // Exportar para PDF
-        private void ExportarParaPDF()
-        {
-            try
-            {
-                DataTable dt = (DataTable)dataGridManutencaoEntregas.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("Não há dados para exportar!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                using (SaveFileDialog sfd = new SaveFileDialog())
-                {
-                    sfd.Filter = "PDF Files (*.pdf)|*.pdf";
-                    sfd.FileName = "Entregas_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".pdf";
-                    if (sfd.ShowDialog() == DialogResult.OK)
-                    {
-                        using (PdfWriter writer = new PdfWriter(sfd.FileName))
-                        using (PdfDocument pdf = new PdfDocument(writer))
-                        using (Document document = new Document(pdf))
-                        {
-                            PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-                            PdfFont regularFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
-
-                            // Título
-                            document.Add(new Paragraph("Relatório de Entregas")
-                                .SetTextAlignment(TextAlignment.CENTER)
-                                .SetFontSize(16)
-                                .SetFont(boldFont));
-
-                            // Contar colunas visíveis
-                            List<DataGridViewColumn> visibleColumns = new List<DataGridViewColumn>();
-                            foreach (DataGridViewColumn col in dataGridManutencaoEntregas.Columns)
-                            {
-                                if (col.Visible)
-                                {
-                                    visibleColumns.Add(col);
-                                }
-                            }
-
-                            // Criar tabela com número correto de colunas visíveis
-                            Table table = new Table(visibleColumns.Count);
-                            table.SetWidth(UnitValue.CreatePercentValue(100));
-
-                            // Cabeçalhos
-                            foreach (DataGridViewColumn col in visibleColumns)
-                            {
-                                table.AddHeaderCell(new Cell()
-                                    .SetTextAlignment(TextAlignment.CENTER)
-                                    .SetFont(boldFont)
-                                    .Add(new Paragraph(col.HeaderText)));
-                            }
-
-                            // Dados
-                            foreach (DataRow row in dt.Rows)
-                            {
-                                foreach (DataGridViewColumn col in visibleColumns)
-                                {
-                                    string value = row[col.DataPropertyName]?.ToString() ?? "";
-                                    table.AddCell(new Cell()
-                                        .SetTextAlignment(col.DataPropertyName == "QuantidadeEntregue" ? TextAlignment.CENTER : TextAlignment.LEFT)
-                                        .SetFont(regularFont)
-                                        .Add(new Paragraph(value)));
-                                }
-                            }
-
-                            document.Add(table);
-                        }
-                        MessageBox.Show("Exportado para PDF com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Abrir o arquivo gerado
-                        Process.Start(new ProcessStartInfo
-                        {
-                            FileName = sfd.FileName,
-                            UseShellExecute = true
-                        });
-                    }
-                }
-            }
-            catch (iText.Kernel.PdfException pdfEx)
-            {
-                MessageBox.Show("Erro específico do PDF: " + pdfEx.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao exportar para PDF: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            StatusOperacao = "NOVO";
-            CarregaDados();
-        }
-
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            StatusOperacao = "ALTERAR";
-            CarregaDados();
-        }
-
+               
         private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            StatusOperacao = "EXCLUSÃO";
-            CarregaDados();
+        {           
         }
 
         private void FrmManutençãodeEntregaBilhetes_Load(object sender, EventArgs e)
@@ -413,8 +304,7 @@ namespace ComissPro
         }
 
         private void btnExcluirOrfaos_Click(object sender, EventArgs e)
-        {
-            ExcluirEntregasOrfasEAtualizar();
+        {           
         }
 
         private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
@@ -439,9 +329,27 @@ namespace ComissPro
             formRelatorios.ShowDialog();
         }
 
-        private void btnPdf_Click(object sender, EventArgs e)
+        private void btnNovo_Click(object sender, EventArgs e)
         {
-            ExportarParaPDF();
+            StatusOperacao = "NOVO";
+            CarregaDados();
+        }
+
+        private void btnAltera_Click(object sender, EventArgs e)
+        {
+            StatusOperacao = "ALTERAR";
+            CarregaDados();
+        }
+
+        private void btnExclui_Click(object sender, EventArgs e)
+        {
+            StatusOperacao = "EXCLUSÃO";
+            CarregaDados();
+        }
+
+        private void btnExcluirOrfao_Click(object sender, EventArgs e)
+        {
+            ExcluirEntregasOrfasEAtualizar();
         }
     }
 }

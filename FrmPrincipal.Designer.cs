@@ -246,13 +246,13 @@
             this.btnPrestacaoContas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPrestacaoContas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnPrestacaoContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrestacaoContas.Image = global::ComissPro.Properties.Resources.EntregaBilhete64;
+            this.btnPrestacaoContas.Image = global::ComissPro.Properties.Resources.Realizado64;
             this.btnPrestacaoContas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPrestacaoContas.Location = new System.Drawing.Point(334, 4);
             this.btnPrestacaoContas.Name = "btnPrestacaoContas";
-            this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 95);
+            this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 100);
             this.btnPrestacaoContas.TabIndex = 9;
-            this.btnPrestacaoContas.Text = "&Prestação de Contas";
+            this.btnPrestacaoContas.Text = "&Prestação Concluída";
             this.btnPrestacaoContas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnPrestacaoContas, "Prestação de contas");
             this.btnPrestacaoContas.UseVisualStyleBackColor = false;
@@ -289,7 +289,7 @@
             this.btnManutencaoEntregas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnManutencaoEntregas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnManutencaoEntregas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManutencaoEntregas.Image = global::ComissPro.Properties.Resources.PrestacaoDeconta64;
+            this.btnManutencaoEntregas.Image = global::ComissPro.Properties.Resources.Venda64;
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnManutencaoEntregas.Location = new System.Drawing.Point(253, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";

@@ -69,11 +69,11 @@
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lblStatus.ForeColor = System.Drawing.Color.White;
-            this.lblStatus.Location = new System.Drawing.Point(256, 2);
+            this.lblStatus.Location = new System.Drawing.Point(182, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(241, 24);
+            this.lblStatus.Size = new System.Drawing.Size(366, 24);
             this.lblStatus.TabIndex = 613;
-            this.lblStatus.Text = "PRESTAÇÃO DE CONTAS";
+            this.lblStatus.Text = "PRESTAÇÃO DE CONTAS CONCLUÍDAS";
             // 
             // lblTotalRegistros
             // 

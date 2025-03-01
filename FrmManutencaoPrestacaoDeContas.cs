@@ -17,7 +17,8 @@ namespace ComissPro
         public FrmManutencaoPrestacaoDeContas(string statusOperacao)
         {
             InitializeComponent();
-            this.StatusOperacao = statusOperacao;    
+            this.StatusOperacao = statusOperacao;
+            dataGridPrestacaoContas.DataBindingComplete += DataGridPrestacaoContas_DataBindingComplete;
         }
         public void Listar()
         {
@@ -25,41 +26,60 @@ namespace ComissPro
             dataGridPrestacaoContas.DataSource = objetoDAL.listaEntregas();
             PersonalizarDataGridView();
         }
+
         public void PersonalizarDataGridView()
         {
-            if (dataGridPrestacaoContas.Columns.Count >= 9)
+            if (dataGridPrestacaoContas.Columns.Count >= 9) // Temos 9 colunas
             {
-                // Renomeia as colunas
-                dataGridPrestacaoContas.Columns[0].Name = "PrestacaoID";
-                dataGridPrestacaoContas.Columns[1].Name = "EntregaID";
-                dataGridPrestacaoContas.Columns[2].Name = "QuantidadeVendida";
-                dataGridPrestacaoContas.Columns[3].Name = "QuantidadeDevolvida";
-                dataGridPrestacaoContas.Columns[4].Name = "ValorRecebido";
-                dataGridPrestacaoContas.Columns[5].Name = "Comissao";
-                dataGridPrestacaoContas.Columns[6].Name = "DataPrestacao";               
+                // Renomeia as colunas na ordem solicitada
+                dataGridPrestacaoContas.Columns[0].Name = "NomeVendedor";
+                dataGridPrestacaoContas.Columns[1].Name = "QuantidadeEntregue";
+                dataGridPrestacaoContas.Columns[2].Name = "NomeProduto";
+                dataGridPrestacaoContas.Columns[3].Name = "Preco";
+                dataGridPrestacaoContas.Columns[4].Name = "QuantidadeVendida";
+                dataGridPrestacaoContas.Columns[5].Name = "QuantidadeDevolvida";
+                dataGridPrestacaoContas.Columns[6].Name = "ValorRecebido";
+                dataGridPrestacaoContas.Columns[7].Name = "Comissao";
+                dataGridPrestacaoContas.Columns[8].Name = "DataPrestacao";
 
                 // Define larguras fixas específicas para as colunas
-                dataGridPrestacaoContas.Columns["PrestacaoID"].Width = 250;
-                dataGridPrestacaoContas.Columns["EntregaID"].Width = 200;
-                dataGridPrestacaoContas.Columns["QuantidadeVendida"].Width = 160;
-                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].Width = 160;
+                dataGridPrestacaoContas.Columns["NomeVendedor"].Width = 200;
+                dataGridPrestacaoContas.Columns["QuantidadeEntregue"].Width = 140;
+                dataGridPrestacaoContas.Columns["NomeProduto"].Width = 200;
+                dataGridPrestacaoContas.Columns["Preco"].Width = 120;
+                dataGridPrestacaoContas.Columns["QuantidadeVendida"].Width = 140;
+                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].Width = 140;
                 dataGridPrestacaoContas.Columns["ValorRecebido"].Width = 120;
-                dataGridPrestacaoContas.Columns["Comissao"].Width = 130;
+                dataGridPrestacaoContas.Columns["Comissao"].Width = 120;
                 dataGridPrestacaoContas.Columns["DataPrestacao"].Width = 130;
 
-                // Formatar valores monetários (N2) para Preco e Total
+                // Define cabeçalhos visíveis
+                dataGridPrestacaoContas.Columns["NomeVendedor"].HeaderText = "Vendedor";
+                dataGridPrestacaoContas.Columns["QuantidadeEntregue"].HeaderText = "Qtd. Entregue";
+                dataGridPrestacaoContas.Columns["NomeProduto"].HeaderText = "Produto";
+                dataGridPrestacaoContas.Columns["Preco"].HeaderText = "Preço Unitário";
+                dataGridPrestacaoContas.Columns["QuantidadeVendida"].HeaderText = "Qtd. Vendida";
+                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].HeaderText = "Qtd. Devolvida";
+                dataGridPrestacaoContas.Columns["ValorRecebido"].HeaderText = "Valor Recebido";
+                dataGridPrestacaoContas.Columns["Comissao"].HeaderText = "Comissão";
+                dataGridPrestacaoContas.Columns["DataPrestacao"].HeaderText = "Data Prestação";
+
+                // Formatar valores monetários (N2)
+                dataGridPrestacaoContas.Columns["Preco"].DefaultCellStyle.Format = "N2";
                 dataGridPrestacaoContas.Columns["ValorRecebido"].DefaultCellStyle.Format = "N2";
                 dataGridPrestacaoContas.Columns["Comissao"].DefaultCellStyle.Format = "N2";
 
-                // Formatar DataEntrega como data curta
-                dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.Format = "d"; // Formato de data curta (short date)
+                // Formatar DataPrestacao como data curta e tratar DBNull
+                dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.Format = "d";
+                dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.NullValue = "";
 
-                // Centralizar a coluna QuantidadeEntregue
+                // Centralizar colunas numéricas
                 dataGridPrestacaoContas.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                // Ocultar as colunas VendedorID e ProdutoID
-                dataGridPrestacaoContas.Columns["PrestacaoID"].Visible = false;
-                dataGridPrestacaoContas.Columns["EntregaID"].Visible = false;
+                dataGridPrestacaoContas.Columns["QuantidadeVendida"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridPrestacaoContas.Columns["Preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridPrestacaoContas.Columns["ValorRecebido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridPrestacaoContas.Columns["Comissao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 // Centralizar cabeçalhos das colunas
                 foreach (DataGridViewColumn column in dataGridPrestacaoContas.Columns)
@@ -67,11 +87,38 @@ namespace ComissPro
                     column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     column.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
                 }
+
+                // Estilizar a linha de totais diretamente
+                if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha (dados + total)
+                {
+                    int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
+                    if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["NomeVendedor"].Value?.ToString() == "TOTAIS")
+                    {
+                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
+                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
+                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
+                    }
+                }
             }
 
             // Configurações adicionais
-            dataGridPrestacaoContas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None; // Desativa ajuste automático
-            dataGridPrestacaoContas.ReadOnly = true; // Torna o DataGridView somente leitura
+            dataGridPrestacaoContas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridPrestacaoContas.ReadOnly = true;
+        }
+
+        // Evento para estilizar a linha de totais
+        private void DataGridPrestacaoContas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha
+            {
+                int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
+                if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["NomeVendedor"].Value?.ToString() == "TOTAIS")
+                {
+                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
+                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
+                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
+                }
+            }
         }
         private void CarregaDados()
         {
