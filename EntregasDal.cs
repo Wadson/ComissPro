@@ -47,6 +47,7 @@ namespace ComissPro
                 e.QuantidadeEntregue, 
                 e.DataEntrega, 
                 e.PrestacaoRealizada,
+                COALESCE(p.Preco, 0) AS Preco, -- Adiciona o preço unitário
                 (e.QuantidadeEntregue * COALESCE(p.Preco, 0)) AS Total
             FROM Entregas e
             LEFT JOIN Vendedores v ON e.VendedorID = v.VendedorID
@@ -69,14 +70,15 @@ namespace ComissPro
 
                     // Adicionar linha de totais com valores padrão para todas as colunas
                     DataRow totalRow = dtFornecedor.NewRow();
-                    totalRow["EntregaID"] = DBNull.Value; // ou 0, dependendo do seu uso
-                    totalRow["VendedorID"] = DBNull.Value; // ou -1 para indicar "sem vendedor"
+                    totalRow["EntregaID"] = DBNull.Value;
+                    totalRow["VendedorID"] = DBNull.Value;
                     totalRow["NomeVendedor"] = "Totais";
-                    totalRow["ProdutoID"] = DBNull.Value; // ou -1
-                    totalRow["NomeProduto"] = DBNull.Value; // ou "N/A"
+                    totalRow["ProdutoID"] = DBNull.Value;
+                    totalRow["NomeProduto"] = DBNull.Value;
                     totalRow["QuantidadeEntregue"] = totalQuantidadeEntregue;
-                    totalRow["DataEntrega"] = DBNull.Value; // ou DateTime.Now, se preferir
-                    totalRow["PrestacaoRealizada"] = DBNull.Value; // ou 0
+                    totalRow["DataEntrega"] = DBNull.Value;
+                    totalRow["PrestacaoRealizada"] = DBNull.Value;
+                    totalRow["Preco"] = DBNull.Value; // Preço não é somado, fica vazio na linha de totais
                     totalRow["Total"] = totalTotal;
                     dtFornecedor.Rows.Add(totalRow);
                 }

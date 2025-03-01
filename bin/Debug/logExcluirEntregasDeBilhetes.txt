@@ -1,2 +1,4 @@
 01/03/2025 13:25:55: Iniciando exclusão do Entregas com Código: 6
 01/03/2025 13:25:55: Entrega excluída com sucesso.
+01/03/2025 13:36:33: Iniciando exclusão do Entregas com Código: 10
+01/03/2025 13:36:33: Entrega excluída com sucesso.

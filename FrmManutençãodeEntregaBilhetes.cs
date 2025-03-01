@@ -25,7 +25,7 @@ namespace ComissPro
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
-            if (dgv.Columns.Count >= 9) // Verifica se há pelo menos 9 colunas (conforme listaEntregas)
+            if (dgv.Columns.Count >= 10) // Agora temos 10 colunas com Preco
             {
                 // Renomeia as colunas de acordo com a ordem real retornada por listaEntregas()
                 dgv.Columns[0].Name = "EntregaID";
@@ -36,16 +36,19 @@ namespace ComissPro
                 dgv.Columns[5].Name = "QuantidadeEntregue";
                 dgv.Columns[6].Name = "DataEntrega";
                 dgv.Columns[7].Name = "PrestacaoRealizada";
-                dgv.Columns[8].Name = "Total";
+                dgv.Columns[8].Name = "Preco"; // Novo: Preço unitário
+                dgv.Columns[9].Name = "Total";
 
                 // Define larguras fixas específicas para as colunas visíveis
                 dgv.Columns["NomeVendedor"].Width = 250;
                 dgv.Columns["NomeProduto"].Width = 200;
                 dgv.Columns["QuantidadeEntregue"].Width = 140;
+                dgv.Columns["Preco"].Width = 120; // Largura para Preço
                 dgv.Columns["Total"].Width = 120;
                 dgv.Columns["DataEntrega"].Width = 130;
 
-                // Formatar valores monetários (N2) para Total
+                // Formatar valores monetários (N2) para Preco e Total
+                dgv.Columns["Preco"].DefaultCellStyle.Format = "N2";
                 dgv.Columns["Total"].DefaultCellStyle.Format = "N2";
 
                 // Formatar DataEntrega como data curta
@@ -58,7 +61,7 @@ namespace ComissPro
                 dgv.Columns["VendedorID"].Visible = false;
                 dgv.Columns["ProdutoID"].Visible = false;
                 dgv.Columns["PrestacaoRealizada"].Visible = false;
-                dgv.Columns["EntregaID"].Visible = false; // Opcional, já que é usado no txtEntregaID
+                dgv.Columns["EntregaID"].Visible = false;
 
                 // Centralizar cabeçalhos das colunas
                 foreach (DataGridViewColumn column in dgv.Columns)
@@ -92,11 +95,12 @@ namespace ComissPro
                 DataTable dt = objetoDAL.listaEntregas();
                 dataGridManutencaoEntregas.DataSource = dt;
 
-                // Ajustar nomes das colunas visíveis (HeaderText, não Name)
+                // Ajustar nomes das colunas visíveis (HeaderText)
                 dataGridManutencaoEntregas.Columns["EntregaID"].HeaderText = "ID Entrega";
                 dataGridManutencaoEntregas.Columns["NomeVendedor"].HeaderText = "Vendedor";
                 dataGridManutencaoEntregas.Columns["NomeProduto"].HeaderText = "Produto";
                 dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade";
+                dataGridManutencaoEntregas.Columns["Preco"].HeaderText = "Preço Unitário"; // Novo
                 dataGridManutencaoEntregas.Columns["Total"].HeaderText = "Total";
                 dataGridManutencaoEntregas.Columns["DataEntrega"].HeaderText = "Data";
 
@@ -141,7 +145,7 @@ namespace ComissPro
                     formEntregas.txtNomeVendedor.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeVendedor"].Value?.ToString() ?? "Vendedor Excluído";
                     formEntregas.txtNomeProduto.Text = dataGridManutencaoEntregas.CurrentRow.Cells["NomeProduto"].Value?.ToString() ?? "Produto Desconhecido";
                     formEntregas.txtQuantidade.Text = dataGridManutencaoEntregas.CurrentRow.Cells["QuantidadeEntregue"].Value?.ToString() ?? "0";
-                    formEntregas.txtPrecoUnit.Text = "0"; // Preço não está na query, ajustar se necessário
+                    formEntregas.txtPrecoUnit.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Preco"].Value?.ToString() ?? "0.00"; // Novo: Preço unitário
                     formEntregas.txtTotal.Text = dataGridManutencaoEntregas.CurrentRow.Cells["Total"].Value?.ToString() ?? "0.00";
                     formEntregas.dtpDataEntregaBilhete.Text = dataGridManutencaoEntregas.CurrentRow.Cells["DataEntrega"].Value?.ToString() ?? DateTime.Now.ToString("dd/MM/yyyy");
                     formEntregas.txtEntregaID.Text = dataGridManutencaoEntregas.CurrentRow.Cells["EntregaID"].Value?.ToString() ?? "0";
