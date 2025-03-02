@@ -177,6 +177,13 @@
     <Compile Include="Conexao.cs" />
     <Compile Include="EntregasBLL.cs" />
     <Compile Include="EntregasDal.cs" />
+    <Compile Include="FluxoCaixaDAL.cs" />
+    <Compile Include="FrmFluxoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFluxoCaixa.Designer.cs">
+      <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrestacaoDeContasDataGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,12 +262,6 @@
     <Compile Include="FrmLocalizarProduto.Designer.cs">
       <DependentUpon>FrmLocalizarProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPrestacaoDeContas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPrestacaoDeContas.Designer.cs">
-      <DependentUpon>FrmPrestacaoDeContas.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +297,9 @@
     <Compile Include="Utilitario.cs" />
     <Compile Include="VendedorBLL.cs" />
     <Compile Include="VendedorDAL.cs" />
+    <EmbeddedResource Include="FrmFluxoCaixa.resx">
+      <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrestacaoDeContasDataGrid.resx">
       <DependentUpon>FrmPrestacaoDeContasDataGrid.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,9 +338,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLocalizarProduto.resx">
       <DependentUpon>FrmLocalizarProduto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrestacaoDeContas.resx">
-      <DependentUpon>FrmPrestacaoDeContas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -497,6 +498,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\backup-de-dados256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fluxo-de-caixa32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\retirar-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

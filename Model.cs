@@ -9,6 +9,15 @@ namespace ComissPro
     internal class Model
     {
         // Model Classes
+        public class FluxoCaixaModel
+        {
+            public int FluxoCaixaID { get; set; }
+            public string TipoMovimentacao { get; set; } // "ENTRADA" ou "SAIDA"
+            public double Valor { get; set; }
+            public DateTime DataMovimentacao { get; set; } = DateTime.Now;
+            public string Descricao { get; set; }
+            public int? PrestacaoID { get; set; } // Nullable para movimentações não vinculadas a prestações
+        }
         public class UsuarioMODEL
         {
             public int UsuarioID { get; set; }

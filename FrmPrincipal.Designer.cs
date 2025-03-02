@@ -42,6 +42,7 @@
             this.lblTipoUsuarioo = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnFerramentas = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnRelatorios = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.btnVendedor = new System.Windows.Forms.Button();
@@ -57,8 +58,8 @@
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.btnFluxoCaixa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -142,6 +143,7 @@
             // 
             this.kryptonPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel2.Controls.Add(this.btnFluxoCaixa);
             this.kryptonPanel2.Controls.Add(this.btnFerramentas);
             this.kryptonPanel2.Controls.Add(this.btnRelatorios);
             this.kryptonPanel2.Controls.Add(this.btnUsuario);
@@ -169,7 +171,7 @@
             this.btnFerramentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnFerramentas.ImageIndex = 3;
             this.btnFerramentas.ImageList = this.imageList1;
-            this.btnFerramentas.Location = new System.Drawing.Point(478, 1);
+            this.btnFerramentas.Location = new System.Drawing.Point(535, 5);
             this.btnFerramentas.Name = "btnFerramentas";
             this.btnFerramentas.Size = new System.Drawing.Size(75, 68);
             this.btnFerramentas.TabIndex = 11;
@@ -178,6 +180,23 @@
             this.toolTip1.SetToolTip(this.btnFerramentas, "Entrega de bilhetes e Prestação de contas");
             this.btnFerramentas.UseVisualStyleBackColor = false;
             this.btnFerramentas.Click += new System.EventHandler(this.btnFerramentas_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "adicionar-usuario.png");
+            this.imageList1.Images.SetKeyName(1, "comissao.png");
+            this.imageList1.Images.SetKeyName(2, "Comissao64.png");
+            this.imageList1.Images.SetKeyName(3, "engrenagem64.png");
+            this.imageList1.Images.SetKeyName(4, "EntregaBilhete64.png");
+            this.imageList1.Images.SetKeyName(5, "PrestacaoDeconta64.png");
+            this.imageList1.Images.SetKeyName(6, "Realizado64.png");
+            this.imageList1.Images.SetKeyName(7, "Ssair64.png");
+            this.imageList1.Images.SetKeyName(8, "Venda64.png");
+            this.imageList1.Images.SetKeyName(9, "Vendedores64.png");
+            this.imageList1.Images.SetKeyName(10, "Bilhete64.png");
+            this.imageList1.Images.SetKeyName(11, "PrestacaoDeconta64.png");
             // 
             // btnRelatorios
             // 
@@ -191,7 +210,7 @@
             this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRelatorios.ImageIndex = 1;
             this.btnRelatorios.ImageList = this.imageList1;
-            this.btnRelatorios.Location = new System.Drawing.Point(400, 4);
+            this.btnRelatorios.Location = new System.Drawing.Point(385, 4);
             this.btnRelatorios.Name = "btnRelatorios";
             this.btnRelatorios.Size = new System.Drawing.Size(75, 68);
             this.btnRelatorios.TabIndex = 10;
@@ -234,7 +253,7 @@
             this.btnVendedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVendedor.ImageIndex = 9;
             this.btnVendedor.ImageList = this.imageList1;
-            this.btnVendedor.Location = new System.Drawing.Point(88, 2);
+            this.btnVendedor.Location = new System.Drawing.Point(85, 2);
             this.btnVendedor.Name = "btnVendedor";
             this.btnVendedor.Size = new System.Drawing.Size(75, 68);
             this.btnVendedor.TabIndex = 2;
@@ -278,7 +297,7 @@
             this.btnPrestacaoContas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnPrestacaoContas.ImageIndex = 2;
             this.btnPrestacaoContas.ImageList = this.imageList1;
-            this.btnPrestacaoContas.Location = new System.Drawing.Point(322, 4);
+            this.btnPrestacaoContas.Location = new System.Drawing.Point(310, 4);
             this.btnPrestacaoContas.Name = "btnPrestacaoContas";
             this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 68);
             this.btnPrestacaoContas.TabIndex = 9;
@@ -301,7 +320,7 @@
             this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnProduto.ImageIndex = 10;
             this.btnProduto.ImageList = this.imageList1;
-            this.btnProduto.Location = new System.Drawing.Point(166, 3);
+            this.btnProduto.Location = new System.Drawing.Point(160, 3);
             this.btnProduto.Name = "btnProduto";
             this.btnProduto.Size = new System.Drawing.Size(75, 68);
             this.btnProduto.TabIndex = 4;
@@ -323,7 +342,7 @@
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnManutencaoEntregas.ImageIndex = 8;
             this.btnManutencaoEntregas.ImageList = this.imageList1;
-            this.btnManutencaoEntregas.Location = new System.Drawing.Point(244, 4);
+            this.btnManutencaoEntregas.Location = new System.Drawing.Point(235, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
             this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 68);
             this.btnManutencaoEntregas.TabIndex = 6;
@@ -391,22 +410,6 @@
             this.produtosToolStripMenuItem.Text = "&Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "adicionar-usuario.png");
-            this.imageList1.Images.SetKeyName(1, "comissao.png");
-            this.imageList1.Images.SetKeyName(2, "Comissao64.png");
-            this.imageList1.Images.SetKeyName(3, "engrenagem64.png");
-            this.imageList1.Images.SetKeyName(4, "EntregaBilhete64.png");
-            this.imageList1.Images.SetKeyName(5, "PrestacaoDeconta64.png");
-            this.imageList1.Images.SetKeyName(6, "Realizado64.png");
-            this.imageList1.Images.SetKeyName(7, "Ssair64.png");
-            this.imageList1.Images.SetKeyName(8, "Venda64.png");
-            this.imageList1.Images.SetKeyName(9, "Vendedores64.png");
-            this.imageList1.Images.SetKeyName(10, "Bilhete64.png");
-            // 
             // kryptonPanel1
             // 
             this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -417,6 +420,28 @@
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
             this.kryptonPanel1.Size = new System.Drawing.Size(1010, 50);
             this.kryptonPanel1.TabIndex = 613;
+            // 
+            // btnFluxoCaixa
+            // 
+            this.btnFluxoCaixa.BackColor = System.Drawing.Color.Transparent;
+            this.btnFluxoCaixa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnFluxoCaixa.FlatAppearance.BorderSize = 0;
+            this.btnFluxoCaixa.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnFluxoCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnFluxoCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnFluxoCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFluxoCaixa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFluxoCaixa.ImageIndex = 11;
+            this.btnFluxoCaixa.ImageList = this.imageList1;
+            this.btnFluxoCaixa.Location = new System.Drawing.Point(460, 4);
+            this.btnFluxoCaixa.Name = "btnFluxoCaixa";
+            this.btnFluxoCaixa.Size = new System.Drawing.Size(75, 68);
+            this.btnFluxoCaixa.TabIndex = 12;
+            this.btnFluxoCaixa.Text = "&Fluxo Caixa";
+            this.btnFluxoCaixa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnFluxoCaixa, "Entrega de bilhetes e Prestação de contas");
+            this.btnFluxoCaixa.UseVisualStyleBackColor = false;
+            this.btnFluxoCaixa.Click += new System.EventHandler(this.btnFluxoCaixa_Click);
             // 
             // FrmPrincipal
             // 
@@ -480,5 +505,6 @@
         private System.Windows.Forms.Button btnFerramentas;
         private System.Windows.Forms.ImageList imageList1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private System.Windows.Forms.Button btnFluxoCaixa;
     }
 }

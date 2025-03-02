@@ -250,4 +250,10 @@
   <data name="backup_de_dados32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backup-de-dados32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fluxo_de_caixa32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fluxo-de-caixa32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="retirar_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\retirar-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

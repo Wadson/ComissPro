@@ -1,4 +1,5 @@
 D:\ComissPro\obj\Debug\ComissPro.csproj.AssemblyReference.cache
+D:\ComissPro\obj\Debug\ComissPro.FrmFluxoCaixa.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmPrestacaoDeContasDataGrid.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmRestaurarBackup.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmCadProdutos.resources
@@ -12,7 +13,6 @@ D:\ComissPro\obj\Debug\ComissPro.FrmManutençãodeEntregaBilhetes.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmManutProduto.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmManutVendedor.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmLocalizarProduto.resources
-D:\ComissPro\obj\Debug\ComissPro.FrmPrestacaoDeContas.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmPrincipal.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmModelo.resources
 D:\ComissPro\obj\Debug\ComissPro.FrmRelatoriosComissoes.resources

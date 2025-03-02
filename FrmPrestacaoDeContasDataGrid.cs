@@ -289,18 +289,46 @@ namespace ComissPro
             }
 
             var prestacaoDAL = new PrestacaoDeContasDAL();
+            var fluxoCaixaDAL = new FluxoCaixaDAL();
+            int prestacaoID = PrestacaoID; // Usa o ID gerado no Load
+
             foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
             {
+                if (row.Cells["NomeVendedor"].Value?.ToString() == "Totais") continue;
+
                 var prestacao = new PrestacaoContasModel
                 {
+                    PrestacaoID = prestacaoID,
                     EntregaID = int.Parse(row.Cells["EntregaID"].Value?.ToString() ?? "0"),
                     QuantidadeVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0"),
                     QuantidadeDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0"),
-                    ValorRecebido = double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency),
-                    Comissao = double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency),
-                    DataPrestacao = DateTime.Parse(row.Cells["DataPrestacao"].Value?.ToString() ?? DateTime.Now.ToString("dd/MM/yyyy"))
+                    ValorRecebido = double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", NumberStyles.Currency),
+                    Comissao = double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", NumberStyles.Currency),
+                    DataPrestacao = DateTime.Parse(row.Cells["DataPrestacao"].Value?.ToString() ?? DateTime.Now.ToString("dd/MM/yyyy")),
+                    NomeVendedor = row.Cells["NomeVendedor"].Value?.ToString(),
+                    VendedorID = entregasSelecionadas.Find(entrega => entrega.EntregaID == int.Parse(row.Cells["EntregaID"].Value.ToString())).VendedorID
                 };
                 prestacaoDAL.SalvarPrestacaoDeContas(prestacao);
+
+                // Registrar entrada (valor recebido)
+                fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
+                {
+                    TipoMovimentacao = "ENTRADA",
+                    Valor = prestacao.ValorRecebido,
+                    DataMovimentacao = prestacao.DataPrestacao,
+                    Descricao = $"Prestação de contas - {prestacao.NomeVendedor}",
+                    PrestacaoID = prestacaoID
+                });
+
+                // Registrar saída (comissão paga)
+                fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
+                {
+                    TipoMovimentacao = "SAIDA",
+                    Valor = prestacao.Comissao,
+                    DataMovimentacao = prestacao.DataPrestacao,
+                    Descricao = $"Comissão paga - {prestacao.NomeVendedor}",
+                    PrestacaoID = prestacaoID
+                });
             }
 
             MessageBox.Show("Prestações de contas salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);

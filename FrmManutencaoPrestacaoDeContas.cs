@@ -122,68 +122,68 @@ namespace ComissPro
         }
         private void CarregaDados()
         {
-            FrmPrestacaoDeContas formPrestacaoContas = new FrmPrestacaoDeContas(StatusOperacao);
+            //FrmPrestacaoDeContasDataGrid formPrestacaoContas = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
 
-            if (StatusOperacao == "ALTERAR" || StatusOperacao == "EXCLUSÃO")
-            {
-                try
-                {
-                    if (dataGridPrestacaoContas.Rows.Count == 0)
-                    {
-                        MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        return;
-                    }
-                    formPrestacaoContas.txtNomeVendedor.Text = dataGridPrestacaoContas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
-                    formPrestacaoContas.txtNomeProduto.Text = dataGridPrestacaoContas.CurrentRow.Cells["NomeProduto"].Value.ToString();
-                    formPrestacaoContas.txtQuantidadeEntregue.Text = dataGridPrestacaoContas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
-                    formPrestacaoContas.txtPrecoUnit.Text = dataGridPrestacaoContas.CurrentRow.Cells["Preco"].Value.ToString();
-                    formPrestacaoContas.txtTotal.Text = dataGridPrestacaoContas.CurrentRow.Cells["Total"].Value.ToString();
-                    formPrestacaoContas.dtpDataPrestacaoContas.Text = dataGridPrestacaoContas.CurrentRow.Cells["DataPrestacao"].Value.ToString();
-                    formPrestacaoContas.txtQuantidadeVendida.Text = dataGridPrestacaoContas.CurrentRow.Cells["QuantidadeVendida"].Value.ToString();
-                    formPrestacaoContas.PrestacaoID = int.Parse(dataGridPrestacaoContas.CurrentRow.Cells["PrestacaoID"].Value.ToString());
-                    formPrestacaoContas.EntregaID = int.Parse(dataGridPrestacaoContas.CurrentRow.Cells["EntregaID"].Value.ToString());
+            //if (StatusOperacao == "ALTERAR" || StatusOperacao == "EXCLUSÃO")
+            //{
+            //    try
+            //    {
+            //        if (dataGridPrestacaoContas.Rows.Count == 0)
+            //        {
+            //            MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //            return;
+            //        }
+            //        formPrestacaoContas.txtNomeVendedor.Text = dataGridPrestacaoContas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
+            //        formPrestacaoContas.txtNomeProduto.Text = dataGridPrestacaoContas.CurrentRow.Cells["NomeProduto"].Value.ToString();
+            //        formPrestacaoContas.txtQuantidadeEntregue.Text = dataGridPrestacaoContas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
+            //        formPrestacaoContas.txtPrecoUnit.Text = dataGridPrestacaoContas.CurrentRow.Cells["Preco"].Value.ToString();
+            //        formPrestacaoContas.txtTotal.Text = dataGridPrestacaoContas.CurrentRow.Cells["Total"].Value.ToString();
+            //        formPrestacaoContas.dtpDataPrestacaoContas.Text = dataGridPrestacaoContas.CurrentRow.Cells["DataPrestacao"].Value.ToString();
+            //        formPrestacaoContas.txtQuantidadeVendida.Text = dataGridPrestacaoContas.CurrentRow.Cells["QuantidadeVendida"].Value.ToString();
+            //        formPrestacaoContas.PrestacaoID = int.Parse(dataGridPrestacaoContas.CurrentRow.Cells["PrestacaoID"].Value.ToString());
+            //        formPrestacaoContas.EntregaID = int.Parse(dataGridPrestacaoContas.CurrentRow.Cells["EntregaID"].Value.ToString());
 
-                    if (StatusOperacao == "ALTERAR")
-                    {
-                        formPrestacaoContas.lblStatus.Text = "Alterar";
-                        formPrestacaoContas.lblStatus.ForeColor = Color.Orange;
-                        formPrestacaoContas.btnSalvar.Text = "Alterar";
-                        formPrestacaoContas.btnSalvar.ForeColor = Color.Orange;
-                        formPrestacaoContas.btnSalvar.BackColor = Color.OrangeRed;
-                        formPrestacaoContas.btnNovo.Enabled = false;
-                        formPrestacaoContas.txtNomeVendedor.Enabled = false;
-                        formPrestacaoContas.txtNomeProduto.Enabled = false;                       
+            //        if (StatusOperacao == "ALTERAR")
+            //        {
+            //            formPrestacaoContas.lblStatus.Text = "Alterar";
+            //            formPrestacaoContas.lblStatus.ForeColor = Color.Orange;
+            //            formPrestacaoContas.btnSalvar.Text = "Alterar";
+            //            formPrestacaoContas.btnSalvar.ForeColor = Color.Orange;
+            //            formPrestacaoContas.btnSalvar.BackColor = Color.OrangeRed;
+            //            formPrestacaoContas.btnNovo.Enabled = false;
+            //            formPrestacaoContas.txtNomeVendedor.Enabled = false;
+            //            formPrestacaoContas.txtNomeProduto.Enabled = false;                       
 
-                    }
-                    else if (StatusOperacao == "EXCLUSÃO")
-                    {
-                        formPrestacaoContas.lblStatus.Text = "Exluir registro!";
-                        formPrestacaoContas.lblStatus.ForeColor = Color.Red;
-                        formPrestacaoContas.btnSalvar.Text = "Excluir";                        
-                        formPrestacaoContas.txtNomeVendedor.Enabled = false;
-                        formPrestacaoContas.txtNomeProduto.Enabled = false;
-                        formPrestacaoContas.txtQuantidadeEntregue.Enabled = false;
-                        formPrestacaoContas.txtQuantidadeVendida.Enabled = false;
-                        formPrestacaoContas.txtQtdDevolvida.Enabled = false;
-                        formPrestacaoContas.txtValorRecebido.Enabled = false;
-                        formPrestacaoContas.txtValorComissao.Enabled = false;
-                        formPrestacaoContas.dtpDataPrestacaoContas.Enabled = false;                        
-                        formPrestacaoContas.txtPrecoUnit.Enabled = false;
-                        formPrestacaoContas.txtTotal.Enabled = false;
-                    }
+            //        }
+            //        else if (StatusOperacao == "EXCLUSÃO")
+            //        {
+            //            formPrestacaoContas.lblStatus.Text = "Exluir registro!";
+            //            formPrestacaoContas.lblStatus.ForeColor = Color.Red;
+            //            formPrestacaoContas.btnSalvar.Text = "Excluir";                        
+            //            formPrestacaoContas.txtNomeVendedor.Enabled = false;
+            //            formPrestacaoContas.txtNomeProduto.Enabled = false;
+            //            formPrestacaoContas.txtQuantidadeEntregue.Enabled = false;
+            //            formPrestacaoContas.txtQuantidadeVendida.Enabled = false;
+            //            formPrestacaoContas.txtQtdDevolvida.Enabled = false;
+            //            formPrestacaoContas.txtValorRecebido.Enabled = false;
+            //            formPrestacaoContas.txtValorComissao.Enabled = false;
+            //            formPrestacaoContas.dtpDataPrestacaoContas.Enabled = false;                        
+            //            formPrestacaoContas.txtPrecoUnit.Enabled = false;
+            //            formPrestacaoContas.txtTotal.Enabled = false;
+            //        }
 
-                    formPrestacaoContas.ShowDialog();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else if (StatusOperacao == "NOVO")
-            {
-                formPrestacaoContas.lblStatus.Text = "PRESTAÇÃO DE CONTAS";
-                formPrestacaoContas.ShowDialog();
-            }
+            //        formPrestacaoContas.ShowDialog();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else if (StatusOperacao == "NOVO")
+            //{
+            //    formPrestacaoContas.lblStatus.Text = "PRESTAÇÃO DE CONTAS";
+            //    formPrestacaoContas.ShowDialog();
+            //}
         }
         public void HabilitarTimer(bool habilitar)
         {

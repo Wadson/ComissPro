@@ -4,3 +4,7 @@
 01/03/2025 13:36:33: Entrega excluída com sucesso.
 01/03/2025 13:44:01: Iniciando exclusão do Entregas com Código: 8
 01/03/2025 13:44:01: Entrega excluída com sucesso.
+02/03/2025 15:45:40: Iniciando exclusão do Entregas com Código: 17
+02/03/2025 15:45:40: Entrega excluída com sucesso.
+02/03/2025 15:45:47: Iniciando exclusão do Entregas com Código: 18
+02/03/2025 15:45:47: Entrega excluída com sucesso.

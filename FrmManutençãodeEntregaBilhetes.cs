@@ -344,17 +344,6 @@ namespace ComissPro
         {
             StatusOperacao = "EXCLUSÃO";
             CarregaDados();
-        }
-
-        private void btnExcluirOrfao_Click(object sender, EventArgs e)
-        {
-            ExcluirEntregasOrfasEAtualizar();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FrmPrestacaoDeContas frm = new FrmPrestacaoDeContas(StatusOperacao);
-            frm.Show();
-        }
+        }       
     }
 }

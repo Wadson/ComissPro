@@ -133,5 +133,11 @@ namespace ComissPro
             FrmFerramentas frm = new FrmFerramentas();
             AbrirFormEnPanel(frm);
         }
+
+        private void btnFluxoCaixa_Click(object sender, EventArgs e)
+        {
+            FrmFluxoCaixa frm = new FrmFluxoCaixa();
+            AbrirFormEnPanel(frm);
+        }
     }
 }
