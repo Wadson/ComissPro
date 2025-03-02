@@ -50,6 +50,12 @@
             this.btnProduto = new System.Windows.Forms.Button();
             this.btnManutencaoEntregas = new System.Windows.Forms.Button();
             this.panelConteiner = new System.Windows.Forms.Panel();
+            this.lblValorComissoes = new System.Windows.Forms.Label();
+            this.lblQuantidadeDevolucoes = new System.Windows.Forms.Label();
+            this.lblValorPrestados = new System.Windows.Forms.Label();
+            this.lblQuantidadePrestados = new System.Windows.Forms.Label();
+            this.lblValorPendentes = new System.Windows.Forms.Label();
+            this.lblQuantidadePendentes = new System.Windows.Forms.Label();
             this.timerH = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,10 +64,13 @@
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panelDashboard = new System.Windows.Forms.Panel();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.panelDashboard.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -153,7 +162,7 @@
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridDataCellCustom1;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 110);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 99);
             this.kryptonPanel2.TabIndex = 610;
             // 
             // btnFerramentas
@@ -169,7 +178,7 @@
             this.btnFerramentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnFerramentas.Location = new System.Drawing.Point(478, 1);
             this.btnFerramentas.Name = "btnFerramentas";
-            this.btnFerramentas.Size = new System.Drawing.Size(75, 95);
+            this.btnFerramentas.Size = new System.Drawing.Size(75, 90);
             this.btnFerramentas.TabIndex = 11;
             this.btnFerramentas.Text = "&Ferramentas";
             this.btnFerramentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -190,7 +199,7 @@
             this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRelatorios.Location = new System.Drawing.Point(400, 4);
             this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(75, 95);
+            this.btnRelatorios.Size = new System.Drawing.Size(75, 90);
             this.btnRelatorios.TabIndex = 10;
             this.btnRelatorios.Text = "&Relatórios";
             this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -207,11 +216,11 @@
             this.btnUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuario.Image = global::ComissPro.Properties.Resources.adicionar_usuario;
             this.btnUsuario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUsuario.ImageList = this.imageList1;
             this.btnUsuario.Location = new System.Drawing.Point(10, 3);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(75, 95);
+            this.btnUsuario.Size = new System.Drawing.Size(75, 90);
             this.btnUsuario.TabIndex = 1;
             this.btnUsuario.Text = "&Usuários";
             this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -231,7 +240,7 @@
             this.btnVendedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVendedor.Location = new System.Drawing.Point(88, 2);
             this.btnVendedor.Name = "btnVendedor";
-            this.btnVendedor.Size = new System.Drawing.Size(75, 95);
+            this.btnVendedor.Size = new System.Drawing.Size(75, 90);
             this.btnVendedor.TabIndex = 2;
             this.btnVendedor.Text = "&Vendedor";
             this.btnVendedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -253,7 +262,7 @@
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSair.Location = new System.Drawing.Point(931, 3);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(75, 95);
+            this.btnSair.Size = new System.Drawing.Size(75, 90);
             this.btnSair.TabIndex = 7;
             this.btnSair.Text = "&Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -295,7 +304,7 @@
             this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnProduto.Location = new System.Drawing.Point(166, 3);
             this.btnProduto.Name = "btnProduto";
-            this.btnProduto.Size = new System.Drawing.Size(75, 95);
+            this.btnProduto.Size = new System.Drawing.Size(75, 90);
             this.btnProduto.TabIndex = 4;
             this.btnProduto.Text = "&Produto";
             this.btnProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -316,7 +325,7 @@
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnManutencaoEntregas.Location = new System.Drawing.Point(244, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
-            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 95);
+            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 90);
             this.btnManutencaoEntregas.TabIndex = 6;
             this.btnManutencaoEntregas.Text = "&Vendas";
             this.btnManutencaoEntregas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -331,10 +340,76 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelConteiner.Location = new System.Drawing.Point(3, 142);
+            this.panelConteiner.Location = new System.Drawing.Point(3, 192);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 529);
+            this.panelConteiner.Size = new System.Drawing.Size(1002, 480);
             this.panelConteiner.TabIndex = 609;
+            // 
+            // lblValorComissoes
+            // 
+            this.lblValorComissoes.AutoSize = true;
+            this.lblValorComissoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F);
+            this.lblValorComissoes.ForeColor = System.Drawing.Color.White;
+            this.lblValorComissoes.Location = new System.Drawing.Point(516, 29);
+            this.lblValorComissoes.Name = "lblValorComissoes";
+            this.lblValorComissoes.Size = new System.Drawing.Size(200, 20);
+            this.lblValorComissoes.TabIndex = 622;
+            this.lblValorComissoes.Text = "Comissões Hoje: R$ 0,00";
+            // 
+            // lblQuantidadeDevolucoes
+            // 
+            this.lblQuantidadeDevolucoes.AutoSize = true;
+            this.lblQuantidadeDevolucoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F);
+            this.lblQuantidadeDevolucoes.ForeColor = System.Drawing.Color.White;
+            this.lblQuantidadeDevolucoes.Location = new System.Drawing.Point(516, 4);
+            this.lblQuantidadeDevolucoes.Name = "lblQuantidadeDevolucoes";
+            this.lblQuantidadeDevolucoes.Size = new System.Drawing.Size(156, 20);
+            this.lblQuantidadeDevolucoes.TabIndex = 621;
+            this.lblQuantidadeDevolucoes.Text = "Devoluções Hoje: 0";
+            // 
+            // lblValorPrestados
+            // 
+            this.lblValorPrestados.AutoSize = true;
+            this.lblValorPrestados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F);
+            this.lblValorPrestados.ForeColor = System.Drawing.Color.White;
+            this.lblValorPrestados.Location = new System.Drawing.Point(233, 29);
+            this.lblValorPrestados.Name = "lblValorPrestados";
+            this.lblValorPrestados.Size = new System.Drawing.Size(236, 20);
+            this.lblValorPrestados.TabIndex = 620;
+            this.lblValorPrestados.Text = "Valor Prestados Hoje: R$ 0,00";
+            // 
+            // lblQuantidadePrestados
+            // 
+            this.lblQuantidadePrestados.AutoSize = true;
+            this.lblQuantidadePrestados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F);
+            this.lblQuantidadePrestados.ForeColor = System.Drawing.Color.White;
+            this.lblQuantidadePrestados.Location = new System.Drawing.Point(233, 4);
+            this.lblQuantidadePrestados.Name = "lblQuantidadePrestados";
+            this.lblQuantidadePrestados.Size = new System.Drawing.Size(210, 20);
+            this.lblQuantidadePrestados.TabIndex = 619;
+            this.lblQuantidadePrestados.Text = "Bilhetes Prestados Hoje: 0";
+            // 
+            // lblValorPendentes
+            // 
+            this.lblValorPendentes.AutoSize = true;
+            this.lblValorPendentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F);
+            this.lblValorPendentes.ForeColor = System.Drawing.Color.White;
+            this.lblValorPendentes.Location = new System.Drawing.Point(3, 29);
+            this.lblValorPendentes.Name = "lblValorPendentes";
+            this.lblValorPendentes.Size = new System.Drawing.Size(199, 20);
+            this.lblValorPendentes.TabIndex = 618;
+            this.lblValorPendentes.Text = "Valor Pendentes: R$ 0,00";
+            // 
+            // lblQuantidadePendentes
+            // 
+            this.lblQuantidadePendentes.AutoSize = true;
+            this.lblQuantidadePendentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F);
+            this.lblQuantidadePendentes.ForeColor = System.Drawing.Color.White;
+            this.lblQuantidadePendentes.Location = new System.Drawing.Point(3, 4);
+            this.lblQuantidadePendentes.Name = "lblQuantidadePendentes";
+            this.lblQuantidadePendentes.Size = new System.Drawing.Size(173, 20);
+            this.lblQuantidadePendentes.TabIndex = 617;
+            this.lblQuantidadePendentes.Text = "Bilhetes Pendentes: 0";
             // 
             // timerH
             // 
@@ -391,12 +466,44 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(1030, 8);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // panelDashboard
+            // 
+            this.panelDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(122)))), ((int)(((byte)(255)))));
+            this.panelDashboard.Controls.Add(this.lblValorPendentes);
+            this.panelDashboard.Controls.Add(this.lblValorComissoes);
+            this.panelDashboard.Controls.Add(this.lblQuantidadeDevolucoes);
+            this.panelDashboard.Controls.Add(this.lblQuantidadePendentes);
+            this.panelDashboard.Controls.Add(this.lblValorPrestados);
+            this.panelDashboard.Controls.Add(this.lblQuantidadePrestados);
+            this.panelDashboard.Location = new System.Drawing.Point(0, 140);
+            this.panelDashboard.Name = "panelDashboard";
+            this.panelDashboard.Size = new System.Drawing.Size(1002, 50);
+            this.panelDashboard.TabIndex = 623;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "adicionar-usuario.png");
+            this.imageList1.Images.SetKeyName(1, "Bilhete64.png");
+            this.imageList1.Images.SetKeyName(2, "comissao.png");
+            this.imageList1.Images.SetKeyName(3, "Comissao64.png");
+            this.imageList1.Images.SetKeyName(4, "engrenagem64.png");
+            this.imageList1.Images.SetKeyName(5, "EntregaBilhete64.png");
+            this.imageList1.Images.SetKeyName(6, "Realizado64.png");
+            this.imageList1.Images.SetKeyName(7, "Ssair64.png");
+            this.imageList1.Images.SetKeyName(8, "Venda64.png");
+            this.imageList1.Images.SetKeyName(9, "Vendedores64.png");
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.panelDashboard);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.kryptonStatusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -416,6 +523,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.panelDashboard.ResumeLayout(false);
+            this.panelDashboard.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,5 +561,13 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnRelatorios;
         private System.Windows.Forms.Button btnFerramentas;
+        public System.Windows.Forms.Label lblValorComissoes;
+        public System.Windows.Forms.Label lblQuantidadeDevolucoes;
+        public System.Windows.Forms.Label lblValorPrestados;
+        public System.Windows.Forms.Label lblQuantidadePrestados;
+        public System.Windows.Forms.Label lblValorPendentes;
+        public System.Windows.Forms.Label lblQuantidadePendentes;
+        private System.Windows.Forms.Panel panelDashboard;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

@@ -24,6 +24,35 @@ namespace ComissPro
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             AtualizaBarraStatus();
+            AtualizarDashboard();
+        }
+        private void AtualizarDashboard()
+        {
+            try
+            {
+                VendedorBLL vendedorBll = new VendedorBLL();
+                var dados = vendedorBll.ObterDadosDashboard();
+
+                lblQuantidadePendentes.Text = $"Bilhetes Pendentes: {dados.QuantidadePendentes}";
+                lblValorPendentes.Text = $"Valor Pendentes: R$ {dados.ValorPendentes:N2}";
+                lblQuantidadePrestados.Text = $"Bilhetes Prestados Hoje: {dados.QuantidadePrestadosHoje}";
+                lblValorPrestados.Text = $"Valor Prestados Hoje: R$ {dados.ValorPrestadosHoje:N2}";
+                lblQuantidadeDevolucoes.Text = $"Devoluções Hoje: {dados.QuantidadeDevolucoesHoje}";
+                lblValorComissoes.Text = $"Comissões Hoje: R$ {dados.ValorComissoesHoje:N2}";
+            }
+            catch (Exception ex)
+            {
+                LogUtil.Registrar($"Erro ao atualizar dashboard: {ex.Message}");
+                MessageBox.Show("Erro ao carregar o dashboard: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+
+        // Método público para ser chamado após uma prestação de contas
+        public void RefreshDashboard()
+        {
+            AtualizarDashboard();
         }
         private void AtualizaBarraStatus()
         {

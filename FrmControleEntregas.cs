@@ -151,6 +151,12 @@ namespace ComissPro
                 // Exibir feedback com o valor total calculado
                 MessageBox.Show($"Registro gravado com sucesso!\nValor total: {valorTotal:C}",
                                 "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                //Atualiza o DashBord
+                FrmPrincipal frmPrincipal = (FrmPrincipal)Application.OpenForms["FrmPrincipal"];
+                if (frmPrincipal != null)
+                {
+                    frmPrincipal.RefreshDashboard();
+                }
 
                 Utilitario.LimpaCampo(this);
                 ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"]).HabilitarTimer(true);

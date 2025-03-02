@@ -55,7 +55,7 @@ namespace ComissPro
 
             var colQtdDevolvida = new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = "Qtd Devolvida", ReadOnly = false, Width = 80 };
             colQtdDevolvida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightYellow;
+            colQtdDevolvida.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
             dgvPrestacaoDeContas.Columns.Add(colQtdDevolvida);
 
             var colQtdVendida = new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = "Qtd Vendida", ReadOnly = true, Width = 80 };
@@ -68,7 +68,7 @@ namespace ComissPro
 
             var colPercentualComissao = new DataGridViewTextBoxColumn { Name = "PercentualComissao", HeaderText = "% Comissão", ReadOnly = false, Width = 80 };
             colPercentualComissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colPercentualComissao.DefaultCellStyle.BackColor = Color.LightYellow;
+            colPercentualComissao.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
             dgvPrestacaoDeContas.Columns.Add(colPercentualComissao);
 
             var colComissao = new DataGridViewTextBoxColumn { Name = "Comissao", HeaderText = "Comissão", ReadOnly = true, Width = 80 };
@@ -77,7 +77,7 @@ namespace ComissPro
 
             var colDataPrestacao = new DataGridViewTextBoxColumn { Name = "DataPrestacao", HeaderText = "Data Prestação", ReadOnly = false, Width = 100 };
             colDataPrestacao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colDataPrestacao.DefaultCellStyle.BackColor = Color.LightYellow;
+            colDataPrestacao.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
             dgvPrestacaoDeContas.Columns.Add(colDataPrestacao);
         }
 
@@ -232,6 +232,13 @@ namespace ComissPro
 
             MessageBox.Show("Prestações de contas salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             CarregarComboEntregas();
+            //Atualiza DashBord
+            FrmPrincipal frmPrincipal = (FrmPrincipal)Application.OpenForms["FrmPrincipal"];
+            if (frmPrincipal != null)
+            {
+                frmPrincipal.RefreshDashboard();
+            }
+
             ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"])?.HabilitarTimer(true);
             Utilitario.LimpaCampoKrypton(this);
         }

@@ -77,11 +77,21 @@ namespace ComissPro
         }
         public void Excluir(Model.VendedorMODEL vendedor)
         {
+            // Verifica entregas pendentes
             int entregasPendentes = vendedorDal.ContarEntregasPendentes(vendedor.VendedorID);
             if (entregasPendentes > 0)
             {
                 throw new Exception($"Não é possível excluir o vendedor. Há {entregasPendentes} entrega(s) pendente(s) de prestação de contas!");
             }
+
+            // Verifica entregas concluídas
+            int entregasConcluidas = vendedorDal.ContarEntregasConcluidas(vendedor.VendedorID);
+            if (entregasConcluidas > 0)
+            {
+                throw new Exception($"Não é possível excluir o vendedor. Há {entregasConcluidas} entrega(s) concluída(s) associada(s) a este vendedor!");
+            }
+
+            // Se não houver pendentes nem concluídas, prossegue com a exclusão
             vendedorDal.Excluir(vendedor.VendedorID);
         }
 
@@ -203,6 +213,50 @@ namespace ComissPro
                 conn.Close();
             }
 
+        }
+        public (int entregasExcluidas, int prestacoesExcluidas) ExcluirRegistrosOrfaos()
+        {
+            LogUtil.Registrar("Iniciando exclusão de registros órfãos...");
+            try
+            {
+                int entregasExcluidas = vendedorDal.ExcluirEntregasOrfas();
+                int prestacoesExcluidas = vendedorDal.ExcluirPrestacoesOrfas();
+                LogUtil.Registrar("Exclusão de registros órfãos concluída com sucesso.");
+                return (entregasExcluidas, prestacoesExcluidas);
+            }
+            catch (Exception ex)
+            {
+                LogUtil.Registrar($"Erro durante exclusão de registros órfãos: {ex.Message}");
+                throw;
+            }
+        }
+
+
+        // METODOS PARA MOSTRAR TOTAIS NO PAINEL DA TELA PRINCIPAL
+
+        public class DashboardData
+        {
+            public int QuantidadePendentes { get; set; }
+            public decimal ValorPendentes { get; set; }
+            public int QuantidadePrestadosHoje { get; set; }
+            public decimal ValorPrestadosHoje { get; set; }
+            public int QuantidadeDevolucoesHoje { get; set; }
+            public decimal ValorComissoesHoje { get; set; }
+        }
+
+        public DashboardData ObterDadosDashboard()
+        {
+            var data = new DashboardData
+            {
+                QuantidadePendentes = vendedorDal.ObterQuantidadeBilhetesPendentes(),
+                ValorPendentes = vendedorDal.ObterValorBilhetesPendentes(),
+                QuantidadePrestadosHoje = vendedorDal.ObterQuantidadeBilhetesPrestadosHoje(),
+                ValorPrestadosHoje = vendedorDal.ObterValorBilhetesPrestadosHoje(),
+                QuantidadeDevolucoesHoje = vendedorDal.ObterQuantidadeDevolucoesHoje(),
+                ValorComissoesHoje = vendedorDal.ObterValorComissoesPagasHoje()
+            };
+            LogUtil.Registrar("Dados do dashboard obtidos com sucesso.");
+            return data;
         }
     }
 }

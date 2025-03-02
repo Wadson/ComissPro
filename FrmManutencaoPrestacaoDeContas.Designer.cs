@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.dataGridPrestacaoContas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,18 +73,6 @@
             this.lblStatus.Size = new System.Drawing.Size(366, 24);
             this.lblStatus.TabIndex = 613;
             this.lblStatus.Text = "PRESTAÇÃO DE CONTAS CONCLUÍDAS";
-            // 
-            // lblTotalRegistros
-            // 
-            this.lblTotalRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTotalRegistros.AutoSize = true;
-            this.lblTotalRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblTotalRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lblTotalRegistros.Location = new System.Drawing.Point(9, 387);
-            this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(146, 20);
-            this.lblTotalRegistros.TabIndex = 657;
-            this.lblTotalRegistros.Text = "Total de Registros";
             // 
             // dataGridPrestacaoContas
             // 
@@ -397,7 +384,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(784, 408);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.lblTotalRegistros);
             this.Controls.Add(this.dataGridPrestacaoContas);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnSair);
@@ -417,7 +403,6 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -425,7 +410,6 @@
 
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         public System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblTotalRegistros;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dataGridPrestacaoContas;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private System.Windows.Forms.Label label1;

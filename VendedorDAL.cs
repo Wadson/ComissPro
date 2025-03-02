@@ -143,19 +143,7 @@ namespace ComissPro
             }
         }
 
-        //public void Excluir(Model.VendedorMODEL vendedor)
-        //{
-        //    using (var conexao = Conexao.Conex())
-        //    {
-        //        conexao.Open();
-        //        string sql = "DELETE FROM Vendedores WHERE VendedorID=@VendedorID";
-        //        using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
-        //        {
-        //            cmd.Parameters.AddWithValue("@VendedorID", vendedor.VendedorID);
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+       
         public int ContarEntregasPendentes(int vendedorID)
         {
             using (var conexao = Conexao.Conex())
@@ -169,7 +157,19 @@ namespace ComissPro
                 }
             }
         }
-
+        public int ContarEntregasConcluidas(int vendedorID)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                string sql = "SELECT COUNT(*) FROM Entregas WHERE VendedorID = @VendedorID AND PrestacaoRealizada = 1";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@VendedorID", vendedorID);
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
         public void Excluir(int vendedorID)
         {
             try
@@ -194,7 +194,52 @@ namespace ComissPro
                 throw new Exception("Erro ao excluir vendedor: " + ex.Message);
             }
         }
+        public int ExcluirEntregasOrfas()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = @"
+            DELETE FROM Entregas 
+            WHERE VendedorID NOT IN (SELECT VendedorID FROM Vendedores)";
+                using (SQLiteCommand sqlcomando = new SQLiteCommand(query, conn))
+                {
+                    int rowsAffected = sqlcomando.ExecuteNonQuery();
+                    LogUtil.Registrar($"Excluídas {rowsAffected} entregas órfãs.");
+                    return rowsAffected;
+                }
+            }
+        }
 
+        public int ExcluirPrestacoesOrfas()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string countQuery = "SELECT COUNT(*) FROM PrestacaoContas WHERE EntregaID NOT IN (SELECT EntregaID FROM Entregas)";
+                using (SQLiteCommand countCmd = new SQLiteCommand(countQuery, conn))
+                {
+                    long count = (long)countCmd.ExecuteScalar();
+                    LogUtil.Registrar($"Encontrados {count} registros órfãos em PrestacaoContas antes da exclusão.");
+                }
+
+                string query = @"
+            DELETE FROM PrestacaoContas
+            WHERE EntregaID IN (
+                SELECT pc.EntregaID
+                FROM PrestacaoContas pc
+                LEFT JOIN Entregas e ON pc.EntregaID = e.EntregaID
+                WHERE e.EntregaID IS NULL
+            )";
+                using (SQLiteCommand sqlcomando = new SQLiteCommand(query, conn))
+                {
+                    LogUtil.Registrar("Executando query de exclusão de prestações órfãs...");
+                    int rowsAffected = sqlcomando.ExecuteNonQuery();
+                    LogUtil.Registrar($"Query executada. Excluídas {rowsAffected} prestações de contas órfãs.");
+                    return rowsAffected;
+                }
+            }
+        }
         public DataTable PesquisarPorNome(string nome)
         {
             var conn = Conexao.Conex();
@@ -486,7 +531,109 @@ namespace ComissPro
             }
             return geral;
         }
+        // PAINEL DE TOTAIS NA TELA PRINCIPAL
 
+        public int ObterQuantidadeBilhetesPendentes()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT SUM(QuantidadeEntregue) FROM Entregas WHERE PrestacaoRealizada = 0";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                }
+            }
+        }
+
+        public decimal ObterValorBilhetesPendentes()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = @"
+    SELECT SUM(e.QuantidadeEntregue * COALESCE(p.Preco, 0))
+            FROM Entregas e
+            LEFT JOIN Vendedores v ON e.VendedorID = v.VendedorID
+            LEFT JOIN Produtos p ON e.ProdutoID = p.ProdutoID
+            WHERE e.PrestacaoRealizada = 0";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
+                }
+            }
+        }
+
+        public int ObterQuantidadeBilhetesPrestadosHoje()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT SUM(e.QuantidadeEntregue) FROM Entregas e INNER JOIN PrestacaoContas pc ON e.EntregaID = pc.EntregaID WHERE e.PrestacaoRealizada = 1 AND DATE(pc.DataPrestacao) = DATE('now')";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                }
+            }
+        }
+
+        public decimal ObterValorBilhetesPrestadosHoje()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = @"
+    SELECT SUM(pc.ValorRecebido)
+FROM PrestacaoContas pc
+INNER JOIN Entregas e ON pc.EntregaID = e.EntregaID
+WHERE e.PrestacaoRealizada = 1
+  AND DATE(pc.DataPrestacao) = DATE('now')";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
+                }
+            }
+        }
+
+        public int ObterQuantidadeDevolucoesHoje()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = @"
+    SELECT SUM(pc.QuantidadeDevolvida)
+    FROM PrestacaoContas pc
+    INNER JOIN Entregas e ON pc.EntregaID = e.EntregaID
+    WHERE e.PrestacaoRealizada = 1
+      AND DATE(pc.DataPrestacao) = DATE('now')";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                }
+            }
+        }
+
+        public decimal ObterValorComissoesPagasHoje()
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT SUM(Comissao) FROM PrestacaoContas WHERE DATE(DataPrestacao) = DATE('now')";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    var result = cmd.ExecuteScalar();
+                    return result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
+                }
+            }
+        }
 
 
     }

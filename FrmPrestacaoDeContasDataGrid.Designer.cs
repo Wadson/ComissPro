@@ -307,9 +307,9 @@
             // 
             this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblStatus.AutoSize = true;
-            this.lblStatus.BackColor = System.Drawing.Color.LightBlue;
+            this.lblStatus.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.Black;
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblStatus.Location = new System.Drawing.Point(392, 9);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(171, 16);
@@ -343,9 +343,9 @@
             // 
             this.lblPercentualComissao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPercentualComissao.AutoSize = true;
-            this.lblPercentualComissao.BackColor = System.Drawing.Color.LightBlue;
+            this.lblPercentualComissao.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblPercentualComissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPercentualComissao.ForeColor = System.Drawing.Color.Black;
+            this.lblPercentualComissao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblPercentualComissao.Location = new System.Drawing.Point(224, 27);
             this.lblPercentualComissao.Name = "lblPercentualComissao";
             this.lblPercentualComissao.Size = new System.Drawing.Size(11, 16);

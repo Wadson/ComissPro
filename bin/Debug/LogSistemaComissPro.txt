@@ -1,0 +1,38 @@
+2025-03-02 10:24:36 - Iniciando exclusão de registros órfãos...
+2025-03-02 10:24:36 - Excluídas 0 entregas órfãs.
+2025-03-02 10:24:36 - Excluídas 0 prestações de contas órfãs.
+2025-03-02 10:24:36 - Exclusão de registros órfãos concluída com sucesso.
+2025-03-02 10:24:43 - Iniciando exclusão de registros órfãos...
+2025-03-02 10:24:43 - Excluídas 0 entregas órfãs.
+2025-03-02 10:24:43 - Excluídas 0 prestações de contas órfãs.
+2025-03-02 10:24:43 - Exclusão de registros órfãos concluída com sucesso.
+2025-03-02 10:29:26 - Usuário solicitou exclusão de registros órfãos.
+2025-03-02 10:29:28 - Iniciando exclusão de registros órfãos...
+2025-03-02 10:29:28 - Excluídas 0 entregas órfãs.
+2025-03-02 10:29:28 - Excluídas 0 prestações de contas órfãs.
+2025-03-02 10:29:28 - Exclusão de registros órfãos concluída com sucesso.
+2025-03-02 10:29:31 - Nenhum registro órfão encontrado para exclusão.
+2025-03-02 10:37:08 - Usuário solicitou exclusão de registros órfãos.
+2025-03-02 10:37:11 - Iniciando exclusão de registros órfãos...
+2025-03-02 10:37:11 - Excluídas 0 entregas órfãs.
+2025-03-02 10:37:11 - Encontrados 10 registros órfãos em PrestacaoContas antes da exclusão.
+2025-03-02 10:37:11 - Executando query de exclusão de prestações órfãs...
+2025-03-02 10:37:11 - Query executada. Excluídas 10 prestações de contas órfãs.
+2025-03-02 10:37:11 - Exclusão de registros órfãos concluída com sucesso.
+2025-03-02 10:37:19 - Resultado exibido ao usuário: Limpeza concluída com sucesso!
+- Entregas excluídas: 0
+- Prestações de contas excluídas: 10
+2025-03-02 11:01:19 - Erro ao atualizar dashboard: SQL logic error
+no such column: QuantidadeVendida
+2025-03-02 11:04:51 - Erro ao atualizar dashboard: SQL logic error
+no such column: QuantidadeVendida
+2025-03-02 11:19:28 - Erro ao atualizar dashboard: SQL logic error
+no such column: pc.Id
+2025-03-02 11:21:50 - Erro ao atualizar dashboard: SQL logic error
+no such column: pc.Id
+2025-03-02 11:30:10 - Dados do dashboard obtidos com sucesso.
+2025-03-02 11:31:03 - Dados do dashboard obtidos com sucesso.
+2025-03-02 11:31:26 - Dados do dashboard obtidos com sucesso.
+2025-03-02 11:37:29 - Dados do dashboard obtidos com sucesso.
+2025-03-02 11:40:21 - Dados do dashboard obtidos com sucesso.
+2025-03-02 11:59:27 - Dados do dashboard obtidos com sucesso.
