@@ -207,7 +207,6 @@ namespace ComissPro
 
                     // Reativa os eventos após preencher os dados
                     formEntregas.bloqueiaEventosTextChanged = false;
-
                     formEntregas.ShowDialog();
                 }
                 catch (Exception ex)
@@ -262,12 +261,8 @@ namespace ComissPro
             {
                 MessageBox.Show("Erro ao exportar para Excel: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-               
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {           
-        }
-
+        }               
+       
         private void FrmManutençãodeEntregaBilhetes_Load(object sender, EventArgs e)
         {
             Listar();
@@ -301,11 +296,7 @@ namespace ComissPro
             Listar();
             timer1.Enabled = false;
         }
-
-        private void btnExcluirOrfaos_Click(object sender, EventArgs e)
-        {           
-        }
-
+       
         private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
         {
             FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);

@@ -142,7 +142,34 @@ namespace ComissPro
                     cmd.ExecuteNonQuery();
                 }
             }
-        }       
+        }
+        // Método para excluir contas órfãs
+        public int ExcluirContasOrfas()
+        {
+            var conn = Conexao.Conex();
+            try
+            {
+                conn.Open();
+
+                string query = @"
+                DELETE FROM PrestacaoContas 
+                WHERE EntregaID NOT IN (SELECT EntregaID FROM Entregas);";
+
+                using (SQLiteCommand sqlcomando = new SQLiteCommand(query, conn))
+                {
+                    int rowsAffected = sqlcomando.ExecuteNonQuery();
+                    return rowsAffected; // Retorna o número de contas excluídas
+                }
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro ao excluir contas órfãs: " + erro.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public PrestacaoContasModel PesquisarPorCodigoPrestacao(string pesquisa)
         {
             PrestacaoContasModel prestacao = null;

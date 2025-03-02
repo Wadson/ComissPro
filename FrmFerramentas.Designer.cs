@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnRestaurarBackup = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnExcluirOrfaos = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -55,7 +56,7 @@
             // 
             // btnGerarBackup
             // 
-            this.btnGerarBackup.Location = new System.Drawing.Point(12, 96);
+            this.btnGerarBackup.Location = new System.Drawing.Point(12, 46);
             this.btnGerarBackup.Name = "btnGerarBackup";
             this.btnGerarBackup.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnGerarBackup.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -133,7 +134,7 @@
             // 
             // btnRestaurarBackup
             // 
-            this.btnRestaurarBackup.Location = new System.Drawing.Point(12, 154);
+            this.btnRestaurarBackup.Location = new System.Drawing.Point(192, 46);
             this.btnRestaurarBackup.Name = "btnRestaurarBackup";
             this.btnRestaurarBackup.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRestaurarBackup.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -262,12 +263,78 @@
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // btnExcluirOrfaos
+            // 
+            this.btnExcluirOrfaos.Location = new System.Drawing.Point(372, 46);
+            this.btnExcluirOrfaos.Name = "btnExcluirOrfaos";
+            this.btnExcluirOrfaos.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnExcluirOrfaos.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnExcluirOrfaos.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnExcluirOrfaos.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirOrfaos.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirOrfaos.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnExcluirOrfaos.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirOrfaos.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnExcluirOrfaos.OverrideDefault.Border.Rounding = 1;
+            this.btnExcluirOrfaos.OverrideDefault.Border.Width = 1;
+            this.btnExcluirOrfaos.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirOrfaos.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
+            this.btnExcluirOrfaos.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
+            this.btnExcluirOrfaos.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnExcluirOrfaos.Size = new System.Drawing.Size(147, 42);
+            this.btnExcluirOrfaos.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnExcluirOrfaos.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnExcluirOrfaos.StateCommon.Back.ColorAngle = 45F;
+            this.btnExcluirOrfaos.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnExcluirOrfaos.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirOrfaos.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirOrfaos.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnExcluirOrfaos.StateCommon.Border.Rounding = 1;
+            this.btnExcluirOrfaos.StateCommon.Border.Width = 1;
+            this.btnExcluirOrfaos.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirOrfaos.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnExcluirOrfaos.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirOrfaos.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnExcluirOrfaos.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnExcluirOrfaos.StatePressed.Back.ColorAngle = 135F;
+            this.btnExcluirOrfaos.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnExcluirOrfaos.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnExcluirOrfaos.StatePressed.Border.ColorAngle = 135F;
+            this.btnExcluirOrfaos.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirOrfaos.StatePressed.Border.Rounding = 1;
+            this.btnExcluirOrfaos.StatePressed.Border.Width = 1;
+            this.btnExcluirOrfaos.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirOrfaos.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnExcluirOrfaos.StateTracking.Back.ColorAngle = 45F;
+            this.btnExcluirOrfaos.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnExcluirOrfaos.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcluirOrfaos.StateTracking.Border.ColorAngle = 45F;
+            this.btnExcluirOrfaos.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluirOrfaos.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnExcluirOrfaos.StateTracking.Border.Rounding = 1;
+            this.btnExcluirOrfaos.StateTracking.Border.Width = 1;
+            this.btnExcluirOrfaos.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnExcluirOrfaos.TabIndex = 657;
+            this.btnExcluirOrfaos.TabStop = false;
+            this.btnExcluirOrfaos.Values.Image = global::ComissPro.Properties.Resources.deletar32;
+            this.btnExcluirOrfaos.Values.Text = "&Excluir";
+            this.btnExcluirOrfaos.Click += new System.EventHandler(this.btnExcluirOrfaos_Click);
+            // 
             // FrmFerramentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExcluirOrfaos);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnRestaurarBackup);
             this.Controls.Add(this.label2);
@@ -292,5 +359,6 @@
         private System.Windows.Forms.Label label2;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnRestaurarBackup;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
+        public ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirOrfaos;
     }
 }

@@ -219,8 +219,8 @@ namespace ComissPro
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            StatusOperacao = "NOVO";
-            CarregaDados();
+            FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
+            formPrestacao.ShowDialog();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)

@@ -34,5 +34,25 @@ namespace ComissPro
             FrmRestaurarBackup frmRestaurarBackup = new FrmRestaurarBackup();
             frmRestaurarBackup.ShowDialog();
         }
+
+        private void btnExcluirOrfaos_Click(object sender, EventArgs e)
+        {
+            PrestacaoDeContasDAL prestacaoDeContasDAL = new PrestacaoDeContasDAL();
+            try
+            {
+                int excluidas = prestacaoDeContasDAL.ExcluirContasOrfas();
+                MessageBox.Show($"{excluidas} contas órfãs foram excluídas com sucesso.",
+                                "Sucesso",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                                "Erro",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
     }
 }

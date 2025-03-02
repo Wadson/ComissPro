@@ -238,8 +238,7 @@ namespace ComissPro
                 e.SuppressKeyPress = true; // Suprime o som de bip padrão
                 this.SelectNextControl((Control)sender, true, true, true, true);
             }
-        }
-       
+        }       
 
         private void btnLocalizarVendedor_Click(object sender, EventArgs e)
         {
@@ -281,27 +280,7 @@ namespace ComissPro
             Task.Delay(100).ContinueWith(t =>
             {
                 Invoke(new Action(() => bloqueiaPesquisa = false));
-            });
-            //if (bloqueiaPesquisa || string.IsNullOrEmpty(txtNomeVendedor.Text))
-            //    return;
-
-            //bloqueiaPesquisa = true; // Impede reabertura do formulário 
-
-            //using (FrmLocalicarVendedor pesquisaVendedor = new FrmLocalicarVendedor(this, txtNomeVendedor.Text))
-            //{
-            //    pesquisaVendedor.Owner = this; // Define o formulário principal como "dono"
-
-            //    if (pesquisaVendedor.ShowDialog() == DialogResult.OK)
-            //    {
-            //        txtNomeVendedor.Text = pesquisaVendedor.vendedorSelecionado;
-            //    }
-            //}
-            //// Aguarda a finalização do método antes de liberar
-            //Task.Delay(100).ContinueWith(t =>
-            //{
-            //    Invoke(new Action(() => bloqueiaPesquisa = false));
-            //});
-            ////bloqueiaPesquisa = false; // Libera a pesquisa novamente
+            });          
         }
 
         private void txtNomeProduto_TextChanged(object sender, EventArgs e)
@@ -332,17 +311,7 @@ namespace ComissPro
 
             txtQuantidade.Select();
         }
-
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (StatusOperacao == "ALTERAR")

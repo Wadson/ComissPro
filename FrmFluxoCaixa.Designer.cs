@@ -51,13 +51,13 @@
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.txtSaldoAtual = new System.Windows.Forms.Label();
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTotalEntrada = new System.Windows.Forms.Label();
             this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.txtTotalRetiradas = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.txtTotalEntrada = new System.Windows.Forms.Label();
             this.txtValorEntrada = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnFecharCaixa = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntradas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -176,6 +176,7 @@
             this.btnSair.TabStop = false;
             this.btnSair.Values.Image = global::ComissPro.Properties.Resources.sair32;
             this.btnSair.Values.Text = "&Sair";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // label9
             // 
@@ -404,11 +405,11 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.75F);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(3, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 20);
+            this.label3.Size = new System.Drawing.Size(59, 17);
             this.label3.TabIndex = 710;
             this.label3.Text = "Entradas";
             // 
@@ -435,7 +436,7 @@
             this.kryptonPanel3.Name = "kryptonPanel3";
             this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel3.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel3.Size = new System.Drawing.Size(450, 26);
+            this.kryptonPanel3.Size = new System.Drawing.Size(450, 20);
             this.kryptonPanel3.StateNormal.Color1 = System.Drawing.Color.LightCoral;
             this.kryptonPanel3.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.kryptonPanel3.TabIndex = 713;
@@ -444,11 +445,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(166, 2);
+            this.label4.Location = new System.Drawing.Point(188, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 24);
+            this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 600;
             this.label4.Text = "RETIRADAS";
             // 
@@ -456,11 +457,11 @@
             // 
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(155, 1);
+            this.label28.Location = new System.Drawing.Point(183, 1);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(113, 24);
+            this.label28.Size = new System.Drawing.Size(72, 17);
             this.label28.TabIndex = 600;
             this.label28.Text = "ENTRADAS";
             // 
@@ -471,7 +472,7 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel1.Size = new System.Drawing.Size(450, 26);
+            this.kryptonPanel1.Size = new System.Drawing.Size(450, 20);
             this.kryptonPanel1.StateNormal.Color1 = System.Drawing.Color.Teal;
             this.kryptonPanel1.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
             this.kryptonPanel1.TabIndex = 712;
@@ -480,11 +481,11 @@
             // 
             this.txtSaldoAtual.AutoSize = true;
             this.txtSaldoAtual.BackColor = System.Drawing.Color.Transparent;
-            this.txtSaldoAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.75F);
+            this.txtSaldoAtual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSaldoAtual.ForeColor = System.Drawing.Color.White;
             this.txtSaldoAtual.Location = new System.Drawing.Point(356, 1);
             this.txtSaldoAtual.Name = "txtSaldoAtual";
-            this.txtSaldoAtual.Size = new System.Drawing.Size(14, 20);
+            this.txtSaldoAtual.Size = new System.Drawing.Size(13, 17);
             this.txtSaldoAtual.TabIndex = 600;
             this.txtSaldoAtual.Text = "-";
             // 
@@ -498,10 +499,35 @@
             this.kryptonPanel4.Name = "kryptonPanel4";
             this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel4.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel4.Size = new System.Drawing.Size(450, 26);
+            this.kryptonPanel4.Size = new System.Drawing.Size(450, 20);
             this.kryptonPanel4.StateNormal.Color1 = System.Drawing.Color.Teal;
             this.kryptonPanel4.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
             this.kryptonPanel4.TabIndex = 714;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(296, 1);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 17);
+            this.label7.TabIndex = 712;
+            this.label7.Text = "Saldo";
+            // 
+            // txtTotalEntrada
+            // 
+            this.txtTotalEntrada.AutoSize = true;
+            this.txtTotalEntrada.BackColor = System.Drawing.Color.Transparent;
+            this.txtTotalEntrada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalEntrada.ForeColor = System.Drawing.Color.White;
+            this.txtTotalEntrada.Location = new System.Drawing.Point(78, 2);
+            this.txtTotalEntrada.Name = "txtTotalEntrada";
+            this.txtTotalEntrada.Size = new System.Drawing.Size(13, 17);
+            this.txtTotalEntrada.TabIndex = 711;
+            this.txtTotalEntrada.Text = "-";
             // 
             // kryptonPanel5
             // 
@@ -511,7 +537,7 @@
             this.kryptonPanel5.Name = "kryptonPanel5";
             this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel5.Size = new System.Drawing.Size(450, 26);
+            this.kryptonPanel5.Size = new System.Drawing.Size(450, 20);
             this.kryptonPanel5.StateNormal.Color1 = System.Drawing.Color.LightCoral;
             this.kryptonPanel5.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.kryptonPanel5.TabIndex = 715;
@@ -520,11 +546,11 @@
             // 
             this.txtTotalRetiradas.AutoSize = true;
             this.txtTotalRetiradas.BackColor = System.Drawing.Color.Transparent;
-            this.txtTotalRetiradas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtTotalRetiradas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalRetiradas.ForeColor = System.Drawing.Color.White;
             this.txtTotalRetiradas.Location = new System.Drawing.Point(307, 2);
             this.txtTotalRetiradas.Name = "txtTotalRetiradas";
-            this.txtTotalRetiradas.Size = new System.Drawing.Size(134, 24);
+            this.txtTotalRetiradas.Size = new System.Drawing.Size(95, 17);
             this.txtTotalRetiradas.TabIndex = 601;
             this.txtTotalRetiradas.Text = "Total Retiradas";
             // 
@@ -532,11 +558,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(3, 2);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 24);
+            this.label6.Size = new System.Drawing.Size(95, 17);
             this.label6.TabIndex = 600;
             this.label6.Text = "Total Retiradas";
             // 
@@ -547,18 +573,6 @@
             this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
             this.kryptonDateTimePicker1.Size = new System.Drawing.Size(136, 21);
             this.kryptonDateTimePicker1.TabIndex = 716;
-            // 
-            // txtTotalEntrada
-            // 
-            this.txtTotalEntrada.AutoSize = true;
-            this.txtTotalEntrada.BackColor = System.Drawing.Color.Transparent;
-            this.txtTotalEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.75F);
-            this.txtTotalEntrada.ForeColor = System.Drawing.Color.White;
-            this.txtTotalEntrada.Location = new System.Drawing.Point(78, 2);
-            this.txtTotalEntrada.Name = "txtTotalEntrada";
-            this.txtTotalEntrada.Size = new System.Drawing.Size(14, 20);
-            this.txtTotalEntrada.TabIndex = 711;
-            this.txtTotalEntrada.Text = "-";
             // 
             // txtValorEntrada
             // 
@@ -581,19 +595,6 @@
             this.txtValorEntrada.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 14.75F);
             this.txtValorEntrada.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtValorEntrada.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.75F);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(296, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 20);
-            this.label7.TabIndex = 712;
-            this.label7.Text = "Saldo";
             // 
             // btnFecharCaixa
             // 
