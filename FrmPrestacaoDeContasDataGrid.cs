@@ -16,6 +16,8 @@ namespace ComissPro
         public string StatusOperacao { get; set; }
         private string QueryPrestacao = "SELECT MAX(PrestacaoID) FROM PrestacaoContas";
         public int PrestacaoID { get; set; }
+        private bool linhaTotaisAdicionada = false; // Flag para controlar a adição da linha de totais
+
 
         public FrmPrestacaoDeContasDataGrid(string statusOperacao)
         {
@@ -30,65 +32,164 @@ namespace ComissPro
             dgvPrestacaoDeContas.AutoGenerateColumns = false;
             dgvPrestacaoDeContas.Columns.Clear();
 
-            // Coluna EntregaID (oculta)
             var colEntregaID = new DataGridViewTextBoxColumn { Name = "EntregaID", HeaderText = "ID Entrega", ReadOnly = true, Visible = false };
             dgvPrestacaoDeContas.Columns.Add(colEntregaID);
 
-            // Coluna Vendedor (maior)
             var colVendedor = new DataGridViewTextBoxColumn { Name = "NomeVendedor", HeaderText = "Vendedor", ReadOnly = true, Width = 150 };
             dgvPrestacaoDeContas.Columns.Add(colVendedor);
 
-            // Coluna Produto (maior)
             var colProduto = new DataGridViewTextBoxColumn { Name = "NomeProduto", HeaderText = "Produto", ReadOnly = true, Width = 150 };
             dgvPrestacaoDeContas.Columns.Add(colProduto);
 
-            // Coluna Qtd Entregue (menor e centralizada)
             var colQtdEntregue = new DataGridViewTextBoxColumn { Name = "QuantidadeEntregue", HeaderText = "Qtd Entregue", ReadOnly = true, Width = 80 };
             colQtdEntregue.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colQtdEntregue);
 
-            // Coluna Preço Unitário
             var colPrecoUnit = new DataGridViewTextBoxColumn { Name = "PrecoUnit", HeaderText = "Preço Unitário", ReadOnly = true, Width = 90 };
             colPrecoUnit.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvPrestacaoDeContas.Columns.Add(colPrecoUnit);
 
-            // Coluna Data Entrega
             var colDataEntrega = new DataGridViewTextBoxColumn { Name = "DataEntrega", HeaderText = "Data Entrega", ReadOnly = true, Width = 100 };
             colDataEntrega.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colDataEntrega);
 
-            // Coluna Qtd Devolvida (menor e centralizada)
             var colQtdDevolvida = new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = "Qtd Devolvida", ReadOnly = false, Width = 80 };
             colQtdDevolvida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightBlue;
+            colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightYellow;
             dgvPrestacaoDeContas.Columns.Add(colQtdDevolvida);
 
-            // Coluna Qtd Vendida (menor e centralizada)
             var colQtdVendida = new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = "Qtd Vendida", ReadOnly = true, Width = 80 };
             colQtdVendida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colQtdVendida);
 
-            // Coluna Valor Recebido
             var colValorRecebido = new DataGridViewTextBoxColumn { Name = "ValorRecebido", HeaderText = "Valor Recebido", ReadOnly = true, Width = 100 };
             colValorRecebido.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvPrestacaoDeContas.Columns.Add(colValorRecebido);
 
-            // Coluna % Comissão (menor e centralizada)
             var colPercentualComissao = new DataGridViewTextBoxColumn { Name = "PercentualComissao", HeaderText = "% Comissão", ReadOnly = false, Width = 80 };
             colPercentualComissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colPercentualComissao.DefaultCellStyle.BackColor = Color.LightBlue;
+            colPercentualComissao.DefaultCellStyle.BackColor = Color.LightYellow;
             dgvPrestacaoDeContas.Columns.Add(colPercentualComissao);
 
-            // Coluna Comissão (menor e centralizada)
             var colComissao = new DataGridViewTextBoxColumn { Name = "Comissao", HeaderText = "Comissão", ReadOnly = true, Width = 80 };
             colComissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvPrestacaoDeContas.Columns.Add(colComissao);
 
-            // Coluna Data Prestação (menor e centralizada)
             var colDataPrestacao = new DataGridViewTextBoxColumn { Name = "DataPrestacao", HeaderText = "Data Prestação", ReadOnly = false, Width = 100 };
             colDataPrestacao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             colDataPrestacao.DefaultCellStyle.BackColor = Color.LightYellow;
             dgvPrestacaoDeContas.Columns.Add(colDataPrestacao);
+        }
+
+
+
+        private void CarregarEntregasNoDataGrid(int vendedorID)
+        {
+            dgvPrestacaoDeContas.Rows.Clear();
+            entregasSelecionadas = new EntregasDal().CarregarEntregasNaoPrestadas().FindAll(e => e.VendedorID == vendedorID);
+            foreach (var entrega in entregasSelecionadas)
+            {
+                dgvPrestacaoDeContas.Rows.Add(
+                    entrega.EntregaID,
+                    entrega.NomeVendedor,
+                    entrega.NomeProduto,
+                    entrega.QuantidadeEntregue,
+                    entrega.Preco.ToString("C"),
+                    entrega.DataEntrega.Value.ToString("dd/MM/yyyy"),
+                    "0", // Quantidade Devolvida inicial
+                    entrega.QuantidadeEntregue, // Quantidade Vendida inicial
+                    (entrega.QuantidadeEntregue * entrega.Preco).ToString("C"), // Valor Recebido inicial
+                    entrega.Comissao.ToString("F2"), // Percentual de Comissão inicial
+                    (entrega.QuantidadeEntregue * entrega.Preco * (entrega.Comissao / 100)).ToString("C"), // Comissão inicial
+                    DateTime.Now.ToString("dd/MM/yyyy") // Data Prestação inicial
+                );
+            }
+            if (!linhaTotaisAdicionada && entregasSelecionadas.Count > 0)
+            {
+                AdicionarLinhaTotais();
+                linhaTotaisAdicionada = true;
+            }
+            else if (entregasSelecionadas.Count > 0)
+            {
+                AtualizarLinhaTotais();
+            }
+        }
+
+        private void AdicionarLinhaTotais()
+        {
+            int totalBilhetesEntregues = 0;
+            int totalBilhetesVendidos = 0;
+            int totalBilhetesDevolvidos = 0;
+            double totalRecebido = 0;
+            double totalComissao = 0;
+
+            foreach (var entrega in entregasSelecionadas)
+            {
+                int multiplicador = entrega.NomeProduto.Contains("BLOCO") ? 50 : 1;
+                totalBilhetesEntregues += entrega.QuantidadeEntregue * multiplicador;
+            }
+
+            foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
+            {
+                int qtdVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0");
+                int qtdDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0");
+                string nomeProduto = row.Cells["NomeProduto"].Value?.ToString() ?? "";
+                int multiplicador = nomeProduto.Contains("BLOCO") ? 50 : 1;
+
+                totalBilhetesVendidos += qtdVendida * multiplicador;
+                totalBilhetesDevolvidos += qtdDevolvida * multiplicador;
+                totalRecebido += double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
+                totalComissao += double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
+            }
+
+            int index = dgvPrestacaoDeContas.Rows.Add();
+            var rowTotal = dgvPrestacaoDeContas.Rows[index];
+            rowTotal.DefaultCellStyle.BackColor = Color.LightGray;
+            rowTotal.Cells["NomeVendedor"].Value = "Totais";
+            rowTotal.Cells["QuantidadeEntregue"].Value = totalBilhetesEntregues.ToString();
+            rowTotal.Cells["QuantidadeVendida"].Value = totalBilhetesVendidos.ToString();
+            rowTotal.Cells["QuantidadeDevolvida"].Value = totalBilhetesDevolvidos.ToString();
+            rowTotal.Cells["ValorRecebido"].Value = totalRecebido.ToString("C");
+            rowTotal.Cells["Comissao"].Value = totalComissao.ToString("C");
+            rowTotal.ReadOnly = true;
+        }
+
+        private void AtualizarLinhaTotais()
+        {
+            int totalBilhetesEntregues = 0;
+            int totalBilhetesVendidos = 0;
+            int totalBilhetesDevolvidos = 0;
+            double totalRecebido = 0;
+            double totalComissao = 0;
+
+            foreach (var entrega in entregasSelecionadas)
+            {
+                int multiplicador = entrega.NomeProduto.Contains("BLOCO") ? 50 : 1;
+                totalBilhetesEntregues += entrega.QuantidadeEntregue * multiplicador;
+            }
+
+            foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
+            {
+                if (row.Cells["NomeVendedor"].Value?.ToString() != "Totais")
+                {
+                    int qtdVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0");
+                    int qtdDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0");
+                    string nomeProduto = row.Cells["NomeProduto"].Value?.ToString() ?? "";
+                    int multiplicador = nomeProduto.Contains("BLOCO") ? 50 : 1;
+
+                    totalBilhetesVendidos += qtdVendida * multiplicador;
+                    totalBilhetesDevolvidos += qtdDevolvida * multiplicador;
+                    totalRecebido += double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
+                    totalComissao += double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
+                }
+            }
+
+            var rowTotal = dgvPrestacaoDeContas.Rows[dgvPrestacaoDeContas.Rows.Count - 1];
+            rowTotal.Cells["QuantidadeEntregue"].Value = totalBilhetesEntregues.ToString();
+            rowTotal.Cells["QuantidadeVendida"].Value = totalBilhetesVendidos.ToString();
+            rowTotal.Cells["QuantidadeDevolvida"].Value = totalBilhetesDevolvidos.ToString();
+            rowTotal.Cells["ValorRecebido"].Value = totalRecebido.ToString("C");
+            rowTotal.Cells["Comissao"].Value = totalComissao.ToString("C");
         }
 
         private void CarregarComboEntregas()
@@ -119,57 +220,57 @@ namespace ComissPro
             }
         }
 
-        private void CarregarEntregasNoDataGrid(int vendedorID)
-        {
-            dgvPrestacaoDeContas.Rows.Clear();
-            entregasSelecionadas = new EntregasDal().CarregarEntregasNaoPrestadas().FindAll(e => e.VendedorID == vendedorID);
-            foreach (var entrega in entregasSelecionadas)
-            {
-                dgvPrestacaoDeContas.Rows.Add(
-                    entrega.EntregaID,
-                    entrega.NomeVendedor,
-                    entrega.NomeProduto,
-                    entrega.QuantidadeEntregue,
-                    entrega.Preco.ToString("C"),
-                    entrega.DataEntrega.Value.ToString("dd/MM/yyyy"),
-                    "0", // Quantidade Devolvida inicial
-                    entrega.QuantidadeEntregue, // Quantidade Vendida inicial
-                    (entrega.QuantidadeEntregue * entrega.Preco).ToString("C"), // Valor Recebido inicial
-                    entrega.Comissao.ToString("F2"), // Percentual de Comissão inicial
-                    (entrega.QuantidadeEntregue * entrega.Preco * (entrega.Comissao / 100)).ToString("C"), // Comissão inicial
-                    DateTime.Now.ToString("dd/MM/yyyy") // Data Prestação inicial
-                );
-            }
-            AtualizarTotais();
-        }
+        //private void CarregarEntregasNoDataGrid(int vendedorID)
+        //{
+        //    dgvPrestacaoDeContas.Rows.Clear();
+        //    entregasSelecionadas = new EntregasDal().CarregarEntregasNaoPrestadas().FindAll(e => e.VendedorID == vendedorID);
+        //    foreach (var entrega in entregasSelecionadas)
+        //    {
+        //        dgvPrestacaoDeContas.Rows.Add(
+        //            entrega.EntregaID,
+        //            entrega.NomeVendedor,
+        //            entrega.NomeProduto,
+        //            entrega.QuantidadeEntregue,
+        //            entrega.Preco.ToString("C"),
+        //            entrega.DataEntrega.Value.ToString("dd/MM/yyyy"),
+        //            "0", // Quantidade Devolvida inicial
+        //            entrega.QuantidadeEntregue, // Quantidade Vendida inicial
+        //            (entrega.QuantidadeEntregue * entrega.Preco).ToString("C"), // Valor Recebido inicial
+        //            entrega.Comissao.ToString("F2"), // Percentual de Comissão inicial
+        //            (entrega.QuantidadeEntregue * entrega.Preco * (entrega.Comissao / 100)).ToString("C"), // Comissão inicial
+        //            DateTime.Now.ToString("dd/MM/yyyy") // Data Prestação inicial
+        //        );
+        //    }
+        //    AtualizarTotais();
+        //}
 
-        private void AtualizarTotais()
-        {
-            int totalBilhetesVendidos = 0;
-            int totalBilhetesDevolvidos = 0;
-            double totalRecebido = 0;
-            double totalComissao = 0;
+        //private void AtualizarTotais()
+        //{
+        //    int totalBilhetesVendidos = 0;
+        //    int totalBilhetesDevolvidos = 0;
+        //    double totalRecebido = 0;
+        //    double totalComissao = 0;
 
-            foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
-            {
-                int qtdVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0");
-                int qtdDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0");
-                string nomeProduto = row.Cells["NomeProduto"].Value?.ToString() ?? "";
+        //    foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
+        //    {
+        //        int qtdVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0");
+        //        int qtdDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0");
+        //        string nomeProduto = row.Cells["NomeProduto"].Value?.ToString() ?? "";
 
-                // Verificar se é "Bloco" ou "Unidade" pelo nome do produto
-                int multiplicador = nomeProduto.Contains("BLOCO") ? 50 : 1;
+        //        // Verificar se é "Bloco" ou "Unidade" pelo nome do produto
+        //        int multiplicador = nomeProduto.Contains("BLOCO") ? 50 : 1;
 
-                totalBilhetesVendidos += qtdVendida * multiplicador;
-                totalBilhetesDevolvidos += qtdDevolvida * multiplicador;
-                totalRecebido += double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
-                totalComissao += double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
-            }
+        //        totalBilhetesVendidos += qtdVendida * multiplicador;
+        //        totalBilhetesDevolvidos += qtdDevolvida * multiplicador;
+        //        totalRecebido += double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
+        //        totalComissao += double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
+        //    }
 
-            txtTotalVendida.Text = totalBilhetesVendidos.ToString();
-            txtTotalDevolvida.Text = totalBilhetesDevolvidos.ToString();
-            txtTotalRecebido.Text = totalRecebido.ToString("C");
-            txtTotalComissao.Text = totalComissao.ToString("C");
-        }
+        //    txtTotalVendida.Text = totalBilhetesVendidos.ToString();
+        //    txtTotalDevolvida.Text = totalBilhetesDevolvidos.ToString();
+        //    txtTotalRecebido.Text = totalRecebido.ToString("C");
+        //    txtTotalComissao.Text = totalComissao.ToString("C");
+        //}
 
 
 
@@ -276,6 +377,7 @@ namespace ComissPro
         private void dgvPrestacaoDeContas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var row = dgvPrestacaoDeContas.Rows[e.RowIndex];
+            if (row.Cells["NomeVendedor"].Value?.ToString() == "Totais") return; // Ignora edição na linha de totais
 
             if (e.ColumnIndex == dgvPrestacaoDeContas.Columns["QuantidadeDevolvida"].Index)
             {
@@ -330,7 +432,10 @@ namespace ComissPro
                 }
             }
 
-            AtualizarTotais();
+            if (linhaTotaisAdicionada)
+            {
+                AtualizarLinhaTotais();
+            }
         }
     }
 
