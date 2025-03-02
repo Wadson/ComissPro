@@ -181,8 +181,7 @@ namespace ComissPro
 
                     if (StatusOperacao == "ALTERAR")
                     {
-                        formEntregas.lblStatus.Text = "Alterar: quantidade e valor";
-                        formEntregas.lblStatus.ForeColor = Color.Orange;
+                        formEntregas.lblStatus.Text = "Alterar: quantidade e valor";                        
                         formEntregas.btnSalvar.Text = "Alterar";
                         formEntregas.btnSalvar.ForeColor = Color.Orange;
                         formEntregas.btnSalvar.BackColor = Color.OrangeRed;

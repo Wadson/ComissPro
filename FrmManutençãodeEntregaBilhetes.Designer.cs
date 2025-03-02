@@ -62,11 +62,11 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(198, 2);
+            this.label28.Location = new System.Drawing.Point(324, 2);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(400, 24);
+            this.label28.Size = new System.Drawing.Size(228, 24);
             this.label28.TabIndex = 600;
-            this.label28.Text = "MANUTENÇÃO DE ENTREGA DE BILHETES";
+            this.label28.Text = "ENTREGA DE BILHETES";
             // 
             // lblTotalRegistros
             // 
@@ -148,11 +148,11 @@
             this.kryptonPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonPanel2.Controls.Add(this.label28);
-            this.kryptonPanel2.Location = new System.Drawing.Point(12, 4);
+            this.kryptonPanel2.Location = new System.Drawing.Point(-4, 4);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel2.Size = new System.Drawing.Size(841, 26);
+            this.kryptonPanel2.Size = new System.Drawing.Size(882, 26);
             this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.Teal;
             this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
             this.kryptonPanel2.TabIndex = 626;

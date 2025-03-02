@@ -40,8 +40,12 @@
             this.txtVendedor = new MetroFramework.Controls.MetroTextBox();
             this.btnLocalizar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.cmbTipoRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoRelatorio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
+            this.kryptonPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -292,12 +296,40 @@
             this.cmbTipoRelatorio.Size = new System.Drawing.Size(192, 21);
             this.cmbTipoRelatorio.TabIndex = 659;
             // 
+            // kryptonPanel2
+            // 
+            this.kryptonPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel2.Controls.Add(this.lblStatus);
+            this.kryptonPanel2.Location = new System.Drawing.Point(-2, 0);
+            this.kryptonPanel2.Name = "kryptonPanel2";
+            this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
+            this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ButtonStandalone;
+            this.kryptonPanel2.Size = new System.Drawing.Size(808, 26);
+            this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.Orange;
+            this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.Orange;
+            this.kryptonPanel2.TabIndex = 660;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.Color.Transparent;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.Location = new System.Drawing.Point(322, 1);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(130, 24);
+            this.lblStatus.TabIndex = 613;
+            this.lblStatus.Text = "RELATÓRIOS";
+            // 
             // FrmRelatoriosComissoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.cmbTipoRelatorio);
             this.Controls.Add(this.btnLocalizar);
             this.Controls.Add(this.txtVendedor);
@@ -308,7 +340,7 @@
             this.Controls.Add(this.dtpDataInicio);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.dgvRelatorio);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -322,6 +354,9 @@
             this.Load += new System.EventHandler(this.FrmRelatoriosComissoes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTipoRelatorio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
+            this.kryptonPanel2.ResumeLayout(false);
+            this.kryptonPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +375,7 @@
         private MetroFramework.Controls.MetroTextBox txtVendedor;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnLocalizar;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbTipoRelatorio;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        public System.Windows.Forms.Label lblStatus;
     }
 }

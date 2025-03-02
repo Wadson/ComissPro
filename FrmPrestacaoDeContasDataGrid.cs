@@ -55,7 +55,7 @@ namespace ComissPro
 
             var colQtdDevolvida = new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = "Qtd Devolvida", ReadOnly = false, Width = 80 };
             colQtdDevolvida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightYellow;
+            colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightBlue;
             dgvPrestacaoDeContas.Columns.Add(colQtdDevolvida);
 
             var colQtdVendida = new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = "Qtd Vendida", ReadOnly = true, Width = 80 };
@@ -68,7 +68,7 @@ namespace ComissPro
 
             var colPercentualComissao = new DataGridViewTextBoxColumn { Name = "PercentualComissao", HeaderText = "% Comissão", ReadOnly = false, Width = 80 };
             colPercentualComissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colPercentualComissao.DefaultCellStyle.BackColor = Color.LightYellow;
+            colPercentualComissao.DefaultCellStyle.BackColor = Color.LightBlue;
             dgvPrestacaoDeContas.Columns.Add(colPercentualComissao);
 
             var colComissao = new DataGridViewTextBoxColumn { Name = "Comissao", HeaderText = "Comissão", ReadOnly = true, Width = 80 };
@@ -77,11 +77,9 @@ namespace ComissPro
 
             var colDataPrestacao = new DataGridViewTextBoxColumn { Name = "DataPrestacao", HeaderText = "Data Prestação", ReadOnly = false, Width = 100 };
             colDataPrestacao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colDataPrestacao.DefaultCellStyle.BackColor = Color.LightYellow;
+            colDataPrestacao.DefaultCellStyle.BackColor = Color.LightBlue;
             dgvPrestacaoDeContas.Columns.Add(colDataPrestacao);
         }
-
-
 
         private void CarregarEntregasNoDataGrid(int vendedorID)
         {
@@ -112,6 +110,18 @@ namespace ComissPro
             else if (entregasSelecionadas.Count > 0)
             {
                 AtualizarLinhaTotais();
+            }
+            AtualizarTotaisNosTextBoxes();
+
+            // Força o negrito na linha de totais após o carregamento
+            if (dgvPrestacaoDeContas.Rows.Count > 0)
+            {
+                var rowTotal = dgvPrestacaoDeContas.Rows[dgvPrestacaoDeContas.Rows.Count - 1];
+                if (rowTotal.Cells["NomeVendedor"].Value?.ToString() == "Totais")
+                {
+                    rowTotal.DefaultCellStyle.Font = new Font(dgvPrestacaoDeContas.Font, FontStyle.Bold);
+                    rowTotal.DefaultCellStyle.BackColor = Color.LightGray;
+                }
             }
         }
 
@@ -185,6 +195,8 @@ namespace ComissPro
             }
 
             var rowTotal = dgvPrestacaoDeContas.Rows[dgvPrestacaoDeContas.Rows.Count - 1];
+            rowTotal.DefaultCellStyle.BackColor = Color.LightGray;
+            rowTotal.DefaultCellStyle.Font = new Font(dgvPrestacaoDeContas.Font, FontStyle.Bold); // Mantém negrito
             rowTotal.Cells["QuantidadeEntregue"].Value = totalBilhetesEntregues.ToString();
             rowTotal.Cells["QuantidadeVendida"].Value = totalBilhetesVendidos.ToString();
             rowTotal.Cells["QuantidadeDevolvida"].Value = totalBilhetesDevolvidos.ToString();
@@ -192,6 +204,43 @@ namespace ComissPro
             rowTotal.Cells["Comissao"].Value = totalComissao.ToString("C");
         }
 
+        private void AtualizarTotaisNosTextBoxes()
+        {
+            int totalBilhetesEntregues = 0;
+            int totalBilhetesVendidos = 0;
+            int totalBilhetesDevolvidos = 0;
+            double totalRecebido = 0;
+            double totalComissao = 0;
+
+            foreach (var entrega in entregasSelecionadas)
+            {
+                int multiplicador = entrega.NomeProduto.Contains("BLOCO") ? 50 : 1;
+                totalBilhetesEntregues += entrega.QuantidadeEntregue * multiplicador;
+            }
+
+            foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
+            {
+                if (row.Cells["NomeVendedor"].Value?.ToString() != "Totais") // Ignora a linha de totais
+                {
+                    int qtdVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0");
+                    int qtdDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0");
+                    string nomeProduto = row.Cells["NomeProduto"].Value?.ToString() ?? "";
+                    int multiplicador = nomeProduto.Contains("BLOCO") ? 50 : 1;
+
+                    totalBilhetesVendidos += qtdVendida * multiplicador;
+                    totalBilhetesDevolvidos += qtdDevolvida * multiplicador;
+                    totalRecebido += double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", NumberStyles.Currency);
+                    totalComissao += double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", NumberStyles.Currency);
+                }
+            }
+
+            // Atualiza os TextBoxes
+            txtTotalEntregue.Text = totalBilhetesEntregues.ToString();
+            txtTotalVendida.Text = totalBilhetesVendidos.ToString();
+            txtTotalDevolvida.Text = totalBilhetesDevolvidos.ToString();
+            txtTotalRecebido.Text = totalRecebido.ToString("C");
+            txtTotalComissao.Text = totalComissao.ToString("C");
+        }
         private void CarregarComboEntregas()
         {
             try
@@ -220,60 +269,6 @@ namespace ComissPro
             }
         }
 
-        //private void CarregarEntregasNoDataGrid(int vendedorID)
-        //{
-        //    dgvPrestacaoDeContas.Rows.Clear();
-        //    entregasSelecionadas = new EntregasDal().CarregarEntregasNaoPrestadas().FindAll(e => e.VendedorID == vendedorID);
-        //    foreach (var entrega in entregasSelecionadas)
-        //    {
-        //        dgvPrestacaoDeContas.Rows.Add(
-        //            entrega.EntregaID,
-        //            entrega.NomeVendedor,
-        //            entrega.NomeProduto,
-        //            entrega.QuantidadeEntregue,
-        //            entrega.Preco.ToString("C"),
-        //            entrega.DataEntrega.Value.ToString("dd/MM/yyyy"),
-        //            "0", // Quantidade Devolvida inicial
-        //            entrega.QuantidadeEntregue, // Quantidade Vendida inicial
-        //            (entrega.QuantidadeEntregue * entrega.Preco).ToString("C"), // Valor Recebido inicial
-        //            entrega.Comissao.ToString("F2"), // Percentual de Comissão inicial
-        //            (entrega.QuantidadeEntregue * entrega.Preco * (entrega.Comissao / 100)).ToString("C"), // Comissão inicial
-        //            DateTime.Now.ToString("dd/MM/yyyy") // Data Prestação inicial
-        //        );
-        //    }
-        //    AtualizarTotais();
-        //}
-
-        //private void AtualizarTotais()
-        //{
-        //    int totalBilhetesVendidos = 0;
-        //    int totalBilhetesDevolvidos = 0;
-        //    double totalRecebido = 0;
-        //    double totalComissao = 0;
-
-        //    foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
-        //    {
-        //        int qtdVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0");
-        //        int qtdDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0");
-        //        string nomeProduto = row.Cells["NomeProduto"].Value?.ToString() ?? "";
-
-        //        // Verificar se é "Bloco" ou "Unidade" pelo nome do produto
-        //        int multiplicador = nomeProduto.Contains("BLOCO") ? 50 : 1;
-
-        //        totalBilhetesVendidos += qtdVendida * multiplicador;
-        //        totalBilhetesDevolvidos += qtdDevolvida * multiplicador;
-        //        totalRecebido += double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
-        //        totalComissao += double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", System.Globalization.NumberStyles.Currency);
-        //    }
-
-        //    txtTotalVendida.Text = totalBilhetesVendidos.ToString();
-        //    txtTotalDevolvida.Text = totalBilhetesDevolvidos.ToString();
-        //    txtTotalRecebido.Text = totalRecebido.ToString("C");
-        //    txtTotalComissao.Text = totalComissao.ToString("C");
-        //}
-
-
-
 
         private void cmbEntregasPendentes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -284,7 +279,6 @@ namespace ComissPro
                 lblPercentualComissao.Text = entregaSelecionada.Comissao.ToString("F2") + "%";
             }
         }
-
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -320,25 +314,7 @@ namespace ComissPro
             this.Close();
         }
 
-        //private void txtPercentualComissao_Leave(object sender, EventArgs e)
-        //{
-        //    string texto = txtPercentualComissao.Text.Replace("%", "").Trim();
-        //    if (double.TryParse(texto, out double novoPercentual) && novoPercentual >= 0 && novoPercentual <= 100)
-        //    {
-        //        foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
-        //        {
-        //            double valorRecebido = double.Parse(row.Cells["ValorRecebido"].Value.ToString(), NumberStyles.Currency);
-        //            double comissao = valorRecebido * (novoPercentual / 100);
-        //            row.Cells["Comissao"].Value = comissao.ToString("C");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Digite um percentual válido entre 0 e 100!");
-        //        txtPercentualComissao.Text = entregasSelecionadas[0].Comissao.ToString("F2") + "%";
-        //    }
-        //}
-
+       
         private void FrmPrestacaoDeContasDataGrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -436,6 +412,7 @@ namespace ComissPro
             {
                 AtualizarLinhaTotais();
             }
+            AtualizarTotaisNosTextBoxes(); // Adiciona aqui
         }
     }
 
