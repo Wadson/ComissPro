@@ -190,7 +190,7 @@ namespace ComissPro
                 }
             }
         }
-        public void AlterarEntrega(EntregasModel entrega)
+        public void AlterarEntrega(Model.EntregasModel entrega)
         {
             using (var conn = Conexao.Conex())
             {

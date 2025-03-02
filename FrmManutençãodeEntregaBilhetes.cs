@@ -309,7 +309,7 @@ namespace ComissPro
 
         private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
         {
-            FrmPrestacaoDeContas formPrestacao = new FrmPrestacaoDeContas(StatusOperacao);
+            FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
             formPrestacao.ShowDialog();
         }
 
@@ -350,6 +350,12 @@ namespace ComissPro
         private void btnExcluirOrfao_Click(object sender, EventArgs e)
         {
             ExcluirEntregasOrfasEAtualizar();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmPrestacaoDeContas frm = new FrmPrestacaoDeContas(StatusOperacao);
+            frm.Show();
         }
     }
 }

@@ -177,6 +177,12 @@
     <Compile Include="Conexao.cs" />
     <Compile Include="EntregasBLL.cs" />
     <Compile Include="EntregasDal.cs" />
+    <Compile Include="FrmPrestacaoDeContasDataGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrestacaoDeContasDataGrid.Designer.cs">
+      <DependentUpon>FrmPrestacaoDeContasDataGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRestaurarBackup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     <Compile Include="Utilitario.cs" />
     <Compile Include="VendedorBLL.cs" />
     <Compile Include="VendedorDAL.cs" />
+    <EmbeddedResource Include="FrmPrestacaoDeContasDataGrid.resx">
+      <DependentUpon>FrmPrestacaoDeContasDataGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRestaurarBackup.resx">
       <DependentUpon>FrmRestaurarBackup.cs</DependentUpon>
     </EmbeddedResource>

@@ -63,11 +63,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(346, 207);
+            this.label4.Location = new System.Drawing.Point(359, 207);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 16);
+            this.label4.Size = new System.Drawing.Size(102, 16);
             this.label4.TabIndex = 632;
-            this.label4.Text = "R$ VALOR TOTAL:";
+            this.label4.Text = "VALOR TOTAL:";
             // 
             // label3
             // 
@@ -75,11 +75,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(190, 207);
+            this.label3.Location = new System.Drawing.Point(206, 207);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 16);
+            this.label3.Size = new System.Drawing.Size(93, 16);
             this.label3.TabIndex = 631;
-            this.label3.Text = "R$ VALOR UNIT.:";
+            this.label3.Text = "VALOR UNIT.:";
             // 
             // groupBox1
             // 
@@ -102,7 +102,7 @@
             this.txtEntregaID.Name = "txtEntregaID";
             this.txtEntregaID.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtEntregaID.ReadOnly = true;
-            this.txtEntregaID.Size = new System.Drawing.Size(125, 27);
+            this.txtEntregaID.Size = new System.Drawing.Size(106, 24);
             this.txtEntregaID.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtEntregaID.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtEntregaID.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -113,8 +113,8 @@
             this.txtEntregaID.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtEntregaID.StateCommon.Border.Rounding = 1;
             this.txtEntregaID.StateCommon.Border.Width = 1;
-            this.txtEntregaID.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtEntregaID.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.txtEntregaID.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
+            this.txtEntregaID.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEntregaID.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtEntregaID.TabIndex = 609;
             this.txtEntregaID.TabStop = false;
@@ -124,16 +124,16 @@
             // 
             this.dtpDataEntregaBilhete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDataEntregaBilhete.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataEntregaBilhete.Location = new System.Drawing.Point(508, 26);
+            this.dtpDataEntregaBilhete.Location = new System.Drawing.Point(516, 26);
             this.dtpDataEntregaBilhete.Name = "dtpDataEntregaBilhete";
             this.dtpDataEntregaBilhete.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.dtpDataEntregaBilhete.Size = new System.Drawing.Size(152, 25);
+            this.dtpDataEntregaBilhete.Size = new System.Drawing.Size(137, 23);
             this.dtpDataEntregaBilhete.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.dtpDataEntregaBilhete.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.dtpDataEntregaBilhete.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.dtpDataEntregaBilhete.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataEntregaBilhete.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataEntregaBilhete.TabIndex = 615;
             this.dtpDataEntregaBilhete.TabStop = false;
             // 
@@ -141,11 +141,11 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(510, 10);
+            this.label1.Location = new System.Drawing.Point(518, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 16);
+            this.label1.Size = new System.Drawing.Size(135, 16);
             this.label1.TabIndex = 614;
             this.label1.Text = "DATA DA ENTREGA";
             // 
@@ -153,11 +153,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label9.Location = new System.Drawing.Point(41, 10);
+            this.label9.Location = new System.Drawing.Point(50, 10);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 16);
+            this.label9.Size = new System.Drawing.Size(62, 16);
             this.label9.TabIndex = 608;
             this.label9.Text = "CÓDIGO:";
             // 
@@ -206,7 +206,7 @@
             this.txtPrecoUnit.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtPrecoUnit.StateCommon.Border.Rounding = 1;
             this.txtPrecoUnit.StateCommon.Border.Width = 1;
-            this.txtPrecoUnit.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
+            this.txtPrecoUnit.StateCommon.Content.Color1 = System.Drawing.Color.Goldenrod;
             this.txtPrecoUnit.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtPrecoUnit.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtPrecoUnit.TabIndex = 3;
@@ -231,7 +231,7 @@
             this.txtTotal.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtTotal.StateCommon.Border.Rounding = 1;
             this.txtTotal.StateCommon.Border.Width = 1;
-            this.txtTotal.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
+            this.txtTotal.StateCommon.Content.Color1 = System.Drawing.Color.Goldenrod;
             this.txtTotal.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtTotal.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtTotal.TabIndex = 633;
@@ -242,7 +242,7 @@
             // 
             this.txtQuantidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtQuantidade.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtQuantidade.Location = new System.Drawing.Point(25, 226);
+            this.txtQuantidade.Location = new System.Drawing.Point(30, 226);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtQuantidade.Size = new System.Drawing.Size(155, 27);
@@ -256,7 +256,7 @@
             this.txtQuantidade.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtQuantidade.StateCommon.Border.Rounding = 1;
             this.txtQuantidade.StateCommon.Border.Width = 1;
-            this.txtQuantidade.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
+            this.txtQuantidade.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtQuantidade.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtQuantidade.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtQuantidade.TabIndex = 2;
@@ -269,7 +269,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label5.Location = new System.Drawing.Point(38, 207);
+            this.label5.Location = new System.Drawing.Point(30, 207);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 16);
             this.label5.TabIndex = 635;
@@ -290,7 +290,7 @@
             // btnLocalizarVendedor
             // 
             this.btnLocalizarVendedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnLocalizarVendedor.Location = new System.Drawing.Point(612, 115);
+            this.btnLocalizarVendedor.Location = new System.Drawing.Point(612, 113);
             this.btnLocalizarVendedor.Name = "btnLocalizarVendedor";
             this.btnLocalizarVendedor.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnLocalizarVendedor.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -308,7 +308,7 @@
             this.btnLocalizarVendedor.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnLocalizarVendedor.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnLocalizarVendedor.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnLocalizarVendedor.Size = new System.Drawing.Size(41, 27);
+            this.btnLocalizarVendedor.Size = new System.Drawing.Size(35, 23);
             this.btnLocalizarVendedor.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnLocalizarVendedor.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnLocalizarVendedor.StateCommon.Back.ColorAngle = 45F;
@@ -356,7 +356,7 @@
             // btnLocalizarProduto
             // 
             this.btnLocalizarProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnLocalizarProduto.Location = new System.Drawing.Point(612, 165);
+            this.btnLocalizarProduto.Location = new System.Drawing.Point(612, 163);
             this.btnLocalizarProduto.Name = "btnLocalizarProduto";
             this.btnLocalizarProduto.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnLocalizarProduto.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -374,7 +374,7 @@
             this.btnLocalizarProduto.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnLocalizarProduto.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnLocalizarProduto.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnLocalizarProduto.Size = new System.Drawing.Size(41, 27);
+            this.btnLocalizarProduto.Size = new System.Drawing.Size(35, 23);
             this.btnLocalizarProduto.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnLocalizarProduto.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnLocalizarProduto.StateCommon.Back.ColorAngle = 45F;
@@ -423,10 +423,11 @@
             // 
             this.txtNomeProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNomeProduto.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtNomeProduto.Location = new System.Drawing.Point(30, 165);
+            this.txtNomeProduto.Location = new System.Drawing.Point(30, 164);
             this.txtNomeProduto.Name = "txtNomeProduto";
             this.txtNomeProduto.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtNomeProduto.Size = new System.Drawing.Size(579, 27);
+            this.txtNomeProduto.ReadOnly = true;
+            this.txtNomeProduto.Size = new System.Drawing.Size(579, 22);
             this.txtNomeProduto.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeProduto.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeProduto.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -437,8 +438,8 @@
             this.txtNomeProduto.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtNomeProduto.StateCommon.Border.Rounding = 1;
             this.txtNomeProduto.StateCommon.Border.Width = 1;
-            this.txtNomeProduto.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.txtNomeProduto.StateCommon.Content.Color1 = System.Drawing.Color.Goldenrod;
+            this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 1;
             // 
@@ -458,10 +459,11 @@
             // 
             this.txtNomeVendedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtNomeVendedor.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtNomeVendedor.Location = new System.Drawing.Point(30, 115);
+            this.txtNomeVendedor.Location = new System.Drawing.Point(30, 114);
             this.txtNomeVendedor.Name = "txtNomeVendedor";
             this.txtNomeVendedor.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtNomeVendedor.Size = new System.Drawing.Size(579, 27);
+            this.txtNomeVendedor.ReadOnly = true;
+            this.txtNomeVendedor.Size = new System.Drawing.Size(579, 22);
             this.txtNomeVendedor.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeVendedor.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -472,8 +474,8 @@
             this.txtNomeVendedor.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtNomeVendedor.StateCommon.Border.Rounding = 1;
             this.txtNomeVendedor.StateCommon.Border.Width = 1;
-            this.txtNomeVendedor.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.txtNomeVendedor.StateCommon.Content.Color1 = System.Drawing.Color.Goldenrod;
+            this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeVendedor.TabIndex = 0;
             // 

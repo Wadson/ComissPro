@@ -47,6 +47,7 @@
             this.btnExclui = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluirOrfao = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -688,10 +689,21 @@
             this.btnExcluirOrfao.Values.Text = "&Excluir Orfãos";
             this.btnExcluirOrfao.Click += new System.EventHandler(this.btnExcluirOrfao_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(544, 439);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 639;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmManutençãodeEntregaBilhetes
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(874, 465);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnExcluirOrfao);
             this.Controls.Add(this.btnExclui);
             this.Controls.Add(this.btnAltera);
@@ -738,5 +750,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnExclui;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirOrfao;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -276,22 +276,7 @@ namespace ComissPro
         {
             this.Close();
         }            
-        private void FrmPrestacaoDeContas_Load(object sender, EventArgs e)
-        {
-            if (StatusOperacao == "ALTERAR")
-            {
-                return;
-            }
-            if (StatusOperacao == "NOVO")
-            {
-                int NovoCodigo = Utilitario.GerarProximoCodigo(QueryPrestacao);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
-                //string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
-                PrestacaoID = NovoCodigo;
-                
-            }
-            CarregarComboEntregas();
-        }
-
+       
         private void cmbEntregasPendentes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbEntregasPendentes.SelectedItem != null)
@@ -411,6 +396,22 @@ namespace ComissPro
                 MessageBox.Show("Digite um percentual válido entre 0 e 100!");
                 txtPercentualComissao.Text = percentualComissao.ToString("F2") + "%";
             }
+        }
+
+        private void FrmPrestacaoDeContas_Load(object sender, EventArgs e)
+        {
+            if (StatusOperacao == "ALTERAR")
+            {
+                return;
+            }
+            if (StatusOperacao == "NOVO")
+            {
+                int NovoCodigo = Utilitario.GerarProximoCodigo(QueryPrestacao);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
+                //string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
+                PrestacaoID = NovoCodigo;
+
+            }
+            CarregarComboEntregas();
         }
     }
     public class EntregaComboItem
