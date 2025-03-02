@@ -111,49 +111,26 @@ namespace ComissPro
             {
                 Model.EntregasModel objetoModel = new Model.EntregasModel();
 
-                // Se EntregaID é autoincremento, não deve ser preenchido manualmente
                 objetoModel.EntregaID = string.IsNullOrEmpty(txtEntregaID.Text) ? 0 : Convert.ToInt32(txtEntregaID.Text);
-                objetoModel.VendedorID = VendedorID; // Assumindo que VendedorID vem de algum lugar (ex.: ComboBox)
-                objetoModel.ProdutoID = ProdutoID;   // Assumindo que ProdutoID vem de algum lugar (ex.: ComboBox)
+                objetoModel.VendedorID = VendedorID;
+                objetoModel.ProdutoID = ProdutoID;
                 objetoModel.QuantidadeEntregue = int.Parse(txtQuantidade.Text);
                 objetoModel.DataEntrega = dtpDataEntregaBilhete.Value;
-
-                // Buscar informações do produto para cálculo
-                ProdutoBLL produtoBll = new ProdutoBLL();
-                Model.ProdutoMODEL produto = produtoBll.BuscarPorId(objetoModel.ProdutoID); // Método fictício, você precisa implementá-lo
-
-                if (produto == null)
-                {
-                    throw new Exception("Produto não encontrado!");
-                }
-
-                // Calcular o valor total com base no tipo de produto (apenas para exibição)
-                double valorTotal;
-                if (produto.Tipo == "Bloco")
-                {
-                    // Cada bloco tem 50 bilhetes, preço unitário é por bilhete
-                    valorTotal = objetoModel.QuantidadeEntregue * produto.QuantidadePorBloco * produto.Preco;
-                    // Ex.: 2 blocos * 50 bilhetes/bloco * 2,00 = 200,00
-                }
-                else if (produto.Tipo == "Unidade")
-                {
-                    valorTotal = objetoModel.QuantidadeEntregue * produto.Preco;
-                    // Ex.: 80 unidades * 2,00 = 160,00
-                }
-                else
-                {
-                    throw new Exception("Tipo de produto inválido!");
-                }
 
                 EntregasBLL objetoBll = new EntregasBLL();
                 objetoBll.Salvar(objetoModel);
 
-                // Exibir feedback com o valor total calculado
-                MessageBox.Show($"Registro gravado com sucesso!\nValor total: {valorTotal:C}",
+                // Mensagem simples, sem cálculo
+                MessageBox.Show("Registro gravado com sucesso!",
                                 "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                 Utilitario.LimpaCampo(this);
-                ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"]).HabilitarTimer(true);
+
+                var frmManutencao = (FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"];
+                if (frmManutencao != null)
+                {
+                    frmManutencao.HabilitarTimer(true);
+                }
             }
             catch (OverflowException ov)
             {
@@ -208,15 +185,16 @@ namespace ComissPro
                 // Limpa os campos
                 Utilitario.LimpaCampo(this);
                 this.Close();
-                var frmManutEntregaBilhetes = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutVendedor;
 
-                if (frmManutEntregaBilhetes != null)
+                // Atualiza o DataGridView no FrmManutençãodeEntregaBilhetes
+                var frmManutencao = (FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"];
+                if (frmManutencao != null)
                 {
-                    frmManutEntregaBilhetes.HabilitarTimer(true);
+                    frmManutencao.HabilitarTimer(true);
                 }
                 else
                 {
-                    MessageBox.Show("FrmManutençãodeEntregaBilhetes não está aberto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("FrmManutençãodeEntregaBilhetes não está aberto para atualização.");
                 }
             }
             catch (Exception erro)
