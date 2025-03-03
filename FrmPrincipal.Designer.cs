@@ -58,11 +58,9 @@
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -367,9 +365,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelConteiner.Location = new System.Drawing.Point(3, 152);
+            this.panelConteiner.Location = new System.Drawing.Point(3, 105);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 519);
+            this.panelConteiner.Size = new System.Drawing.Size(1002, 566);
             this.panelConteiner.TabIndex = 609;
             // 
             // timerH
@@ -418,24 +416,12 @@
             this.produtosToolStripMenuItem.Text = "&Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
-            // kryptonPanel1
-            // 
-            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonPanel1.Location = new System.Drawing.Point(-2, 100);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
-            this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
-            this.kryptonPanel1.Size = new System.Drawing.Size(1010, 50);
-            this.kryptonPanel1.TabIndex = 613;
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.kryptonStatusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.kryptonPanel2);
@@ -453,7 +439,6 @@
             this.kryptonPanel2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,7 +474,6 @@
         private System.Windows.Forms.Button btnRelatorios;
         private System.Windows.Forms.Button btnFerramentas;
         private System.Windows.Forms.ImageList imageList1;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private System.Windows.Forms.Button btnFluxoCaixa;
     }
 }

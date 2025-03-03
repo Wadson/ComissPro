@@ -39,13 +39,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtVendedor = new MetroFramework.Controls.MetroTextBox();
             this.btnLocalizar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.cmbTipoRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.cmbTipoRelatorio = new Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoRelatorio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoRelatorio)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -141,6 +141,7 @@
             this.dtpDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataInicio.Location = new System.Drawing.Point(18, 95);
             this.dtpDataInicio.Name = "dtpDataInicio";
+            this.dtpDataInicio.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.dtpDataInicio.Size = new System.Drawing.Size(123, 27);
             this.dtpDataInicio.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataInicio.TabIndex = 650;
@@ -282,22 +283,6 @@
             this.btnLocalizar.Values.Text = "&Localizar...";
             this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 
-            // cmbTipoRelatorio
-            // 
-            this.cmbTipoRelatorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoRelatorio.DropDownWidth = 192;
-            this.cmbTipoRelatorio.Items.AddRange(new object[] {
-            "",
-            "Comissões Pagas",
-            "Entregas Pendentes",
-            "Desempenho de Vendas",
-            "Geral de Vendas e Comissões"});
-            this.cmbTipoRelatorio.Location = new System.Drawing.Point(18, 34);
-            this.cmbTipoRelatorio.Name = "cmbTipoRelatorio";
-            this.cmbTipoRelatorio.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.cmbTipoRelatorio.Size = new System.Drawing.Size(192, 21);
-            this.cmbTipoRelatorio.TabIndex = 659;
-            // 
             // kryptonPanel2
             // 
             this.kryptonPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -325,14 +310,35 @@
             this.lblStatus.TabIndex = 613;
             this.lblStatus.Text = "RELATÓRIOS";
             // 
+            // cmbTipoRelatorio
+            // 
+            this.cmbTipoRelatorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoRelatorio.DropDownWidth = 244;
+            this.cmbTipoRelatorio.InputControlStyle = Krypton.Toolkit.InputControlStyle.PanelClient;
+            this.cmbTipoRelatorio.IntegralHeight = false;
+            this.cmbTipoRelatorio.Items.AddRange(new object[] {
+            "",
+            "Comissões Pagas",
+            "Entregas Pendentes",
+            "Desempenho de Vendas",
+            "Geral de Vendas e Comissões"});
+            this.cmbTipoRelatorio.Location = new System.Drawing.Point(12, 44);
+            this.cmbTipoRelatorio.Name = "cmbTipoRelatorio";
+            this.cmbTipoRelatorio.PaletteMode = Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.cmbTipoRelatorio.Size = new System.Drawing.Size(244, 24);
+            this.cmbTipoRelatorio.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipoRelatorio.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.cmbTipoRelatorio.StateNormal.ComboBox.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
+            this.cmbTipoRelatorio.TabIndex = 663;
+            // 
             // FrmRelatoriosComissoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.cmbTipoRelatorio);
+            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.btnLocalizar);
             this.Controls.Add(this.txtVendedor);
             this.Controls.Add(this.label3);
@@ -355,10 +361,10 @@
             this.Text = "Relatorios de Comissoes Pagas";
             this.Load += new System.EventHandler(this.FrmRelatoriosComissoes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoRelatorio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoRelatorio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,8 +382,8 @@
         private System.Windows.Forms.Label label3;
         private MetroFramework.Controls.MetroTextBox txtVendedor;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnLocalizar;
-        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbTipoRelatorio;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         public System.Windows.Forms.Label lblStatus;
+        private Krypton.Toolkit.KryptonComboBox cmbTipoRelatorio;
     }
 }

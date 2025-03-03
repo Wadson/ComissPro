@@ -106,7 +106,7 @@ namespace ComissPro
                 dataGridManutencaoEntregas.Columns["EntregaID"].HeaderText = "ID Entrega";
                 dataGridManutencaoEntregas.Columns["Nome"].HeaderText = "Vendedor";
                 dataGridManutencaoEntregas.Columns["NomeProduto"].HeaderText = "Produto";
-                dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade (Un)"; // Especificar que é unidade
+                dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade (Un)";
                 dataGridManutencaoEntregas.Columns["Preco"].HeaderText = "Preço Unitário";
                 dataGridManutencaoEntregas.Columns["Total"].HeaderText = "Total";
                 dataGridManutencaoEntregas.Columns["DataEntrega"].HeaderText = "Data";
@@ -116,20 +116,25 @@ namespace ComissPro
                 dataGridManutencaoEntregas.Columns["PrestacaoRealizada"].Visible = false;
 
                 PersonalizarDataGridView(dataGridManutencaoEntregas);
+
+                // Atualizar o lblTotalRegistros com a quantidade de registros
+                int totalRegistros = dataGridManutencaoEntregas.Rows.Count;
+                lblTotalRegistros.Text = $"Total de Registros: {totalRegistros}";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar entregas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblTotalRegistros.Text = "Total de Registros: 0"; // Em caso de erro, exibe 0
             }
         }
 
-
-        // Remover ou ajustar o método Listar para evitar duplicação
         public void Listar()
         {
-            CarregarEntregasNoGrid(); // Redireciona para o método consolidado
+            CarregarEntregasNoGrid(); // Já atualiza o lblTotalRegistros dentro de CarregarEntregasNoGrid
         }
 
+
+        
         private void CarregaDados()
         {
             FrmControleEntregas formEntregas = new FrmControleEntregas(StatusOperacao);

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using Guna.UI2.WinForms;
+
 
 namespace ComissPro
 {
@@ -120,15 +120,16 @@ namespace ComissPro
                 EntregasBLL objetoBll = new EntregasBLL();
                 objetoBll.Salvar(objetoModel);
 
-                // Mensagem simples, sem cálculo
                 MessageBox.Show("Registro gravado com sucesso!",
-                                "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                
+                                "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                var frmManutencao = (FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"];
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
-                    frmManutencao.HabilitarTimer(true);
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
                 }
+
                 Utilitario.LimpaCampo(this);
             }
             catch (OverflowException ov)
@@ -160,7 +161,12 @@ namespace ComissPro
                 objetoBll.Alterar(objetoModel);
 
                 MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
+                if (frmManutencao != null)
+                {
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                }
                 Utilitario.LimpaCampo(this);
                 this.Close();
             }
@@ -186,14 +192,11 @@ namespace ComissPro
                 this.Close();
 
                 // Atualiza o DataGridView no FrmManutençãodeEntregaBilhetes
-                var frmManutencao = (FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"];
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
-                    frmManutencao.HabilitarTimer(true);
-                }
-                else
-                {
-                    MessageBox.Show("FrmManutençãodeEntregaBilhetes não está aberto para atualização.");
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
                 }
             }
             catch (Exception erro)

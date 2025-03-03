@@ -55,11 +55,10 @@
             this.kryptonPanel2.Controls.Add(this.lblStatus);
             this.kryptonPanel2.Location = new System.Drawing.Point(-5, 2);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabOneNote;
             this.kryptonPanel2.Size = new System.Drawing.Size(798, 26);
-            this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.kryptonPanel2.TabIndex = 658;
             // 
             // lblStatus
@@ -69,7 +68,7 @@
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lblStatus.ForeColor = System.Drawing.Color.White;
-            this.lblStatus.Location = new System.Drawing.Point(198, 0);
+            this.lblStatus.Location = new System.Drawing.Point(198, 1);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(366, 24);
             this.lblStatus.TabIndex = 613;
@@ -109,22 +108,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonPanel1.Controls.Add(this.label1);
             this.kryptonPanel1.Controls.Add(this.txtPesquisa);
-            this.kryptonPanel1.Location = new System.Drawing.Point(9, 34);
+            this.kryptonPanel1.Location = new System.Drawing.Point(-5, 34);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
-            this.kryptonPanel1.Size = new System.Drawing.Size(767, 47);
+            this.kryptonPanel1.Size = new System.Drawing.Size(798, 47);
+            this.kryptonPanel1.StateNormal.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.kryptonPanel1.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.kryptonPanel1.TabIndex = 655;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(11, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 24);
+            this.label1.Size = new System.Drawing.Size(117, 20);
             this.label1.TabIndex = 601;
             this.label1.Text = "PESQUISAR...";
             // 
@@ -139,7 +140,7 @@
             this.txtPesquisa.Location = new System.Drawing.Point(141, 19);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(503, 22);
+            this.txtPesquisa.Size = new System.Drawing.Size(517, 22);
             this.txtPesquisa.TabIndex = 425;
             // 
             // btnSair

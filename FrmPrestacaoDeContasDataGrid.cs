@@ -36,53 +36,70 @@ namespace ComissPro
             dgvPrestacaoDeContas.AutoGenerateColumns = false;
             dgvPrestacaoDeContas.Columns.Clear();
 
-            var colEntregaID = new DataGridViewTextBoxColumn { Name = "EntregaID", HeaderText = "ID Entrega", ReadOnly = true, Visible = false };
+            var colEntregaID = new DataGridViewTextBoxColumn { Name = "EntregaID", HeaderText = "ID\nEntrega", ReadOnly = true, Visible = false };
+            colEntregaID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colEntregaID);
 
-            var colVendedor = new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Vendedor", ReadOnly = true, Width = 150 };
+            // "Vendedor" em uma linha só, mas centralizado
+            var colVendedor = new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Vendedor", ReadOnly = true, Width = 170 };
+            colVendedor.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colVendedor);
 
-            var colProduto = new DataGridViewTextBoxColumn { Name = "NomeProduto", HeaderText = "Produto", ReadOnly = true, Width = 150 };
+            var colProduto = new DataGridViewTextBoxColumn { Name = "NomeProduto", HeaderText = " Produto\nNome", ReadOnly = true, Width = 150, Visible = false };
+            colProduto.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colProduto);
 
-            var colQtdEntregue = new DataGridViewTextBoxColumn { Name = "QuantidadeEntregue", HeaderText = "Qtd Entregue (Un)", ReadOnly = true, Width = 80 };
+            var colQtdEntregue = new DataGridViewTextBoxColumn { Name = "QuantidadeEntregue", HeaderText = "  Bilhetes\nEntregues", ReadOnly = true, Width = 80 };
             colQtdEntregue.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colQtdEntregue.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colQtdEntregue);
 
-            var colPrecoUnit = new DataGridViewTextBoxColumn { Name = "PrecoUnit", HeaderText = "Preço Unitário", ReadOnly = true, Width = 90 };
+            var colPrecoUnit = new DataGridViewTextBoxColumn { Name = "PrecoUnit", HeaderText = " Preço\nUnitário", ReadOnly = true, Width = 70 };
             colPrecoUnit.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            colPrecoUnit.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colPrecoUnit);
 
-            var colDataEntrega = new DataGridViewTextBoxColumn { Name = "DataEntrega", HeaderText = "Data Entrega", ReadOnly = true, Width = 100 };
+            var colDataEntrega = new DataGridViewTextBoxColumn { Name = "DataEntrega", HeaderText = "  Data\nEntrega", ReadOnly = true, Width = 80 };
             colDataEntrega.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colDataEntrega.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colDataEntrega);
 
-            var colQtdDevolvida = new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = "Qtd Devolvida (Un)", ReadOnly = false, Width = 80 };
+            var colQtdDevolvida = new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = " Bilhetes\nDevolvidos", ReadOnly = false, Width = 75 };
             colQtdDevolvida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightBlue;
+            colQtdDevolvida.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colQtdDevolvida);
 
-            var colQtdVendida = new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = "Qtd Vendida (Un)", ReadOnly = true, Width = 80 };
+            var colQtdVendida = new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = " Bilhetes\nVendidos", ReadOnly = true, Width = 75 };
             colQtdVendida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colQtdVendida.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colQtdVendida);
 
-            var colValorRecebido = new DataGridViewTextBoxColumn { Name = "ValorRecebido", HeaderText = "Valor Recebido", ReadOnly = true, Width = 100 };
+            var colValorRecebido = new DataGridViewTextBoxColumn { Name = "ValorRecebido", HeaderText = " Valor\nRecebido", ReadOnly = true, Width = 100 };
             colValorRecebido.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            colValorRecebido.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colValorRecebido);
 
-            var colPercentualComissao = new DataGridViewTextBoxColumn { Name = "PercentualComissao", HeaderText = "% Comissão", ReadOnly = false, Width = 80 };
+            var colPercentualComissao = new DataGridViewTextBoxColumn { Name = "PercentualComissao", HeaderText = "   %\nComissão", ReadOnly = false, Width = 75 };
             colPercentualComissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             colPercentualComissao.DefaultCellStyle.BackColor = Color.LightBlue;
+            colPercentualComissao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colPercentualComissao);
 
-            var colComissao = new DataGridViewTextBoxColumn { Name = "Comissao", HeaderText = "Comissão", ReadOnly = true, Width = 80 };
+            // "Comissão" em uma linha só, mas centralizado
+            var colComissao = new DataGridViewTextBoxColumn { Name = "Comissao", HeaderText = "Comissão", ReadOnly = true, Width = 100 };
             colComissao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            colComissao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colComissao);
 
-            var colDataPrestacao = new DataGridViewTextBoxColumn { Name = "DataPrestacao", HeaderText = "Data Prestação", ReadOnly = false, Width = 100 };
+            var colDataPrestacao = new DataGridViewTextBoxColumn { Name = "DataPrestacao", HeaderText = "  Data\nPrestação", ReadOnly = false, Width = 90 };
             colDataPrestacao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             colDataPrestacao.DefaultCellStyle.BackColor = Color.LightBlue;
+            colDataPrestacao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvPrestacaoDeContas.Columns.Add(colDataPrestacao);
+
+            // Garantir que os cabeçalhos tenham altura suficiente
+            dgvPrestacaoDeContas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         }
 
         private void CarregarEntregasNoDataGrid(int vendedorID)
@@ -271,15 +288,6 @@ namespace ComissPro
             }
         }
 
-        private void cmbEntregasPendentes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbEntregasPendentes.SelectedItem != null)
-            {
-                var entregaSelecionada = (EntregasModel)cmbEntregasPendentes.SelectedItem;
-                CarregarEntregasNoDataGrid(entregaSelecionada.VendedorID);
-                lblPercentualComissao.Text = entregaSelecionada.Comissao.ToString("F2") + "%";
-            }
-        }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -513,6 +521,16 @@ namespace ComissPro
                 {
                     this.Close();
                 }
+            }
+        }
+
+        private void cmbEntregasPendentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEntregasPendentes.SelectedItem != null)
+            {
+                var entregaSelecionada = (EntregasModel)cmbEntregasPendentes.SelectedItem;
+                CarregarEntregasNoDataGrid(entregaSelecionada.VendedorID);
+                lblPercentualComissao.Text = entregaSelecionada.Comissao.ToString("F2") + "%";
             }
         }
     }

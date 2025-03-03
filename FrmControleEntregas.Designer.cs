@@ -171,8 +171,10 @@
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
             this.kryptonPanel2.Size = new System.Drawing.Size(687, 26);
-            this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.Teal;
-            this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
+            this.kryptonPanel2.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
+            this.kryptonPanel2.StateCommon.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
+            this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.LightBlue;
+            this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.LightBlue;
             this.kryptonPanel2.TabIndex = 625;
             // 
             // lblStatus
@@ -181,7 +183,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.lblStatus.Location = new System.Drawing.Point(220, 1);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(240, 24);
