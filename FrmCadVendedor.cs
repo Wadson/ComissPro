@@ -59,8 +59,7 @@ namespace ComissPro
 
                 // Salvar o registro
                 objetoBll.Salvar(objetoModel);
-                MessageBox.Show("REGISTRO gravado com sucesso!", "Informação!!!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("REGISTRO gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                    
                 Utilitario.LimpaCampo(this);
                 ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
             }

@@ -245,13 +245,13 @@ namespace ComissPro
 
         public class EntregasDAL
         {
-            public List<PrestacaoContasModel> RelatorioComissoesPagas(DateTime? dataInicio = null, DateTime? dataFim = null, string nomeVendedor = null)
+            public List<PrestacaoContasModel> RelatorioComissoesPagas(DateTime? dataInicio = null, DateTime? dataFim = null, string Nome = null)
             {
                 List<PrestacaoContasModel> prestacoes = new List<PrestacaoContasModel>();
                 string query = @"
             SELECT 
                 v.VendedorID,
-                v.Nome AS NomeVendedor,
+                v.Nome AS Nome,
                 pc.Comissao,
                 pc.DataPrestacao,
                 pc.QuantidadeVendida,
@@ -272,8 +272,8 @@ namespace ComissPro
                     query += " AND pc.DataPrestacao >= @DataInicio";
                 if (dataFim.HasValue)
                     query += " AND pc.DataPrestacao <= @DataFim";
-                if (!string.IsNullOrEmpty(nomeVendedor))
-                    query += " AND v.Nome LIKE @NomeVendedor";
+                if (!string.IsNullOrEmpty(Nome))
+                    query += " AND v.Nome LIKE @Nome";
 
                 using (var conn = Conexao.Conex())
                 {
@@ -284,8 +284,8 @@ namespace ComissPro
                             cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
                         if (dataFim.HasValue)
                             cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                        if (!string.IsNullOrEmpty(nomeVendedor))
-                            cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                        if (!string.IsNullOrEmpty(Nome))
+                            cmd.Parameters.AddWithValue("@Nome", "%" + Nome + "%");
 
                         using (var reader = cmd.ExecuteReader())
                         {
@@ -294,7 +294,7 @@ namespace ComissPro
                                 prestacoes.Add(new PrestacaoContasModel
                                 {
                                     VendedorID = Convert.ToInt32(reader["VendedorID"]),
-                                    NomeVendedor = reader["NomeVendedor"].ToString(),
+                                    Nome = reader["Nome"].ToString(),
                                     Comissao = Convert.ToDouble(reader["Comissao"]),
                                     DataPrestacao = Convert.ToDateTime(reader["DataPrestacao"]),
                                     QuantidadeVendida = Convert.ToInt32(reader["QuantidadeVendida"]),
@@ -320,7 +320,7 @@ namespace ComissPro
             string query = @"
             SELECT 
                 v.VendedorID,
-                v.Nome AS NomeVendedor,
+                v.Nome AS Nome,
                 e.EntregaID,
                 e.QuantidadeEntregue,
                 e.DataEntrega,
@@ -335,7 +335,7 @@ namespace ComissPro
                 e.PrestacaoRealizada = 0";
 
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -343,7 +343,7 @@ namespace ComissPro
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     if (!string.IsNullOrEmpty(nomeVendedor))
-                        cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                        cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -352,7 +352,7 @@ namespace ComissPro
                             entregas.Add(new EntregasModel
                             {
                                 VendedorID = Convert.ToInt32(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
                                 QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
@@ -372,7 +372,7 @@ namespace ComissPro
             string query = @"
             SELECT 
                 v.VendedorID,
-                v.Nome AS NomeVendedor,
+                v.Nome AS Nome,
                 e.EntregaID,
                 e.QuantidadeEntregue,
                 COALESCE(pc.QuantidadeVendida, 0) AS QuantidadeVendida,
@@ -393,7 +393,7 @@ namespace ComissPro
             if (dataFim.HasValue)
                 query += " AND (pc.DataPrestacao <= @DataFim OR pc.DataPrestacao IS NULL)";
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -402,7 +402,7 @@ namespace ComissPro
                 {
                     if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
                     if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -411,7 +411,7 @@ namespace ComissPro
                             desempenho.Add(new DesempenhoVendasModel
                             {
                                 VendedorID = Convert.ToInt64(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
                                 QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
                                 QuantidadeVendida = Convert.ToInt32(reader["QuantidadeVendida"]),
@@ -433,7 +433,7 @@ namespace ComissPro
             string query = @"
             SELECT 
                 v.VendedorID,
-                v.Nome AS NomeVendedor,
+                v.Nome AS Nome,
                 SUM(e.QuantidadeEntregue) AS TotalEntregue,
                 SUM(COALESCE(pc.QuantidadeVendida, 0)) AS TotalVendido,
                 SUM(COALESCE(pc.QuantidadeDevolvida, 0)) AS TotalDevolvido,
@@ -455,7 +455,7 @@ namespace ComissPro
             if (dataFim.HasValue)
                 query += " AND (pc.DataPrestacao <= @DataFim OR pc.DataPrestacao IS NULL)";
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -464,7 +464,7 @@ namespace ComissPro
                 {
                     if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
                     if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -473,7 +473,7 @@ namespace ComissPro
                             geral.Add(new GeralVendasComissoesModel
                             {
                                 VendedorID = Convert.ToInt64(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 TotalEntregue = Convert.ToInt64(reader["TotalEntregue"]),
                                 TotalVendido = Convert.ToInt64(reader["TotalVendido"]),
                                 TotalDevolvido = Convert.ToInt64(reader["TotalDevolvido"]),

@@ -38,20 +38,20 @@ namespace ComissPro
                 conn.Open();
 
                 string query = @"
-            SELECT 
+           SELECT 
                 e.EntregaID, 
                 e.VendedorID, 
-                COALESCE(v.Nome, 'Vendedor Excluído') AS NomeVendedor, 
+                v.Nome, 
                 e.ProdutoID, 
                 p.NomeProduto, 
-                e.QuantidadeEntregue, 
+                e.QuantidadeEntregue, -- Sempre em unidades
                 e.DataEntrega, 
-                e.PrestacaoRealizada,
-                COALESCE(p.Preco, 0) AS Preco, -- Adiciona o preço unitário
-                (e.QuantidadeEntregue * COALESCE(p.Preco, 0)) AS Total
+                e.PrestacaoRealizada, 
+                p.Preco, -- Preço unitário
+                e.QuantidadeEntregue * p.Preco AS Total
             FROM Entregas e
-            LEFT JOIN Vendedores v ON e.VendedorID = v.VendedorID
-            LEFT JOIN Produtos p ON e.ProdutoID = p.ProdutoID
+            JOIN Vendedores v ON e.VendedorID = v.VendedorID
+            JOIN Produtos p ON e.ProdutoID = p.ProdutoID
             WHERE e.PrestacaoRealizada = 0;";
 
                 SQLiteCommand sqlcomando = new SQLiteCommand(query, conn);
@@ -72,7 +72,7 @@ namespace ComissPro
                     DataRow totalRow = dtFornecedor.NewRow();
                     totalRow["EntregaID"] = DBNull.Value;
                     totalRow["VendedorID"] = DBNull.Value;
-                    totalRow["NomeVendedor"] = "Totais";
+                    totalRow["Nome"] = "Totais";
                     totalRow["ProdutoID"] = DBNull.Value;
                     totalRow["NomeProduto"] = DBNull.Value;
                     totalRow["QuantidadeEntregue"] = totalQuantidadeEntregue;
@@ -125,7 +125,7 @@ namespace ComissPro
             List<EntregasModel> entregas = new List<EntregasModel>();
             string query = @"
             SELECT
-                Vendedores.Nome AS NomeVendedor,
+                Vendedores.Nome AS Nome,
                 Produtos.NomeProduto,
                 Entregas.QuantidadeEntregue,
                 Produtos.Preco,
@@ -155,7 +155,7 @@ namespace ComissPro
                         {
                             entregas.Add(new EntregasModel
                             {
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 NomeProduto = reader["NomeProduto"].ToString(),
                                 QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 Preco = Convert.ToDouble(reader["Preco"]),
@@ -185,7 +185,7 @@ namespace ComissPro
                     cmd.Parameters.AddWithValue("@ProdutoID", entrega.ProdutoID);
                     cmd.Parameters.AddWithValue("@QuantidadeEntregue", entrega.QuantidadeEntregue);
                     cmd.Parameters.AddWithValue("@DataEntrega", entrega.DataEntrega);
-                    cmd.Parameters.AddWithValue("@PrestacaoRealizada", entrega.PrestacaoRealizada ? 1 : 0); // 0 para nova entrega
+                    cmd.Parameters.AddWithValue("@PrestacaoRealizada", entrega.Prestacaorealizada ? 1 : 0); // 0 para nova entrega
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -230,7 +230,7 @@ namespace ComissPro
                 conn.Open();
                 string query = @"
                 SELECT
-                    Vendedores.Nome AS NomeVendedor,
+                    Vendedores.Nome AS Nome,
                     Produtos.NomeProduto,
                     Entregas.QuantidadeEntregue,
                     Produtos.Preco,
@@ -258,7 +258,7 @@ namespace ComissPro
                         {
                             entregas.Add(new EntregasModel
                             {
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 NomeProduto = reader["NomeProduto"].ToString(),
                                 QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 Preco = Convert.ToDouble(reader["Preco"]),
@@ -285,7 +285,7 @@ namespace ComissPro
             string query = @"
         SELECT 
             v.VendedorID,
-            v.Nome AS NomeVendedor,
+            v.Nome AS Nome,
             pc.Comissao,
             pc.DataPrestacao,
             pc.QuantidadeVendida,
@@ -307,7 +307,7 @@ namespace ComissPro
             if (dataFim.HasValue)
                 query += " AND pc.DataPrestacao <= @DataFim";
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -316,7 +316,7 @@ namespace ComissPro
                 {
                     if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
                     if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -325,7 +325,7 @@ namespace ComissPro
                             prestacoes.Add(new PrestacaoContasModel
                             {
                                 VendedorID = Convert.ToInt32(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 Comissao = Convert.ToDouble(reader["Comissao"]),
                                 DataPrestacao = Convert.ToDateTime(reader["DataPrestacao"]),
                                 QuantidadeVendida = Convert.ToInt32(reader["QuantidadeVendida"]),
@@ -341,29 +341,35 @@ namespace ComissPro
             return prestacoes;
         }
 
-        // Novo: Relatório de Entregas Pendentes por Vendedor
         public List<EntregasModel> RelatorioEntregasPendentes(string nomeVendedor = null)
         {
             List<EntregasModel> entregas = new List<EntregasModel>();
             string query = @"
         SELECT 
             v.VendedorID,
-            v.Nome AS NomeVendedor,
+            v.Nome AS Nome,
             e.EntregaID,
             e.QuantidadeEntregue,
             e.DataEntrega,
-            p.NomeProduto
+            p.NomeProduto,
+            p.Preco,
+            p.ProdutoID,
+            COALESCE(pc.QuantidadeVendida, 0) AS QuantidadeVendida, -- Adicionado
+            COALESCE(pc.QuantidadeDevolvida, 0) AS QuantidadeDevolvida, -- Adicionado
+            COALESCE(pc.ValorRecebido, 0) AS ValorRecebido -- Adicionado
         FROM 
             Entregas e
         INNER JOIN 
             Vendedores v ON e.VendedorID = v.VendedorID
         INNER JOIN 
             Produtos p ON e.ProdutoID = p.ProdutoID
+        LEFT JOIN 
+            PrestacaoContas pc ON e.EntregaID = pc.EntregaID -- LEFT JOIN para incluir mesmo sem prestação
         WHERE 
             e.PrestacaoRealizada = 0";
 
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -371,21 +377,28 @@ namespace ComissPro
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
                     if (!string.IsNullOrEmpty(nomeVendedor))
-                        cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                        cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            entregas.Add(new EntregasModel
+                            var entrega = new EntregasModel
                             {
                                 VendedorID = Convert.ToInt32(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
                                 QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
-                                NomeProduto = reader["NomeProduto"].ToString()
-                            });
+                                NomeProduto = reader["NomeProduto"].ToString(),
+                                Preco = Convert.ToDouble(reader["Preco"]),
+                                ProdutoID = Convert.ToInt32(reader["ProdutoID"]),
+                                QuantidadeVendida = Convert.ToInt32(reader["QuantidadeVendida"]), // Adicionado
+                                QuantidadeDevolvida = Convert.ToInt32(reader["QuantidadeDevolvida"]), // Adicionado
+                                ValorRecebido = Convert.ToDouble(reader["ValorRecebido"]) // Adicionado
+                            };
+                            entrega.Total = entrega.QuantidadeEntregue * entrega.Preco;
+                            entregas.Add(entrega);
                         }
                     }
                 }
@@ -400,7 +413,7 @@ namespace ComissPro
             string query = @"
             SELECT 
                 v.VendedorID,
-                v.Nome AS NomeVendedor,
+                v.Nome AS Nome,
                 e.EntregaID,
                 e.QuantidadeEntregue,
                 COALESCE(pc.QuantidadeVendida, 0) AS QuantidadeVendida,
@@ -421,7 +434,7 @@ namespace ComissPro
             if (dataFim.HasValue)
                 query += " AND (pc.DataPrestacao <= @DataFim OR pc.DataPrestacao IS NULL)";
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -430,7 +443,7 @@ namespace ComissPro
                 {
                     if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
                     if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -439,7 +452,7 @@ namespace ComissPro
                             desempenho.Add(new DesempenhoVendasModel
                             {
                                 VendedorID = Convert.ToInt64(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
                                 QuantidadeEntregue = Convert.ToInt64(reader["QuantidadeEntregue"]),
                                 QuantidadeVendida = Convert.ToInt32(reader["QuantidadeVendida"]),
@@ -461,7 +474,7 @@ namespace ComissPro
             string query = @"
             SELECT 
                 v.VendedorID,
-                v.Nome AS NomeVendedor,
+                v.Nome AS Nome,
                 SUM(e.QuantidadeEntregue) AS TotalEntregue,
                 SUM(COALESCE(pc.QuantidadeVendida, 0)) AS TotalVendido,
                 SUM(COALESCE(pc.QuantidadeDevolvida, 0)) AS TotalDevolvido,
@@ -483,7 +496,7 @@ namespace ComissPro
             if (dataFim.HasValue)
                 query += " AND (pc.DataPrestacao <= @DataFim OR pc.DataPrestacao IS NULL)";
             if (!string.IsNullOrEmpty(nomeVendedor))
-                query += " AND v.Nome LIKE @NomeVendedor";
+                query += " AND v.Nome LIKE @Nome";
 
             using (var conn = Conexao.Conex())
             {
@@ -492,7 +505,7 @@ namespace ComissPro
                 {
                     if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
                     if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@NomeVendedor", "%" + nomeVendedor + "%");
+                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -501,7 +514,7 @@ namespace ComissPro
                             geral.Add(new GeralVendasComissoesModel
                             {
                                 VendedorID = Convert.ToInt64(reader["VendedorID"]),
-                                NomeVendedor = reader["NomeVendedor"].ToString(),
+                                Nome = reader["Nome"].ToString(),
                                 TotalEntregue = Convert.ToInt64(reader["TotalEntregue"]),
                                 TotalVendido = Convert.ToInt64(reader["TotalVendido"]),
                                 TotalDevolvido = Convert.ToInt64(reader["TotalDevolvido"]),

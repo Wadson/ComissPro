@@ -67,6 +67,15 @@
             // 
             // kryptonPalette1
             // 
+            this.kryptonPalette1.ButtonSpecs.FormClose.Image = global::ComissPro.Properties.Resources.Exit;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Sairr24;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Sairr24;
+            this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::ComissPro.Properties.Resources.Maximize;
+            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Minimiza24;
+            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Minimiza24;
+            this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::ComissPro.Properties.Resources.Minimize;
+            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Minimizar24;
+            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Minimizar24;
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 

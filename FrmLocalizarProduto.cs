@@ -16,8 +16,7 @@ namespace ComissPro
         public int ProdutoID { get; set; }
         public string Nome { get; set; }
         private decimal Preco;
-        private string Tipo;
-        private int QuantidadePorBloco;
+        private string Unidade;        
         public string produtoSelecionado { get; set; }
         public Form FormChamador { get; set; }
         public FrmLocalizarProduto(Form formChamador, string textoDigitado)
@@ -49,7 +48,7 @@ namespace ComissPro
             dgv.Columns[0].Name = "ProdutoID";
             dgv.Columns[1].Name = "Nome";
             dgv.Columns[2].Name = "Preco";
-            dgv.Columns[3].Name = "Tipo";            
+            dgv.Columns[3].Name = "Unidade";            
 
             // Ajustar colunas automaticamente
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -113,8 +112,7 @@ namespace ComissPro
                 ProdutoID = int.Parse(dataGridPesquisar["ProdutoID", LinhaAtual].Value.ToString());
                 Nome = dataGridPesquisar["Nome", LinhaAtual].Value.ToString();
                 Preco = Decimal.Parse(dataGridPesquisar["Preco", LinhaAtual].Value.ToString());
-                Tipo = dataGridPesquisar["Tipo", LinhaAtual].Value.ToString();
-                QuantidadePorBloco = int.Parse(dataGridPesquisar["QuantidadePorBloco", LinhaAtual].Value.ToString());
+                Unidade = dataGridPesquisar["Unidade", LinhaAtual].Value.ToString();                
 
                 // Acrescenta zeros à esquerda do ProdutoID
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 4);

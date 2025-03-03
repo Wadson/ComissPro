@@ -33,11 +33,18 @@ namespace ComissPro
             try
             {
                 produtoDal = new ProdutoDAL();
-                produtoDal.Inserir(objetomodel);
+
+                // Verifica se o produto já existe
+                if (produtoDal.ProdutoExiste(objetomodel.NomeProduto))
+                {
+                    throw new Exception("Produto com o nome '" + objetomodel.NomeProduto + "' já existe no sistema!");
+                }
+                // Se não existe, prossegue com o salvamento
+                produtoDal.Salvar(objetomodel);
             }
             catch (Exception erro)
             {
-                throw erro;
+                throw erro; // Repassa a exceção para o formulário
             }
         }
 

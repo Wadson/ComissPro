@@ -41,11 +41,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtPreco = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNome = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.cmbTipo = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.cmbUnidade = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTipo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbUnidade)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel2
@@ -301,9 +301,9 @@
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.label12.Location = new System.Drawing.Point(9, 139);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 16);
+            this.label12.Size = new System.Drawing.Size(71, 16);
             this.label12.TabIndex = 281;
-            this.label12.Text = "TIPO:";
+            this.label12.Text = "UNIDADE:";
             // 
             // label13
             // 
@@ -312,9 +312,9 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.label13.Location = new System.Drawing.Point(223, 136);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 16);
+            this.label13.Size = new System.Drawing.Size(121, 16);
             this.label13.TabIndex = 280;
-            this.label13.Text = "Preço R$:";
+            this.label13.Text = "PREÇO UNITÁRIO";
             // 
             // txtPreco
             // 
@@ -356,19 +356,19 @@
             this.txtNome.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNome.TabIndex = 0;
             // 
-            // cmbTipo
+            // cmbUnidade
             // 
-            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipo.DropDownWidth = 251;
-            this.cmbTipo.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.cmbTipo.Items.AddRange(new object[] {
+            this.cmbUnidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUnidade.DropDownWidth = 251;
+            this.cmbUnidade.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
+            this.cmbUnidade.Items.AddRange(new object[] {
             "Bloco",
             "Unidade"});
-            this.cmbTipo.Location = new System.Drawing.Point(12, 158);
-            this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.cmbTipo.Size = new System.Drawing.Size(180, 21);
-            this.cmbTipo.TabIndex = 1;
+            this.cmbUnidade.Location = new System.Drawing.Point(12, 158);
+            this.cmbUnidade.Name = "cmbUnidade";
+            this.cmbUnidade.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.cmbUnidade.Size = new System.Drawing.Size(180, 21);
+            this.cmbUnidade.TabIndex = 1;
             // 
             // kryptonPalette1
             // 
@@ -391,7 +391,7 @@
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(547, 261);
-            this.Controls.Add(this.cmbTipo);
+            this.Controls.Add(this.cmbUnidade);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnNovo);
@@ -421,7 +421,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTipo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbUnidade)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,7 +441,7 @@
         private System.Windows.Forms.Label label13;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPreco;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNome;
-        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbTipo;
+        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbUnidade;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
     }
 }

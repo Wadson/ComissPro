@@ -27,33 +27,16 @@ namespace ComissPro
             InitializeComponent();            
             ConfigurarColunasComissoesPagas();
         }
+
         private void ConfigurarColunasComissoesPagas()
         {
             dgvRelatorio.Columns.Clear();
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "VendedorID",
-                HeaderText = "ID Vend.",
-                Width = 50,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NomeVendedor", HeaderText = "Nome Vendedor", Width = 250 });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "VendedorID", HeaderText = "ID Vend.", Width = 50, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome Vendedor", Width = 250 });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Comissao", HeaderText = "Comissão", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DataPrestacao", HeaderText = "Data Prest.", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" } });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "QuantidadeVendida",
-                HeaderText = "Qtd. Vend.",
-                Width = 60,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "QuantidadeDevolvida",
-                HeaderText = "Qtd. Dev.",
-                Width = 60,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeVendida", HeaderText = "Qtd. Vend.", Width = 60, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeDevolvida", HeaderText = "Qtd. Dev.", Width = 60, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ValorRecebido", HeaderText = "Valor Rec.", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "PrestacaoID", HeaderText = "ID Prestação", Visible = false });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "EntregaID", HeaderText = "ID Entrega", Visible = false });
@@ -62,59 +45,29 @@ namespace ComissPro
         private void ConfigurarColunasEntregasPendentes()
         {
             dgvRelatorio.Columns.Clear();
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "VendedorID",
-                HeaderText = "ID Vend.",
-                Width = 50,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NomeVendedor", HeaderText = "Nome Vendedor", Width = 250 });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "EntregaID", HeaderText = "ID Entrega", Width = 80 });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "QuantidadeEntregue",
-                HeaderText = "Qtd. Entregue",
-                Width = 80,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "VendedorID", HeaderText = "ID Vend.", Width = 50, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome Vendedor", Width = 250 });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "EntregaID", HeaderText = "ID Entrega", Width = 80, Visible = false });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ProdutoID", HeaderText = "ID Produto", Width = 80, Visible = false });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeEntregue", HeaderText = "Qtd. Entregue", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeVendida", HeaderText = "Qtd. Vendida", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeDevolvida", HeaderText = "Qtd. Devolvida", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DataEntrega", HeaderText = "Data Entrega", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NomeProduto", HeaderText = "Produto", Width = 250 });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Preco", HeaderText = "Preço Unitário", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2", Alignment = DataGridViewContentAlignment.MiddleRight } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Total", HeaderText = "Preço Total", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2", Alignment = DataGridViewContentAlignment.MiddleRight } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ValorRecebido", HeaderText = "Valor Recebido", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2", Alignment = DataGridViewContentAlignment.MiddleRight } });
         }
 
         private void ConfigurarColunasDesempenhoVendas()
         {
             dgvRelatorio.Columns.Clear();
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "VendedorID",
-                HeaderText = "ID Vend.",
-                Width = 50,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NomeVendedor", HeaderText = "Nome Vendedor", Width = 250 });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "VendedorID", HeaderText = "ID Vend.", Width = 50, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome Vendedor", Width = 250 });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "EntregaID", HeaderText = "ID Entrega", Width = 80 });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "QuantidadeEntregue",
-                HeaderText = "Qtd. Entregue",
-                Width = 80,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "QuantidadeVendida",
-                HeaderText = "Qtd. Vend.",
-                Width = 60,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "QuantidadeDevolvida",
-                HeaderText = "Qtd. Dev.",
-                Width = 60,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeEntregue", HeaderText = "Qtd. Entregue", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeVendida", HeaderText = "Qtd. Vend.", Width = 60, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeDevolvida", HeaderText = "Qtd. Dev.", Width = 60, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ValorRecebido", HeaderText = "Valor Rec.", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Comissao", HeaderText = "Comissão", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
         }
@@ -122,35 +75,11 @@ namespace ComissPro
         private void ConfigurarColunasGeralVendasComissoes()
         {
             dgvRelatorio.Columns.Clear();
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "VendedorID",
-                HeaderText = "ID Vend.",
-                Width = 50,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NomeVendedor", HeaderText = "Nome Vendedor", Width = 250 });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "TotalEntregue",
-                HeaderText = "Total Entregue",
-                Width = 80,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "TotalVendido",
-                HeaderText = "Total Vendido",
-                Width = 80,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                DataPropertyName = "TotalDevolvido",
-                HeaderText = "Total Devolvido",
-                Width = 80,
-                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
-            });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "VendedorID", HeaderText = "ID Vend.", Width = 50, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome Vendedor", Width = 250 });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TotalEntregue", HeaderText = "Total Entregue", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TotalVendido", HeaderText = "Total Vendido", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TotalDevolvido", HeaderText = "Total Devolvido", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TotalRecebido", HeaderText = "Total Recebido", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TotalComissao", HeaderText = "Total Comissão", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" } });
         }
@@ -163,7 +92,7 @@ namespace ComissPro
                     var comissoes = relatorioComTotais.Cast<PrestacaoContasModel>().ToList();
                     relatorioComTotais.Add(new PrestacaoContasModel
                     {
-                        NomeVendedor = "Totais",
+                        Nome = "Totais",
                         Comissao = comissoes.Sum(p => p.Comissao),
                         QuantidadeVendida = comissoes.Sum(p => p.QuantidadeVendida),
                         QuantidadeDevolvida = comissoes.Sum(p => p.QuantidadeDevolvida),
@@ -174,15 +103,19 @@ namespace ComissPro
                     var pendentes = relatorioComTotais.Cast<EntregasModel>().ToList();
                     relatorioComTotais.Add(new EntregasModel
                     {
-                        NomeVendedor = "Totais",
-                        QuantidadeEntregue = pendentes.Sum(p => p.QuantidadeEntregue)
+                        Nome = "Totais",
+                        QuantidadeEntregue = pendentes.Sum(p => p.QuantidadeEntregue),
+                        QuantidadeVendida = pendentes.Sum(p => p.QuantidadeVendida),
+                        QuantidadeDevolvida = pendentes.Sum(p => p.QuantidadeDevolvida),
+                        Total = pendentes.Sum(p => p.Total),
+                        ValorRecebido = pendentes.Sum(p => p.ValorRecebido)
                     });
                     break;
                 case TipoRelatorio.DesempenhoVendas:
                     var desempenho = relatorioComTotais.Cast<DesempenhoVendasModel>().ToList();
                     relatorioComTotais.Add(new DesempenhoVendasModel
                     {
-                        NomeVendedor = "Totais",
+                        Nome = "Totais",
                         QuantidadeEntregue = desempenho.Sum(p => p.QuantidadeEntregue),
                         QuantidadeVendida = desempenho.Sum(p => p.QuantidadeVendida),
                         QuantidadeDevolvida = desempenho.Sum(p => p.QuantidadeDevolvida),
@@ -194,7 +127,7 @@ namespace ComissPro
                     var geral = relatorioComTotais.Cast<GeralVendasComissoesModel>().ToList();
                     relatorioComTotais.Add(new GeralVendasComissoesModel
                     {
-                        NomeVendedor = "Totais",
+                        Nome = "Totais",
                         TotalEntregue = geral.Sum(p => p.TotalEntregue),
                         TotalVendido = geral.Sum(p => p.TotalVendido),
                         TotalDevolvido = geral.Sum(p => p.TotalDevolvido),
@@ -204,66 +137,27 @@ namespace ComissPro
                     break;
             }
 
-            // Estilizar a linha de totais após associar o DataSource
-            // Estilizar a linha de totais após associar o DataSource
-            dgvRelatorio.DataBindingComplete += (s, ev) =>
+            // Garantir que o evento seja registrado apenas uma vez
+            dgvRelatorio.DataBindingComplete -= DgvRelatorio_DataBindingComplete;
+            dgvRelatorio.DataBindingComplete += DgvRelatorio_DataBindingComplete;
+        }
+
+
+        private void DgvRelatorio_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Verificar se há linhas e se a última linha é "Totais"
+            if (dgvRelatorio.Rows.Count > 0)
             {
                 int ultimaLinha = dgvRelatorio.Rows.Count - 1;
-                if (ultimaLinha >= 0)
+                var nomeCell = dgvRelatorio.Rows[ultimaLinha].Cells["Nome"];
+                if (nomeCell != null && nomeCell.Value?.ToString() == "Totais")
                 {
                     dgvRelatorio.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.LightGray;
                     dgvRelatorio.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dgvRelatorio.Font, FontStyle.Bold);
                 }
-            };
-        }
-
-        private void btnLocalizar_Click(object sender, EventArgs e, ComboBox cmbTipoRelatorio, DateTimePicker dtpDataInicio, DateTimePicker dtpDataFim, TextBox txtVendedor)
-        {
-            try
-            {
-                var dal = new EntregasDal();
-                TipoRelatorio tipo = (TipoRelatorio)cmbTipoRelatorio.SelectedIndex;
-
-                object relatorio = null;
-                switch (tipo)
-                {
-                    case TipoRelatorio.ComissoesPagas:
-                        ConfigurarColunasComissoesPagas();
-                        relatorio = dal.RelatorioComissoesPagas(dtpDataInicio.Value, dtpDataFim.Value, txtVendedor.Text);
-                        break;
-                    case TipoRelatorio.EntregasPendentes:
-                        ConfigurarColunasEntregasPendentes();
-                        relatorio = dal.RelatorioEntregasPendentes(txtVendedor.Text);
-                        break;
-                    case TipoRelatorio.DesempenhoVendas:
-                        ConfigurarColunasDesempenhoVendas();
-                        relatorio = dal.RelatorioDesempenhoVendas(dtpDataInicio.Value, dtpDataFim.Value, txtVendedor.Text);
-                        break;
-                    case TipoRelatorio.GeralVendasComissoes:
-                        ConfigurarColunasGeralVendasComissoes();
-                        relatorio = dal.RelatorioGeralVendasComissoes(dtpDataInicio.Value, dtpDataFim.Value, txtVendedor.Text);
-                        break;
-                }
-
-                if (relatorio == null || ((IList<object>)relatorio).Count == 0)
-                {
-                    MessageBox.Show("Nenhum dado encontrado para os filtros especificados.");
-                    dgvRelatorio.DataSource = null;
-                }
-                else
-                {
-                    var lista = ((IList<object>)relatorio).Cast<object>().ToList();
-                    var relatorioComTotais = new List<object>(lista);
-                    AdicionarLinhaTotais(relatorioComTotais, tipo);
-                    dgvRelatorio.DataSource = relatorioComTotais;
-                    MessageBox.Show($"Encontrados {lista.Count - 1} registros.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Erro ao carregar o relatório: {ex.Message}");
             }
         }
+
 
         private void FrmRelatoriosComissoes_Load(object sender, EventArgs e)
         {
@@ -275,6 +169,16 @@ namespace ComissPro
             ConfigurarColunasComissoesPagas();
         }
 
+
+
+
+
+
+
+
+
+
+        //JÁ ESTAVA AQUI
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
             try
@@ -313,14 +217,25 @@ namespace ComissPro
                     var lista = ((System.Collections.IList)relatorio).Cast<object>().ToList();
                     var relatorioComTotais = new List<object>(lista);
                     AdicionarLinhaTotais(relatorioComTotais, tipo);
+                    dgvRelatorio.DataSource = null; // Limpar antes de associar
                     dgvRelatorio.DataSource = relatorioComTotais;
-                    //MessageBox.Show($"Encontrados {lista.Count - 1} registros.");
+                    MessageBox.Show($"Encontrados {lista.Count} registros (excluindo totais).");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao carregar o relatório: {ex.Message}");
             }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvRelatorio_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
         }
     }
 }

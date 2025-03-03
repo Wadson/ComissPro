@@ -31,8 +31,7 @@ namespace ComissPro
                                 ProdutoID = reader.GetInt32(0),
                                 NomeProduto = reader.GetString(1),
                                 Preco = reader.GetDouble(2),
-                                Tipo = reader.GetString(3),
-                                QuantidadePorBloco = (int)(reader.IsDBNull(4) ? 50 : reader.GetInt64(4))
+                                Unidade = reader.GetString(3)                                
                             };
                         }
                     }
@@ -62,20 +61,35 @@ namespace ComissPro
                 conn.Close();
             }
         }
-       
-        public void Inserir(Model.ProdutoMODEL produto)
+
+        public void Salvar(Model.ProdutoMODEL produto)
         {
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "INSERT INTO Produtos (NomeProduto, Preco, Tipo, QuantidadePorBloco) VALUES (@NomeProduto, @Preco, @Tipo, @QuantidadePorBloco)";
+                string sql = "INSERT INTO Produtos (NomeProduto, Preco, Unidade) VALUES (@NomeProduto, @Preco, @Unidade)";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
                     cmd.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     cmd.Parameters.AddWithValue("@Preco", produto.Preco);
-                    cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
-                    cmd.Parameters.AddWithValue("@QuantidadePorBloco", produto.QuantidadePorBloco);
+                    cmd.Parameters.AddWithValue("@Unidade", produto.Unidade);
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Novo método para verificar duplicata
+        public bool ProdutoExiste(string nomeProduto)
+        {
+            using (var conexao = Conexao.Conex())
+            {
+                conexao.Open();
+                string sql = "SELECT COUNT(*) FROM Produtos WHERE NomeProduto = @NomeProduto";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
+                {
+                    cmd.Parameters.AddWithValue("@NomeProduto", nomeProduto);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // Retorna true se o produto já existe
                 }
             }
         }
@@ -86,12 +100,12 @@ namespace ComissPro
             using (var conexao = Conexao.Conex())
             {
                 conexao.Open();
-                string sql = "UPDATE Produtos SET NomeProduto =@NomeProduto, Preco = @Preco, Tipo = @Tipo WHERE ProdutoID = @ProdutoID";
+                string sql = "UPDATE Produtos SET NomeProduto =@NomeProduto, Preco = @Preco, Unidade = @Unidade WHERE ProdutoID = @ProdutoID";
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conexao))
                 {
                     cmd.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     cmd.Parameters.AddWithValue("@Preco", produto.Preco);
-                    cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
+                    cmd.Parameters.AddWithValue("@Unidade", produto.Unidade);
                     cmd.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     cmd.ExecuteNonQuery();
                 }
@@ -119,7 +133,7 @@ namespace ComissPro
             try
             {
                 DataTable dt = new DataTable();
-                string sql = "SELECT ProdutoID, NomeProduto, Preco, Tipo, QuantidadePorBloco FROM Produtos WHERE NomeProduto LIKE @NomeProduto";
+                string sql = "SELECT ProdutoID, NomeProduto, Preco, Unidade FROM Produtos WHERE NomeProduto LIKE @NomeProduto";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@NomeProduto", "%" + nome + "%");
                 conn.Open();

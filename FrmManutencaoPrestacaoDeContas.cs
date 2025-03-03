@@ -32,7 +32,7 @@ namespace ComissPro
             if (dataGridPrestacaoContas.Columns.Count >= 9) // Temos 9 colunas
             {
                 // Renomeia as colunas na ordem solicitada
-                dataGridPrestacaoContas.Columns[0].Name = "NomeVendedor";
+                dataGridPrestacaoContas.Columns[0].Name = "Nome";
                 dataGridPrestacaoContas.Columns[1].Name = "QuantidadeEntregue";
                 dataGridPrestacaoContas.Columns[2].Name = "NomeProduto";
                 dataGridPrestacaoContas.Columns[3].Name = "Preco";
@@ -43,7 +43,7 @@ namespace ComissPro
                 dataGridPrestacaoContas.Columns[8].Name = "DataPrestacao";
 
                 // Define larguras fixas específicas para as colunas
-                dataGridPrestacaoContas.Columns["NomeVendedor"].Width = 200;
+                dataGridPrestacaoContas.Columns["Nome"].Width = 200;
                 dataGridPrestacaoContas.Columns["QuantidadeEntregue"].Width = 140;
                 dataGridPrestacaoContas.Columns["NomeProduto"].Width = 200;
                 dataGridPrestacaoContas.Columns["Preco"].Width = 120;
@@ -54,7 +54,7 @@ namespace ComissPro
                 dataGridPrestacaoContas.Columns["DataPrestacao"].Width = 130;
 
                 // Define cabeçalhos visíveis
-                dataGridPrestacaoContas.Columns["NomeVendedor"].HeaderText = "Vendedor";
+                dataGridPrestacaoContas.Columns["Nome"].HeaderText = "Vendedor";
                 dataGridPrestacaoContas.Columns["QuantidadeEntregue"].HeaderText = "Qtd. Entregue";
                 dataGridPrestacaoContas.Columns["NomeProduto"].HeaderText = "Produto";
                 dataGridPrestacaoContas.Columns["Preco"].HeaderText = "Preço Unitário";
@@ -92,7 +92,7 @@ namespace ComissPro
                 if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha (dados + total)
                 {
                     int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
-                    if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["NomeVendedor"].Value?.ToString() == "TOTAIS")
+                    if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
                     {
                         dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
                         dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
@@ -112,7 +112,7 @@ namespace ComissPro
             if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha
             {
                 int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
-                if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["NomeVendedor"].Value?.ToString() == "TOTAIS")
+                if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
                 {
                     dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
                     dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
@@ -133,7 +133,7 @@ namespace ComissPro
             //            MessageBox.Show("A DataGridView está vazia. Não há dados para serem processados.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             //            return;
             //        }
-            //        formPrestacaoContas.txtNomeVendedor.Text = dataGridPrestacaoContas.CurrentRow.Cells["NomeVendedor"].Value.ToString();
+            //        formPrestacaoContas.txtNomeVendedor.Text = dataGridPrestacaoContas.CurrentRow.Cells["Nome"].Value.ToString();
             //        formPrestacaoContas.txtNomeProduto.Text = dataGridPrestacaoContas.CurrentRow.Cells["NomeProduto"].Value.ToString();
             //        formPrestacaoContas.txtQuantidadeEntregue.Text = dataGridPrestacaoContas.CurrentRow.Cells["QuantidadeEntregue"].Value.ToString();
             //        formPrestacaoContas.txtPrecoUnit.Text = dataGridPrestacaoContas.CurrentRow.Cells["Preco"].Value.ToString();

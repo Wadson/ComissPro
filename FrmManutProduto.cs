@@ -25,14 +25,13 @@ namespace ComissPro
         {
             //Alinhar o as colunas
             dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["Preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
-            dgv.Columns["QuantidadePorBloco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            dgv.Columns["Preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;            
 
 
             dgv.Columns[0].Name = "ProdutoID";
             dgv.Columns[1].Name = "Nome";
             dgv.Columns[2].Name = "Preco";
-            dgv.Columns[3].Name = "Tipo";
+            dgv.Columns[3].Name = "Unidade";
             dgv.Columns[2].DefaultCellStyle.Format = "C2";
 
             //dgv.Columns["FornecedorID"].Visible = false;
@@ -44,8 +43,7 @@ namespace ComissPro
             dgv.Columns["ProdutoId"].Width = 100;
             dgv.Columns["Nome"].Width = 400;
             dgv.Columns["Preco"].Width = 150;
-            dgv.Columns["Tipo"].Width = 150;
-            dgv.Columns["QuantidadePorBloco"].Width = 150;
+            dgv.Columns["Unidade"].Width = 150;            
 
         }
         private void CarregaDados()
@@ -74,7 +72,7 @@ namespace ComissPro
                     frm.txtProdutoID.Text = dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString();
                     frm.txtNome.Text = dataGridPesquisar.CurrentRow.Cells["Nome"].Value.ToString();
                     frm.txtPreco.Text = dataGridPesquisar.CurrentRow.Cells["Preco"].Value.ToString();
-                    frm.cmbTipo.Text = dataGridPesquisar.CurrentRow.Cells["Tipo"].Value.ToString();
+                    frm.cmbUnidade.Text = dataGridPesquisar.CurrentRow.Cells["Unidade"].Value.ToString();
 
                     frm.lblStatus.Text = "ALTERAR CADASTRO";
                     frm.lblStatus.ForeColor = Color.Orange;
@@ -108,7 +106,7 @@ namespace ComissPro
                     frm.txtProdutoID.Text = dataGridPesquisar.CurrentRow.Cells["ProdutoID"].Value.ToString();
                     frm.txtNome.Text = dataGridPesquisar.CurrentRow.Cells["Nome"].Value.ToString();
                     frm.txtPreco.Text = dataGridPesquisar.CurrentRow.Cells["Preco"].Value.ToString();
-                    frm.cmbTipo.Text = dataGridPesquisar.CurrentRow.Cells["Tipo"].Value.ToString();
+                    frm.cmbUnidade.Text = dataGridPesquisar.CurrentRow.Cells["Unidade"].Value.ToString();
 
                     frm.lblStatus.Text = "EXCLUSÃO DE REGISTRO!";
                     frm.lblStatus.ForeColor = Color.Red;
@@ -120,7 +118,7 @@ namespace ComissPro
                     frm.txtProdutoID.Enabled = false;
                     frm.txtNome.Enabled = false;
                     frm.txtPreco.Enabled = false;
-                    frm.cmbTipo.Enabled = false;
+                    frm.cmbUnidade.Enabled = false;
 
                     frm.btnSalvar.Text = "Excluir";
                     frm.ShowDialog();

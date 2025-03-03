@@ -19,7 +19,7 @@ namespace ComissPro
                 conn.Open();
                 string query = @"
          SELECT 
-             COALESCE(v.Nome, 'Vendedor Excluído') AS NomeVendedor, -- 1
+             COALESCE(v.Nome, 'Vendedor Excluído') AS Nome, -- 1
              COALESCE(e.QuantidadeEntregue, 0) AS QuantidadeEntregue, -- 2
              p.NomeProduto,                                -- 3
              COALESCE(p.Preco, 0) AS Preco,                -- 4
@@ -54,7 +54,7 @@ namespace ComissPro
                         .Sum(row => row["Comissao"] is DBNull ? 0.0 : Convert.ToDouble(row["Comissao"]));
 
                     DataRow totalRow = dt.NewRow();
-                    totalRow["NomeVendedor"] = "TOTAIS";           // 1
+                    totalRow["Nome"] = "TOTAIS";           // 1
                     totalRow["QuantidadeEntregue"] = totalQuantidadeEntregue; // 2
                     totalRow["NomeProduto"] = "";                  // 3 (vazio para totais)
                     totalRow["Preco"] = 0.0;                       // 4 (usar 0 em vez de DBNull)
@@ -66,7 +66,7 @@ namespace ComissPro
                     dt.Rows.Add(totalRow);
 
                     // Depuração para confirmar a linha de totais
-                    Console.WriteLine("Linha de totais adicionada: " + totalRow["NomeVendedor"]);
+                    Console.WriteLine("Linha de totais adicionada: " + totalRow["Nome"]);
                 }
 
                 return dt;

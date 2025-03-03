@@ -74,11 +74,12 @@
             this.dgvRelatorio.Name = "dgvRelatorio";
             this.dgvRelatorio.Size = new System.Drawing.Size(783, 264);
             this.dgvRelatorio.TabIndex = 0;
+            this.dgvRelatorio.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvRelatorio_DataBindingComplete);
             // 
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.Location = new System.Drawing.Point(676, 406);
+            this.btnSair.Location = new System.Drawing.Point(666, 406);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -93,7 +94,7 @@
             this.btnSair.OverrideDefault.Border.Rounding = 20;
             this.btnSair.OverrideDefault.Border.Width = 1;
             this.btnSair.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnSair.Size = new System.Drawing.Size(119, 43);
+            this.btnSair.Size = new System.Drawing.Size(121, 35);
             this.btnSair.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnSair.StateCommon.Back.ColorAngle = 45F;
@@ -107,7 +108,7 @@
             this.btnSair.StateCommon.Border.Width = 1;
             this.btnSair.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnSair.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnSair.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.btnSair.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnSair.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnSair.StatePressed.Back.ColorAngle = 135F;
@@ -133,6 +134,7 @@
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.TabIndex = 649;
             this.btnSair.Values.Text = "&Sair";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // dtpDataInicio
             // 
@@ -221,7 +223,7 @@
             // 
             // btnLocalizar
             // 
-            this.btnLocalizar.Location = new System.Drawing.Point(667, 91);
+            this.btnLocalizar.Location = new System.Drawing.Point(666, 91);
             this.btnLocalizar.Name = "btnLocalizar";
             this.btnLocalizar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnLocalizar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));

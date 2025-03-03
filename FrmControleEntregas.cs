@@ -122,15 +122,14 @@ namespace ComissPro
 
                 // Mensagem simples, sem cálculo
                 MessageBox.Show("Registro gravado com sucesso!",
-                                "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                Utilitario.LimpaCampo(this);
+                                "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                
 
                 var frmManutencao = (FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"];
                 if (frmManutencao != null)
                 {
                     frmManutencao.HabilitarTimer(true);
                 }
+                Utilitario.LimpaCampo(this);
             }
             catch (OverflowException ov)
             {
@@ -327,9 +326,6 @@ namespace ComissPro
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
                 VendedorID = NovoCodigo;
                 txtEntregaID.Text = numeroComZeros;
-
-                ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"]).HabilitarTimer(true);
-
             }
             if (StatusOperacao == "EXCLUSÃO")
             {

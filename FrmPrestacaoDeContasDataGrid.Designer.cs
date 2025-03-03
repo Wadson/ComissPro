@@ -396,7 +396,7 @@
             this.txtTotalDevolvida.Location = new System.Drawing.Point(164, 297);
             this.txtTotalDevolvida.Name = "txtTotalDevolvida";
             this.txtTotalDevolvida.Size = new System.Drawing.Size(150, 36);
-            this.txtTotalDevolvida.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.txtTotalDevolvida.StateCommon.Back.Color1 = System.Drawing.Color.PaleTurquoise;
             this.txtTotalDevolvida.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.txtTotalDevolvida.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.txtTotalDevolvida.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -410,6 +410,7 @@
             this.txtTotalDevolvida.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtTotalDevolvida.TabIndex = 692;
             this.txtTotalDevolvida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalDevolvida.Leave += new System.EventHandler(this.txtTotalDevolvida_Leave);
             // 
             // label3
             // 
@@ -525,6 +526,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "Prestacao De Contas";
             this.Load += new System.EventHandler(this.FrmPrestacaoDeContasDataGrid_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrestacaoDeContasDataGrid_KeyDown_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestacaoDeContas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);

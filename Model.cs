@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,27 +58,26 @@ namespace ComissPro
             public int ProdutoID { get; set; }
             public string NomeProduto { get; set; }
             public double Preco { get; set; }
-            public string Tipo { get; set; }
-            public int QuantidadePorBloco { get; set; }
+            public string Unidade { get; set; }                       
         }
 
         public class EntregasModel
         {
             public int EntregaID { get; set; }
             public int VendedorID { get; set; }
-            public int ProdutoID { get; set; }
+            public int ProdutoID { get; set; } // Já existe, mas não será exibido
             public int QuantidadeEntregue { get; set; }
-            public DateTime? DataEntrega { get; set; } = DateTime.Now;
-            public bool PrestacaoRealizada { get; set; } = false;
-            public string NomeVendedor { get; set; }
+            public DateTime? DataEntrega { get; set; }
+            public double Preco { get; set; } // Preço Unitário
+            public double Comissao { get; set; }
+            public string Nome { get; set; }
             public string NomeProduto { get; set; }
-            public double Preco { get; set; }
-            public double Total { get; set; }
-            public double Comissao { get; set; } // Percentual direto (ex.: 40 para 40%)
+            public double Total { get; set; } // Preço Total (QuantidadeEntregue * Preco)
+            public bool Prestacaorealizada { get; set; } // 0 = Não, 1 = Sim
 
             public override string ToString()
             {
-                return $"{NomeVendedor} - Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
+                return $"{Nome} - Entrega {EntregaID} - {QuantidadeEntregue} unidades ({DataEntrega:dd/MM/yyyy})";
             }
         }
 
@@ -90,14 +90,14 @@ namespace ComissPro
             public double ValorRecebido { get; set; }
             public double Comissao { get; set; }
             public DateTime DataPrestacao { get; set; } = DateTime.Now;
-            public string NomeVendedor { get; set; }
+            public string Nome { get; set; }
             public int VendedorID { get; set; }
         }
         // Para Relatório de Desempenho de Vendas
         public class DesempenhoVendasModel
         {
             public long VendedorID { get; set; }
-            public string NomeVendedor { get; set; }
+            public string Nome { get; set; }
             public int EntregaID { get; set; }
             public long QuantidadeEntregue { get; set; }
             public int QuantidadeVendida { get; set; }
@@ -110,7 +110,7 @@ namespace ComissPro
         public class GeralVendasComissoesModel
         {
             public long VendedorID { get; set; }
-            public string NomeVendedor { get; set; }
+            public string Nome { get; set; }
             public long TotalEntregue { get; set; }
             public long TotalVendido { get; set; }
             public long TotalDevolvido { get; set; }

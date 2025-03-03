@@ -483,7 +483,8 @@
             this.btnNovo.TabIndex = 635;
             this.toolTip1.SetToolTip(this.btnNovo, "Nova entrega de bilhetes");
             this.btnNovo.Values.Image = global::ComissPro.Properties.Resources.registro32;
-            this.btnNovo.Values.Text = "&Entrega de Bilhetes";            
+            this.btnNovo.Values.Text = "&Entrega de Bilhetes";
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAltera
             // 

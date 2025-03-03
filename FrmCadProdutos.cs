@@ -19,34 +19,9 @@ namespace ComissPro
         {
             this.StatusOperacao = statusOperacao;
             InitializeComponent();
+            Utilitario.AdicionarEfeitoFocoEmTodos(this);
         }
-        //public void SalvarRegistro()
-        //{
-        //    try
-        //    {
-        //        Model.ProdutoMODEL objetoModel = new Model.ProdutoMODEL();
 
-        //        objetoModel.ProdutoID = Convert.ToInt32(txtProdutoID.Text);
-        //        objetoModel.Nome = txtNome.Text;
-        //        objetoModel.Preco = Double.Parse(txtPreco.Text);
-        //        objetoModel.Tipo = cmbTipo.Text;
-
-        //        ProdutoBLL objetoBll = new ProdutoBLL();
-
-        //        objetoBll.Salvar(objetoModel);
-        //        MessageBox.Show("REGISTRO gravado com sucesso! ", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        //        Utilitario.LimpaCampo(this);
-        //        ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
-        //    }
-        //    catch (OverflowException ov)
-        //    {
-        //        MessageBox.Show("Overfow Exeção deu erro! " + ov);
-        //    }
-        //    catch (Win32Exception erro)
-        //    {
-        //        MessageBox.Show("Win32 Win32!!! \n" + erro);
-        //    }
-        //}
         public void SalvarRegistro()
         {
             try
@@ -55,18 +30,13 @@ namespace ComissPro
 
                 objetoModel.ProdutoID = string.IsNullOrEmpty(txtProdutoID.Text) ? 0 : Convert.ToInt32(txtProdutoID.Text);
                 objetoModel.NomeProduto = txtNome.Text;
-                objetoModel.Tipo = cmbTipo.Text;
-
-                // Preço unitário informado pelo usuário
+                objetoModel.Unidade = cmbUnidade.Text;
                 objetoModel.Preco = Double.Parse(txtPreco.Text);
 
-                // Definir quantidade automaticamente
-                objetoModel.QuantidadePorBloco = (cmbTipo.Text == "Unidade") ? 1 : 50; 
-
                 ProdutoBLL objetoBll = new ProdutoBLL();
-
                 objetoBll.Salvar(objetoModel);
-                
+
+                MessageBox.Show("REGISTRO gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Utilitario.LimpaCampo(this);
                 ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
             }
@@ -80,7 +50,7 @@ namespace ComissPro
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar registro: " + ex.Message);
+                MessageBox.Show("Erro ao salvar registro: " + ex.Message); // Exibirá a mensagem de duplicata aqui
             }
         }
 
@@ -93,7 +63,7 @@ namespace ComissPro
                 objetoModel.ProdutoID = Convert.ToInt32(txtProdutoID.Text);
                 objetoModel.NomeProduto = txtNome.Text;
                 objetoModel.Preco = double.Parse(txtPreco.Text);
-                objetoModel.Tipo = cmbTipo.Text;
+                objetoModel.Unidade = cmbUnidade.Text;
 
 
                 ProdutoBLL objetoBll = new ProdutoBLL();

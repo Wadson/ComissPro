@@ -73,7 +73,7 @@ namespace ComissPro
             }
         }
 
-        public List<Model.PrestacaoContasModel> PrestacaoDeContasPesquisarPorVendedor(string nomeVendedor)
+        public List<Model.PrestacaoContasModel> PrestacaoDeContasPesquisarPorVendedor(string Nome)
         {
             List<Model.PrestacaoContasModel> listaPrestacoes = new List<Model.PrestacaoContasModel>();
 
@@ -87,12 +87,12 @@ namespace ComissPro
                 FROM PrestacaoContas pc
                 INNER JOIN Entregas e ON pc.EntregaID = e.EntregaID
                 INNER JOIN Vendedor v ON e.VendedorID = v.VendedorID
-                WHERE v.Nome LIKE @NomeVendedor
+                WHERE v.Nome LIKE @Nome
                 ORDER BY pc.DataPrestacao DESC"; // Ordena da mais recente para a mais antiga
 
                     using (SQLiteCommand sql = new SQLiteCommand(query, conn))
                     {
-                        sql.Parameters.AddWithValue("@NomeVendedor", nomeVendedor + "%");
+                        sql.Parameters.AddWithValue("@Nome", Nome + "%");
 
                         using (SQLiteDataReader datareader = sql.ExecuteReader())
                         {
