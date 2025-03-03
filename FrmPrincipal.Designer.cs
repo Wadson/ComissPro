@@ -57,7 +57,11 @@
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ferramentasAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.controleDeEntregasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -69,6 +73,8 @@
             this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Sairr24;
             this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Sairr24;
             this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::ComissPro.Properties.Resources.Maximize;
+            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageCheckedNormal = global::ComissPro.Properties.Resources.Maximize;
+            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageNormal = global::ComissPro.Properties.Resources.Maximize;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Minimiza24;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Minimiza24;
             this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::ComissPro.Properties.Resources.Minimize;
@@ -161,7 +167,7 @@
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridHeaderColumnCustom1;
-            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 73);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1010, 86);
             this.kryptonPanel2.TabIndex = 610;
             // 
             // btnFluxoCaixa
@@ -178,7 +184,7 @@
             this.btnFluxoCaixa.ImageList = this.imageList1;
             this.btnFluxoCaixa.Location = new System.Drawing.Point(381, 4);
             this.btnFluxoCaixa.Name = "btnFluxoCaixa";
-            this.btnFluxoCaixa.Size = new System.Drawing.Size(75, 68);
+            this.btnFluxoCaixa.Size = new System.Drawing.Size(75, 72);
             this.btnFluxoCaixa.TabIndex = 12;
             this.btnFluxoCaixa.Text = "&Fluxo Caixa";
             this.btnFluxoCaixa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -217,7 +223,7 @@
             this.btnFerramentas.ImageList = this.imageList1;
             this.btnFerramentas.Location = new System.Drawing.Point(456, 5);
             this.btnFerramentas.Name = "btnFerramentas";
-            this.btnFerramentas.Size = new System.Drawing.Size(75, 68);
+            this.btnFerramentas.Size = new System.Drawing.Size(75, 72);
             this.btnFerramentas.TabIndex = 11;
             this.btnFerramentas.Text = "&Ferramentas";
             this.btnFerramentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -239,7 +245,7 @@
             this.btnRelatorios.ImageList = this.imageList1;
             this.btnRelatorios.Location = new System.Drawing.Point(306, 4);
             this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Size = new System.Drawing.Size(75, 68);
+            this.btnRelatorios.Size = new System.Drawing.Size(75, 72);
             this.btnRelatorios.TabIndex = 10;
             this.btnRelatorios.Text = "&Relatórios";
             this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -261,7 +267,7 @@
             this.btnVendedor.ImageList = this.imageList1;
             this.btnVendedor.Location = new System.Drawing.Point(6, 2);
             this.btnVendedor.Name = "btnVendedor";
-            this.btnVendedor.Size = new System.Drawing.Size(75, 68);
+            this.btnVendedor.Size = new System.Drawing.Size(75, 72);
             this.btnVendedor.TabIndex = 2;
             this.btnVendedor.Text = "&Vendedor";
             this.btnVendedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -284,7 +290,7 @@
             this.btnSair.ImageList = this.imageList1;
             this.btnSair.Location = new System.Drawing.Point(931, 3);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(75, 68);
+            this.btnSair.Size = new System.Drawing.Size(75, 72);
             this.btnSair.TabIndex = 7;
             this.btnSair.Text = "&Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -305,7 +311,7 @@
             this.btnPrestacaoContas.ImageList = this.imageList1;
             this.btnPrestacaoContas.Location = new System.Drawing.Point(231, 4);
             this.btnPrestacaoContas.Name = "btnPrestacaoContas";
-            this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 68);
+            this.btnPrestacaoContas.Size = new System.Drawing.Size(75, 72);
             this.btnPrestacaoContas.TabIndex = 9;
             this.btnPrestacaoContas.Text = "&Prestação Concluída";
             this.btnPrestacaoContas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -328,7 +334,7 @@
             this.btnProduto.ImageList = this.imageList1;
             this.btnProduto.Location = new System.Drawing.Point(81, 3);
             this.btnProduto.Name = "btnProduto";
-            this.btnProduto.Size = new System.Drawing.Size(75, 68);
+            this.btnProduto.Size = new System.Drawing.Size(75, 72);
             this.btnProduto.TabIndex = 4;
             this.btnProduto.Text = "&Produto";
             this.btnProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -350,11 +356,11 @@
             this.btnManutencaoEntregas.ImageList = this.imageList1;
             this.btnManutencaoEntregas.Location = new System.Drawing.Point(156, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
-            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 68);
+            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 72);
             this.btnManutencaoEntregas.TabIndex = 6;
-            this.btnManutencaoEntregas.Text = "&Vendas";
+            this.btnManutencaoEntregas.Text = "&Controle de Entregas";
             this.btnManutencaoEntregas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnManutencaoEntregas, "Entrega de bilhetes e Prestação de contas");
+            this.toolTip1.SetToolTip(this.btnManutencaoEntregas, "Controle de Entregas");
             this.btnManutencaoEntregas.UseVisualStyleBackColor = false;
             this.btnManutencaoEntregas.Click += new System.EventHandler(this.btnManutencaoEntregas_Click);
             // 
@@ -364,10 +370,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panelConteiner.Location = new System.Drawing.Point(3, 105);
+            this.panelConteiner.BackgroundImage = global::ComissPro.Properties.Resources.Papel_de_Parede_Trevo_da_Sorte_1002_566;
+            this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelConteiner.Location = new System.Drawing.Point(3, 118);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 566);
+            this.panelConteiner.Size = new System.Drawing.Size(1002, 586);
             this.panelConteiner.TabIndex = 609;
             // 
             // timerH
@@ -379,7 +386,9 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrosToolStripMenuItem});
+            this.cadastrosToolStripMenuItem,
+            this.manutençãoToolStripMenuItem,
+            this.ferramentasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
@@ -415,6 +424,36 @@
             this.produtosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.produtosToolStripMenuItem.Text = "&Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
+            // 
+            // manutençãoToolStripMenuItem
+            // 
+            this.manutençãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controleDeEntregasToolStripMenuItem});
+            this.manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
+            this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.manutençãoToolStripMenuItem.Text = "&Manutenção";
+            // 
+            // ferramentasToolStripMenuItem
+            // 
+            this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ferramentasAdminToolStripMenuItem});
+            this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
+            this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.ferramentasToolStripMenuItem.Text = "&Ferramentas";
+            // 
+            // ferramentasAdminToolStripMenuItem
+            // 
+            this.ferramentasAdminToolStripMenuItem.Name = "ferramentasAdminToolStripMenuItem";
+            this.ferramentasAdminToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.ferramentasAdminToolStripMenuItem.Text = "&Desqloquear Sistema";
+            this.ferramentasAdminToolStripMenuItem.Click += new System.EventHandler(this.ferramentasAdminToolStripMenuItem_Click);
+            // 
+            // controleDeEntregasToolStripMenuItem
+            // 
+            this.controleDeEntregasToolStripMenuItem.Name = "controleDeEntregasToolStripMenuItem";
+            this.controleDeEntregasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.controleDeEntregasToolStripMenuItem.Text = "Controle de Entregas";
+            this.controleDeEntregasToolStripMenuItem.Click += new System.EventHandler(this.controleDeEntregasToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -475,5 +514,9 @@
         private System.Windows.Forms.Button btnFerramentas;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnFluxoCaixa;
+        private System.Windows.Forms.ToolStripMenuItem manutençãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ferramentasAdminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controleDeEntregasToolStripMenuItem;
     }
 }

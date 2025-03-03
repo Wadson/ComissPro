@@ -54,5 +54,17 @@ namespace ComissPro
                                 MessageBoxIcon.Error);
             }
         }
+
+        private void btnGerarHasSh2_Click(object sender, EventArgs e)
+        {
+            FrmGeradorHas frmGeradorHas = new FrmGeradorHas();
+            frmGeradorHas.ShowDialog();
+        }
+
+        private void btnGerarDataPassadaCriptografada_Click(object sender, EventArgs e)
+        {
+            FrmGerarDataPassada frmGerarDataPassada = new FrmGerarDataPassada();
+            frmGerarDataPassada.ShowDialog();
+        }
     }
 }

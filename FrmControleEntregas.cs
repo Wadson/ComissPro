@@ -107,10 +107,15 @@ namespace ComissPro
         }
         public void SalvarRegistro()
         {
+            if (!TrialManager.IsTrialActive())
+            {
+                MessageBox.Show("O período de avaliação expirou. Não é possível salvar ou editar registros.", "Trial Expirado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
                 Model.EntregasModel objetoModel = new Model.EntregasModel();
-
                 objetoModel.EntregaID = string.IsNullOrEmpty(txtEntregaID.Text) ? 0 : Convert.ToInt32(txtEntregaID.Text);
                 objetoModel.VendedorID = VendedorID;
                 objetoModel.ProdutoID = ProdutoID;
@@ -120,31 +125,62 @@ namespace ComissPro
                 EntregasBLL objetoBll = new EntregasBLL();
                 objetoBll.Salvar(objetoModel);
 
-                MessageBox.Show("Registro gravado com sucesso!",
-                                "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Registro gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                // Tenta acessar o formulário e atualizar diretamente
                 var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
-                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                    frmManutencao.Listar();
                 }
 
                 Utilitario.LimpaCampo(this);
-            }
-            catch (OverflowException ov)
-            {
-                MessageBox.Show("Overflow Exception deu erro! " + ov);
-            }
-            catch (Win32Exception erro)
-            {
-                MessageBox.Show("Win32 Exception!!! \n" + erro);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao salvar registro: " + ex.Message);
             }
         }
+
+        //public void SalvarRegistro()
+        //{
+        //    try
+        //    {
+        //        Model.EntregasModel objetoModel = new Model.EntregasModel();
+
+        //        objetoModel.EntregaID = string.IsNullOrEmpty(txtEntregaID.Text) ? 0 : Convert.ToInt32(txtEntregaID.Text);
+        //        objetoModel.VendedorID = VendedorID;
+        //        objetoModel.ProdutoID = ProdutoID;
+        //        objetoModel.QuantidadeEntregue = int.Parse(txtQuantidade.Text);
+        //        objetoModel.DataEntrega = dtpDataEntregaBilhete.Value;
+
+        //        EntregasBLL objetoBll = new EntregasBLL();
+        //        objetoBll.Salvar(objetoModel);
+
+        //        MessageBox.Show("Registro gravado com sucesso!",
+        //                        "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+        //        // Tenta acessar o formulário e atualizar diretamente
+        //        var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
+        //        if (frmManutencao != null)
+        //        {
+        //            frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+        //        }
+
+        //        Utilitario.LimpaCampo(this);
+        //    }
+        //    catch (OverflowException ov)
+        //    {
+        //        MessageBox.Show("Overflow Exception deu erro! " + ov);
+        //    }
+        //    catch (Win32Exception erro)
+        //    {
+        //        MessageBox.Show("Win32 Exception!!! \n" + erro);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Erro ao salvar registro: " + ex.Message);
+        //    }
+        //}
         public void AlterarRegistro()
         {
             try

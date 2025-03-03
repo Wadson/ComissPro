@@ -38,7 +38,15 @@ namespace ComissPro
 
                 MessageBox.Show("REGISTRO gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Utilitario.LimpaCampo(this);
-                ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
+               
+                //((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
+
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutProduto"] as FrmManutProduto;
+                if (frmManutencao != null)
+                {
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                }
             }
             catch (OverflowException ov)
             {
@@ -70,7 +78,14 @@ namespace ComissPro
                 objetoBll.Alterar(objetoModel);
 
                 MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);// Habilita Timer do outro form Obs: O timer no outro form executa um Método.    
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutProduto"] as FrmManutProduto;
+                if (frmManutencao != null)
+                {
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                }
+
+
                 Utilitario.LimpaCampo(this);
                 this.Close();
             }
@@ -94,15 +109,12 @@ namespace ComissPro
                 // Limpa os campos
                 Utilitario.LimpaCampo(this);
                 this.Close();
-                var frmManutProduto = Application.OpenForms["FrmManutProduto"] as FrmManutProduto;
 
-                if (frmManutProduto != null)
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutProduto"] as FrmManutProduto;
+                if (frmManutencao != null)
                 {
-                    frmManutProduto.HabilitarTimer(true);
-                }
-                else
-                {
-                    MessageBox.Show("FrmManutProduto não está aberto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
                 }
             }
             catch (Exception erro)

@@ -110,7 +110,7 @@ namespace ComissPro
 
             if (entregasSelecionadas.Count == 0)
             {
-                MessageBox.Show("Nenhuma entrega pendente encontrada para este vendedor.");
+                MessageBox.Show("Nenhuma entrega pendente encontrada para este vendedor.","Informação!",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                 AtualizarTotaisNosTextBoxes(); // Zerar os TextBoxes
                 return;
             }
@@ -267,7 +267,7 @@ namespace ComissPro
                 var entregas = new EntregasDal().CarregarEntregasNaoPrestadas();
                 if (entregas == null || entregas.Count == 0)
                 {
-                    MessageBox.Show("Nenhuma entrega pendente encontrada.");
+                    MessageBox.Show("Nenhuma entrega pendente encontrada", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                    
                     return;
                 }
 

@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\LogoTrevo.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\ARTE SORTE BETS ICO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.105.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
@@ -175,6 +175,24 @@
     <Compile Include="EntregasBLL.cs" />
     <Compile Include="EntregasDal.cs" />
     <Compile Include="FluxoCaixaDAL.cs" />
+    <Compile Include="FrmGerarDataPassada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGerarDataPassada.Designer.cs">
+      <DependentUpon>FrmGerarDataPassada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGeradorHas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGeradorHas.Designer.cs">
+      <DependentUpon>FrmGeradorHas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdminUnlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdminUnlock.Designer.cs">
+      <DependentUpon>FrmAdminUnlock.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFluxoCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,11 +307,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SqliteConnection.cs" />
+    <Compile Include="TrialManager.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="Utilitario.cs" />
     <Compile Include="VendedorBLL.cs" />
     <Compile Include="VendedorDAL.cs" />
+    <EmbeddedResource Include="FrmGerarDataPassada.resx">
+      <DependentUpon>FrmGerarDataPassada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGeradorHas.resx">
+      <DependentUpon>FrmGeradorHas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdminUnlock.resx">
+      <DependentUpon>FrmAdminUnlock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFluxoCaixa.resx">
       <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
     </EmbeddedResource>
@@ -501,6 +528,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\retirar-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Papel de Parede Trevo da Sorte 1002-566.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ARTE SORTE BETS ICO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

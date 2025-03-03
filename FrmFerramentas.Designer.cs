@@ -35,6 +35,8 @@
             this.btnRestaurarBackup = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcluirOrfaos = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnGerarHasSh2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnGerarDataPassadaCriptografada = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -328,12 +330,144 @@
             this.btnExcluirOrfaos.Values.Text = "&Excluir";
             this.btnExcluirOrfaos.Click += new System.EventHandler(this.btnExcluirOrfaos_Click);
             // 
+            // btnGerarHasSh2
+            // 
+            this.btnGerarHasSh2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGerarHasSh2.Location = new System.Drawing.Point(2, 427);
+            this.btnGerarHasSh2.Name = "btnGerarHasSh2";
+            this.btnGerarHasSh2.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarHasSh2.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarHasSh2.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnGerarHasSh2.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarHasSh2.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarHasSh2.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnGerarHasSh2.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarHasSh2.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnGerarHasSh2.OverrideDefault.Border.Rounding = 1;
+            this.btnGerarHasSh2.OverrideDefault.Border.Width = 1;
+            this.btnGerarHasSh2.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarHasSh2.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
+            this.btnGerarHasSh2.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
+            this.btnGerarHasSh2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnGerarHasSh2.Size = new System.Drawing.Size(48, 20);
+            this.btnGerarHasSh2.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarHasSh2.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarHasSh2.StateCommon.Back.ColorAngle = 45F;
+            this.btnGerarHasSh2.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnGerarHasSh2.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarHasSh2.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarHasSh2.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnGerarHasSh2.StateCommon.Border.Rounding = 1;
+            this.btnGerarHasSh2.StateCommon.Border.Width = 1;
+            this.btnGerarHasSh2.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarHasSh2.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnGerarHasSh2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarHasSh2.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnGerarHasSh2.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnGerarHasSh2.StatePressed.Back.ColorAngle = 135F;
+            this.btnGerarHasSh2.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnGerarHasSh2.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnGerarHasSh2.StatePressed.Border.ColorAngle = 135F;
+            this.btnGerarHasSh2.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarHasSh2.StatePressed.Border.Rounding = 1;
+            this.btnGerarHasSh2.StatePressed.Border.Width = 1;
+            this.btnGerarHasSh2.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarHasSh2.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnGerarHasSh2.StateTracking.Back.ColorAngle = 45F;
+            this.btnGerarHasSh2.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnGerarHasSh2.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarHasSh2.StateTracking.Border.ColorAngle = 45F;
+            this.btnGerarHasSh2.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarHasSh2.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnGerarHasSh2.StateTracking.Border.Rounding = 1;
+            this.btnGerarHasSh2.StateTracking.Border.Width = 1;
+            this.btnGerarHasSh2.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnGerarHasSh2.TabIndex = 658;
+            this.btnGerarHasSh2.TabStop = false;
+            this.btnGerarHasSh2.Values.Text = "-";
+            this.btnGerarHasSh2.Click += new System.EventHandler(this.btnGerarHasSh2_Click);
+            // 
+            // btnGerarDataPassadaCriptografada
+            // 
+            this.btnGerarDataPassadaCriptografada.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGerarDataPassadaCriptografada.Location = new System.Drawing.Point(56, 427);
+            this.btnGerarDataPassadaCriptografada.Name = "btnGerarDataPassadaCriptografada";
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Back.ColorAngle = 45F;
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.ColorAngle = 45F;
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.Rounding = 1;
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Border.Width = 1;
+            this.btnGerarDataPassadaCriptografada.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarDataPassadaCriptografada.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
+            this.btnGerarDataPassadaCriptografada.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
+            this.btnGerarDataPassadaCriptografada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.btnGerarDataPassadaCriptografada.Size = new System.Drawing.Size(48, 20);
+            this.btnGerarDataPassadaCriptografada.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarDataPassadaCriptografada.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.btnGerarDataPassadaCriptografada.StateCommon.Back.ColorAngle = 45F;
+            this.btnGerarDataPassadaCriptografada.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnGerarDataPassadaCriptografada.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarDataPassadaCriptografada.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarDataPassadaCriptografada.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnGerarDataPassadaCriptografada.StateCommon.Border.Rounding = 1;
+            this.btnGerarDataPassadaCriptografada.StateCommon.Border.Width = 1;
+            this.btnGerarDataPassadaCriptografada.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarDataPassadaCriptografada.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnGerarDataPassadaCriptografada.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGerarDataPassadaCriptografada.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnGerarDataPassadaCriptografada.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnGerarDataPassadaCriptografada.StatePressed.Back.ColorAngle = 135F;
+            this.btnGerarDataPassadaCriptografada.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.btnGerarDataPassadaCriptografada.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.btnGerarDataPassadaCriptografada.StatePressed.Border.ColorAngle = 135F;
+            this.btnGerarDataPassadaCriptografada.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarDataPassadaCriptografada.StatePressed.Border.Rounding = 1;
+            this.btnGerarDataPassadaCriptografada.StatePressed.Border.Width = 1;
+            this.btnGerarDataPassadaCriptografada.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarDataPassadaCriptografada.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnGerarDataPassadaCriptografada.StateTracking.Back.ColorAngle = 45F;
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.ColorAngle = 45F;
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.Rounding = 1;
+            this.btnGerarDataPassadaCriptografada.StateTracking.Border.Width = 1;
+            this.btnGerarDataPassadaCriptografada.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnGerarDataPassadaCriptografada.TabIndex = 659;
+            this.btnGerarDataPassadaCriptografada.TabStop = false;
+            this.btnGerarDataPassadaCriptografada.Values.Text = "-";
+            this.btnGerarDataPassadaCriptografada.Click += new System.EventHandler(this.btnGerarDataPassadaCriptografada_Click);
+            // 
             // FrmFerramentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGerarDataPassadaCriptografada);
+            this.Controls.Add(this.btnGerarHasSh2);
             this.Controls.Add(this.btnExcluirOrfaos);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnRestaurarBackup);
@@ -360,5 +494,7 @@
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnRestaurarBackup;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluirOrfaos;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnGerarHasSh2;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnGerarDataPassadaCriptografada;
     }
 }

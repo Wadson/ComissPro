@@ -170,14 +170,6 @@ namespace ComissPro
         }
 
 
-
-
-
-
-
-
-
-
         //JÁ ESTAVA AQUI
         private void btnLocalizar_Click(object sender, EventArgs e)
         {
@@ -209,7 +201,7 @@ namespace ComissPro
 
                 if (relatorio == null || ((System.Collections.IList)relatorio).Count == 0)
                 {
-                    MessageBox.Show("Nenhum dado encontrado para os filtros especificados.");
+                    MessageBox.Show("Nenhum dado encontrado para os filtros especificados.","Informação!",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                     dgvRelatorio.DataSource = null;
                 }
                 else
@@ -219,12 +211,12 @@ namespace ComissPro
                     AdicionarLinhaTotais(relatorioComTotais, tipo);
                     dgvRelatorio.DataSource = null; // Limpar antes de associar
                     dgvRelatorio.DataSource = relatorioComTotais;
-                    MessageBox.Show($"Encontrados {lista.Count} registros (excluindo totais).");
+                    //MessageBox.Show($"Encontrados {lista.Count} registros (excluindo totais).", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk););
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao carregar o relatório: {ex.Message}");
+                MessageBox.Show($"Erro ao carregar o relatório: {ex.Message}", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 

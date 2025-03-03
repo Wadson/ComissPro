@@ -64,7 +64,7 @@ namespace ComissPro
 
             if (StatusOperacao == "NOVO")
             {
-                frm.lblStatus.Text = "Novo cadastro de vendedores";
+                frm.lblStatus.Text = "CADASTRO DE VENDEDORES";
                 frm.lblStatus.ForeColor = Color.FromArgb(8, 142, 254);
                 frm.ShowDialog();
             }

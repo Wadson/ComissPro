@@ -139,5 +139,20 @@ namespace ComissPro
             FrmFluxoCaixa frm = new FrmFluxoCaixa();
             AbrirFormEnPanel(frm);
         }
+
+        private void ferramentasAdminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FrmAdminUnlock frm = new FrmAdminUnlock())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void controleDeEntregasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmManutençãodeEntregaBilhetes frm = new FrmManutençãodeEntregaBilhetes(StatusOperacao);
+            StatusOperacao = "NOVO";
+            AbrirFormEnPanel(frm);
+        }
     }
 }

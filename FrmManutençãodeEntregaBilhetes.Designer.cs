@@ -285,7 +285,7 @@
             this.btnPrestacaoDeContas.StateTracking.Border.Width = 1;
             this.btnPrestacaoDeContas.TabIndex = 631;
             this.toolTip1.SetToolTip(this.btnPrestacaoDeContas, "Prestar contas com os vendedores");
-            this.btnPrestacaoDeContas.Values.Image = global::ComissPro.Properties.Resources.tarefa32;
+            this.btnPrestacaoDeContas.Values.Image = global::ComissPro.Properties.Resources.fechando;
             this.btnPrestacaoDeContas.Values.Text = "Prest. de Contas";
             this.btnPrestacaoDeContas.Click += new System.EventHandler(this.btnPrestacaoDeContas_Click);
             // 
@@ -484,8 +484,8 @@
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.TabIndex = 635;
             this.toolTip1.SetToolTip(this.btnNovo, "Nova entrega de bilhetes");
-            this.btnNovo.Values.Image = global::ComissPro.Properties.Resources.registro32;
-            this.btnNovo.Values.Text = "&Entrega de Bilhetes";
+            this.btnNovo.Values.Image = global::ComissPro.Properties.Resources.tarefa32;
+            this.btnNovo.Values.Text = "&Registrar";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAltera

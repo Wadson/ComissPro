@@ -61,7 +61,16 @@ namespace ComissPro
                 objetoBll.Salvar(objetoModel);
                 MessageBox.Show("REGISTRO gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);                    
                 Utilitario.LimpaCampo(this);
-                ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
+               
+                //((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
+
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutVendedor"] as FrmManutVendedor;
+                if (frmManutencao != null)
+                {
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                }
+
             }
             catch (Exception ex)
             {
@@ -85,7 +94,14 @@ namespace ComissPro
                 objetoBll.Alterar(objetoModel);
 
                 MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
+                
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutVendedor"] as FrmManutVendedor;
+                if (frmManutencao != null)
+                {
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                }
+                
                 Utilitario.LimpaCampo(this);
                 this.Close();
             }
@@ -106,7 +122,14 @@ namespace ComissPro
                 objetoBll.Excluir(objetoModel);
 
                 MessageBox.Show("Registro excluído com sucesso!", "Exclusão!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutVendedor)Application.OpenForms["FrmManutVendedor"]).HabilitarTimer(true);
+
+                // Tenta acessar o formulário e atualizar diretamente
+                var frmManutencao = Application.OpenForms["FrmManutVendedor"] as FrmManutVendedor;
+                if (frmManutencao != null)
+                {
+                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                }
+
                 Utilitario.LimpaCampo(this);
                 this.Close();
             }
