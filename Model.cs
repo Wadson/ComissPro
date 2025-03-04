@@ -82,7 +82,7 @@ namespace ComissPro
         }
 
         public class PrestacaoContasModel
-        {
+        {          
             public int PrestacaoID { get; set; }
             public int EntregaID { get; set; }
             public int QuantidadeVendida { get; set; }
@@ -92,6 +92,11 @@ namespace ComissPro
             public DateTime DataPrestacao { get; set; } = DateTime.Now;
             public string Nome { get; set; }
             public int VendedorID { get; set; }
+            public string NomeProduto { get; set; }
+            public double Preco { get; set; }
+            public double Total { get; set; }
+            public bool PrestacaoRealizada { get; set; }
+            public double quantidadeEntregue { get; set; }
         }
         // Para Relatório de Desempenho de Vendas
         public class DesempenhoVendasModel

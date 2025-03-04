@@ -14,6 +14,7 @@ namespace ComissPro
         [STAThread]
         static void Main()
         {
+
             if (!TrialManager.IsTrialActive())
             {
                 MessageBox.Show("O período de avaliação de 30 dias expirou. O sistema está bloqueado para edições.\n" +

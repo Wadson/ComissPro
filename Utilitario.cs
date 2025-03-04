@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Security.Cryptography;
 using System.Drawing;
 using ComponentFactory.Krypton.Toolkit;
+using System.IO;
 
 namespace ComissPro
 {
@@ -19,6 +20,28 @@ namespace ComissPro
     {
         private static readonly SQLiteConnection conn = Conexao.Conex();
 
+        public static class LogUtil
+        {
+            private static readonly string logFilePath = "log.txt"; // Arquivo será criado no diretório do executável
+            private static readonly object lockObject = new object();
+
+            public static void WriteLog(string message)
+            {
+                lock (lockObject) // Para evitar problemas de concorrência
+                {
+                    try
+                    {
+                        string logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
+                        File.AppendAllText(logFilePath, logEntry + Environment.NewLine);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Se houver erro ao escrever no log, apenas ignora para não interferir no fluxo principal
+                        Console.WriteLine($"Erro ao escrever no log: {ex.Message}");
+                    }
+                }
+            }
+        }
         public static DataTable ConvertListToDataTable(List<EntregasModel> list)
         {
             DataTable dt = new DataTable();

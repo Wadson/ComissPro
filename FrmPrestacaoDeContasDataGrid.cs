@@ -350,7 +350,7 @@ namespace ComissPro
             }
 
             MessageBox.Show("Prestações de contas salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ((FrmManutençãodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"])?.HabilitarTimer(true);
+            ((FrmManutencaodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"])?.HabilitarTimer(true);
 
             // Limpar o DataGridView
             dgvPrestacaoDeContas.Rows.Clear();

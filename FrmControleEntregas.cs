@@ -128,7 +128,7 @@ namespace ComissPro
 
                 MessageBox.Show("Registro gravado com sucesso!", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
+                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar();
@@ -161,7 +161,7 @@ namespace ComissPro
 
                 MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 // Tenta acessar o formulário e atualizar diretamente
-                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
+                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
@@ -193,7 +193,7 @@ namespace ComissPro
 
                 // Atualiza o DataGridView no FrmManutençãodeEntregaBilhetes
                 // Tenta acessar o formulário e atualizar diretamente
-                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
+                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer

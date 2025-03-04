@@ -19,7 +19,7 @@ namespace ComissPro
             try
             {
                 prestacaoContasDal = new PrestacaoDeContasDAL();
-                dtable = prestacaoContasDal.listaEntregas();
+                dtable = prestacaoContasDal.listaEntregasConcluidas();
             }
             catch (Exception erro)
             {

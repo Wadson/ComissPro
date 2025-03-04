@@ -95,7 +95,7 @@ namespace ComissPro
 
         private void btnManutencaoEntregas_Click(object sender, EventArgs e)
         {
-            FrmManutençãodeEntregaBilhetes frm = new FrmManutençãodeEntregaBilhetes(StatusOperacao);
+            FrmManutencaodeEntregaBilhetes frm = new FrmManutencaodeEntregaBilhetes(StatusOperacao);
 
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
@@ -103,7 +103,7 @@ namespace ComissPro
 
         private void btnPrestacaoContas_Click(object sender, EventArgs e)
         {
-            FrmManutencaoPrestacaoDeContas frm = new FrmManutencaoPrestacaoDeContas(StatusOperacao);
+            FrmManutencaoPrestacaoDeContasConcluidas frm = new FrmManutencaoPrestacaoDeContasConcluidas(StatusOperacao);
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
         }
@@ -150,7 +150,7 @@ namespace ComissPro
 
         private void controleDeEntregasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmManutençãodeEntregaBilhetes frm = new FrmManutençãodeEntregaBilhetes(StatusOperacao);
+            FrmManutencaodeEntregaBilhetes frm = new FrmManutencaodeEntregaBilhetes(StatusOperacao);
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
         }
