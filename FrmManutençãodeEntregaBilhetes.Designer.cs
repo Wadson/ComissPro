@@ -91,10 +91,10 @@
             this.dataGridManutencaoEntregas.Location = new System.Drawing.Point(12, 88);
             this.dataGridManutencaoEntregas.MultiSelect = false;
             this.dataGridManutencaoEntregas.Name = "dataGridManutencaoEntregas";
-            this.dataGridManutencaoEntregas.ReadOnly = true;
             this.dataGridManutencaoEntregas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridManutencaoEntregas.Size = new System.Drawing.Size(687, 263);
             this.dataGridManutencaoEntregas.TabIndex = 619;
+            this.dataGridManutencaoEntregas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridManutencaoEntregas_DataBindingComplete);
             // 
             // kryptonPanel1
             // 
@@ -226,8 +226,8 @@
             // 
             // btnPrestacaoDeContas
             // 
-            this.btnPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPrestacaoDeContas.Location = new System.Drawing.Point(16, 422);
+            this.btnPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrestacaoDeContas.Location = new System.Drawing.Point(705, 238);
             this.btnPrestacaoDeContas.Name = "btnPrestacaoDeContas";
             this.btnPrestacaoDeContas.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnPrestacaoDeContas.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -246,8 +246,8 @@
             this.btnPrestacaoDeContas.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnPrestacaoDeContas.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.btnPrestacaoDeContas.Size = new System.Drawing.Size(147, 42);
-            this.btnPrestacaoDeContas.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnPrestacaoDeContas.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnPrestacaoDeContas.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(166)))), ((int)(((byte)(35)))));
+            this.btnPrestacaoDeContas.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(166)))), ((int)(((byte)(35)))));
             this.btnPrestacaoDeContas.StateCommon.Back.ColorAngle = 45F;
             this.btnPrestacaoDeContas.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnPrestacaoDeContas.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -260,8 +260,6 @@
             this.btnPrestacaoDeContas.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnPrestacaoDeContas.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnPrestacaoDeContas.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrestacaoDeContas.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
-            this.btnPrestacaoDeContas.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnPrestacaoDeContas.StatePressed.Back.ColorAngle = 135F;
             this.btnPrestacaoDeContas.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnPrestacaoDeContas.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -271,8 +269,6 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnPrestacaoDeContas.StatePressed.Border.Rounding = 1;
             this.btnPrestacaoDeContas.StatePressed.Border.Width = 1;
-            this.btnPrestacaoDeContas.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnPrestacaoDeContas.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnPrestacaoDeContas.StateTracking.Back.ColorAngle = 45F;
             this.btnPrestacaoDeContas.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnPrestacaoDeContas.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -291,8 +287,8 @@
             // 
             // btnRelatorios
             // 
-            this.btnRelatorios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRelatorios.Location = new System.Drawing.Point(173, 422);
+            this.btnRelatorios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRelatorios.Location = new System.Drawing.Point(705, 286);
             this.btnRelatorios.Name = "btnRelatorios";
             this.btnRelatorios.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRelatorios.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -358,8 +354,8 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExcel.Location = new System.Drawing.Point(326, 422);
+            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcel.Location = new System.Drawing.Point(705, 334);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));

@@ -50,12 +50,13 @@
             this.txtTotalEntregue = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbEntregasPendentes = new Krypton.Toolkit.KryptonComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtLocalizarVendedor = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestacaoDeContas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbEntregasPendentes)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -255,11 +256,13 @@
             this.dgvPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPrestacaoDeContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestacaoDeContas.Location = new System.Drawing.Point(0, 102);
+            this.dgvPrestacaoDeContas.Location = new System.Drawing.Point(0, 97);
             this.dgvPrestacaoDeContas.Name = "dgvPrestacaoDeContas";
-            this.dgvPrestacaoDeContas.Size = new System.Drawing.Size(976, 211);
+            this.dgvPrestacaoDeContas.Size = new System.Drawing.Size(976, 216);
             this.dgvPrestacaoDeContas.TabIndex = 691;
+            this.dgvPrestacaoDeContas.TabStop = false;
             this.dgvPrestacaoDeContas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrestacaoDeContas_CellEndEdit);
+            this.dgvPrestacaoDeContas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrestacaoDeContas_CellValueChanged);
             // 
             // txtTotalComissao
             // 
@@ -481,28 +484,6 @@
             this.label5.TabIndex = 613;
             this.label5.Text = "PRESTAÇÃO DE CONTAS";
             // 
-            // cmbEntregasPendentes
-            // 
-            this.cmbEntregasPendentes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEntregasPendentes.DropDownWidth = 244;
-            this.cmbEntregasPendentes.InputControlStyle = Krypton.Toolkit.InputControlStyle.PanelClient;
-            this.cmbEntregasPendentes.IntegralHeight = false;
-            this.cmbEntregasPendentes.Items.AddRange(new object[] {
-            "",
-            "Comissões Pagas",
-            "Entregas Pendentes",
-            "Desempenho de Vendas",
-            "Geral de Vendas e Comissões"});
-            this.cmbEntregasPendentes.Location = new System.Drawing.Point(0, 63);
-            this.cmbEntregasPendentes.Name = "cmbEntregasPendentes";
-            this.cmbEntregasPendentes.PaletteMode = Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.cmbEntregasPendentes.Size = new System.Drawing.Size(752, 24);
-            this.cmbEntregasPendentes.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEntregasPendentes.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.cmbEntregasPendentes.StateNormal.ComboBox.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
-            this.cmbEntregasPendentes.TabIndex = 704;
-            this.cmbEntregasPendentes.SelectedIndexChanged += new System.EventHandler(this.cmbEntregasPendentes_SelectedIndexChanged);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -515,18 +496,68 @@
             this.label6.TabIndex = 705;
             this.label6.Text = "|";
             // 
+            // txtLocalizarVendedor
+            // 
+            this.txtLocalizarVendedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtLocalizarVendedor.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
+            this.txtLocalizarVendedor.Location = new System.Drawing.Point(101, 68);
+            this.txtLocalizarVendedor.Name = "txtLocalizarVendedor";
+            this.txtLocalizarVendedor.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.txtLocalizarVendedor.Size = new System.Drawing.Size(614, 22);
+            this.txtLocalizarVendedor.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.txtLocalizarVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtLocalizarVendedor.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtLocalizarVendedor.StateCommon.Border.ColorAngle = 1F;
+            this.txtLocalizarVendedor.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtLocalizarVendedor.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtLocalizarVendedor.StateCommon.Border.Rounding = 1;
+            this.txtLocalizarVendedor.StateCommon.Border.Width = 1;
+            this.txtLocalizarVendedor.StateCommon.Content.Color1 = System.Drawing.Color.Goldenrod;
+            this.txtLocalizarVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalizarVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtLocalizarVendedor.TabIndex = 0;
+            this.txtLocalizarVendedor.TextChanged += new System.EventHandler(this.txtLocalizarVendedor_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
+            this.label7.Location = new System.Drawing.Point(8, 71);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 16);
+            this.label7.TabIndex = 707;
+            this.label7.Text = "VENDEDOR:";
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = global::ComissPro.Properties.Resources.Pesquisar;
+            this.button1.Location = new System.Drawing.Point(715, 67);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 23);
+            this.button1.TabIndex = 708;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmPrestacaoDeContasDataGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(980, 420);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtLocalizarVendedor);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dtpDataPrestacaoContas);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtTotalEntregue);
-            this.Controls.Add(this.cmbEntregasPendentes);
             this.Controls.Add(this.lblPercentualComissao);
             this.Controls.Add(this.txtTotalComissao);
             this.Controls.Add(this.label1);
@@ -562,7 +593,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbEntregasPendentes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,7 +621,9 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtTotalEntregue;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         public System.Windows.Forms.Label label5;
-        private Krypton.Toolkit.KryptonComboBox cmbEntregasPendentes;
         private System.Windows.Forms.Label label6;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtLocalizarVendedor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button1;
     }
 }

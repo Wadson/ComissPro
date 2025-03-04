@@ -199,6 +199,12 @@
     <Compile Include="FrmFluxoCaixa.Designer.cs">
       <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSelecionarEntrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelecionarEntrega.Designer.cs">
+      <DependentUpon>FrmSelecionarEntrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrestacaoDeContasDataGrid.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFluxoCaixa.resx">
       <DependentUpon>FrmFluxoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelecionarEntrega.resx">
+      <DependentUpon>FrmSelecionarEntrega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrestacaoDeContasDataGrid.resx">
       <DependentUpon>FrmPrestacaoDeContasDataGrid.cs</DependentUpon>

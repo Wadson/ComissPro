@@ -9,6 +9,7 @@ using ComponentFactory.Krypton.Toolkit;
 using ClosedXML.Excel; // Para Excel
 using System.Diagnostics;
 using System.IO; // Para abrir os arquivos
+using System.Linq;
 
 namespace ComissPro
 {
@@ -20,6 +21,9 @@ namespace ComissPro
         public FrmManutençãodeEntregaBilhetes(string statusOperacao)
 		{
 			InitializeComponent();
+
+            // Adiciona o evento DataBindingComplete
+            dataGridManutencaoEntregas.DataBindingComplete += dataGridManutencaoEntregas_DataBindingComplete;
 
             timer1.Interval = 1000; // Confirma o intervalo
             timer1.Tick += timer1_Tick; // Garante que o evento está associado
@@ -43,14 +47,14 @@ namespace ComissPro
                 dgv.Columns[5].Name = "QuantidadeEntregue";
                 dgv.Columns[6].Name = "DataEntrega";
                 dgv.Columns[7].Name = "PrestacaoRealizada";
-                dgv.Columns[8].Name = "Preco"; // Preço unitário
+                dgv.Columns[8].Name = "Preco";
                 dgv.Columns[9].Name = "Total";
 
                 // Define larguras fixas específicas para as colunas visíveis
                 dgv.Columns["Nome"].Width = 250;
                 dgv.Columns["NomeProduto"].Width = 200;
                 dgv.Columns["QuantidadeEntregue"].Width = 140;
-                dgv.Columns["Preco"].Width = 120; // Preço por unidade
+                dgv.Columns["Preco"].Width = 120;
                 dgv.Columns["Total"].Width = 120;
                 dgv.Columns["DataEntrega"].Width = 130;
 
@@ -81,19 +85,37 @@ namespace ComissPro
             // Configurações adicionais
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgv.ReadOnly = true;
-
-            // Estilizar a linha de totais
-            dgv.DataBindingComplete += (s, e) =>
-            {
-                if (dgv.Rows.Count > 0)
-                {
-                    int ultimaLinha = dgv.Rows.Count - 1;
-                    dgv.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.LightGray;
-                    dgv.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
-                }
-            };
+            // Removido o DataBindingComplete para gerenciar a linha de soma manualmente
         }
+        private void AdicionarLinhaTotais(KryptonDataGridView dgv)
+        {
+            if (dgv.Rows.Count == 0) return; // Não faz nada se o grid estiver vazio
 
+            // Calcula os totais com tratamento para DBNull
+            int totalQuantidade = 0;
+            double totalPreco = 0;
+            double totalValor = 0;
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                totalQuantidade += row.Cells["QuantidadeEntregue"].Value != DBNull.Value ? Convert.ToInt32(row.Cells["QuantidadeEntregue"].Value) : 0;
+                totalPreco += row.Cells["Preco"].Value != DBNull.Value ? Convert.ToDouble(row.Cells["Preco"].Value) : 0;
+                totalValor += row.Cells["Total"].Value != DBNull.Value ? Convert.ToDouble(row.Cells["Total"].Value) : 0;
+            }
+
+            // Adiciona a linha de totais
+            int index = dgv.Rows.Add();
+            var rowTotal = dgv.Rows[index];
+            rowTotal.Cells["Nome"].Value = "Totais";
+            rowTotal.Cells["QuantidadeEntregue"].Value = totalQuantidade.ToString();
+            rowTotal.Cells["Preco"].Value = totalPreco.ToString("N2");
+            rowTotal.Cells["Total"].Value = totalValor.ToString("N2");
+
+            // Estiliza a linha de totais
+            rowTotal.DefaultCellStyle.BackColor = Color.LightGray;
+            rowTotal.DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+            rowTotal.ReadOnly = true;
+        }
         public void CarregarEntregasNoGrid()
         {
             try
@@ -117,24 +139,84 @@ namespace ComissPro
 
                 PersonalizarDataGridView(dataGridManutencaoEntregas);
 
-                // Atualizar o lblTotalRegistros com a quantidade de registros
-                int totalRegistros = dataGridManutencaoEntregas.Rows.Count;
+                // Rola até a última linha para garantir que a linha de totais esteja visível
+                if (dataGridManutencaoEntregas.Rows.Count > 0)
+                {
+                    int ultimaLinha = dataGridManutencaoEntregas.Rows.Count - 1;
+                    dataGridManutencaoEntregas.FirstDisplayedScrollingRowIndex = ultimaLinha;
+                }
+
+                // Atualiza o total de registros (exclui a linha de totais)
+                int totalRegistros = dataGridManutencaoEntregas.Rows.Count - 1;
                 lblTotalRegistros.Text = $"Total de Registros: {totalRegistros}";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar entregas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblTotalRegistros.Text = "Total de Registros: 0"; // Em caso de erro, exibe 0
+                lblTotalRegistros.Text = "Total de Registros: 0";
             }
         }
 
+
+
+
+
+
+
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            string textoPesquisa = txtPesquisa.Text.Trim();
+            if (string.IsNullOrEmpty(textoPesquisa))
+            {
+                Listar();
+            }
+            else
+            {
+                string nome = "%" + textoPesquisa + "%";
+                EntregasDal dao = new EntregasDal();
+                List<EntregasModel> resultados = dao.PesquisarEntrega(nome);
+                DataTable dt = Utilitario.ConvertListToDataTable(resultados);
+
+                // Calcula os totais e adiciona a linha de soma ao DataTable
+                if (dt.Rows.Count > 0)
+                {
+                    int totalQuantidade = resultados.Sum(r => r.QuantidadeEntregue);
+                    double totalValor = resultados.Sum(r => r.Total);
+
+                    DataRow totalRow = dt.NewRow();
+                    totalRow["Nome"] = "Totais";
+                    totalRow["QuantidadeEntregue"] = totalQuantidade;
+                    totalRow["Preco"] = DBNull.Value;
+                    totalRow["Total"] = totalValor;
+                    totalRow["EntregaID"] = DBNull.Value;
+                    totalRow["VendedorID"] = DBNull.Value;
+                    totalRow["ProdutoID"] = DBNull.Value;
+                    totalRow["NomeProduto"] = DBNull.Value;
+                    totalRow["DataEntrega"] = DBNull.Value;
+                    totalRow["PrestacaoRealizada"] = DBNull.Value;
+                    dt.Rows.Add(totalRow);
+                }
+
+                dataGridManutencaoEntregas.DataSource = dt;
+                PersonalizarDataGridView(dataGridManutencaoEntregas);
+
+                // Rola até a última linha para garantir que a linha de totais esteja visível
+                if (dataGridManutencaoEntregas.Rows.Count > 0)
+                {
+                    int ultimaLinha = dataGridManutencaoEntregas.Rows.Count - 1;
+                    dataGridManutencaoEntregas.FirstDisplayedScrollingRowIndex = ultimaLinha;
+                }
+
+                // Atualiza o total de registros (exclui a linha de totais)
+                int totalRegistros = dt.Rows.Count - 1;
+                lblTotalRegistros.Text = $"Total de Registros: {totalRegistros}";
+            }
+        }
         public void Listar()
         {
             CarregarEntregasNoGrid(); // Já atualiza o lblTotalRegistros dentro de CarregarEntregasNoGrid
-        }
-
-
-        
+        }        
         private void CarregaDados()
         {
             FrmControleEntregas formEntregas = new FrmControleEntregas(StatusOperacao);
@@ -247,25 +329,11 @@ namespace ComissPro
        
         private void FrmManutençãodeEntregaBilhetes_Load(object sender, EventArgs e)
         {
-            Listar();
+            Listar();           
             Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
         }
 
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            string textoPesquisa = txtPesquisa.Text.Trim();
-            if (string.IsNullOrEmpty(textoPesquisa))
-            {
-                Listar();
-            }
-            else
-            {
-                string nome = "%" + textoPesquisa + "%";
-                EntregasDal dao = new EntregasDal();
-                dataGridManutencaoEntregas.DataSource = dao.PesquisarEntrega(nome);
-            }
-            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
-        }
+       
         public void HabilitarTimer(bool habilitar)
         {
             timer1.Enabled = habilitar;
@@ -315,6 +383,16 @@ namespace ComissPro
         {
             StatusOperacao = "NOVO";
             CarregaDados();
+        }
+
+        private void dataGridManutencaoEntregas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (dataGridManutencaoEntregas.Rows.Count > 0)
+            {
+                int ultimaLinha = dataGridManutencaoEntregas.Rows.Count - 1;
+                dataGridManutencaoEntregas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.LightGray;
+                dataGridManutencaoEntregas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridManutencaoEntregas.Font, FontStyle.Bold);
+            }
         }
     }
 }

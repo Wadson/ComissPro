@@ -69,6 +69,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                    frmManutencao.HabilitarTimer(true);
                 }
 
             }
@@ -100,6 +101,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                    frmManutencao.HabilitarTimer(true);
                 }
                 
                 Utilitario.LimpaCampo(this);
@@ -128,6 +130,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                    frmManutencao.HabilitarTimer(true);
                 }
 
                 Utilitario.LimpaCampo(this);

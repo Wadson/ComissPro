@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Vml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -38,16 +39,16 @@ namespace ComissPro
                 conn.Open();
 
                 string query = @"
-           SELECT 
+            SELECT 
                 e.EntregaID, 
                 e.VendedorID, 
                 v.Nome, 
                 e.ProdutoID, 
                 p.NomeProduto, 
-                e.QuantidadeEntregue, -- Sempre em unidades
+                e.QuantidadeEntregue,
                 e.DataEntrega, 
                 e.PrestacaoRealizada, 
-                p.Preco, -- Preço unitário
+                p.Preco,
                 e.QuantidadeEntregue * p.Preco AS Total
             FROM Entregas e
             JOIN Vendedores v ON e.VendedorID = v.VendedorID
@@ -78,7 +79,7 @@ namespace ComissPro
                     totalRow["QuantidadeEntregue"] = totalQuantidadeEntregue;
                     totalRow["DataEntrega"] = DBNull.Value;
                     totalRow["PrestacaoRealizada"] = DBNull.Value;
-                    totalRow["Preco"] = DBNull.Value; // Preço não é somado, fica vazio na linha de totais
+                    totalRow["Preco"] = DBNull.Value; // Não soma Preço, deixa vazio
                     totalRow["Total"] = totalTotal;
                     dtFornecedor.Rows.Add(totalRow);
                 }
@@ -120,35 +121,46 @@ namespace ComissPro
                 conn.Close();
             }
         }
-        public List<EntregasModel> CarregarEntregasNaoPrestadas()
+        public List<EntregasModel> CarregarEntregasNaoPrestadas(string filtro = "")
         {
             List<EntregasModel> entregas = new List<EntregasModel>();
             string query = @"
-            SELECT
-                Vendedores.Nome AS Nome,
-                Produtos.NomeProduto,
-                Entregas.QuantidadeEntregue,
-                Produtos.Preco,
-                (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
-                Entregas.DataEntrega,
-                Entregas.EntregaID,
-                Entregas.VendedorID,
-                Entregas.ProdutoID,
-                Vendedores.Comissao
-            FROM
-                Entregas
-            INNER JOIN
-                Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
-            INNER JOIN
-                Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
-            WHERE
-                Entregas.PrestacaoRealizada = 0";
+    SELECT
+        Vendedores.Nome AS Nome,
+        Produtos.NomeProduto,
+        Entregas.QuantidadeEntregue,
+        Produtos.Preco,
+        (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
+        Entregas.DataEntrega,
+        Entregas.EntregaID,
+        Entregas.VendedorID,
+        Entregas.ProdutoID,
+        Vendedores.Comissao
+    FROM
+        Entregas
+    INNER JOIN
+        Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
+    INNER JOIN
+        Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
+    WHERE
+        Entregas.PrestacaoRealizada = 0";
+
+            // Adicionar filtro caso tenha sido informado
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                query += " AND (Vendedores.Nome LIKE @filtro OR Produtos.NomeProduto LIKE @filtro)";
+            }
 
             using (var conn = Conexao.Conex())
             {
                 conn.Open();
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
+                    if (!string.IsNullOrEmpty(filtro))
+                    {
+                        cmd.Parameters.AddWithValue("@filtro", $"%{filtro}%");
+                    }
+
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -164,7 +176,7 @@ namespace ComissPro
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
                                 VendedorID = Convert.ToInt32(reader["VendedorID"]),
                                 ProdutoID = Convert.ToInt32(reader["ProdutoID"]),
-                                Comissao = Convert.ToDouble(reader["Comissao"]) // Percentual direto (ex.: 40)
+                                Comissao = Convert.ToDouble(reader["Comissao"])
                             });
                         }
                     }
@@ -172,6 +184,59 @@ namespace ComissPro
             }
             return entregas;
         }
+
+        //public List<EntregasModel> CarregarEntregasNaoPrestadas()
+        //{
+        //    List<EntregasModel> entregas = new List<EntregasModel>();
+        //    string query = @"
+        //    SELECT
+        //        Vendedores.Nome AS Nome,
+        //        Produtos.NomeProduto,
+        //        Entregas.QuantidadeEntregue,
+        //        Produtos.Preco,
+        //        (Entregas.QuantidadeEntregue * Produtos.Preco) AS Total,
+        //        Entregas.DataEntrega,
+        //        Entregas.EntregaID,
+        //        Entregas.VendedorID,
+        //        Entregas.ProdutoID,
+        //        Vendedores.Comissao
+        //    FROM
+        //        Entregas
+        //    INNER JOIN
+        //        Vendedores ON Entregas.VendedorID = Vendedores.VendedorID
+        //    INNER JOIN
+        //        Produtos ON Entregas.ProdutoID = Produtos.ProdutoID
+        //    WHERE
+        //        Entregas.PrestacaoRealizada = 0";
+
+        //    using (var conn = Conexao.Conex())
+        //    {
+        //        conn.Open();
+        //        using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+        //        {
+        //            using (SQLiteDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    entregas.Add(new EntregasModel
+        //                    {
+        //                        Nome = reader["Nome"].ToString(),
+        //                        NomeProduto = reader["NomeProduto"].ToString(),
+        //                        QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
+        //                        Preco = Convert.ToDouble(reader["Preco"]),
+        //                        Total = Convert.ToDouble(reader["Total"]),
+        //                        DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
+        //                        EntregaID = Convert.ToInt32(reader["EntregaID"]),
+        //                        VendedorID = Convert.ToInt32(reader["VendedorID"]),
+        //                        ProdutoID = Convert.ToInt32(reader["ProdutoID"]),
+        //                        Comissao = Convert.ToDouble(reader["Comissao"]) // Percentual direto (ex.: 40)
+        //                    });
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return entregas;
+        //}
         public void SalvarEntregas(Model.EntregasModel entrega)
         {
             using (var conn = Conexao.Conex())
@@ -224,6 +289,7 @@ namespace ComissPro
         public List<EntregasModel> PesquisarEntrega(string pesquisa)
         {
             List<EntregasModel> entregas = new List<EntregasModel>();
+            
 
             using (var conn = Conexao.Conex())
             {
@@ -262,7 +328,7 @@ namespace ComissPro
                                 NomeProduto = reader["NomeProduto"].ToString(),
                                 QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
                                 Preco = Convert.ToDouble(reader["Preco"]),
-                                Total = Convert.ToDouble(reader["Total"]),
+                                Total = Convert.ToDouble(reader["Total"]),                                
                                 DataEntrega = Convert.ToDateTime(reader["DataEntrega"]),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
                                 VendedorID = Convert.ToInt32(reader["VendedorID"]),

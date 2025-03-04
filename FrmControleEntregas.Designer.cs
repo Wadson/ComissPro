@@ -292,6 +292,7 @@
             // btnLocalizarVendedor
             // 
             this.btnLocalizarVendedor.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnLocalizarVendedor.Enabled = false;
             this.btnLocalizarVendedor.Location = new System.Drawing.Point(612, 113);
             this.btnLocalizarVendedor.Name = "btnLocalizarVendedor";
             this.btnLocalizarVendedor.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -358,6 +359,7 @@
             // btnLocalizarProduto
             // 
             this.btnLocalizarProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnLocalizarProduto.Enabled = false;
             this.btnLocalizarProduto.Location = new System.Drawing.Point(612, 163);
             this.btnLocalizarProduto.Name = "btnLocalizarProduto";
             this.btnLocalizarProduto.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -428,7 +430,6 @@
             this.txtNomeProduto.Location = new System.Drawing.Point(30, 164);
             this.txtNomeProduto.Name = "txtNomeProduto";
             this.txtNomeProduto.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtNomeProduto.ReadOnly = true;
             this.txtNomeProduto.Size = new System.Drawing.Size(579, 22);
             this.txtNomeProduto.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeProduto.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -444,6 +445,7 @@
             this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 1;
+            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             // 
             // label7
             // 
@@ -464,7 +466,6 @@
             this.txtNomeVendedor.Location = new System.Drawing.Point(30, 114);
             this.txtNomeVendedor.Name = "txtNomeVendedor";
             this.txtNomeVendedor.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtNomeVendedor.ReadOnly = true;
             this.txtNomeVendedor.Size = new System.Drawing.Size(579, 22);
             this.txtNomeVendedor.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeVendedor.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -480,6 +481,7 @@
             this.txtNomeVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeVendedor.TabIndex = 0;
+            this.txtNomeVendedor.TextChanged += new System.EventHandler(this.txtNomeVendedor_TextChanged);
             // 
             // btnSair
             // 

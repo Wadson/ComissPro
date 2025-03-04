@@ -18,6 +18,7 @@ namespace ComissPro
         public bool bloqueiaEventosTextChanged = false;
 
         private bool bloqueiaPesquisa = false;
+        private bool habilitar = true;
         public int ProdutoID {get; set;}
         public int VendedorID { get; set; }
         public string vendedorSelecionado { get; set; }
@@ -131,6 +132,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar();
+                    frmManutencao.HabilitarTimer(habilitar);
                 }
 
                 Utilitario.LimpaCampo(this);
@@ -141,46 +143,7 @@ namespace ComissPro
             }
         }
 
-        //public void SalvarRegistro()
-        //{
-        //    try
-        //    {
-        //        Model.EntregasModel objetoModel = new Model.EntregasModel();
-
-        //        objetoModel.EntregaID = string.IsNullOrEmpty(txtEntregaID.Text) ? 0 : Convert.ToInt32(txtEntregaID.Text);
-        //        objetoModel.VendedorID = VendedorID;
-        //        objetoModel.ProdutoID = ProdutoID;
-        //        objetoModel.QuantidadeEntregue = int.Parse(txtQuantidade.Text);
-        //        objetoModel.DataEntrega = dtpDataEntregaBilhete.Value;
-
-        //        EntregasBLL objetoBll = new EntregasBLL();
-        //        objetoBll.Salvar(objetoModel);
-
-        //        MessageBox.Show("Registro gravado com sucesso!",
-        //                        "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-        //        // Tenta acessar o formulário e atualizar diretamente
-        //        var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutençãodeEntregaBilhetes;
-        //        if (frmManutencao != null)
-        //        {
-        //            frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
-        //        }
-
-        //        Utilitario.LimpaCampo(this);
-        //    }
-        //    catch (OverflowException ov)
-        //    {
-        //        MessageBox.Show("Overflow Exception deu erro! " + ov);
-        //    }
-        //    catch (Win32Exception erro)
-        //    {
-        //        MessageBox.Show("Win32 Exception!!! \n" + erro);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Erro ao salvar registro: " + ex.Message);
-        //    }
-        //}
+      
         public void AlterarRegistro()
         {
             try
@@ -202,6 +165,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                    frmManutencao.HabilitarTimer(habilitar);
                 }
                 Utilitario.LimpaCampo(this);
                 this.Close();
@@ -233,6 +197,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
+                    frmManutencao.HabilitarTimer(habilitar);
                 }
             }
             catch (Exception erro)
@@ -296,60 +261,9 @@ namespace ComissPro
         private void txtPrecoUnit_Leave(object sender, EventArgs e)
         {
             CalcularSubtotal();            
-        }       
+        }     
+                
 
-        private void txtNomeVendedor_TextChanged(object sender, EventArgs e)
-        {
-            if (bloqueiaPesquisa || bloqueiaEventosTextChanged || string.IsNullOrEmpty(txtNomeVendedor.Text))
-                return;
-
-            bloqueiaPesquisa = true;
-
-            using (FrmLocalicarVendedor pesquisaVendedor = new FrmLocalicarVendedor(this, txtNomeVendedor.Text))
-            {
-                pesquisaVendedor.Owner = this;
-
-                if (pesquisaVendedor.ShowDialog() == DialogResult.OK)
-                {
-                    txtNomeVendedor.Text = pesquisaVendedor.vendedorSelecionado;
-                }
-            }
-
-            Task.Delay(100).ContinueWith(t =>
-            {
-                Invoke(new Action(() => bloqueiaPesquisa = false));
-            });          
-        }
-
-        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
-        {
-            if (bloqueiaPesquisa || bloqueiaEventosTextChanged || string.IsNullOrEmpty(txtNomeProduto.Text))
-                return;
-
-            bloqueiaPesquisa = true;
-
-            using (FrmLocalizarProduto pesquisaProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text))
-            {
-                pesquisaProduto.Owner = this;
-
-                if (pesquisaProduto.ShowDialog() == DialogResult.OK)
-                {
-                    if (txtNomeProduto.Text != pesquisaProduto.produtoSelecionado)
-                    {
-                        txtNomeProduto.Text = pesquisaProduto.produtoSelecionado;
-                        txtQuantidade.Focus();
-                    }
-                }
-            }
-
-            Task.Delay(100).ContinueWith(t =>
-            {
-                Invoke(new Action(() => bloqueiaPesquisa = false));
-            });
-
-            txtQuantidade.Select();
-        }
-      
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (StatusOperacao == "ALTERAR")
@@ -409,6 +323,58 @@ namespace ComissPro
                     this.Close();
                 }
             }
+        }
+
+        private void txtNomeVendedor_TextChanged(object sender, EventArgs e)
+        {
+            if (bloqueiaPesquisa || bloqueiaEventosTextChanged || string.IsNullOrEmpty(txtNomeVendedor.Text))
+                return;
+
+            bloqueiaPesquisa = true;
+
+            using (FrmLocalicarVendedor pesquisaVendedor = new FrmLocalicarVendedor(this, txtNomeVendedor.Text))
+            {
+                pesquisaVendedor.Owner = this;
+
+                if (pesquisaVendedor.ShowDialog() == DialogResult.OK)
+                {
+                    txtNomeVendedor.Text = pesquisaVendedor.vendedorSelecionado;
+                }
+            }
+
+            Task.Delay(100).ContinueWith(t =>
+            {
+                Invoke(new Action(() => bloqueiaPesquisa = false));
+            });
+        }
+
+        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (bloqueiaPesquisa || bloqueiaEventosTextChanged || string.IsNullOrEmpty(txtNomeProduto.Text))
+                return;
+
+            bloqueiaPesquisa = true;
+
+            using (FrmLocalizarProduto pesquisaProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text))
+            {
+                pesquisaProduto.Owner = this;
+
+                if (pesquisaProduto.ShowDialog() == DialogResult.OK)
+                {
+                    if (txtNomeProduto.Text != pesquisaProduto.produtoSelecionado)
+                    {
+                        txtNomeProduto.Text = pesquisaProduto.produtoSelecionado;
+                        txtQuantidade.Focus();
+                    }
+                }
+            }
+
+            Task.Delay(100).ContinueWith(t =>
+            {
+                Invoke(new Action(() => bloqueiaPesquisa = false));
+            });
+
+            txtQuantidade.Select();
         }
     }
 }

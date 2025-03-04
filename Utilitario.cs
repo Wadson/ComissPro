@@ -18,6 +18,42 @@ namespace ComissPro
     public static class Utilitario
     {
         private static readonly SQLiteConnection conn = Conexao.Conex();
+
+        public static DataTable ConvertListToDataTable(List<EntregasModel> list)
+        {
+            DataTable dt = new DataTable();
+
+            // Define as colunas com base nas propriedades de EntregasModel
+            dt.Columns.Add("EntregaID", typeof(int));
+            dt.Columns.Add("VendedorID", typeof(int));
+            dt.Columns.Add("Nome", typeof(string));
+            dt.Columns.Add("ProdutoID", typeof(int));
+            dt.Columns.Add("NomeProduto", typeof(string));
+            dt.Columns.Add("QuantidadeEntregue", typeof(int));
+            dt.Columns.Add("DataEntrega", typeof(DateTime));
+            dt.Columns.Add("PrestacaoRealizada", typeof(long));
+            dt.Columns.Add("Preco", typeof(double));
+            dt.Columns.Add("Total", typeof(double));
+
+            // Preenche as linhas
+            foreach (var item in list)
+            {
+                dt.Rows.Add(
+                    item.EntregaID,
+                    item.VendedorID,
+                    item.Nome,
+                    item.ProdutoID,
+                    item.NomeProduto,
+                    item.QuantidadeEntregue,
+                    item.DataEntrega,
+                    item.Prestacaorealizada,
+                    item.Preco,
+                    item.QuantidadeEntregue * item.Preco // Calcula o Total
+                );
+            }
+
+            return dt;
+        }
         public static string RemoverZerosAEsquerda(string valor)
         {
             if (string.IsNullOrEmpty(valor))
