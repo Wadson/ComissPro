@@ -95,7 +95,7 @@ namespace ComissPro
                     if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
                     {
                         dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
-                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
+                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
                         dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
                     }
                 }
@@ -115,7 +115,7 @@ namespace ComissPro
                 if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
                 {
                     dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
-                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
+                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
                     dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
                 }
             }

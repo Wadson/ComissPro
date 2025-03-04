@@ -518,6 +518,7 @@
             this.txtLocalizarVendedor.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocalizarVendedor.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtLocalizarVendedor.TabIndex = 0;
+            this.txtLocalizarVendedor.TabStop = false;
             this.txtLocalizarVendedor.TextChanged += new System.EventHandler(this.txtLocalizarVendedor_TextChanged);
             // 
             // label7
