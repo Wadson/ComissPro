@@ -555,6 +555,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\ajudando.png" />
     <None Include="Resources\atualizar32.png" />
     <None Include="Resources\excluir32_Branco.png" />
     <None Include="Resources\restituicao32.png" />

@@ -21,13 +21,14 @@ namespace ComissPro
         public FrmFluxoCaixa()
         {
             InitializeComponent();
+
             ConfigurarDataGridView();
+            dtpDataSelecionada.Value = DateTime.Today; // Data inicial é hoje
             CarregarMovimentacoes();
             AtualizarSaldo();
         }
         private void ConfigurarDataGridView()
         {
-            // Configurar o único DataGridView
             dgvFluxoCaixa.AutoGenerateColumns = false;
             dgvFluxoCaixa.Columns.Clear();
             dgvFluxoCaixa.Columns.Add(new DataGridViewTextBoxColumn { Name = "FluxoCaixaID", HeaderText = "ID", Visible = false });
@@ -37,28 +38,26 @@ namespace ComissPro
             dgvFluxoCaixa.Columns.Add(new DataGridViewTextBoxColumn { Name = "Descricao", HeaderText = "Descrição", Width = 250 });
             dgvFluxoCaixa.Columns.Add(new DataGridViewTextBoxColumn { Name = "PrestacaoID", HeaderText = "Prestação ID", Width = 80 });
 
-            // Configurações adicionais
+            // Reduzir a altura do cabeçalho
+            dgvFluxoCaixa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing; // Impede redimensionamento pelo usuário
+            dgvFluxoCaixa.ColumnHeadersHeight = 25; // Define a altura do cabeçalho (padrão é maior, ex.: 36)
+
             dgvFluxoCaixa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvFluxoCaixa.ReadOnly = true;
-
-            // Evento para colorir as linhas
             dgvFluxoCaixa.CellFormatting += dgvFluxoCaixa_CellFormatting;
         }
         private void CarregarMovimentacoes()
         {
-            LogUtil.WriteLog("Carregando movimentações do dia no FrmFluxoCaixa...");
+            LogUtil.WriteLog("Carregando movimentações no FrmFluxoCaixa...");
             try
             {
-                var movimentacoes = fluxoCaixaDAL.ObterMovimentacoesDoDia();
+                var movimentacoes = fluxoCaixaDAL.ObterMovimentacoesPorData(dtpDataSelecionada.Value);
 
-                // Limpar o DataGridView
                 dgvFluxoCaixa.Rows.Clear();
 
-                // Variáveis para somar os totais
                 double totalEntradas = 0;
                 double totalSaidas = 0;
 
-                // Preencher o DataGridView com as movimentações
                 foreach (var m in movimentacoes)
                 {
                     dgvFluxoCaixa.Rows.Add(
@@ -76,19 +75,17 @@ namespace ComissPro
                         totalSaidas += m.Valor;
                 }
 
-                // Adicionar a linha de totais
                 int totalIndex = dgvFluxoCaixa.Rows.Add();
                 var totalRow = dgvFluxoCaixa.Rows[totalIndex];
                 totalRow.Cells["TipoMovimentacao"].Value = "Totais";
-                totalRow.Cells["Valor"].Value = (totalEntradas - totalSaidas).ToString("N2");
+                totalRow.Cells["Valor"].Value = (totalEntradas - totalSaidas).ToString("C");
                 totalRow.Cells["DataMovimentacao"].Value = "";
                 totalRow.Cells["Descricao"].Value = "";
                 totalRow.Cells["PrestacaoID"].Value = "";
 
-                // Atualizar os TextBoxes
                 txtTotalEntradas.Text = totalEntradas > 0 ? totalEntradas.ToString("N2") : "0,00";
                 txtTotalSaidas.Text = totalSaidas > 0 ? totalSaidas.ToString("N2") : "0,00";
-                AtualizarSaldo(); // Já está chamando o método corrigido
+                AtualizarSaldo();
             }
             catch (Exception ex)
             {
@@ -99,10 +96,13 @@ namespace ComissPro
 
         private void AtualizarSaldo()
         {
-            double saldo = fluxoCaixaDAL.CalcularSaldoDoDia();
-            txtSaldo.Text = saldo.ToString("N2");
+            double saldo = fluxoCaixaDAL.CalcularSaldoPorData(dtpDataSelecionada.Value);
+            txtSaldo.Text = saldo.ToString("C");
         }
-      
+
+
+
+
 
         public double CalcularSaldoDoDia()
         {
@@ -125,71 +125,6 @@ namespace ComissPro
         }
 
 
-        private void btnRegistrarRetirada_Click(object sender, EventArgs e)
-        {
-            if (!double.TryParse(txtValorRetirada.Text, out double valor) || valor <= 0)
-            {
-                MessageBox.Show("Digite um valor válido para a retirada!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtDescricao.Text))
-            {
-                MessageBox.Show("Informe a descrição da retirada!","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
-
-            fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
-            {
-                TipoMovimentacao = "SAÍDA",
-                Valor = valor,
-                Descricao = txtDescricao.Text,
-                DataMovimentacao = DateTime.Now
-            });
-
-            AtualizarSaldo();
-            CarregarMovimentacoes();
-            txtValorRetirada.Text = "";
-            txtDescricao.Text = "";
-        }
-
-        private void btnRegistrarEntrada_Click(object sender, EventArgs e)
-        {
-            if (!double.TryParse(txtValorEntrada.Text, out double valor) || valor <= 0)
-            {
-                MessageBox.Show("Digite um valor válido para a entrada!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtDescricao.Text))
-            {
-                MessageBox.Show("Informe a descrição da entrada!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
-            {
-                TipoMovimentacao = "ENTRADA",
-                Valor = valor,
-                Descricao = txtDescricao.Text,
-                DataMovimentacao = DateTime.Now
-            });
-
-            AtualizarSaldo();
-            CarregarMovimentacoes();
-            txtValorEntrada.Text = "";
-            txtDescricao.Text = "";
-        }
-
-        private void btnFecharCaixa_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Deseja fechar o caixa do dia? Isso limpará as movimentações de hoje.", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                fluxoCaixaDAL.FecharCaixaDiario();
-                AtualizarSaldo();
-                CarregarMovimentacoes();
-                MessageBox.Show("Caixa fechado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -203,13 +138,9 @@ namespace ComissPro
                 string tipo = row.Cells["TipoMovimentacao"].Value?.ToString();
 
                 if (tipo == "ENTRADA")
-                {
                     e.CellStyle.ForeColor = Color.Blue;
-                }
                 else if (tipo == "SAÍDA")
-                {
                     e.CellStyle.ForeColor = Color.Red;
-                }
                 else if (tipo == "Totais")
                 {
                     e.CellStyle.BackColor = Color.LightGray;
@@ -236,6 +167,85 @@ namespace ComissPro
                 {
                     this.Close();
                 }
+            }
+        }
+
+        private void dtpDataSelecionada_ValueChanged(object sender, EventArgs e)
+        {
+            CarregarMovimentacoes();
+        }
+
+        private void btnEntrada_Click(object sender, EventArgs e)
+        {
+            if (fluxoCaixaDAL.IsCaixaFechado(dtpDataSelecionada.Value))
+            {
+                MessageBox.Show($"O caixa do dia {dtpDataSelecionada.Value.ToString("dd/MM/yyyy")} está fechado. Não é possível registrar movimentações.", "Caixa Fechado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!double.TryParse(txtValorEntrada.Text, out double valor) || valor <= 0)
+            {
+                MessageBox.Show("Digite um valor válido para a entrada!");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtDescricao.Text))
+            {
+                MessageBox.Show("Informe a descrição da entrada!");
+                return;
+            }
+
+            fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
+            {
+                TipoMovimentacao = "ENTRADA",
+                Valor = valor,
+                Descricao = txtDescricao.Text,
+                DataMovimentacao = DateTime.Now
+            });
+
+            CarregarMovimentacoes();
+            txtValorEntrada.Text = "";
+            txtDescricao.Text = "";
+        }
+
+        private void btnSaida_Click(object sender, EventArgs e)
+        {
+            if (fluxoCaixaDAL.IsCaixaFechado(dtpDataSelecionada.Value))
+            {
+                MessageBox.Show($"O caixa do dia {dtpDataSelecionada.Value.ToString("dd/MM/yyyy")} está fechado. Não é possível registrar movimentações.", "Caixa Fechado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!double.TryParse(txtValorRetirada.Text, out double valor) || valor <= 0)
+            {
+                MessageBox.Show("Digite um valor válido para a retirada!");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtDescricao.Text))
+            {
+                MessageBox.Show("Informe a descrição da retirada!");
+                return;
+            }
+
+            fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
+            {
+                TipoMovimentacao = "SAÍDA",
+                Valor = valor,
+                Descricao = txtDescricao.Text,
+                DataMovimentacao = DateTime.Now
+            });
+
+            CarregarMovimentacoes();
+            txtValorRetirada.Text = "";
+            txtDescricao.Text = "";
+        }
+
+        private void btnFecharCaixa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show($"Deseja fechar o caixa do dia {dtpDataSelecionada.Value.ToString("dd/MM/yyyy")}? Isso arquivará as movimentações.", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                fluxoCaixaDAL.FecharCaixaDiario(dtpDataSelecionada.Value); // Passar a data selecionada
+                CarregarMovimentacoes();
+                MessageBox.Show("Caixa fechado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

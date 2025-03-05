@@ -398,12 +398,6 @@ namespace ComissPro
             Listar();
             timer1.Enabled = false;
         }
-       
-        private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
-        {
-            FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
-            formPrestacao.ShowDialog();
-        }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -452,6 +446,12 @@ namespace ComissPro
             LogUtil.WriteLog("FrmManutencaodeEntregaBilhetes_Load iniciado.");
             Listar(); // Carrega todas as entregas sem filtro
             Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
+        }
+
+        private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
+        {
+            FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
+            formPrestacao.ShowDialog();
         }
     }
 }

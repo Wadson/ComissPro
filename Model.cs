@@ -87,16 +87,20 @@ namespace ComissPro
             public int EntregaID { get; set; }
             public int QuantidadeVendida { get; set; }
             public int QuantidadeDevolvida { get; set; }
+            public int QuantidadeEntregue { get; set; }
             public double ValorRecebido { get; set; }
             public double Comissao { get; set; }
             public DateTime DataPrestacao { get; set; } = DateTime.Now;
             public string Nome { get; set; }
             public int VendedorID { get; set; }
             public string NomeProduto { get; set; }
-            public double Preco { get; set; }
-            public double Total { get; set; }
+            public double Preco { get; set; }           
             public bool PrestacaoRealizada { get; set; }
             public double quantidadeEntregue { get; set; }
+            public double Total
+            {
+                get { return QuantidadeEntregue * Preco; } // Garantir que o cálculo seja feito
+            }
         }
         // Para Relatório de Desempenho de Vendas
         public class DesempenhoVendasModel

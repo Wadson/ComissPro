@@ -179,21 +179,55 @@ namespace ComissPro
             }
         }
 
-        public List<FluxoCaixaModel> ObterMovimentacoesDoDia()
+        
+        
+
+        public void FecharCaixaDiario(DateTime data) // Adicionar parâmetro de data
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "UPDATE FluxoCaixa SET Fechado = 1 WHERE DATE(DataMovimentacao) = @DataSelecionada AND Fechado = 0";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@DataSelecionada", data.ToString("yyyy-MM-dd"));
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    LogUtil.WriteLog($"Caixa fechado para {data.ToString("yyyy-MM-dd")}. Linhas marcadas como fechadas: {rowsAffected}");
+                }
+            }
+        }
+
+        public bool IsCaixaFechado(DateTime data) // Novo método para verificar se o caixa está fechado
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM FluxoCaixa WHERE DATE(DataMovimentacao) = @DataSelecionada AND Fechado = 0";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@DataSelecionada", data.ToString("yyyy-MM-dd"));
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    LogUtil.WriteLog($"Verificando caixa para {data.ToString("yyyy-MM-dd")}: {count} registros abertos encontrados.");
+                    return count == 0; // Retorna true se não houver registros abertos (caixa fechado)
+                }
+            }
+        }
+
+        // Atualizar métodos existentes para consistência
+        public List<FluxoCaixaModel> ObterMovimentacoesPorData(DateTime data)
         {
             var movimentacoes = new List<FluxoCaixaModel>();
             using (var conn = Conexao.Conex())
             {
                 conn.Open();
                 string query = @"
-            SELECT * FROM FluxoCaixa 
-            WHERE DATE(DataMovimentacao) = @DataAtual 
-            ORDER BY DataMovimentacao DESC";
-                LogUtil.WriteLog("Executando ObterMovimentacoesDoDia...");
+                SELECT * FROM FluxoCaixa 
+                WHERE DATE(DataMovimentacao) = @DataSelecionada AND Fechado = 0
+                ORDER BY DataMovimentacao DESC";
+                LogUtil.WriteLog($"Executando ObterMovimentacoesPorData para data: {data.ToString("yyyy-MM-dd")}");
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    // Usar a data atual do sistema sem horário
-                    cmd.Parameters.AddWithValue("@DataAtual", DateTime.Today.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@DataSelecionada", data.ToString("yyyy-MM-dd"));
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -217,38 +251,30 @@ namespace ComissPro
             return movimentacoes;
         }
 
-        public double CalcularSaldoDoDia()
+        public double CalcularSaldoPorData(DateTime data)
         {
             using (var conn = Conexao.Conex())
             {
                 conn.Open();
                 string query = @"
-            SELECT 
-                (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'ENTRADA' AND DATE(DataMovimentacao) = @DataAtual) -
-                (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'SAÍDA' AND DATE(DataMovimentacao) = @DataAtual) AS Saldo";
+                SELECT 
+                    (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'ENTRADA' AND DATE(DataMovimentacao) = @DataSelecionada AND Fechado = 0) -
+                    (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'SAÍDA' AND DATE(DataMovimentacao) = @DataSelecionada AND Fechado = 0) AS Saldo";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@DataAtual", DateTime.Today.ToString("yyyy-MM-dd"));
+                    cmd.Parameters.AddWithValue("@DataSelecionada", data.ToString("yyyy-MM-dd"));
                     var result = cmd.ExecuteScalar();
                     double saldo = result == DBNull.Value ? 0 : Convert.ToDouble(result);
-                    LogUtil.WriteLog($"Saldo calculado do dia: {saldo}");
+                    LogUtil.WriteLog($"Saldo calculado para data {data.ToString("yyyy-MM-dd")}: {saldo}");
                     return saldo;
                 }
             }
         }
 
-        public void FecharCaixaDiario()
+        public double CalcularSaldoDoDia()
         {
-            using (var conn = Conexao.Conex())
-            {
-                conn.Open();
-                // Aqui você pode optar por arquivar os dados ou apenas limpá-los
-                string query = "DELETE FROM FluxoCaixa WHERE DATE(DataMovimentacao) = DATE('now')";
-                using (var cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-            }
+            return CalcularSaldoPorData(DateTime.Today);
         }
+
     }
 }

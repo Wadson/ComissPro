@@ -582,13 +582,18 @@ namespace ComissPro
             pc.QuantidadeDevolvida,
             pc.ValorRecebido,
             pc.PrestacaoID,
-            pc.EntregaID
+            pc.EntregaID,
+            e.QuantidadeEntregue,
+            p.NomeProduto,
+            p.Preco
         FROM 
             PrestacaoContas pc
         INNER JOIN 
             Entregas e ON pc.EntregaID = e.EntregaID
         INNER JOIN 
             Vendedores v ON e.VendedorID = v.VendedorID
+        INNER JOIN 
+            Produtos p ON e.ProdutoID = p.ProdutoID
         WHERE 
             1 = 1"; // Condição base para filtros opcionais
 
@@ -622,7 +627,10 @@ namespace ComissPro
                                 QuantidadeDevolvida = Convert.ToInt32(reader["QuantidadeDevolvida"]),
                                 ValorRecebido = Convert.ToDouble(reader["ValorRecebido"]),
                                 PrestacaoID = Convert.ToInt32(reader["PrestacaoID"]),
-                                EntregaID = Convert.ToInt32(reader["EntregaID"])
+                                EntregaID = Convert.ToInt32(reader["EntregaID"]),
+                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]), // Adicionado
+                                NomeProduto = reader["NomeProduto"].ToString(), // Adicionado
+                                Preco = Convert.ToDouble(reader["Preco"]) // Adicionado
                             });
                         }
                     }

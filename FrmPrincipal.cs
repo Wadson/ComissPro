@@ -131,22 +131,21 @@ namespace ComissPro
         private void btnFerramentas_Click(object sender, EventArgs e)
         {
             FrmFerramentas frm = new FrmFerramentas();
-            AbrirFormEnPanel(frm);
+            frm.ShowDialog();
         }
 
         private void btnFluxoCaixa_Click(object sender, EventArgs e)
         {
             FrmFluxoCaixa frm = new FrmFluxoCaixa();
-            AbrirFormEnPanel(frm);
+            frm.ShowDialog();
         }
 
         private void ferramentasAdminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (FrmAdminUnlock frm = new FrmAdminUnlock())
-            {
-                frm.ShowDialog();
-            }
+            FrmAdminUnlock frm = new FrmAdminUnlock();
+            frm.ShowDialog();
         }
+                  
 
         private void controleDeEntregasToolStripMenuItem_Click(object sender, EventArgs e)
         {
