@@ -111,6 +111,7 @@ namespace ComissPro
                 // Formatar DataPrestacao como data curta e tratar DBNull
                 dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.Format = "d";
                 dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.NullValue = "";
+                dataGridPrestacaoContas.Columns["DataPrestacao"].SortMode = DataGridViewColumnSortMode.NotSortable;
 
                 // Centralizar colunas numéricas
                 dataGridPrestacaoContas.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;

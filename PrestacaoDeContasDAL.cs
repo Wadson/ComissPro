@@ -17,6 +17,20 @@ namespace ComissPro
         {
             File.AppendAllText("Log em PrestacaoDeContasDAL.txt", $"{DateTime.Now}: {message}\n");
         }
+        public DateTime? ObterDataPrestacaoPorID(int prestacaoID)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                conn.Open();
+                string query = "SELECT DataPrestacao FROM PrestacaoContas WHERE PrestacaoID = @PrestacaoID";
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PrestacaoID", prestacaoID);
+                    var result = cmd.ExecuteScalar();
+                    return result != null && result != DBNull.Value ? Convert.ToDateTime(result) : (DateTime?)null;
+                }
+            }
+        }
         public DataTable PesquisaVendasConcluidasPorVendedor(string nomeVendedor = "")
         {
             var conn = Conexao.Conex();

@@ -403,7 +403,7 @@
             this.btnNovo.StateCommon.Border.Width = 1;
             this.btnNovo.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnNovo.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnNovo.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnNovo.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnNovo.StatePressed.Back.ColorAngle = 135F;
@@ -430,7 +430,7 @@
             this.btnNovo.TabIndex = 635;
             this.toolTip1.SetToolTip(this.btnNovo, "Nova entrega de bilhetes");
             this.btnNovo.Values.Image = global::ComissPro.Properties.Resources.tarefa32;
-            this.btnNovo.Values.Text = "Registrar";
+            this.btnNovo.Values.Text = "Registrar ( F5 )";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAltera
@@ -623,10 +623,12 @@
             this.Controls.Add(this.dataGridManutencaoEntregas);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "FrmManutencaodeEntregaBilhetes";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Load += new System.EventHandler(this.FrmManutençãodeEntregaBilhetes_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmManutencaodeEntregaBilhetes_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);

@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
+using static ComissPro.Utilitario;
 
 namespace ComissPro
 {
@@ -12,7 +13,7 @@ namespace ComissPro
         private static string _connectionString = $"Data Source={_databasePath};Version=3;";
 
         // Método para inicializar o banco (chamado automaticamente ao obter a conexão)
-        private static void InitializeDatabase()
+        public static void InitializeDatabase()
         {
             try
             {
@@ -21,18 +22,20 @@ namespace ComissPro
                 {
                     // Cria o arquivo de banco de dados
                     SQLiteConnection.CreateFile(_databasePath);
+                    LogUtil.WriteLog("Banco de dados criado em: " + _databasePath);
 
-                    // Cria as tabelas                    
-                    if (!File.Exists(_databasePath))
-                    {
-                        SQLiteConnection.CreateFile(_databasePath);
-                        CreateTables();
-                        MessageBox.Show("Banco de dados criado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    // Cria as tabelas
+                    CreateTables();
+                    MessageBox.Show("Banco de dados criado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    LogUtil.WriteLog("Banco de dados já existe em: " + _databasePath);
                 }
             }
             catch (Exception ex)
             {
+                LogUtil.WriteLog($"Erro ao inicializar o banco de dados: {ex.Message}");
                 throw new Exception("Erro ao inicializar o banco de dados: " + ex.Message);
             }
         }
@@ -58,6 +61,7 @@ namespace ComissPro
                                     Unidade TEXT NOT NULL
                                 )";
                             cmd.ExecuteNonQuery();
+                            LogUtil.WriteLog("Tabela Produtos criada com sucesso.");
                         }
 
                         // Tabela Vendedores
@@ -72,6 +76,7 @@ namespace ComissPro
                                     Comissao REAL DEFAULT (10) NULL
                                 )";
                             cmd.ExecuteNonQuery();
+                            LogUtil.WriteLog("Tabela Vendedores criada com sucesso.");
                         }
 
                         // Tabela Entregas
@@ -85,10 +90,11 @@ namespace ComissPro
                                     QuantidadeEntregue BIGINT NOT NULL,
                                     DataEntrega DATETIME DEFAULT (CURRENT_TIMESTAMP) NULL,
                                     PrestacaoRealizada BIGINT DEFAULT (0) NULL,
-                                    CONSTRAINT FK_Entregas_0_0 FOREIGN KEY (VendedorID) REFERENCES Vendedores (VendedorID) ON DELETE NO ACTION ON UPDATE NO ACTION,
-                                    CONSTRAINT FK_Entregas_1_0 FOREIGN KEY (ProdutoID) REFERENCES Produtos (ProdutoID) ON DELETE NO ACTION ON UPDATE NO ACTION
+                                    CONSTRAINT FK_Entregas_0_0 FOREIGN KEY (ProdutoID) REFERENCES Produtos (ProdutoID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+                                    CONSTRAINT FK_Entregas_1_0 FOREIGN KEY (VendedorID) REFERENCES Vendedores (VendedorID) ON DELETE NO ACTION ON UPDATE NO ACTION
                                 )";
                             cmd.ExecuteNonQuery();
+                            LogUtil.WriteLog("Tabela Entregas criada com sucesso.");
                         }
 
                         // Tabela PrestacaoContas
@@ -106,6 +112,7 @@ namespace ComissPro
                                     CONSTRAINT FK_PrestacaoContas_0_0 FOREIGN KEY (EntregaID) REFERENCES Entregas (EntregaID) ON DELETE NO ACTION ON UPDATE NO ACTION
                                 )";
                             cmd.ExecuteNonQuery();
+                            LogUtil.WriteLog("Tabela PrestacaoContas criada com sucesso.");
                         }
 
                         // Tabela FluxoCaixa
@@ -119,16 +126,20 @@ namespace ComissPro
                                     DataMovimentacao DATETIME DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
                                     Descricao TEXT NULL,
                                     PrestacaoID BIGINT NULL,
+                                    Fechado BIGINT DEFAULT (0) NULL,
                                     CONSTRAINT FK_FluxoCaixa_0_0 FOREIGN KEY (PrestacaoID) REFERENCES PrestacaoContas (PrestacaoID) ON DELETE NO ACTION ON UPDATE NO ACTION
                                 )";
                             cmd.ExecuteNonQuery();
+                            LogUtil.WriteLog("Tabela FluxoCaixa criada com sucesso.");
                         }
 
                         transaction.Commit();
+                        LogUtil.WriteLog("Transação de criação de tabelas concluída com sucesso.");
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
+                        LogUtil.WriteLog($"Erro ao criar tabelas: {ex.Message}");
                         throw new Exception("Erro ao criar tabelas: " + ex.Message);
                     }
                 }

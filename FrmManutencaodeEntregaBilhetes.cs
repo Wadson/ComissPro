@@ -453,5 +453,15 @@ namespace ComissPro
             FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
             formPrestacao.ShowDialog();
         }
+
+        private void FrmManutencaodeEntregaBilhetes_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Verifique se a tecla pressionada é F5
+            if (e.KeyCode == Keys.F5)
+            {
+                // Ação do botão
+                btnNovo.PerformClick();
+            }
+        }
     }
 }

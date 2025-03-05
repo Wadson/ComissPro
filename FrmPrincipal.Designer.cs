@@ -58,10 +58,10 @@
             this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controleDeEntregasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.controleDeEntregasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -351,14 +351,15 @@
             this.btnManutencaoEntregas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnManutencaoEntregas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnManutencaoEntregas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManutencaoEntregas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnManutencaoEntregas.ImageIndex = 8;
             this.btnManutencaoEntregas.ImageList = this.imageList1;
             this.btnManutencaoEntregas.Location = new System.Drawing.Point(156, 4);
             this.btnManutencaoEntregas.Name = "btnManutencaoEntregas";
-            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 72);
+            this.btnManutencaoEntregas.Size = new System.Drawing.Size(75, 79);
             this.btnManutencaoEntregas.TabIndex = 6;
-            this.btnManutencaoEntregas.Text = "&Controle de Entregas";
+            this.btnManutencaoEntregas.Text = "(F3) Entregas";
             this.btnManutencaoEntregas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnManutencaoEntregas, "Controle de Entregas");
             this.btnManutencaoEntregas.UseVisualStyleBackColor = false;
@@ -433,6 +434,13 @@
             this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
             this.manutençãoToolStripMenuItem.Text = "&Manutenção";
             // 
+            // controleDeEntregasToolStripMenuItem
+            // 
+            this.controleDeEntregasToolStripMenuItem.Name = "controleDeEntregasToolStripMenuItem";
+            this.controleDeEntregasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.controleDeEntregasToolStripMenuItem.Text = "Controle de Entregas";
+            this.controleDeEntregasToolStripMenuItem.Click += new System.EventHandler(this.controleDeEntregasToolStripMenuItem_Click);
+            // 
             // ferramentasToolStripMenuItem
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -448,13 +456,6 @@
             this.ferramentasAdminToolStripMenuItem.Text = "&Desqloquear Sistema";
             this.ferramentasAdminToolStripMenuItem.Click += new System.EventHandler(this.ferramentasAdminToolStripMenuItem_Click);
             // 
-            // controleDeEntregasToolStripMenuItem
-            // 
-            this.controleDeEntregasToolStripMenuItem.Name = "controleDeEntregasToolStripMenuItem";
-            this.controleDeEntregasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.controleDeEntregasToolStripMenuItem.Text = "Controle de Entregas";
-            this.controleDeEntregasToolStripMenuItem.Click += new System.EventHandler(this.controleDeEntregasToolStripMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,6 +467,7 @@
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.panelConteiner);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.Palette = this.kryptonPalette1;
@@ -474,6 +476,7 @@
             this.Text = "ComissPro - Sistema de Controle de Comissão";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrincipal_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

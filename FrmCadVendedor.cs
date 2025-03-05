@@ -25,6 +25,18 @@ namespace ComissPro
         }
         public void SalvarRegistro()
         {
+            // Verifica se o campo txtPercentualComissao está vazio
+            if (string.IsNullOrWhiteSpace(txtPercentualComissao.Text))
+            {
+                // Exibe uma mensagem de erro
+                MessageBox.Show("O campo Percentual de Comissão é obrigatório.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Foca no campo txtPercentualComissao para preenchimento
+                txtPercentualComissao.Focus();
+
+                // Sai do método para impedir o salvamento
+                return;
+            }
             try
             {
                 Model.VendedorMODEL objetoModel = new Model.VendedorMODEL();
@@ -55,7 +67,7 @@ namespace ComissPro
                     {
                         return;
                     }
-                }
+                }               
 
                 // Salvar o registro
                 objetoBll.Salvar(objetoModel);

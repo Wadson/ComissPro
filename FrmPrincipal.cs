@@ -49,7 +49,7 @@ namespace ComissPro
             lblEstacao.Text = nomeComputador;
             lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
             lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
-            
+
             timerH.Tick += OnTimedEvent;
             timerH.Start();
         }
@@ -145,13 +145,24 @@ namespace ComissPro
             FrmAdminUnlock frm = new FrmAdminUnlock();
             frm.ShowDialog();
         }
-                  
+
 
         private void controleDeEntregasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmManutencaodeEntregaBilhetes frm = new FrmManutencaodeEntregaBilhetes(StatusOperacao);
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frm);
+        }
+
+        private void FrmPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Verifique se a tecla pressionada é F5
+            if (e.KeyCode == Keys.F3)
+            {
+                // Ação do botão
+                btnManutencaoEntregas.PerformClick();
+
+            }
         }
     }
 }

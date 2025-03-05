@@ -315,6 +315,7 @@
             this.imageList1.Images.SetKeyName(0, "fluxo-de-caixa32.png");
             this.imageList1.Images.SetKeyName(1, "retirar-32.png");
             this.imageList1.Images.SetKeyName(2, "ajudando.png");
+            this.imageList1.Images.SetKeyName(3, "Minimize.png");
             // 
             // kryptonPanel1
             // 
@@ -483,11 +484,10 @@
             // 
             // btnEntrada
             // 
-            this.btnEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            this.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEntrada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.btnEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnEntrada.ForeColor = System.Drawing.Color.White;
+            this.btnEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             this.btnEntrada.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEntrada.ImageIndex = 0;
             this.btnEntrada.ImageList = this.imageList1;
@@ -502,11 +502,10 @@
             // 
             // btnSaida
             // 
-            this.btnSaida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnSaida.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSaida.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.btnSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnSaida.ForeColor = System.Drawing.Color.White;
+            this.btnSaida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             this.btnSaida.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSaida.ImageIndex = 1;
             this.btnSaida.ImageList = this.imageList1;
@@ -527,19 +526,18 @@
             // 
             // btnFecharCaixa
             // 
-            this.btnFecharCaixa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnFecharCaixa.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnFecharCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFecharCaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnFecharCaixa.ForeColor = System.Drawing.Color.White;
+            this.btnFecharCaixa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
             this.btnFecharCaixa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFecharCaixa.ImageIndex = 0;
-            this.btnFecharCaixa.ImageList = this.imageList2;
-            this.btnFecharCaixa.Location = new System.Drawing.Point(320, 417);
+            this.btnFecharCaixa.ImageIndex = 3;
+            this.btnFecharCaixa.ImageList = this.imageList1;
+            this.btnFecharCaixa.Location = new System.Drawing.Point(11, 442);
             this.btnFecharCaixa.Name = "btnFecharCaixa";
-            this.btnFecharCaixa.Size = new System.Drawing.Size(150, 44);
+            this.btnFecharCaixa.Size = new System.Drawing.Size(156, 28);
             this.btnFecharCaixa.TabIndex = 724;
-            this.btnFecharCaixa.Text = "Fechar Caixa";
+            this.btnFecharCaixa.TabStop = false;
+            this.btnFecharCaixa.Text = "Fechar o Caixa";
             this.btnFecharCaixa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFecharCaixa.UseVisualStyleBackColor = false;
             this.btnFecharCaixa.Click += new System.EventHandler(this.btnFecharCaixa_Click);
@@ -569,6 +567,7 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.txtValorEntrada);
             this.Controls.Add(this.txtValorRetirada);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(142)))), ((int)(((byte)(255)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "FrmFluxoCaixa";

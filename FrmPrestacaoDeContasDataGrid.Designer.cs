@@ -79,7 +79,7 @@
             // btnSair
             // 
             this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSair.Location = new System.Drawing.Point(847, 364);
+            this.btnSair.Location = new System.Drawing.Point(847, 354);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -139,7 +139,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSalvar.Location = new System.Drawing.Point(716, 364);
+            this.btnSalvar.Location = new System.Drawing.Point(716, 354);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalvar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -192,7 +192,7 @@
             this.btnSalvar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalvar.StateTracking.Border.Rounding = 20;
             this.btnSalvar.StateTracking.Border.Width = 1;
-            this.btnSalvar.TabIndex = 2;
+            this.btnSalvar.TabIndex = 1;
             this.btnSalvar.Values.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
@@ -256,9 +256,9 @@
             this.dgvPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPrestacaoDeContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestacaoDeContas.Location = new System.Drawing.Point(0, 97);
+            this.dgvPrestacaoDeContas.Location = new System.Drawing.Point(0, 95);
             this.dgvPrestacaoDeContas.Name = "dgvPrestacaoDeContas";
-            this.dgvPrestacaoDeContas.Size = new System.Drawing.Size(976, 216);
+            this.dgvPrestacaoDeContas.Size = new System.Drawing.Size(976, 203);
             this.dgvPrestacaoDeContas.TabIndex = 691;
             this.dgvPrestacaoDeContas.TabStop = false;
             this.dgvPrestacaoDeContas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrestacaoDeContas_CellEndEdit);
@@ -268,7 +268,7 @@
             // 
             this.txtTotalComissao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotalComissao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalComissao.Location = new System.Drawing.Point(575, 364);
+            this.txtTotalComissao.Location = new System.Drawing.Point(575, 356);
             this.txtTotalComissao.Name = "txtTotalComissao";
             this.txtTotalComissao.ReadOnly = true;
             this.txtTotalComissao.Size = new System.Drawing.Size(140, 36);
@@ -295,7 +295,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label11.Location = new System.Drawing.Point(598, 345);
+            this.label11.Location = new System.Drawing.Point(598, 337);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(102, 16);
             this.label11.TabIndex = 697;
@@ -305,7 +305,7 @@
             // 
             this.txtTotalVendida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotalVendida.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalVendida.Location = new System.Drawing.Point(293, 364);
+            this.txtTotalVendida.Location = new System.Drawing.Point(293, 356);
             this.txtTotalVendida.Name = "txtTotalVendida";
             this.txtTotalVendida.ReadOnly = true;
             this.txtTotalVendida.Size = new System.Drawing.Size(140, 36);
@@ -329,7 +329,7 @@
             // 
             this.txtTotalRecebido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotalRecebido.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalRecebido.Location = new System.Drawing.Point(434, 363);
+            this.txtTotalRecebido.Location = new System.Drawing.Point(434, 356);
             this.txtTotalRecebido.Name = "txtTotalRecebido";
             this.txtTotalRecebido.ReadOnly = true;
             this.txtTotalRecebido.Size = new System.Drawing.Size(140, 36);
@@ -356,7 +356,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label8.Location = new System.Drawing.Point(459, 344);
+            this.label8.Location = new System.Drawing.Point(459, 336);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(101, 16);
             this.label8.TabIndex = 696;
@@ -368,7 +368,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label12.Location = new System.Drawing.Point(318, 345);
+            this.label12.Location = new System.Drawing.Point(318, 337);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 16);
             this.label12.TabIndex = 698;
@@ -391,7 +391,7 @@
             // 
             this.txtTotalDevolvida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotalDevolvida.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalDevolvida.Location = new System.Drawing.Point(152, 364);
+            this.txtTotalDevolvida.Location = new System.Drawing.Point(152, 356);
             this.txtTotalDevolvida.Name = "txtTotalDevolvida";
             this.txtTotalDevolvida.Size = new System.Drawing.Size(140, 36);
             this.txtTotalDevolvida.StateCommon.Back.Color1 = System.Drawing.Color.Orange;
@@ -406,7 +406,7 @@
             this.txtTotalDevolvida.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.txtTotalDevolvida.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalDevolvida.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtTotalDevolvida.TabIndex = 692;
+            this.txtTotalDevolvida.TabIndex = 0;
             this.txtTotalDevolvida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTotalDevolvida.Leave += new System.EventHandler(this.txtTotalDevolvida_Leave);
             // 
@@ -416,7 +416,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label3.Location = new System.Drawing.Point(166, 345);
+            this.label3.Location = new System.Drawing.Point(166, 337);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 16);
             this.label3.TabIndex = 695;
@@ -428,7 +428,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label4.Location = new System.Drawing.Point(38, 345);
+            this.label4.Location = new System.Drawing.Point(38, 337);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 16);
             this.label4.TabIndex = 702;
@@ -438,7 +438,7 @@
             // 
             this.txtTotalEntregue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTotalEntregue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTotalEntregue.Location = new System.Drawing.Point(11, 364);
+            this.txtTotalEntregue.Location = new System.Drawing.Point(11, 356);
             this.txtTotalEntregue.Name = "txtTotalEntregue";
             this.txtTotalEntregue.ReadOnly = true;
             this.txtTotalEntregue.Size = new System.Drawing.Size(140, 36);

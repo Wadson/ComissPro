@@ -15,31 +15,31 @@ namespace ComissPro
     {
         // Método para excluir uma entrega por ID - implementado em 04/03/2025
         public void ExcluirEntregaPorID(int entregaID)
-{
-    LogUtil.WriteLog($"Iniciando ExcluirEntregaPorID para EntregaID: {entregaID}");
-    string query = "DELETE FROM Entregas WHERE EntregaID = @EntregaID";
-
-    try
-    {
-        using (var conn = Conexao.Conex())
         {
-            conn.Open();
-            LogUtil.WriteLog("Conexão aberta para ExcluirEntregaPorID.");
-            using (var cmd = new SQLiteCommand(query, conn))
+            LogUtil.WriteLog($"Iniciando ExcluirEntregaPorID para EntregaID: {entregaID}");
+            string query = "DELETE FROM Entregas WHERE EntregaID = @EntregaID";
+
+            try
             {
-                cmd.Parameters.AddWithValue("@EntregaID", entregaID);
-                LogUtil.WriteLog("Executando DELETE em Entregas...");
-                int rowsAffected = cmd.ExecuteNonQuery();
-                LogUtil.WriteLog($"Entrega excluída com sucesso. Linhas afetadas: {rowsAffected}");
+                using (var conn = Conexao.Conex())
+                {
+                    conn.Open();
+                    LogUtil.WriteLog("Conexão aberta para ExcluirEntregaPorID.");
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@EntregaID", entregaID);
+                        LogUtil.WriteLog("Executando DELETE em Entregas...");
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        LogUtil.WriteLog($"Entrega excluída com sucesso. Linhas afetadas: {rowsAffected}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogUtil.WriteLog($"Erro em ExcluirEntregaPorID: {ex.Message}");
+                throw;
             }
         }
-    }
-    catch (Exception ex)
-    {
-        LogUtil.WriteLog($"Erro em ExcluirEntregaPorID: {ex.Message}");
-        throw;
-    }
-}
         // Método para estornar uma entrega já prestada - implementado em 04/03/2025
         public void MarcarEntregaComoPendente(int entregaID)
         {

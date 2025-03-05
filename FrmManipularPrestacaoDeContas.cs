@@ -682,7 +682,7 @@ namespace ComissPro
                     if (dgvPrestacaoDeContas.SelectedRows.Count == 0)
                     {
                         LogUtil.WriteLog("Nenhuma linha selecionada para alterar.");
-                        MessageBox.Show("Selecione uma entrega para alterar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Selecione uma entrega para alterar,\n clique no cabeçalho da linha do lado esquerdo da tela.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
@@ -759,14 +759,48 @@ namespace ComissPro
                     if (dgvPrestacaoDeContas.SelectedRows.Count == 0)
                     {
                         LogUtil.WriteLog("Nenhuma linha selecionada para estornar.");
-                        MessageBox.Show("Selecione uma entrega para estornar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Selecione uma entrega para estornar\n clique no cabeçalho da linha do lado esquerdo da tela..", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+
+                    // Declarar DALs no início do bloco
+                    var prestacaoDAL = new PrestacaoDeContasDAL();
+                    var entregasDAL = new EntregasDal();
+                    var fluxoCaixaDAL = new FluxoCaixaDAL();
 
                     DataGridViewRow selectedRow = dgvPrestacaoDeContas.SelectedRows[0];
                     int prestacaoID = Convert.ToInt32(selectedRow.Cells["PrestacaoID"].Value);
                     int entregaID = Convert.ToInt32(selectedRow.Cells["EntregaID"].Value);
                     string nomeVendedor = selectedRow.Cells["Nome"].Value.ToString();
+
+                    // Tentar obter DataPrestacao do grid
+                    DateTime? dataPrestacao = null;
+                    if (selectedRow.Cells["DataPrestacao"].Value != null)
+                    {
+                        dataPrestacao = Convert.ToDateTime(selectedRow.Cells["DataPrestacao"].Value);
+                        LogUtil.WriteLog($"DataPrestacao do grid: {dataPrestacao.Value.ToString("yyyy-MM-dd HH:mm:ss")}");
+                    }
+                    else
+                    {
+                        LogUtil.WriteLog("DataPrestacao não encontrada no grid, consultando o banco...");
+                        dataPrestacao = prestacaoDAL.ObterDataPrestacaoPorID(prestacaoID); // Reutilizar prestacaoDAL
+                        LogUtil.WriteLog($"DataPrestacao do banco: {dataPrestacao?.ToString("yyyy-MM-dd HH:mm:ss") ?? "Nulo"}");
+                    }
+
+                    if (!dataPrestacao.HasValue)
+                    {
+                        LogUtil.WriteLog($"Erro: DataPrestacao não encontrada para PrestacaoID={prestacaoID}.");
+                        MessageBox.Show("Não foi possível determinar a data da prestação.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Validação da data
+                    if (dataPrestacao.Value.Date != DateTime.Today)
+                    {
+                        LogUtil.WriteLog($"Estorno bloqueado: DataPrestacao={dataPrestacao.Value.ToString("yyyy-MM-dd")} é diferente de hoje ({DateTime.Today.ToString("yyyy-MM-dd")}).");
+                        MessageBox.Show("Só é permitido estornar prestações concluídas no dia atual.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
                     LogUtil.WriteLog($"Solicitando confirmação para estornar EntregaID: {entregaID}, Vendedor: {nomeVendedor}");
                     DialogResult result = MessageBox.Show(
@@ -782,12 +816,8 @@ namespace ComissPro
                         return;
                     }
 
-                    var prestacaoDAL = new PrestacaoDeContasDAL();
-                    var entregasDAL = new EntregasDal();
-                    var fluxoCaixaDAL = new FluxoCaixaDAL();
-
                     LogUtil.WriteLog($"Estornando prestação para EntregaID: {entregaID}");
-                    prestacaoDAL.ExcluirPrestacaoPorEntregaID(entregaID);
+                    prestacaoDAL.ExcluirPrestacaoPorEntregaID(entregaID); // Reutilizar prestacaoDAL
                     entregasDAL.MarcarEntregaComoPendente(entregaID);
                     fluxoCaixaDAL.ExcluirMovimentacoesPorPrestacao(prestacaoID);
 

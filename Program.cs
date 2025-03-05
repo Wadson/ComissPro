@@ -15,6 +15,17 @@ namespace ComissPro
         static void Main()
         {
 
+            try
+            {
+                // Inicializa o banco de dados antes de qualquer coisa
+                Conexao.InitializeDatabase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao inicializar o banco de dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // Encerra o aplicativo se falhar
+            }
+
             if (!TrialManager.IsTrialActive())
             {
                 MessageBox.Show("O período de avaliação de 30 dias expirou. O sistema está bloqueado para edições.\n" +
