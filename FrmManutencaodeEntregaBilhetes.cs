@@ -120,59 +120,7 @@ namespace ComissPro
             rowTotal.DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
             rowTotal.ReadOnly = true;
         }
-        //public void CarregarEntregasNoGrid(string nomeVendedor = "")
-        //{
-        //    try
-        //    {
-        //        EntregasDal objetoDAL = new EntregasDal();
-        //        DataTable dt;
-
-        //        // Se houver texto de pesquisa, usa o método de pesquisa; caso contrário, lista todas as entregas
-        //        if (!string.IsNullOrWhiteSpace(nomeVendedor))
-        //        {
-        //            dt = objetoDAL.PesquisaVendasAbertasPorVendedor(nomeVendedor);
-        //        }
-        //        else
-        //        {
-        //            dt = objetoDAL.listaEntregas();
-        //        }
-
-        //        dataGridManutencaoEntregas.DataSource = dt;
-
-        //        // Ajustar cabeçalhos
-        //        dataGridManutencaoEntregas.Columns["EntregaID"].HeaderText = "ID Entrega";
-        //        dataGridManutencaoEntregas.Columns["Nome"].HeaderText = "Vendedor";
-        //        dataGridManutencaoEntregas.Columns["NomeProduto"].HeaderText = "Produto";
-        //        dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade (Un)";
-        //        dataGridManutencaoEntregas.Columns["Preco"].HeaderText = "Preço Unitário";
-        //        dataGridManutencaoEntregas.Columns["Total"].HeaderText = "Total";
-        //        dataGridManutencaoEntregas.Columns["DataEntrega"].HeaderText = "Data";
-
-        //        // Ocultar colunas desnecessárias
-        //        dataGridManutencaoEntregas.Columns["VendedorID"].Visible = false;
-        //        dataGridManutencaoEntregas.Columns["ProdutoID"].Visible = false;
-        //        dataGridManutencaoEntregas.Columns["PrestacaoRealizada"].Visible = false;
-
-        //        PersonalizarDataGridView(dataGridManutencaoEntregas);
-
-        //        // Rolar até a última linha para mostrar os totais
-        //        if (dataGridManutencaoEntregas.Rows.Count > 0)
-        //        {
-        //            int ultimaLinha = dataGridManutencaoEntregas.Rows.Count - 1;
-        //            dataGridManutencaoEntregas.FirstDisplayedScrollingRowIndex = ultimaLinha;
-        //        }
-
-        //        // Atualizar o total de registros (exclui a linha de totais)
-        //        int totalRegistros = dataGridManutencaoEntregas.Rows.Count - 1;
-        //        lblTotalRegistros.Text = $"Total de Registros: {totalRegistros}";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogUtil.WriteLog($"Erro ao carregar entregas: {ex.Message}");
-        //        MessageBox.Show("Erro ao carregar entregas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        lblTotalRegistros.Text = "Total de Registros: 0";
-        //    }
-        //}
+       
         public void CarregarEntregasNoGrid(string nomeVendedor = "")
         {
             try

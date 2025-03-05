@@ -65,7 +65,7 @@ namespace ComissPro
         {
             if (dataGridPrestacaoContas.Columns.Count >= 9) // Temos 9 colunas visíveis
             {
-                // Renomeia as colunas na ordem solicitada
+                // Renomeia as colunas na ordem solicitada (já feito no ConfigurarColunasDataGridView, mas mantido por segurança)
                 dataGridPrestacaoContas.Columns[0].Name = "Nome";
                 dataGridPrestacaoContas.Columns[1].Name = "QuantidadeEntregue";
                 dataGridPrestacaoContas.Columns[2].Name = "NomeProduto";
@@ -79,6 +79,7 @@ namespace ComissPro
                 // Ocultar colunas extras
                 dataGridPrestacaoContas.Columns["EntregaID"].Visible = false;
                 dataGridPrestacaoContas.Columns["PrestacaoID"].Visible = false;
+                dataGridPrestacaoContas.Columns["VendedorID"].Visible = false;
 
                 // Define larguras fixas específicas para as colunas
                 dataGridPrestacaoContas.Columns["Nome"].Width = 200;
@@ -125,18 +126,6 @@ namespace ComissPro
                     column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     column.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
                 }
-
-                // Estilizar a linha de totais diretamente
-                if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha (dados + total)
-                {
-                    int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
-                    if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
-                    {
-                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
-                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
-                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
-                    }
-                }
             }
 
             // Configurações adicionais
@@ -160,7 +149,7 @@ namespace ComissPro
                     if (row["Nome"].ToString() == "TOTAIS")
                     {
                         // Linha de totais
-                        dataGridPrestacaoContas.Rows.Add(
+                        int index = dataGridPrestacaoContas.Rows.Add(
                             row["Nome"],
                             row["QuantidadeEntregue"],
                             row["NomeProduto"],
@@ -174,6 +163,12 @@ namespace ComissPro
                             row["PrestacaoID"],
                             row["VendedorID"]
                         );
+
+                        // Estilizar a linha de totais diretamente
+                        var rowTotal = dataGridPrestacaoContas.Rows[index];
+                        rowTotal.DefaultCellStyle.BackColor = Color.DarkGray;
+                        rowTotal.DefaultCellStyle.ForeColor = Color.Black; // ou Color.White, conforme preferir
+                        rowTotal.DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
                     }
                     else
                     {
@@ -210,17 +205,24 @@ namespace ComissPro
         // Evento para estilizar a linha de totais
         private void DataGridPrestacaoContas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha
-            {
-                int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
-                if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
-                {
-                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
-                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
-                    dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
-                }
-            }
+            //if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha
+            //{
+            //    int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
+            //    if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
+            //    {
+            //        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
+            //        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
+            //        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
+            //    }
+            //}
         }
+
+
+
+
+
+
+
         private void CarregaDados()
         {
             FrmManipularPrestacaoDeContas formPrestacaoContas = new FrmManipularPrestacaoDeContas(StatusOperacao);
@@ -486,8 +488,6 @@ namespace ComissPro
             LogUtil.WriteLog("FrmManutencaoPrestacaoDeContasConcluidas_Load iniciado.");
             ConfigurarColunasDataGridView(); // Configura as colunas primeiro
             Listar(); // Carrega os dados depois
-                      // Se houver um lblTotalRegistros, atualize aqui:
-                      // Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPrestacaoContas);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
