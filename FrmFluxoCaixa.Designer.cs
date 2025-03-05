@@ -35,7 +35,7 @@
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvEntradas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dgvFluxoCaixa = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnRegistrarRetirada = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -43,34 +43,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnRegistrarEntrada = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvSaidas = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.label4 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtSaldoAtual = new System.Windows.Forms.Label();
-            this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtTotalEntrada = new System.Windows.Forms.Label();
-            this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.txtTotalRetiradas = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.kryptonDateTimePicker1 = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.txtValorEntrada = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnFecharCaixa = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEntradas)).BeginInit();
+            this.txtTotalEntradas = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtTotalSaidas = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtSaldo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFluxoCaixa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSaidas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
-            this.kryptonPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).BeginInit();
-            this.kryptonPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).BeginInit();
-            this.kryptonPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -93,10 +81,10 @@
             // txtValorRetirada
             // 
             this.txtValorRetirada.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtValorRetirada.Location = new System.Drawing.Point(601, 313);
+            this.txtValorRetirada.Location = new System.Drawing.Point(630, 313);
             this.txtValorRetirada.Name = "txtValorRetirada";
             this.txtValorRetirada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtValorRetirada.Size = new System.Drawing.Size(150, 29);
+            this.txtValorRetirada.Size = new System.Drawing.Size(150, 25);
             this.txtValorRetirada.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtValorRetirada.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtValorRetirada.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -107,8 +95,8 @@
             this.txtValorRetirada.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtValorRetirada.StateCommon.Border.Rounding = 1;
             this.txtValorRetirada.StateCommon.Border.Width = 1;
-            this.txtValorRetirada.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtValorRetirada.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 14.75F);
+            this.txtValorRetirada.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.txtValorRetirada.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.txtValorRetirada.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtValorRetirada.TabIndex = 3;
             // 
@@ -183,8 +171,8 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label9.Location = new System.Drawing.Point(8, 316);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.label9.Location = new System.Drawing.Point(91, 315);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(113, 23);
             this.label9.TabIndex = 649;
@@ -195,21 +183,24 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(478, 316);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.label1.Location = new System.Drawing.Point(507, 316);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 23);
             this.label1.TabIndex = 650;
             this.label1.Text = "Valor Retirada";
             // 
-            // dgvEntradas
+            // dgvFluxoCaixa
             // 
-            this.dgvEntradas.AllowUserToAddRows = false;
-            this.dgvEntradas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEntradas.Location = new System.Drawing.Point(12, 95);
-            this.dgvEntradas.Name = "dgvEntradas";
-            this.dgvEntradas.Size = new System.Drawing.Size(450, 166);
-            this.dgvEntradas.TabIndex = 692;
+            this.dgvFluxoCaixa.AllowUserToAddRows = false;
+            this.dgvFluxoCaixa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFluxoCaixa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFluxoCaixa.Location = new System.Drawing.Point(12, 76);
+            this.dgvFluxoCaixa.Name = "dgvFluxoCaixa";
+            this.dgvFluxoCaixa.Size = new System.Drawing.Size(697, 200);
+            this.dgvFluxoCaixa.TabIndex = 692;
+            this.dgvFluxoCaixa.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvFluxoCaixa_CellFormatting);
             // 
             // kryptonPanel2
             // 
@@ -240,7 +231,7 @@
             // 
             // btnRegistrarRetirada
             // 
-            this.btnRegistrarRetirada.Location = new System.Drawing.Point(775, 305);
+            this.btnRegistrarRetirada.Location = new System.Drawing.Point(782, 305);
             this.btnRegistrarRetirada.Name = "btnRegistrarRetirada";
             this.btnRegistrarRetirada.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRegistrarRetirada.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -258,7 +249,7 @@
             this.btnRegistrarRetirada.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnRegistrarRetirada.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnRegistrarRetirada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnRegistrarRetirada.Size = new System.Drawing.Size(150, 44);
+            this.btnRegistrarRetirada.Size = new System.Drawing.Size(140, 44);
             this.btnRegistrarRetirada.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRegistrarRetirada.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRegistrarRetirada.StateCommon.Back.ColorAngle = 45F;
@@ -305,10 +296,10 @@
             // txtDescricao
             // 
             this.txtDescricao.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtDescricao.Location = new System.Drawing.Point(197, 360);
+            this.txtDescricao.Location = new System.Drawing.Point(207, 360);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtDescricao.Size = new System.Drawing.Size(728, 29);
+            this.txtDescricao.Size = new System.Drawing.Size(718, 25);
             this.txtDescricao.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtDescricao.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtDescricao.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -319,8 +310,8 @@
             this.txtDescricao.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtDescricao.StateCommon.Border.Rounding = 1;
             this.txtDescricao.StateCommon.Border.Width = 1;
-            this.txtDescricao.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtDescricao.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 14.75F);
+            this.txtDescricao.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txtDescricao.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.txtDescricao.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtDescricao.TabIndex = 1;
             // 
@@ -330,15 +321,15 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(20, 363);
+            this.label2.Location = new System.Drawing.Point(7, 361);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 23);
+            this.label2.Size = new System.Drawing.Size(194, 23);
             this.label2.TabIndex = 707;
-            this.label2.Text = "Descrição da retirada";
+            this.label2.Text = "Descrição Entrada\\Saída";
             // 
             // btnRegistrarEntrada
             // 
-            this.btnRegistrarEntrada.Location = new System.Drawing.Point(290, 305);
+            this.btnRegistrarEntrada.Location = new System.Drawing.Point(358, 305);
             this.btnRegistrarEntrada.Name = "btnRegistrarEntrada";
             this.btnRegistrarEntrada.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRegistrarEntrada.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -356,7 +347,7 @@
             this.btnRegistrarEntrada.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnRegistrarEntrada.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnRegistrarEntrada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnRegistrarEntrada.Size = new System.Drawing.Size(150, 44);
+            this.btnRegistrarEntrada.Size = new System.Drawing.Size(140, 44);
             this.btnRegistrarEntrada.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRegistrarEntrada.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRegistrarEntrada.StateCommon.Back.ColorAngle = 45F;
@@ -405,22 +396,13 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 2);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.label3.Location = new System.Drawing.Point(711, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 17);
+            this.label3.Size = new System.Drawing.Size(76, 23);
             this.label3.TabIndex = 710;
             this.label3.Text = "Entradas";
-            // 
-            // dgvSaidas
-            // 
-            this.dgvSaidas.AllowUserToAddRows = false;
-            this.dgvSaidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSaidas.Location = new System.Drawing.Point(475, 98);
-            this.dgvSaidas.Name = "dgvSaidas";
-            this.dgvSaidas.Size = new System.Drawing.Size(450, 166);
-            this.dgvSaidas.TabIndex = 711;
             // 
             // imageList1
             // 
@@ -429,37 +411,13 @@
             this.imageList1.Images.SetKeyName(0, "fluxo-de-caixa32.png");
             this.imageList1.Images.SetKeyName(1, "retirar-32.png");
             // 
-            // kryptonPanel3
-            // 
-            this.kryptonPanel3.Controls.Add(this.label4);
-            this.kryptonPanel3.Location = new System.Drawing.Point(475, 70);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonPanel3.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel3.Size = new System.Drawing.Size(450, 20);
-            this.kryptonPanel3.StateNormal.Color1 = System.Drawing.Color.LightCoral;
-            this.kryptonPanel3.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.kryptonPanel3.TabIndex = 713;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(188, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
-            this.label4.TabIndex = 600;
-            this.label4.Text = "RETIRADAS";
-            // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(183, 1);
+            this.label28.Location = new System.Drawing.Point(287, 1);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(72, 17);
             this.label28.TabIndex = 600;
@@ -467,109 +425,48 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.kryptonPanel1.Controls.Add(this.label28);
-            this.kryptonPanel1.Location = new System.Drawing.Point(12, 70);
+            this.kryptonPanel1.Location = new System.Drawing.Point(12, 51);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel1.Size = new System.Drawing.Size(450, 20);
+            this.kryptonPanel1.Size = new System.Drawing.Size(697, 20);
             this.kryptonPanel1.StateNormal.Color1 = System.Drawing.Color.Teal;
             this.kryptonPanel1.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
             this.kryptonPanel1.TabIndex = 712;
-            // 
-            // txtSaldoAtual
-            // 
-            this.txtSaldoAtual.AutoSize = true;
-            this.txtSaldoAtual.BackColor = System.Drawing.Color.Transparent;
-            this.txtSaldoAtual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldoAtual.ForeColor = System.Drawing.Color.White;
-            this.txtSaldoAtual.Location = new System.Drawing.Point(356, 1);
-            this.txtSaldoAtual.Name = "txtSaldoAtual";
-            this.txtSaldoAtual.Size = new System.Drawing.Size(13, 17);
-            this.txtSaldoAtual.TabIndex = 600;
-            this.txtSaldoAtual.Text = "-";
-            // 
-            // kryptonPanel4
-            // 
-            this.kryptonPanel4.Controls.Add(this.label7);
-            this.kryptonPanel4.Controls.Add(this.txtTotalEntrada);
-            this.kryptonPanel4.Controls.Add(this.txtSaldoAtual);
-            this.kryptonPanel4.Controls.Add(this.label3);
-            this.kryptonPanel4.Location = new System.Drawing.Point(12, 270);
-            this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonPanel4.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel4.Size = new System.Drawing.Size(450, 20);
-            this.kryptonPanel4.StateNormal.Color1 = System.Drawing.Color.Teal;
-            this.kryptonPanel4.StateNormal.Color2 = System.Drawing.Color.MediumTurquoise;
-            this.kryptonPanel4.TabIndex = 714;
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(296, 1);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.label7.Location = new System.Drawing.Point(735, 166);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 17);
+            this.label7.Size = new System.Drawing.Size(52, 23);
             this.label7.TabIndex = 712;
             this.label7.Text = "Saldo";
             // 
-            // txtTotalEntrada
-            // 
-            this.txtTotalEntrada.AutoSize = true;
-            this.txtTotalEntrada.BackColor = System.Drawing.Color.Transparent;
-            this.txtTotalEntrada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalEntrada.ForeColor = System.Drawing.Color.White;
-            this.txtTotalEntrada.Location = new System.Drawing.Point(78, 2);
-            this.txtTotalEntrada.Name = "txtTotalEntrada";
-            this.txtTotalEntrada.Size = new System.Drawing.Size(13, 17);
-            this.txtTotalEntrada.TabIndex = 711;
-            this.txtTotalEntrada.Text = "-";
-            // 
-            // kryptonPanel5
-            // 
-            this.kryptonPanel5.Controls.Add(this.txtTotalRetiradas);
-            this.kryptonPanel5.Controls.Add(this.label6);
-            this.kryptonPanel5.Location = new System.Drawing.Point(475, 270);
-            this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonPanel5.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel5.Size = new System.Drawing.Size(450, 20);
-            this.kryptonPanel5.StateNormal.Color1 = System.Drawing.Color.LightCoral;
-            this.kryptonPanel5.StateNormal.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.kryptonPanel5.TabIndex = 715;
-            // 
-            // txtTotalRetiradas
-            // 
-            this.txtTotalRetiradas.AutoSize = true;
-            this.txtTotalRetiradas.BackColor = System.Drawing.Color.Transparent;
-            this.txtTotalRetiradas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalRetiradas.ForeColor = System.Drawing.Color.White;
-            this.txtTotalRetiradas.Location = new System.Drawing.Point(307, 2);
-            this.txtTotalRetiradas.Name = "txtTotalRetiradas";
-            this.txtTotalRetiradas.Size = new System.Drawing.Size(95, 17);
-            this.txtTotalRetiradas.TabIndex = 601;
-            this.txtTotalRetiradas.Text = "Total Retiradas";
-            // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(3, 2);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.label6.Location = new System.Drawing.Point(729, 133);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 17);
+            this.label6.Size = new System.Drawing.Size(58, 23);
             this.label6.TabIndex = 600;
-            this.label6.Text = "Total Retiradas";
+            this.label6.Text = "Saídas";
             // 
             // kryptonDateTimePicker1
             // 
             this.kryptonDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(12, 34);
+            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(12, 26);
             this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
             this.kryptonDateTimePicker1.Size = new System.Drawing.Size(136, 21);
             this.kryptonDateTimePicker1.TabIndex = 716;
@@ -577,10 +474,10 @@
             // txtValorEntrada
             // 
             this.txtValorEntrada.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtValorEntrada.Location = new System.Drawing.Point(126, 313);
+            this.txtValorEntrada.Location = new System.Drawing.Point(208, 313);
             this.txtValorEntrada.Name = "txtValorEntrada";
             this.txtValorEntrada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtValorEntrada.Size = new System.Drawing.Size(150, 29);
+            this.txtValorEntrada.Size = new System.Drawing.Size(150, 25);
             this.txtValorEntrada.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtValorEntrada.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtValorEntrada.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -591,8 +488,8 @@
             this.txtValorEntrada.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.txtValorEntrada.StateCommon.Border.Rounding = 1;
             this.txtValorEntrada.StateCommon.Border.Width = 1;
-            this.txtValorEntrada.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txtValorEntrada.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 14.75F);
+            this.txtValorEntrada.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.txtValorEntrada.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.txtValorEntrada.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtValorEntrada.TabIndex = 0;
             // 
@@ -661,23 +558,100 @@
             this.btnFecharCaixa.Values.Text = "&Fechar Caixa";
             this.btnFecharCaixa.Click += new System.EventHandler(this.btnFecharCaixa_Click);
             // 
+            // txtTotalEntradas
+            // 
+            this.txtTotalEntradas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalEntradas.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
+            this.txtTotalEntradas.Location = new System.Drawing.Point(788, 96);
+            this.txtTotalEntradas.Name = "txtTotalEntradas";
+            this.txtTotalEntradas.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.txtTotalEntradas.ReadOnly = true;
+            this.txtTotalEntradas.Size = new System.Drawing.Size(155, 25);
+            this.txtTotalEntradas.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.txtTotalEntradas.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtTotalEntradas.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtTotalEntradas.StateCommon.Border.ColorAngle = 1F;
+            this.txtTotalEntradas.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtTotalEntradas.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtTotalEntradas.StateCommon.Border.Rounding = 1;
+            this.txtTotalEntradas.StateCommon.Border.Width = 1;
+            this.txtTotalEntradas.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.txtTotalEntradas.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.txtTotalEntradas.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtTotalEntradas.TabIndex = 718;
+            this.txtTotalEntradas.TabStop = false;
+            // 
+            // txtTotalSaidas
+            // 
+            this.txtTotalSaidas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalSaidas.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
+            this.txtTotalSaidas.Location = new System.Drawing.Point(788, 131);
+            this.txtTotalSaidas.Name = "txtTotalSaidas";
+            this.txtTotalSaidas.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.txtTotalSaidas.ReadOnly = true;
+            this.txtTotalSaidas.Size = new System.Drawing.Size(155, 25);
+            this.txtTotalSaidas.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.txtTotalSaidas.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtTotalSaidas.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtTotalSaidas.StateCommon.Border.ColorAngle = 1F;
+            this.txtTotalSaidas.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtTotalSaidas.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtTotalSaidas.StateCommon.Border.Rounding = 1;
+            this.txtTotalSaidas.StateCommon.Border.Width = 1;
+            this.txtTotalSaidas.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.txtTotalSaidas.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.txtTotalSaidas.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtTotalSaidas.TabIndex = 719;
+            this.txtTotalSaidas.TabStop = false;
+            // 
+            // txtSaldo
+            // 
+            this.txtSaldo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSaldo.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
+            this.txtSaldo.Location = new System.Drawing.Point(788, 166);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.txtSaldo.ReadOnly = true;
+            this.txtSaldo.Size = new System.Drawing.Size(155, 25);
+            this.txtSaldo.StateCommon.Back.Color1 = System.Drawing.Color.White;
+            this.txtSaldo.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtSaldo.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.txtSaldo.StateCommon.Border.ColorAngle = 1F;
+            this.txtSaldo.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.txtSaldo.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.txtSaldo.StateCommon.Border.Rounding = 1;
+            this.txtSaldo.StateCommon.Border.Width = 1;
+            this.txtSaldo.StateCommon.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.txtSaldo.StateCommon.Content.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.txtSaldo.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.txtSaldo.TabIndex = 720;
+            this.txtSaldo.TabStop = false;
+            // 
             // FrmFluxoCaixa
             // 
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(948, 473);
+            this.Controls.Add(this.txtSaldo);
+            this.Controls.Add(this.txtTotalSaidas);
+            this.Controls.Add(this.txtTotalEntradas);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnFecharCaixa);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.kryptonDateTimePicker1);
-            this.Controls.Add(this.kryptonPanel5);
-            this.Controls.Add(this.kryptonPanel4);
-            this.Controls.Add(this.kryptonPanel3);
             this.Controls.Add(this.kryptonPanel1);
-            this.Controls.Add(this.dgvSaidas);
             this.Controls.Add(this.btnRegistrarEntrada);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.btnRegistrarRetirada);
             this.Controls.Add(this.kryptonPanel2);
-            this.Controls.Add(this.dgvEntradas);
+            this.Controls.Add(this.dgvFluxoCaixa);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnSair);
@@ -693,23 +667,14 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEntradas)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmFluxoCaixa_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFluxoCaixa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSaidas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
-            this.kryptonPanel3.ResumeLayout(false);
-            this.kryptonPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel4)).EndInit();
-            this.kryptonPanel4.ResumeLayout(false);
-            this.kryptonPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel5)).EndInit();
-            this.kryptonPanel5.ResumeLayout(false);
-            this.kryptonPanel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -722,7 +687,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvEntradas;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvFluxoCaixa;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         public System.Windows.Forms.Label label5;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRegistrarRetirada;
@@ -730,21 +695,16 @@
         private System.Windows.Forms.Label label2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRegistrarEntrada;
         private System.Windows.Forms.Label label3;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvSaidas;
         private System.Windows.Forms.ImageList imageList1;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label28;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
-        private System.Windows.Forms.Label txtSaldoAtual;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel4;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label txtTotalRetiradas;
         private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label txtTotalEntrada;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtValorEntrada;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnFecharCaixa;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtTotalEntradas;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtTotalSaidas;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSaldo;
     }
 }

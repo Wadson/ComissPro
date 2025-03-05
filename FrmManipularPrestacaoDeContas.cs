@@ -764,9 +764,9 @@ namespace ComissPro
                     }
 
                     DataGridViewRow selectedRow = dgvPrestacaoDeContas.SelectedRows[0];
-                    int prestacaoID = Convert.ToInt32(selectedRow.Cells["PrestacaoID"].Value); // Nome da coluna
-                    int entregaID = Convert.ToInt32(selectedRow.Cells["EntregaID"].Value);     // Nome da coluna
-                    string nomeVendedor = selectedRow.Cells["Nome"].Value.ToString();          // Nome da coluna
+                    int prestacaoID = Convert.ToInt32(selectedRow.Cells["PrestacaoID"].Value);
+                    int entregaID = Convert.ToInt32(selectedRow.Cells["EntregaID"].Value);
+                    string nomeVendedor = selectedRow.Cells["Nome"].Value.ToString();
 
                     LogUtil.WriteLog($"Solicitando confirmação para estornar EntregaID: {entregaID}, Vendedor: {nomeVendedor}");
                     DialogResult result = MessageBox.Show(

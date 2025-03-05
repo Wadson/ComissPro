@@ -110,20 +110,7 @@ namespace ComissPro
             }
         }
 
-        //implmentado em 04/03/2025 para estorno de comissão
-        //public void ExcluirMovimentacoesPorPrestacao(int prestacaoID)
-        //{
-        //    using (var conn = Conexao.Conex())
-        //    {
-        //        conn.Open();
-        //        string query = "DELETE FROM FluxoCaixa WHERE PrestacaoID = @PrestacaoID";
-        //        using (var cmd = new SQLiteCommand(query, conn))
-        //        {
-        //            cmd.Parameters.AddWithValue("@PrestacaoID", prestacaoID);
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+       
         public void ExcluirMovimentacoesPorPrestacoes(int prestacaoID) // ùltima alteração em 04/03/2025 nova versão
         {
             LogUtil.WriteLog($"Iniciando ExcluirMovimentacoesPorPrestacao para PrestacaoID: {prestacaoID}");
@@ -199,16 +186,19 @@ namespace ComissPro
             {
                 conn.Open();
                 string query = @"
-                    SELECT * FROM FluxoCaixa 
-                    WHERE DATE(DataMovimentacao) = DATE('now') 
-                    ORDER BY DataMovimentacao DESC";
+            SELECT * FROM FluxoCaixa 
+            WHERE DATE(DataMovimentacao) = @DataAtual 
+            ORDER BY DataMovimentacao DESC";
+                LogUtil.WriteLog("Executando ObterMovimentacoesDoDia...");
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
+                    // Usar a data atual do sistema sem horário
+                    cmd.Parameters.AddWithValue("@DataAtual", DateTime.Today.ToString("yyyy-MM-dd"));
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            movimentacoes.Add(new FluxoCaixaModel
+                            var mov = new FluxoCaixaModel
                             {
                                 FluxoCaixaID = Convert.ToInt32(reader["FluxoCaixaID"]),
                                 TipoMovimentacao = reader["TipoMovimentacao"].ToString(),
@@ -216,10 +206,13 @@ namespace ComissPro
                                 DataMovimentacao = Convert.ToDateTime(reader["DataMovimentacao"]),
                                 Descricao = reader["Descricao"] == DBNull.Value ? null : reader["Descricao"].ToString(),
                                 PrestacaoID = reader["PrestacaoID"] == DBNull.Value ? null : (int?)Convert.ToInt32(reader["PrestacaoID"])
-                            });
+                            };
+                            movimentacoes.Add(mov);
+                            LogUtil.WriteLog($"Movimentação encontrada: ID={mov.FluxoCaixaID}, Tipo={mov.TipoMovimentacao}, Data={mov.DataMovimentacao}");
                         }
                     }
                 }
+                LogUtil.WriteLog($"Total de movimentações encontradas: {movimentacoes.Count}");
             }
             return movimentacoes;
         }
@@ -230,13 +223,16 @@ namespace ComissPro
             {
                 conn.Open();
                 string query = @"
-                    SELECT 
-                        (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'ENTRADA' AND DATE(DataMovimentacao) = DATE('now')) -
-                        (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'SAIDA' AND DATE(DataMovimentacao) = DATE('now')) AS Saldo";
+            SELECT 
+                (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'ENTRADA' AND DATE(DataMovimentacao) = @DataAtual) -
+                (SELECT COALESCE(SUM(Valor), 0) FROM FluxoCaixa WHERE TipoMovimentacao = 'SAÍDA' AND DATE(DataMovimentacao) = @DataAtual) AS Saldo";
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@DataAtual", DateTime.Today.ToString("yyyy-MM-dd"));
                     var result = cmd.ExecuteScalar();
-                    return result == DBNull.Value ? 0 : Convert.ToDouble(result);
+                    double saldo = result == DBNull.Value ? 0 : Convert.ToDouble(result);
+                    LogUtil.WriteLog($"Saldo calculado do dia: {saldo}");
+                    return saldo;
                 }
             }
         }

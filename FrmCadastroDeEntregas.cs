@@ -166,7 +166,7 @@ namespace ComissPro
                 if (frmManutencao != null)
                 {
                     frmManutencao.Listar("", true); // Força a atualização completa sem filtro
-                                                    // Removido o HabilitarTimer, já que Listar já atualiza diretamente
+                                                    
                 }
 
                 Utilitario.LimpaCampo(this);
@@ -194,11 +194,11 @@ namespace ComissPro
 
                 MessageBox.Show("Registro Alterado com sucesso!", "Alteração!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 // Tenta acessar o formulário e atualizar diretamente
-                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
+                var frmManutencao = Application.OpenForms["FrmManutencaodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
-                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
-                    frmManutencao.HabilitarTimer(habilitar);
+                    frmManutencao.Listar("", true); // Força a atualização completa sem filtro
+
                 }
                 Utilitario.LimpaCampo(this);
                 this.Close();
@@ -226,11 +226,11 @@ namespace ComissPro
 
                 // Atualiza o DataGridView no FrmManutençãodeEntregaBilhetes
                 // Tenta acessar o formulário e atualizar diretamente
-                var frmManutencao = Application.OpenForms["FrmManutençãodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
+                var frmManutencao = Application.OpenForms["FrmManutencaodeEntregaBilhetes"] as FrmManutencaodeEntregaBilhetes;
                 if (frmManutencao != null)
                 {
-                    frmManutencao.Listar(); // Chama Listar diretamente, sem depender do Timer
-                    frmManutencao.HabilitarTimer(habilitar);
+                    frmManutencao.Listar("", true); // Força a atualização completa sem filtro
+
                 }
             }
             catch (Exception erro)

@@ -316,7 +316,6 @@ namespace ComissPro
 
             var prestacaoDAL = new PrestacaoDeContasDAL();
             var fluxoCaixaDAL = new FluxoCaixaDAL();
-            int prestacaoID = PrestacaoID;
 
             foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
             {
@@ -324,44 +323,46 @@ namespace ComissPro
 
                 var prestacao = new PrestacaoContasModel
                 {
-                    PrestacaoID = prestacaoID,
                     EntregaID = int.Parse(row.Cells["EntregaID"].Value?.ToString() ?? "0"),
                     QuantidadeVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0"),
                     QuantidadeDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0"),
-                    ValorRecebido = double.Parse(row.Cells["ValorRecebido"].Value?.ToString() ?? "0", NumberStyles.Currency),
-                    Comissao = double.Parse(row.Cells["Comissao"].Value?.ToString() ?? "0", NumberStyles.Currency),
+                    ValorRecebido = double.Parse(row.Cells["ValorRecebido"].Value?.ToString().Replace("R$", "").Trim() ?? "0", NumberStyles.Currency),
+                    Comissao = double.Parse(row.Cells["Comissao"].Value?.ToString().Replace("R$", "").Trim() ?? "0", NumberStyles.Currency),
                     DataPrestacao = DateTime.Parse(row.Cells["DataPrestacao"].Value?.ToString() ?? DateTime.Now.ToString("dd/MM/yyyy")),
                     Nome = row.Cells["Nome"].Value?.ToString(),
                     VendedorID = entregasSelecionadas.Find(entrega => entrega.EntregaID == int.Parse(row.Cells["EntregaID"].Value.ToString())).VendedorID
                 };
+
+                // Salvar a prestação e obter o PrestacaoID gerado
                 prestacaoDAL.SalvarPrestacaoDeContas(prestacao);
 
+                // Usar o PrestacaoID gerado para registrar movimentações no fluxo de caixa
                 fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
                 {
                     TipoMovimentacao = "ENTRADA",
                     Valor = prestacao.ValorRecebido,
                     DataMovimentacao = prestacao.DataPrestacao,
                     Descricao = $"Prestação de contas - {prestacao.Nome}",
-                    PrestacaoID = prestacaoID
+                    PrestacaoID = prestacao.PrestacaoID // Usar o ID atualizado
                 });
 
                 fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
                 {
-                    TipoMovimentacao = "SAIDA",
+                    TipoMovimentacao = "SAÍDA",
                     Valor = prestacao.Comissao,
                     DataMovimentacao = prestacao.DataPrestacao,
                     Descricao = $"Comissão paga - {prestacao.Nome}",
-                    PrestacaoID = prestacaoID
+                    PrestacaoID = prestacao.PrestacaoID // Usar o ID atualizado
                 });
             }
 
             MessageBox.Show("Prestações de contas salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ((FrmManutencaodeEntregaBilhetes)Application.OpenForms["FrmManutençãodeEntregaBilhetes"])?.HabilitarTimer(true);
+            ((FrmManutencaodeEntregaBilhetes)Application.OpenForms["FrmManutencaodeEntregaBilhetes"])?.HabilitarTimer(true);
 
             // Limpar o DataGridView
             dgvPrestacaoDeContas.Rows.Clear();
-            linhaTotaisAdicionada = false; // Resetar a flag da linha de totais
-            entregasSelecionadas = null; // Resetar a lista de entregas selecionadas
+            linhaTotaisAdicionada = false;
+            entregasSelecionadas = null;
 
             // Zerar os TextBox explicitamente
             txtTotalEntregue.Text = "0";
@@ -369,9 +370,8 @@ namespace ComissPro
             txtTotalDevolvida.Text = "0";
             txtTotalRecebido.Text = 0.ToString("C");
             txtTotalComissao.Text = 0.ToString("C");
-            txtLocalizarVendedor.Text = ""; // Limpar o campo de pesquisa também
+            txtLocalizarVendedor.Text = "";
 
-            // Opcional: limpar outros controles do formulário, se necessário
             Utilitario.LimpaCampoKrypton(this);
             txtLocalizarVendedor.Focus();
         }

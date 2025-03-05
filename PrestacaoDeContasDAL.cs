@@ -528,37 +528,82 @@ namespace ComissPro
                 conn.Close();
             }
         }
+
         public void SalvarPrestacaoDeContas(PrestacaoContasModel prestacao)
         {
-            using (var conn = Conexao.Conex()) // Assumindo que Conexao.Conex() retorna uma SQLiteConnection
+            LogUtil.WriteLog($"Iniciando SalvarPrestacaoDeContas para EntregaID: {prestacao.EntregaID}");
+            string query = @"
+            INSERT INTO PrestacaoContas (EntregaID, QuantidadeVendida, QuantidadeDevolvida, ValorRecebido, Comissao, DataPrestacao)
+            VALUES (@EntregaID, @QuantidadeVendida, @QuantidadeDevolvida, @ValorRecebido, @Comissao, @DataPrestacao);
+            SELECT last_insert_rowid();"; // Retorna o ID gerado
+
+            try
             {
-                conn.Open();
-
-                // Inserir a prestação de contas
-                string insertQuery = @"INSERT INTO PrestacaoContas (EntregaID, QuantidadeVendida, QuantidadeDevolvida, ValorRecebido, Comissao, DataPrestacao) 
-                                   VALUES (@EntregaID, @QuantidadeVendida, @QuantidadeDevolvida, @ValorRecebido, @Comissao, @DataPrestacao)";
-                using (var cmd = new SQLiteCommand(insertQuery, conn))
+                using (var conn = Conexao.Conex())
                 {
-                    cmd.Parameters.AddWithValue("@EntregaID", prestacao.EntregaID);
-                    cmd.Parameters.AddWithValue("@QuantidadeVendida", prestacao.QuantidadeVendida);
-                    cmd.Parameters.AddWithValue("@QuantidadeDevolvida", prestacao.QuantidadeDevolvida);
-                    cmd.Parameters.AddWithValue("@ValorRecebido", prestacao.ValorRecebido);
-                    cmd.Parameters.AddWithValue("@Comissao", prestacao.Comissao);
-                    cmd.Parameters.AddWithValue("@DataPrestacao", prestacao.DataPrestacao);
-                    cmd.ExecuteNonQuery();
-                }
+                    conn.Open();
+                    LogUtil.WriteLog("Conexão aberta para SalvarPrestacaoDeContas.");
+                    using (var cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@EntregaID", prestacao.EntregaID);
+                        cmd.Parameters.AddWithValue("@QuantidadeVendida", prestacao.QuantidadeVendida);
+                        cmd.Parameters.AddWithValue("@QuantidadeDevolvida", prestacao.QuantidadeDevolvida);
+                        cmd.Parameters.AddWithValue("@ValorRecebido", prestacao.ValorRecebido);
+                        cmd.Parameters.AddWithValue("@Comissao", prestacao.Comissao);
+                        cmd.Parameters.AddWithValue("@DataPrestacao", prestacao.DataPrestacao.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                // Atualizar o campo PrestacaoRealizada na tabela Entregas
-                string updateQuery = @"UPDATE Entregas 
-                                  SET PrestacaoRealizada = 1 
-                                  WHERE EntregaID = @EntregaID";
-                using (var cmd = new SQLiteCommand(updateQuery, conn))
-                {
-                    cmd.Parameters.AddWithValue("@EntregaID", prestacao.EntregaID);
-                    cmd.ExecuteNonQuery();
+                        // Executa e obtém o PrestacaoID gerado
+                        prestacao.PrestacaoID = Convert.ToInt32(cmd.ExecuteScalar());
+                        LogUtil.WriteLog($"Prestação salva com PrestacaoID: {prestacao.PrestacaoID}");
+                    }
+
+                    // Marcar a entrega como realizada
+                    string updateEntregaQuery = "UPDATE Entregas SET PrestacaoRealizada = 1 WHERE EntregaID = @EntregaID";
+                    using (var cmd = new SQLiteCommand(updateEntregaQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@EntregaID", prestacao.EntregaID);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                LogUtil.WriteLog($"Erro em SalvarPrestacaoDeContas: {ex.Message}");
+                throw;
+            }
         }
+
+        //public void SalvarPrestacaoDeContas(PrestacaoContasModel prestacao)
+        //{
+        //    using (var conn = Conexao.Conex()) // Assumindo que Conexao.Conex() retorna uma SQLiteConnection
+        //    {
+        //        conn.Open();
+
+        //        // Inserir a prestação de contas
+        //        string insertQuery = @"INSERT INTO PrestacaoContas (EntregaID, QuantidadeVendida, QuantidadeDevolvida, ValorRecebido, Comissao, DataPrestacao) 
+        //                           VALUES (@EntregaID, @QuantidadeVendida, @QuantidadeDevolvida, @ValorRecebido, @Comissao, @DataPrestacao)";
+        //        using (var cmd = new SQLiteCommand(insertQuery, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@EntregaID", prestacao.EntregaID);
+        //            cmd.Parameters.AddWithValue("@QuantidadeVendida", prestacao.QuantidadeVendida);
+        //            cmd.Parameters.AddWithValue("@QuantidadeDevolvida", prestacao.QuantidadeDevolvida);
+        //            cmd.Parameters.AddWithValue("@ValorRecebido", prestacao.ValorRecebido);
+        //            cmd.Parameters.AddWithValue("@Comissao", prestacao.Comissao);
+        //            cmd.Parameters.AddWithValue("@DataPrestacao", prestacao.DataPrestacao);
+        //            cmd.ExecuteNonQuery();
+        //        }
+
+        //        // Atualizar o campo PrestacaoRealizada na tabela Entregas
+        //        string updateQuery = @"UPDATE Entregas 
+        //                          SET PrestacaoRealizada = 1 
+        //                          WHERE EntregaID = @EntregaID";
+        //        using (var cmd = new SQLiteCommand(updateQuery, conn))
+        //        {
+        //            cmd.Parameters.AddWithValue("@EntregaID", prestacao.EntregaID);
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
         public void AlterarPrestacao(PrestacaoContasModel prestacao)
         {
             using (var conn = Conexao.Conex())
