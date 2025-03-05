@@ -118,7 +118,7 @@ namespace ComissPro
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(ProdutoID, 4);
 
                 // Obtém a instância do formulário FrmPedido (ou usa uma existente)
-                if (this.Owner is FrmControleEntregas frmControleDeEntregas)
+                if (this.Owner is FrmCadastroDeEntregas frmControleDeEntregas)
                 {
                     // Preenche os campos no formulário FrmPedido com os dados do produto
                     frmControleDeEntregas.ProdutoID = ProdutoID;

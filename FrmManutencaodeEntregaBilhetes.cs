@@ -120,6 +120,59 @@ namespace ComissPro
             rowTotal.DefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
             rowTotal.ReadOnly = true;
         }
+        //public void CarregarEntregasNoGrid(string nomeVendedor = "")
+        //{
+        //    try
+        //    {
+        //        EntregasDal objetoDAL = new EntregasDal();
+        //        DataTable dt;
+
+        //        // Se houver texto de pesquisa, usa o método de pesquisa; caso contrário, lista todas as entregas
+        //        if (!string.IsNullOrWhiteSpace(nomeVendedor))
+        //        {
+        //            dt = objetoDAL.PesquisaVendasAbertasPorVendedor(nomeVendedor);
+        //        }
+        //        else
+        //        {
+        //            dt = objetoDAL.listaEntregas();
+        //        }
+
+        //        dataGridManutencaoEntregas.DataSource = dt;
+
+        //        // Ajustar cabeçalhos
+        //        dataGridManutencaoEntregas.Columns["EntregaID"].HeaderText = "ID Entrega";
+        //        dataGridManutencaoEntregas.Columns["Nome"].HeaderText = "Vendedor";
+        //        dataGridManutencaoEntregas.Columns["NomeProduto"].HeaderText = "Produto";
+        //        dataGridManutencaoEntregas.Columns["QuantidadeEntregue"].HeaderText = "Quantidade (Un)";
+        //        dataGridManutencaoEntregas.Columns["Preco"].HeaderText = "Preço Unitário";
+        //        dataGridManutencaoEntregas.Columns["Total"].HeaderText = "Total";
+        //        dataGridManutencaoEntregas.Columns["DataEntrega"].HeaderText = "Data";
+
+        //        // Ocultar colunas desnecessárias
+        //        dataGridManutencaoEntregas.Columns["VendedorID"].Visible = false;
+        //        dataGridManutencaoEntregas.Columns["ProdutoID"].Visible = false;
+        //        dataGridManutencaoEntregas.Columns["PrestacaoRealizada"].Visible = false;
+
+        //        PersonalizarDataGridView(dataGridManutencaoEntregas);
+
+        //        // Rolar até a última linha para mostrar os totais
+        //        if (dataGridManutencaoEntregas.Rows.Count > 0)
+        //        {
+        //            int ultimaLinha = dataGridManutencaoEntregas.Rows.Count - 1;
+        //            dataGridManutencaoEntregas.FirstDisplayedScrollingRowIndex = ultimaLinha;
+        //        }
+
+        //        // Atualizar o total de registros (exclui a linha de totais)
+        //        int totalRegistros = dataGridManutencaoEntregas.Rows.Count - 1;
+        //        lblTotalRegistros.Text = $"Total de Registros: {totalRegistros}";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogUtil.WriteLog($"Erro ao carregar entregas: {ex.Message}");
+        //        MessageBox.Show("Erro ao carregar entregas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        lblTotalRegistros.Text = "Total de Registros: 0";
+        //    }
+        //}
         public void CarregarEntregasNoGrid(string nomeVendedor = "")
         {
             try
@@ -173,7 +226,6 @@ namespace ComissPro
                 lblTotalRegistros.Text = "Total de Registros: 0";
             }
         }
-
 
 
 
@@ -255,15 +307,22 @@ namespace ComissPro
         {
             string textoPesquisa = txtPesquisa.Text.Trim();
             LogUtil.WriteLog($"txtPesquisa_TextChanged disparado com texto: {textoPesquisa}");
-            Listar(textoPesquisa);
+            Listar(textoPesquisa); // Aqui não passamos forcarTodos explicitamente
         }
-        public void Listar(string nomeVendedor = "")
+        public void Listar(string nomeVendedor = "", bool forcarTodos = false)
         {
-            CarregarEntregasNoGrid(nomeVendedor);
+            if (forcarTodos)
+            {
+                CarregarEntregasNoGrid(""); // Força a exibição de todos os registros, ignorando o filtro
+            }
+            else
+            {
+                CarregarEntregasNoGrid(nomeVendedor); // Usa o filtro do txtPesquisa
+            }
         }
         private void CarregaDados()
         {
-            FrmControleEntregas formEntregas = new FrmControleEntregas(StatusOperacao);
+            FrmCadastroDeEntregas formEntregas = new FrmCadastroDeEntregas(StatusOperacao);
 
             if (StatusOperacao == "ALTERAR" || StatusOperacao == "EXCLUSÃO")
             {
@@ -378,11 +437,13 @@ namespace ComissPro
             Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
         }
 
-       
+
         public void HabilitarTimer(bool habilitar)
         {
-            timer1.Enabled = habilitar;
-            Listar();
+            if (habilitar)
+            {
+                Listar("", true); // Força a atualização completa
+            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -407,9 +468,7 @@ namespace ComissPro
         }
 
         private void btnRelatorios_Click(object sender, EventArgs e)
-        {
-            FrmRelatoriosComissoes formRelatorios = new FrmRelatoriosComissoes();
-            formRelatorios.ShowDialog();
+        {           
         }
 
         private void btnAltera_Click(object sender, EventArgs e)
@@ -438,6 +497,13 @@ namespace ComissPro
                 dataGridManutencaoEntregas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.LightGray;
                 dataGridManutencaoEntregas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridManutencaoEntregas.Font, FontStyle.Bold);
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LogUtil.WriteLog("FrmManutencaodeEntregaBilhetes_Load iniciado.");
+            Listar(); // Carrega todas as entregas sem filtro
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridManutencaoEntregas);
         }
     }
 }

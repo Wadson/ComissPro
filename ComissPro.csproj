@@ -235,11 +235,11 @@
     <Compile Include="FrmCadVendedor.Designer.cs">
       <DependentUpon>FrmCadVendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmControleEntregas.cs">
+    <Compile Include="FrmCadastroDeEntregas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmControleEntregas.Designer.cs">
-      <DependentUpon>FrmControleEntregas.cs</DependentUpon>
+    <Compile Include="FrmCadastroDeEntregas.Designer.cs">
+      <DependentUpon>FrmCadastroDeEntregas.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmBackup.cs">
       <SubType>Form</SubType>
@@ -354,8 +354,8 @@
     <EmbeddedResource Include="FrmCadVendedor.resx">
       <DependentUpon>FrmCadVendedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmControleEntregas.resx">
-      <DependentUpon>FrmControleEntregas.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCadastroDeEntregas.resx">
+      <DependentUpon>FrmCadastroDeEntregas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBackup.resx">
       <DependentUpon>FrmBackup.cs</DependentUpon>
@@ -555,6 +555,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\atualizar32.png" />
     <None Include="Resources\excluir32_Branco.png" />
     <None Include="Resources\restituicao32.png" />
   </ItemGroup>

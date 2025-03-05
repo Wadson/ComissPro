@@ -148,8 +148,14 @@ namespace ComissPro
 
             var colQtdDevolvida = new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = "Bilhetes\nDevolvidos", ReadOnly = false, Width = 75 };
             colQtdDevolvida.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colQtdDevolvida.DefaultCellStyle.BackColor = Color.LightBlue;
+            colQtdDevolvida.DefaultCellStyle.BackColor = Color.Orange;
             colQtdDevolvida.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+           
+            //Implementado depois por Wadson           
+            //colQtdDevolvida.HeaderCell.Style.BackColor = Color.DarkBlue; // Cor de fundo
+            //colQtdDevolvida.HeaderCell.Style.ForeColor = Color.White; // Cor do texto
+            //colQtdDevolvida.HeaderCell.Style.Font = new Font("Arial", 10, FontStyle.Bold); // Fonte personalizada
+            //Fim da implementação de Wadson
             dgvPrestacaoDeContas.Columns.Add(colQtdDevolvida);
 
             var colQtdVendida = new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = "Bilhetes\nVendidos", ReadOnly = true, Width = 75 };

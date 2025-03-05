@@ -133,7 +133,7 @@ namespace ComissPro
                     if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
                     {
                         dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
-                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.White;
+                        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
                         dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
                     }
                 }
@@ -327,17 +327,66 @@ namespace ComissPro
         {
             try
             {
-                DataTable dt = (DataTable)dataGridPrestacaoContas.DataSource;
-                if (dt == null || dt.Rows.Count == 0)
+                // Verificar se o grid tem linhas
+                if (dataGridPrestacaoContas.Rows.Count == 0)
                 {
                     MessageBox.Show("Não há dados para exportar!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Criar um DataTable manualmente a partir das linhas do DataGridView
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Nome", typeof(string));
+                dt.Columns.Add("QuantidadeEntregue", typeof(long));
+                dt.Columns.Add("NomeProduto", typeof(string));
+                dt.Columns.Add("Preco", typeof(double));
+                dt.Columns.Add("QuantidadeVendida", typeof(long));
+                dt.Columns.Add("QuantidadeDevolvida", typeof(long));
+                dt.Columns.Add("ValorRecebido", typeof(double));
+                dt.Columns.Add("Comissao", typeof(double));
+                dt.Columns.Add("DataPrestacao", typeof(string));
+                dt.Columns.Add("EntregaID", typeof(int));
+                dt.Columns.Add("PrestacaoID", typeof(int));
+                dt.Columns.Add("VendedorID", typeof(int));
+
+                // Preencher o DataTable com os dados do DataGridView
+                foreach (DataGridViewRow row in dataGridPrestacaoContas.Rows)
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["Nome"] = row.Cells["Nome"].Value?.ToString() ?? "";
+                    dr["QuantidadeEntregue"] = row.Cells["QuantidadeEntregue"].Value != null && row.Cells["QuantidadeEntregue"].Value != DBNull.Value ? Convert.ToInt64(row.Cells["QuantidadeEntregue"].Value) : 0;
+                    dr["NomeProduto"] = row.Cells["NomeProduto"].Value?.ToString() ?? "";
+                    dr["Preco"] = row.Cells["Preco"].Value != null && row.Cells["Preco"].Value != DBNull.Value ? Convert.ToDouble(row.Cells["Preco"].Value.ToString().Replace("R$", "").Trim()) : 0.0;
+                    dr["QuantidadeVendida"] = row.Cells["QuantidadeVendida"].Value != null && row.Cells["QuantidadeVendida"].Value != DBNull.Value ? Convert.ToInt64(row.Cells["QuantidadeVendida"].Value) : 0;
+                    dr["QuantidadeDevolvida"] = row.Cells["QuantidadeDevolvida"].Value != null && row.Cells["QuantidadeDevolvida"].Value != DBNull.Value ? Convert.ToInt64(row.Cells["QuantidadeDevolvida"].Value) : 0;
+                    dr["ValorRecebido"] = row.Cells["ValorRecebido"].Value != null && row.Cells["ValorRecebido"].Value != DBNull.Value ? Convert.ToDouble(row.Cells["ValorRecebido"].Value.ToString().Replace("R$", "").Trim()) : 0.0;
+                    dr["Comissao"] = row.Cells["Comissao"].Value != null && row.Cells["Comissao"].Value != DBNull.Value ? Convert.ToDouble(row.Cells["Comissao"].Value.ToString().Replace("R$", "").Trim()) : 0.0;
+                    dr["DataPrestacao"] = row.Cells["DataPrestacao"].Value?.ToString() ?? "";
+
+                    // Tratar EntregaID, PrestacaoID e VendedorID explicitamente
+                    if (row.Cells["EntregaID"].Value != null && row.Cells["EntregaID"].Value != DBNull.Value)
+                        dr["EntregaID"] = Convert.ToInt32(row.Cells["EntregaID"].Value);
+                    else
+                        dr["EntregaID"] = DBNull.Value;
+
+                    if (row.Cells["PrestacaoID"].Value != null && row.Cells["PrestacaoID"].Value != DBNull.Value)
+                        dr["PrestacaoID"] = Convert.ToInt32(row.Cells["PrestacaoID"].Value);
+                    else
+                        dr["PrestacaoID"] = DBNull.Value;
+
+                    if (row.Cells["VendedorID"].Value != null && row.Cells["VendedorID"].Value != DBNull.Value)
+                        dr["VendedorID"] = Convert.ToInt32(row.Cells["VendedorID"].Value);
+                    else
+                        dr["VendedorID"] = DBNull.Value;
+
+                    dt.Rows.Add(dr);
+                }
+
+                // Exportar o DataTable para Excel
                 using (SaveFileDialog sfd = new SaveFileDialog())
                 {
                     sfd.Filter = "Excel Files (*.xlsx)|*.xlsx";
-                    sfd.FileName = "Relacao_De_Entregas_Com_Prestacao_De_Contas_Concluidas" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx";
+                    sfd.FileName = "Relacao_De_Entregas_Com_Prestacao_De_Contas_Concluidas_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx";
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
                         using (XLWorkbook workbook = new XLWorkbook())
@@ -360,6 +409,7 @@ namespace ComissPro
             }
             catch (Exception ex)
             {
+                LogUtil.WriteLog($"Erro ao exportar para Excel: {ex.Message}");
                 MessageBox.Show("Erro ao exportar para Excel: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -432,6 +482,15 @@ namespace ComissPro
         }
 
         private void FrmManutencaoPrestacaoDeContasConcluidas_Load(object sender, EventArgs e)
+        {
+            LogUtil.WriteLog("FrmManutencaoPrestacaoDeContasConcluidas_Load iniciado.");
+            ConfigurarColunasDataGridView(); // Configura as colunas primeiro
+            Listar(); // Carrega os dados depois
+                      // Se houver um lblTotalRegistros, atualize aqui:
+                      // Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPrestacaoContas);
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             LogUtil.WriteLog("FrmManutencaoPrestacaoDeContasConcluidas_Load iniciado.");
             ConfigurarColunasDataGridView(); // Configura as colunas primeiro
