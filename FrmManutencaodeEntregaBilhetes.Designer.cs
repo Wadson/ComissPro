@@ -46,9 +46,9 @@
             this.btnAltera = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExclui = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnPrestacaoDeContas = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -567,22 +567,9 @@
             this.btnExclui.Values.Text = "Excluir";
             this.btnExclui.Click += new System.EventHandler(this.btnExclui_Click);
             // 
-            // kryptonPanel3
-            // 
-            this.kryptonPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonPanel3.Controls.Add(this.lblTotalRegistros);
-            this.kryptonPanel3.Location = new System.Drawing.Point(16, 357);
-            this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonPanel3.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel3.Size = new System.Drawing.Size(683, 26);
-            this.kryptonPanel3.StateNormal.Color1 = System.Drawing.Color.LightBlue;
-            this.kryptonPanel3.StateNormal.Color2 = System.Drawing.Color.LightBlue;
-            this.kryptonPanel3.TabIndex = 638;
-            // 
             // btnPrestacaoDeContas
             // 
+            this.btnPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrestacaoDeContas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(166)))), ((int)(((byte)(35)))));
             this.btnPrestacaoDeContas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnPrestacaoDeContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -606,6 +593,20 @@
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Comissao64.png");
+            // 
+            // kryptonPanel3
+            // 
+            this.kryptonPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel3.Controls.Add(this.lblTotalRegistros);
+            this.kryptonPanel3.Location = new System.Drawing.Point(16, 357);
+            this.kryptonPanel3.Name = "kryptonPanel3";
+            this.kryptonPanel3.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.kryptonPanel3.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
+            this.kryptonPanel3.Size = new System.Drawing.Size(683, 26);
+            this.kryptonPanel3.StateNormal.Color1 = System.Drawing.Color.LightBlue;
+            this.kryptonPanel3.StateNormal.Color2 = System.Drawing.Color.LightBlue;
+            this.kryptonPanel3.TabIndex = 638;
             // 
             // FrmManutencaodeEntregaBilhetes
             // 

@@ -595,7 +595,7 @@ namespace ComissPro
         INNER JOIN 
             Produtos p ON e.ProdutoID = p.ProdutoID
         WHERE 
-            1 = 1"; // Condição base para filtros opcionais
+            1 = 1";
 
             if (dataInicio.HasValue)
                 query += " AND pc.DataPrestacao >= @DataInicio";
@@ -609,15 +609,30 @@ namespace ComissPro
                 conn.Open();
                 using (var cmd = new SQLiteCommand(query, conn))
                 {
-                    if (dataInicio.HasValue) cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value);
-                    if (dataFim.HasValue) cmd.Parameters.AddWithValue("@DataFim", dataFim.Value);
-                    if (!string.IsNullOrEmpty(nomeVendedor)) cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
+                    if (dataInicio.HasValue)
+                    {
+                        // Início do dia
+                        cmd.Parameters.AddWithValue("@DataInicio", dataInicio.Value.ToString("yyyy-MM-dd 00:00:00"));
+                        LogUtil.WriteLog($"Filtro DataInicio: {dataInicio.Value.ToString("yyyy-MM-dd 00:00:00")}");
+                    }
+                    if (dataFim.HasValue)
+                    {
+                        // Fim do dia
+                        cmd.Parameters.AddWithValue("@DataFim", dataFim.Value.ToString("yyyy-MM-dd 23:59:59"));
+                        LogUtil.WriteLog($"Filtro DataFim: {dataFim.Value.ToString("yyyy-MM-dd 23:59:59")}");
+                    }
+                    if (!string.IsNullOrEmpty(nomeVendedor))
+                    {
+                        cmd.Parameters.AddWithValue("@Nome", "%" + nomeVendedor + "%");
+                        LogUtil.WriteLog($"Filtro NomeVendedor: {nomeVendedor}");
+                    }
 
+                    LogUtil.WriteLog($"Query executada: {cmd.CommandText}");
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            prestacoes.Add(new PrestacaoContasModel
+                            var model = new PrestacaoContasModel
                             {
                                 VendedorID = Convert.ToInt32(reader["VendedorID"]),
                                 Nome = reader["Nome"].ToString(),
@@ -628,14 +643,17 @@ namespace ComissPro
                                 ValorRecebido = Convert.ToDouble(reader["ValorRecebido"]),
                                 PrestacaoID = Convert.ToInt32(reader["PrestacaoID"]),
                                 EntregaID = Convert.ToInt32(reader["EntregaID"]),
-                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]), // Adicionado
-                                NomeProduto = reader["NomeProduto"].ToString(), // Adicionado
-                                Preco = Convert.ToDouble(reader["Preco"]) // Adicionado
-                            });
+                                QuantidadeEntregue = Convert.ToInt32(reader["QuantidadeEntregue"]),
+                                NomeProduto = reader["NomeProduto"].ToString(),
+                                Preco = Convert.ToDouble(reader["Preco"])
+                            };
+                            LogUtil.WriteLog($"Registro: PrestacaoID={model.PrestacaoID}, DataPrestacao={model.DataPrestacao}, Nome={model.Nome}");
+                            prestacoes.Add(model);
                         }
                     }
                 }
             }
+            LogUtil.WriteLog($"Total de prestações encontradas: {prestacoes.Count}");
             return prestacoes;
         }
 

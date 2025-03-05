@@ -40,6 +40,7 @@ namespace ComissPro
         private void ConfigurarColunasComissoesPagas()
         {
             LogUtil.WriteLog($"Colunas antes de limpar: {string.Join(", ", dgvRelatorio.Columns.Cast<DataGridViewColumn>().Select(c => c.HeaderText))}");
+            dgvRelatorio.AutoGenerateColumns = false; // Adicionar esta linha para evitar colunas automáticas
             dgvRelatorio.Columns.Clear();
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "VendedorID", HeaderText = "ID Vend.", Width = 50, Visible = false });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome Vendedor", Width = 250 });
@@ -48,7 +49,7 @@ namespace ComissPro
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeVendida", HeaderText = "Qtd. Vend.", Width = 60, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeDevolvida", HeaderText = "Qtd. Dev.", Width = 60, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "ValorRecebido", HeaderText = "Valor Rec.", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "N2", Alignment = DataGridViewContentAlignment.MiddleCenter } });
-            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeEntregue", HeaderText = "Qtd. Entregue", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } }); // Apenas uma coluna
+            dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantidadeEntregue", HeaderText = "Qtd. Entregue", Width = 80, DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NomeProduto", HeaderText = "Produto", Width = 200 });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Preco", HeaderText = "Preço Unit.", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "N2", Alignment = DataGridViewContentAlignment.MiddleCenter } });
             dgvRelatorio.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Total", HeaderText = "Total", Width = 100, DefaultCellStyle = new DataGridViewCellStyle { Format = "N2", Alignment = DataGridViewContentAlignment.MiddleCenter } });
@@ -159,8 +160,10 @@ namespace ComissPro
 
         private void FrmRelatoriosComissoes_Load(object sender, EventArgs e)
         {
-            dtpDataInicio.Value = DateTime.Now.AddMonths(-12);
-            dtpDataFim.Value = DateTime.Now;
+            dtpDataInicio.Value = DateTime.Today.AddMonths(-12); // Já está assim, mas confirmamos
+            dtpDataFim.Value = DateTime.Today; // Já está assim
+            LogUtil.WriteLog($"dtpDataInicio inicial: {dtpDataInicio.Value.ToString("yyyy-MM-dd HH:mm:ss")}");
+            LogUtil.WriteLog($"dtpDataFim inicial: {dtpDataFim.Value.ToString("yyyy-MM-dd HH:mm:ss")}");
             cmbTipoRelatorio.Items.Clear();
             cmbTipoRelatorio.Items.AddRange(new object[] { "Comissões Pagas", "Entregas Pendentes", "Desempenho de Vendas", "Geral de Vendas e Comissões" });
             cmbTipoRelatorio.SelectedIndex = 0;
@@ -184,6 +187,7 @@ namespace ComissPro
                 {
                     case TipoRelatorio.ComissoesPagas:
                         ConfigurarColunasComissoesPagas();
+                        LogUtil.WriteLog($"Filtro aplicado - DataInicio: {dtpDataInicio.Value.ToString("yyyy-MM-dd HH:mm:ss")}, DataFim: {dtpDataFim.Value.ToString("yyyy-MM-dd HH:mm:ss")}");
                         var comissoes = entregasDal.RelatorioComissoesPagas(dtpDataInicio.Value, dtpDataFim.Value, nomeVendedor);
                         if (comissoes == null || comissoes.Count == 0)
                         {
@@ -199,6 +203,7 @@ namespace ComissPro
                                 LogUtil.WriteLog($"PrestacaoID={item.PrestacaoID}, QuantidadeEntregue={item.QuantidadeEntregue}, Total={item.Total}");
                             }
                             dgvRelatorio.DataSource = null;
+                            dgvRelatorio.Rows.Clear();
                             dgvRelatorio.DataSource = comissoes;
                             AtualizarTotaisComissoesPagas(comissoes);
                         }
@@ -314,6 +319,11 @@ namespace ComissPro
 
 
 
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnExportar_Click(object sender, EventArgs e)
         {
             if (dgvRelatorio.Rows.Count == 0)
@@ -354,12 +364,5 @@ namespace ComissPro
                 }
             }
         }
-
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-       
     }
 }
