@@ -23,6 +23,24 @@ namespace ComissPro
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            // Verifica o papel de parede ao iniciar o formulário
+            string caminhoSalvo = Properties.Settings.Default.CaminhoPapelParede;
+            if (!string.IsNullOrEmpty(caminhoSalvo) && File.Exists(caminhoSalvo))
+            {
+                try
+                {
+                    panelConteiner.BackgroundImage = Image.FromFile(caminhoSalvo);
+                    panelConteiner.BackgroundImageLayout = ImageLayout.Center;
+                }
+                catch
+                {
+                    CarregarPapelPadrao(); // Se falhar, tenta o padrão
+                }
+            }
+            else
+            {
+                CarregarPapelPadrao(); // Se não houver caminho salvo, tenta o padrão
+            }
             AtualizaBarraStatus();
         }
         private void AtualizaBarraStatus()
@@ -162,6 +180,77 @@ namespace ComissPro
                 // Ação do botão
                 btnManutencaoEntregas.PerformClick();
 
+            }
+        }
+
+        private void sobreToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            About frm = new About();
+            frm.ShowDialog();
+        }
+
+
+
+
+
+        // Método para carregar o papel de parede padrão dos Resources
+
+        private void CarregarPapelPadrao()
+        {
+            try
+            {
+                // Tenta carregar a imagem padrão dos Resources
+                if (Properties.Resources.Papel_de_Parede_Trevo_da_Sorte_1002_566 != null) // Verifica se o recurso existe
+                {
+                    panelConteiner.BackgroundImage = Properties.Resources.Papel_de_Parede_Trevo_da_Sorte_1002_566;
+                    panelConteiner.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                else
+                {
+                    // Se não houver imagem nos Resources, usa um fundo sólido
+                    panelConteiner.BackgroundImage = null;
+                    panelConteiner.BackColor = Color.LightGray; // Cor padrão como fallback
+                    MessageBox.Show("Nenhuma imagem padrão encontrada nos Resources. Usando fundo sólido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Caso haja erro ao acessar os Resources
+                panelConteiner.BackgroundImage = null;
+                panelConteiner.BackColor = Color.LightGray; // Cor padrão como fallback
+                MessageBox.Show($"Erro ao carregar o papel padrão: {ex.Message}. Usando fundo sólido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void trocarPapelParedeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja trocar o papel de parede?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.bmp|Todos os Arquivos|*.*";
+                    openFileDialog.Title = "Selecione um novo papel de parede";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            string caminhoImagem = openFileDialog.FileName;
+                            if (File.Exists(caminhoImagem))
+                            {
+                                panelConteiner.BackgroundImage = Image.FromFile(caminhoImagem);
+                                panelConteiner.BackgroundImageLayout = ImageLayout.Center;
+
+                                Properties.Settings.Default.CaminhoPapelParede = caminhoImagem;
+                                Properties.Settings.Default.Save();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Erro ao carregar a imagem: {ex.Message}. Tentando papel de parede padrão.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            CarregarPapelPadrao();
+                        }
+                    }
+                }
             }
         }
     }

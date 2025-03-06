@@ -211,7 +211,8 @@
             this.txtPrecoUnit.StateCommon.Content.Color1 = System.Drawing.Color.Goldenrod;
             this.txtPrecoUnit.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtPrecoUnit.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtPrecoUnit.TabIndex = 3;
+            this.txtPrecoUnit.TabIndex = 30;
+            this.txtPrecoUnit.TabStop = false;
             this.txtPrecoUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPrecoUnit.Leave += new System.EventHandler(this.txtPrecoUnit_Leave);
             // 
@@ -657,7 +658,7 @@
             this.btnSalvar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalvar.StateTracking.Border.Rounding = 20;
             this.btnSalvar.StateTracking.Border.Width = 1;
-            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.TabIndex = 3;
             this.btnSalvar.Values.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 

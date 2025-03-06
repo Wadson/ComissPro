@@ -103,6 +103,10 @@ namespace ComissPro
                 dataGridPrestacaoContas.Columns["Comissao"].HeaderText = "Comissão";
                 dataGridPrestacaoContas.Columns["DataPrestacao"].HeaderText = "Data Prestação";
 
+                dataGridPrestacaoContas.Columns["Preco"].SortMode = DataGridViewColumnSortMode.NotSortable;
+                //dataGridPrestacaoContas.Columns["DataPrestacao"].SortMode = DataGridViewColumnSortMode.NotSortable;
+                //dataGridPrestacaoContas.Columns["DataPrestacao"].SortMode = DataGridViewColumnSortMode.NotSortable;
+
                 // Formatar valores monetários (N2)
                 dataGridPrestacaoContas.Columns["Preco"].DefaultCellStyle.Format = "N2";
                 dataGridPrestacaoContas.Columns["ValorRecebido"].DefaultCellStyle.Format = "N2";

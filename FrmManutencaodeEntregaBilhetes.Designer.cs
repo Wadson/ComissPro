@@ -430,7 +430,7 @@
             this.btnNovo.TabIndex = 635;
             this.toolTip1.SetToolTip(this.btnNovo, "Nova entrega de bilhetes");
             this.btnNovo.Values.Image = global::ComissPro.Properties.Resources.tarefa32;
-            this.btnNovo.Values.Text = "Registrar ( F5 )";
+            this.btnNovo.Values.Text = "Registrar";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAltera
@@ -628,7 +628,6 @@
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.Load += new System.EventHandler(this.FrmManutençãodeEntregaBilhetes_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmManutencaodeEntregaBilhetes_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);

@@ -31,15 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
-            this.lblEstacao = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblData = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblHoraAtual = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblUsuarioLogadoo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblTipoUsuarioo = new System.Windows.Forms.ToolStripStatusLabel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnFluxoCaixa = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -61,10 +55,20 @@
             this.controleDeEntregasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ferramentasAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trocarPapelParedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sobreToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
+            this.lblEstacao = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblData = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblHoraAtual = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.kryptonStatusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -74,7 +78,6 @@
             this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Sairr24;
             this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::ComissPro.Properties.Resources.Maximize;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageCheckedNormal = global::ComissPro.Properties.Resources.Maximize;
-            this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageNormal = global::ComissPro.Properties.Resources.Maximize;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed = global::ComissPro.Properties.Resources.Minimiza24;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking = global::ComissPro.Properties.Resources.Minimiza24;
             this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::ComissPro.Properties.Resources.Minimize;
@@ -92,40 +95,11 @@
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.ButtonEdgeInset = 10;
             this.kryptonPalette1.HeaderStyles.HeaderForm.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, -1, -1, -1);
             // 
-            // kryptonStatusStrip1
-            // 
-            this.kryptonStatusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.kryptonStatusStrip1.Location = new System.Drawing.Point(0, 707);
-            this.kryptonStatusStrip1.Name = "kryptonStatusStrip1";
-            this.kryptonStatusStrip1.ProgressBars = null;
-            this.kryptonStatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.kryptonStatusStrip1.Size = new System.Drawing.Size(1008, 22);
-            this.kryptonStatusStrip1.TabIndex = 611;
-            this.kryptonStatusStrip1.Text = "kryptonStatusStrip1";
-            // 
-            // lblEstacao
-            // 
-            this.lblEstacao.Name = "lblEstacao";
-            this.lblEstacao.Size = new System.Drawing.Size(12, 17);
-            this.lblEstacao.Text = "-";
-            // 
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 17);
             this.toolStripStatusLabel4.Text = "|";
-            // 
-            // lblData
-            // 
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(31, 17);
-            this.lblData.Text = "Data";
-            // 
-            // lblHoraAtual
-            // 
-            this.lblHoraAtual.Name = "lblHoraAtual";
-            this.lblHoraAtual.Size = new System.Drawing.Size(33, 17);
-            this.lblHoraAtual.Text = "Hora";
             // 
             // toolStripStatusLabel5
             // 
@@ -133,23 +107,11 @@
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(10, 17);
             this.toolStripStatusLabel5.Text = "|";
             // 
-            // lblUsuarioLogadoo
-            // 
-            this.lblUsuarioLogadoo.Name = "lblUsuarioLogadoo";
-            this.lblUsuarioLogadoo.Size = new System.Drawing.Size(12, 17);
-            this.lblUsuarioLogadoo.Text = "-";
-            // 
             // toolStripStatusLabel6
             // 
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(10, 17);
             this.toolStripStatusLabel6.Text = "|";
-            // 
-            // lblTipoUsuarioo
-            // 
-            this.lblTipoUsuarioo.Name = "lblTipoUsuarioo";
-            this.lblTipoUsuarioo.Size = new System.Drawing.Size(12, 17);
-            this.lblTipoUsuarioo.Text = "-";
             // 
             // kryptonPanel2
             // 
@@ -163,7 +125,7 @@
             this.kryptonPanel2.Controls.Add(this.btnPrestacaoContas);
             this.kryptonPanel2.Controls.Add(this.btnProduto);
             this.kryptonPanel2.Controls.Add(this.btnManutencaoEntregas);
-            this.kryptonPanel2.Location = new System.Drawing.Point(-1, 26);
+            this.kryptonPanel2.Location = new System.Drawing.Point(-1, 25);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
             this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridHeaderColumnCustom1;
@@ -373,10 +335,10 @@
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panelConteiner.BackgroundImage = global::ComissPro.Properties.Resources.Papel_de_Parede_Trevo_da_Sorte_1002_566;
             this.panelConteiner.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelConteiner.Location = new System.Drawing.Point(3, 118);
+            this.panelConteiner.Location = new System.Drawing.Point(3, 114);
             this.panelConteiner.Name = "panelConteiner";
-            this.panelConteiner.Size = new System.Drawing.Size(1002, 586);
-            this.panelConteiner.TabIndex = 609;
+            this.panelConteiner.Size = new System.Drawing.Size(1002, 584);
+            this.panelConteiner.TabIndex = 0;
             // 
             // timerH
             // 
@@ -389,7 +351,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
             this.manutençãoToolStripMenuItem,
-            this.ferramentasToolStripMenuItem});
+            this.ferramentasToolStripMenuItem,
+            this.sobreToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
@@ -444,7 +407,8 @@
             // ferramentasToolStripMenuItem
             // 
             this.ferramentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ferramentasAdminToolStripMenuItem});
+            this.ferramentasAdminToolStripMenuItem,
+            this.trocarPapelParedeToolStripMenuItem});
             this.ferramentasToolStripMenuItem.Name = "ferramentasToolStripMenuItem";
             this.ferramentasToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ferramentasToolStripMenuItem.Text = "&Ferramentas";
@@ -455,6 +419,75 @@
             this.ferramentasAdminToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.ferramentasAdminToolStripMenuItem.Text = "&Desqloquear Sistema";
             this.ferramentasAdminToolStripMenuItem.Click += new System.EventHandler(this.ferramentasAdminToolStripMenuItem_Click);
+            // 
+            // trocarPapelParedeToolStripMenuItem
+            // 
+            this.trocarPapelParedeToolStripMenuItem.Name = "trocarPapelParedeToolStripMenuItem";
+            this.trocarPapelParedeToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.trocarPapelParedeToolStripMenuItem.Text = "TrocarPapelParede";
+            this.trocarPapelParedeToolStripMenuItem.Click += new System.EventHandler(this.trocarPapelParedeToolStripMenuItem_Click);
+            // 
+            // sobreToolStripMenuItem
+            // 
+            this.sobreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sobreToolStripMenuItem1});
+            this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
+            this.sobreToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.sobreToolStripMenuItem.Text = "&Ajuda";
+            // 
+            // sobreToolStripMenuItem1
+            // 
+            this.sobreToolStripMenuItem1.Name = "sobreToolStripMenuItem1";
+            this.sobreToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.sobreToolStripMenuItem1.Text = "Sobre";
+            this.sobreToolStripMenuItem1.Click += new System.EventHandler(this.sobreToolStripMenuItem1_Click);
+            // 
+            // kryptonStatusStrip1
+            // 
+            this.kryptonStatusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.kryptonStatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblEstacao,
+            this.toolStripStatusLabel2,
+            this.lblData,
+            this.toolStripStatusLabel7,
+            this.lblHoraAtual});
+            this.kryptonStatusStrip1.Location = new System.Drawing.Point(0, 707);
+            this.kryptonStatusStrip1.Name = "kryptonStatusStrip1";
+            this.kryptonStatusStrip1.ProgressBars = null;
+            this.kryptonStatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
+            this.kryptonStatusStrip1.Size = new System.Drawing.Size(1008, 22);
+            this.kryptonStatusStrip1.TabIndex = 613;
+            this.kryptonStatusStrip1.Text = "kryptonStatusStrip1";
+            // 
+            // lblEstacao
+            // 
+            this.lblEstacao.Name = "lblEstacao";
+            this.lblEstacao.Size = new System.Drawing.Size(12, 17);
+            this.lblEstacao.Text = "-";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(10, 17);
+            this.toolStripStatusLabel2.Text = "|";
+            // 
+            // lblData
+            // 
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(12, 17);
+            this.lblData.Text = "-";
+            // 
+            // toolStripStatusLabel7
+            // 
+            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(10, 17);
+            this.toolStripStatusLabel7.Text = "|";
+            // 
+            // lblHoraAtual
+            // 
+            this.lblHoraAtual.Name = "lblHoraAtual";
+            this.lblHoraAtual.Size = new System.Drawing.Size(12, 17);
+            this.lblHoraAtual.Text = "-";
             // 
             // FrmPrincipal
             // 
@@ -481,6 +514,8 @@
             this.kryptonPanel2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.kryptonStatusStrip1.ResumeLayout(false);
+            this.kryptonStatusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,15 +524,14 @@
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
-        private Krypton.Toolkit.KryptonStatusStrip kryptonStatusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblEstacao;
+        //private System.Windows.Forms.ToolStripStatusLabel lblEstacao;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private System.Windows.Forms.ToolStripStatusLabel lblData;
-        private System.Windows.Forms.ToolStripStatusLabel lblHoraAtual;
+        //private System.Windows.Forms.ToolStripStatusLabel lblData;
+        //private System.Windows.Forms.ToolStripStatusLabel lblHoraAtual;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripStatusLabel lblUsuarioLogadoo;
+        //private System.Windows.Forms.ToolStripStatusLabel lblUsuarioLogadoo;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.ToolStripStatusLabel lblTipoUsuarioo;
+        //private System.Windows.Forms.ToolStripStatusLabel lblTipoUsuarioo;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private System.Windows.Forms.Button btnVendedor;
         private System.Windows.Forms.Button btnSair;
@@ -521,5 +555,14 @@
         private System.Windows.Forms.ToolStripMenuItem ferramentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ferramentasAdminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controleDeEntregasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sobreToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem trocarPapelParedeToolStripMenuItem;
+        private Krypton.Toolkit.KryptonStatusStrip kryptonStatusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblEstacao;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel lblData;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
+        private System.Windows.Forms.ToolStripStatusLabel lblHoraAtual;
     }
 }

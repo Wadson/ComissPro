@@ -30,7 +30,7 @@ namespace ComissPro
 
             timer1.Interval = 1000; // Confirma o intervalo
             timer1.Tick += timer1_Tick; // Garante que o evento está associado
-            txtPesquisa.TextChanged += txtPesquisa_TextChanged; // Adicionar o evento aqui
+            txtPesquisa.TextChanged += txtPesquisa_TextChanged; // Adicionar o evento aqui           
 
             this.StatusOperacao = statusOperacao;
             //Centraliza o Label dentro do Panel
@@ -409,10 +409,6 @@ namespace ComissPro
             ExportarParaExcel();
         }
 
-        private void btnRelatorios_Click(object sender, EventArgs e)
-        {           
-        }
-
         private void btnAltera_Click(object sender, EventArgs e)
         {
             StatusOperacao = "ALTERAR";
@@ -426,9 +422,10 @@ namespace ComissPro
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
-        {
+        {            
             StatusOperacao = "NOVO";
             CarregaDados();
+           
         }
 
         private void dataGridManutencaoEntregas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -455,13 +452,7 @@ namespace ComissPro
         }
 
         private void FrmManutencaodeEntregaBilhetes_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Verifique se a tecla pressionada é F5
-            if (e.KeyCode == Keys.F5)
-            {
-                // Ação do botão
-                btnNovo.PerformClick();
-            }
+        {           
         }
     }
 }

@@ -55,7 +55,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\ARTE SORTE BETS ICO.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\LogoSortBets.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.105.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
@@ -193,6 +193,12 @@
     <Compile Include="EntregasBLL.cs" />
     <Compile Include="EntregasDal.cs" />
     <Compile Include="FluxoCaixaDAL.cs" />
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmGerarDataPassada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,11 +343,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Sobrdde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sobrdde.Designer.cs">
+      <DependentUpon>Sobrdde.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrialManager.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <Compile Include="Utilitario.cs" />
     <Compile Include="VendedorBLL.cs" />
     <Compile Include="VendedorDAL.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGerarDataPassada.resx">
       <DependentUpon>FrmGerarDataPassada.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,6 +427,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sobrdde.resx">
+      <DependentUpon>Sobrdde.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -573,6 +591,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\LogoSortBets.ico" />
+    <None Include="Resources\LogoWR600x600.png" />
+    <None Include="Resources\Logo WR_Transparente.png" />
     <None Include="Resources\ajudando.png" />
     <None Include="Resources\atualizar32.png" />
     <None Include="Resources\excluir32_Branco.png" />
