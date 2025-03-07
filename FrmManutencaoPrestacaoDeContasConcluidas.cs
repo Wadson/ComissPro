@@ -22,9 +22,9 @@ namespace ComissPro
         {
             InitializeComponent();
             this.StatusOperacao = statusOperacao;
-            txtPesquisa.TextChanged += txtPesquisa_TextChanged; // Vincular o evento
-            dataGridPrestacaoContas.DataBindingComplete += DataGridPrestacaoContas_DataBindingComplete;
+            txtPesquisa.TextChanged += txtPesquisa_TextChanged; // Vincular o evento            
         }
+       
         private void Log(string message)
         {
             File.AppendAllText("Log em FrmManutencaoPrestacaoDeContasConcluidas.txt", $"{DateTime.Now}: {message}\n");
@@ -42,98 +42,97 @@ namespace ComissPro
             dataGridPrestacaoContas.AutoGenerateColumns = false;
             dataGridPrestacaoContas.Columns.Clear();
 
-            // Adicionar colunas manualmente
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "Nome", HeaderText = "Vendedor", Width = 200 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "QuantidadeEntregue", HeaderText = "Qtd. Entregue", Width = 140 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "NomeProduto", HeaderText = "Produto", Width = 200 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "Preco", HeaderText = "Preço Unitário", Width = 120 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "QuantidadeVendida", HeaderText = "Qtd. Vendida", Width = 140 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "QuantidadeDevolvida", HeaderText = "Qtd. Devolvida", Width = 140 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "ValorRecebido", HeaderText = "Valor Recebido", Width = 120 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "Comissao", HeaderText = "Comissão", Width = 120 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "DataPrestacao", HeaderText = "Data Prestação", Width = 130 });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "EntregaID", HeaderText = "EntregaID", Visible = false });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "PrestacaoID", HeaderText = "PrestacaoID", Visible = false });
-            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn { Name = "VendedorID", HeaderText = "VendedorID", Visible = false });
-
-            // Aplicar personalizações adicionais
-            PersonalizarDataGridView();
-        }
-
-
-        public void PersonalizarDataGridView()
-        {
-            if (dataGridPrestacaoContas.Columns.Count >= 9) // Temos 9 colunas visíveis
+            // Adicionar e configurar colunas manualmente
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
             {
-                // Renomeia as colunas na ordem solicitada (já feito no ConfigurarColunasDataGridView, mas mantido por segurança)
-                dataGridPrestacaoContas.Columns[0].Name = "Nome";
-                dataGridPrestacaoContas.Columns[1].Name = "QuantidadeEntregue";
-                dataGridPrestacaoContas.Columns[2].Name = "NomeProduto";
-                dataGridPrestacaoContas.Columns[3].Name = "Preco";
-                dataGridPrestacaoContas.Columns[4].Name = "QuantidadeVendida";
-                dataGridPrestacaoContas.Columns[5].Name = "QuantidadeDevolvida";
-                dataGridPrestacaoContas.Columns[6].Name = "ValorRecebido";
-                dataGridPrestacaoContas.Columns[7].Name = "Comissao";
-                dataGridPrestacaoContas.Columns[8].Name = "DataPrestacao";
+                Name = "Nome",
+                HeaderText = "Vendedor",
+                Width = 200
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "QuantidadeEntregue",
+                HeaderText = "Qtd. Entregue",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter }
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "NomeProduto",
+                HeaderText = "Produto",
+                Width = 150
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Preco",
+                HeaderText = "Preço Unitário",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "N2" },
+                SortMode = DataGridViewColumnSortMode.NotSortable
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "QuantidadeVendida",
+                HeaderText = "Qtd. Vendida",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter }
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "QuantidadeDevolvida",
+                HeaderText = "Qtd. Devolvida",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter }
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ValorRecebido",
+                HeaderText = "Valor Recebido",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "N2" }
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Comissao",
+                HeaderText = "Comissão",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "N2" }
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "DataPrestacao",
+                HeaderText = "Data Prestação",
+                Width = 100,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter, Format = "d", NullValue = "" },
+                SortMode = DataGridViewColumnSortMode.NotSortable
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "EntregaID",
+                HeaderText = "EntregaID",
+                Visible = false
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "PrestacaoID",
+                HeaderText = "PrestacaoID",
+                Visible = false
+            });
+            dataGridPrestacaoContas.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "VendedorID",
+                HeaderText = "VendedorID",
+                Visible = false
+            });
 
-                // Ocultar colunas extras
-                dataGridPrestacaoContas.Columns["EntregaID"].Visible = false;
-                dataGridPrestacaoContas.Columns["PrestacaoID"].Visible = false;
-                dataGridPrestacaoContas.Columns["VendedorID"].Visible = false;
-
-                // Define larguras fixas específicas para as colunas
-                dataGridPrestacaoContas.Columns["Nome"].Width = 200;
-                dataGridPrestacaoContas.Columns["QuantidadeEntregue"].Width = 140;
-                dataGridPrestacaoContas.Columns["NomeProduto"].Width = 200;
-                dataGridPrestacaoContas.Columns["Preco"].Width = 120;
-                dataGridPrestacaoContas.Columns["QuantidadeVendida"].Width = 140;
-                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].Width = 140;
-                dataGridPrestacaoContas.Columns["ValorRecebido"].Width = 120;
-                dataGridPrestacaoContas.Columns["Comissao"].Width = 120;
-                dataGridPrestacaoContas.Columns["DataPrestacao"].Width = 130;
-
-                // Define cabeçalhos visíveis
-                dataGridPrestacaoContas.Columns["Nome"].HeaderText = "Vendedor";
-                dataGridPrestacaoContas.Columns["QuantidadeEntregue"].HeaderText = "Qtd. Entregue";
-                dataGridPrestacaoContas.Columns["NomeProduto"].HeaderText = "Produto";
-                dataGridPrestacaoContas.Columns["Preco"].HeaderText = "Preço Unitário";
-                dataGridPrestacaoContas.Columns["QuantidadeVendida"].HeaderText = "Qtd. Vendida";
-                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].HeaderText = "Qtd. Devolvida";
-                dataGridPrestacaoContas.Columns["ValorRecebido"].HeaderText = "Valor Recebido";
-                dataGridPrestacaoContas.Columns["Comissao"].HeaderText = "Comissão";
-                dataGridPrestacaoContas.Columns["DataPrestacao"].HeaderText = "Data Prestação";
-
-                dataGridPrestacaoContas.Columns["Preco"].SortMode = DataGridViewColumnSortMode.NotSortable;
-                //dataGridPrestacaoContas.Columns["DataPrestacao"].SortMode = DataGridViewColumnSortMode.NotSortable;
-                //dataGridPrestacaoContas.Columns["DataPrestacao"].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-                // Formatar valores monetários (N2)
-                dataGridPrestacaoContas.Columns["Preco"].DefaultCellStyle.Format = "N2";
-                dataGridPrestacaoContas.Columns["ValorRecebido"].DefaultCellStyle.Format = "N2";
-                dataGridPrestacaoContas.Columns["Comissao"].DefaultCellStyle.Format = "N2";
-
-                // Formatar DataPrestacao como data curta e tratar DBNull
-                dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.Format = "d";
-                dataGridPrestacaoContas.Columns["DataPrestacao"].DefaultCellStyle.NullValue = "";
-                dataGridPrestacaoContas.Columns["DataPrestacao"].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-                // Centralizar colunas numéricas
-                dataGridPrestacaoContas.Columns["QuantidadeEntregue"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridPrestacaoContas.Columns["QuantidadeVendida"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridPrestacaoContas.Columns["QuantidadeDevolvida"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridPrestacaoContas.Columns["Preco"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridPrestacaoContas.Columns["ValorRecebido"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridPrestacaoContas.Columns["Comissao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                // Centralizar cabeçalhos das colunas
-                foreach (DataGridViewColumn column in dataGridPrestacaoContas.Columns)
-                {
-                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    column.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
-                }
+            // Centralizar cabeçalhos
+            foreach (DataGridViewColumn column in dataGridPrestacaoContas.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                column.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
             }
 
-            // Configurações adicionais
+            // Configurações gerais
             dataGridPrestacaoContas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dataGridPrestacaoContas.ReadOnly = true;
         }
@@ -207,128 +206,60 @@ namespace ComissPro
                 MessageBox.Show($"Erro ao pesquisar prestações: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        // Evento para estilizar a linha de totais
-        private void DataGridPrestacaoContas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            //if (dataGridPrestacaoContas.Rows.Count > 1) // Garantir que há mais de uma linha
-            //{
-            //    int ultimaLinha = dataGridPrestacaoContas.Rows.Count - 1;
-            //    if (dataGridPrestacaoContas.Rows[ultimaLinha].Cells["Nome"].Value?.ToString() == "TOTAIS")
-            //    {
-            //        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.BackColor = Color.DarkGray;
-            //        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.ForeColor = Color.Black;
-            //        dataGridPrestacaoContas.Rows[ultimaLinha].DefaultCellStyle.Font = new Font(dataGridPrestacaoContas.Font, FontStyle.Bold);
-            //    }
-            //}
-        }
-
-
-
-
-
-
-
+       
         private void CarregaDados()
         {
-            FrmManipularPrestacaoDeContas formPrestacaoContas = new FrmManipularPrestacaoDeContas(StatusOperacao);
-
-            if (StatusOperacao == "ALTERAR" || StatusOperacao == "EXCLUSÃO" || StatusOperacao == "ESTORNAR")
+            try
             {
-                try
+                if (dataGridPrestacaoContas.Rows.Count == 0 || dataGridPrestacaoContas.CurrentRow == null)
                 {
-                    if (dataGridPrestacaoContas.Rows.Count == 0 || dataGridPrestacaoContas.CurrentRow == null)
-                    {
-                        MessageBox.Show("Nenhuma prestação selecionada. Selecione uma linha na tabela.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        return;
-                    }
-
-                    PrestacaoDeContasDAL objetoDAL = new PrestacaoDeContasDAL();
-                    DataTable dt = objetoDAL.listaEntregasConcluidas();
-                    int selectedIndex = dataGridPrestacaoContas.CurrentRow.Index;
-
-                    if (dt.Rows[selectedIndex]["Nome"].ToString() == "TOTAIS")
-                    {
-                        MessageBox.Show("A linha de totais não pode ser editada. Selecione uma prestação específica.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    if (dt.Columns.Contains("VendedorID") && dt.Rows[selectedIndex]["VendedorID"] != DBNull.Value)
-                    {
-                        int vendedorID = Convert.ToInt32(dt.Rows[selectedIndex]["VendedorID"]);
-                        formPrestacaoContas.VendedorID = vendedorID;
-
-                        if (StatusOperacao == "ALTERAR")
-                        {
-                            formPrestacaoContas.Text = "Alterar Prestações de Contas do Vendedor";
-                            formPrestacaoContas.btnAlterarOuExcluir.Text = "Alterar";
-                            formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(245, 166, 35); // Laranja
-                            formPrestacaoContas.btnAlterarOuExcluir.ForeColor = Color.White;
-                            formPrestacaoContas.pnFaixaDestaque.BackColor = Color.FromArgb(245, 166, 35); // Laranja
-                            formPrestacaoContas.lblTituloFaixa.Text = "Alterar Prestações de Contas";
-                            formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(245, 166, 35); // Laranja
-                            formPrestacaoContas.btnAlterarOuExcluir.Image = Properties.Resources.tarefa32;
-
-                        }
-                        else if (StatusOperacao == "EXCLUSÃO")
-                        {
-                            formPrestacaoContas.Text = "Excluir Prestações de Contas do Vendedor";
-                            formPrestacaoContas.btnAlterarOuExcluir.Text = "Excluir";
-                            formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(255, 0, 0); // Vermelho
-                            formPrestacaoContas.btnAlterarOuExcluir.ForeColor = Color.White;
-                            formPrestacaoContas.dgvPrestacaoDeContas.ReadOnly = true;
-                            formPrestacaoContas.pnFaixaDestaque.BackColor = Color.FromArgb(255, 0, 0); // Vermelho
-                            formPrestacaoContas.lblTituloFaixa.Text = "Excluir Prestações de Contas";
-                            formPrestacaoContas.btnAlterarOuExcluir.Image = Properties.Resources.excluir32_Branco;
-
-                            // Desabilitar botões de ação
-                            formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(255, 0, 0); // Vermelho
-                            formPrestacaoContas.txtTotalComissao.Enabled = false;
-                            formPrestacaoContas.txtTotalRecebido.Enabled = false;
-                            formPrestacaoContas.txtTotalComissao.Enabled = false;
-                            formPrestacaoContas.txtTotalDevolvida.Enabled = false;
-                            formPrestacaoContas.txtTotalVendida.Enabled = false;
-                            formPrestacaoContas.txtTotalEntregue.Enabled = false;
-
-                        }
-                        else if (StatusOperacao == "ESTORNAR")
-                        {
-                            formPrestacaoContas.Text = "Estornar Prestações de Contas do Vendedor";
-                            formPrestacaoContas.btnAlterarOuExcluir.Text = "Estornar";
-                            formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(255, 215, 0); // Amarelo
-                            formPrestacaoContas.btnAlterarOuExcluir.ForeColor = Color.Black;
-                            formPrestacaoContas.dgvPrestacaoDeContas.ReadOnly = true;
-                            formPrestacaoContas.pnFaixaDestaque.BackColor = Color.FromArgb(255, 215, 0); // Amarelo
-                            formPrestacaoContas.lblTituloFaixa.Text = "Estornar Prestações de Contas";
-                            formPrestacaoContas.lblTituloFaixa.ForeColor = Color.FromArgb(8, 142, 255); // Amarelo
-
-                            formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(255, 215, 0); // Amarelo
-                            formPrestacaoContas.txtTotalComissao.Enabled = false;
-                            formPrestacaoContas.txtTotalRecebido.Enabled = false;
-                            formPrestacaoContas.txtTotalComissao.Enabled = false;
-                            formPrestacaoContas.txtTotalDevolvida.Enabled = false;
-                            formPrestacaoContas.txtTotalVendida.Enabled = false;
-                            formPrestacaoContas.txtTotalEntregue.Enabled = false;
-                            formPrestacaoContas.btnAlterarOuExcluir.Image = Properties.Resources.restituicao32;
-                        }
-
-
-                        formPrestacaoContas.ShowDialog();
-                        Listar();
-                    }
-                    else
-                    {
-                        MessageBox.Show("A coluna VendedorID não foi encontrada ou está vazia na linha selecionada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("Nenhuma prestação selecionada. Selecione uma linha na tabela.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
                 }
-                catch (Exception ex)
+
+                PrestacaoDeContasDAL objetoDAL = new PrestacaoDeContasDAL();
+                DataTable dt = objetoDAL.listaEntregasConcluidas();
+                int selectedIndex = dataGridPrestacaoContas.CurrentRow.Index;
+
+                if (dt.Rows[selectedIndex]["Nome"].ToString() == "TOTAIS")
                 {
-                    MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("A linha de totais não pode ser editada. Selecione uma prestação específica.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dt.Columns.Contains("VendedorID") && dt.Rows[selectedIndex]["VendedorID"] != DBNull.Value)
+                {
+                    FrmManipularPrestacaoDeContas formPrestacaoContas = new FrmManipularPrestacaoDeContas();
+
+                    int vendedorID = Convert.ToInt32(dt.Rows[selectedIndex]["VendedorID"]);
+                    formPrestacaoContas.VendedorID = vendedorID;
+
+                    formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(255, 215, 0); // Amarelo
+                    formPrestacaoContas.btnAlterarOuExcluir.ForeColor = Color.Black;
+                    formPrestacaoContas.dgvPrestacaoDeContas.ReadOnly = true;
+
+                    formPrestacaoContas.btnAlterarOuExcluir.BackColor = Color.FromArgb(255, 215, 0); // Amarelo
+                    formPrestacaoContas.txtTotalComissao.Enabled = false;
+                    formPrestacaoContas.txtTotalRecebido.Enabled = false;
+                    formPrestacaoContas.txtTotalComissao.Enabled = false;
+                    formPrestacaoContas.txtTotalDevolvida.Enabled = false;
+                    formPrestacaoContas.txtTotalVendida.Enabled = false;
+                    formPrestacaoContas.txtTotalEntregue.Enabled = false;
+                    formPrestacaoContas.btnAlterarOuExcluir.Image = Properties.Resources.restituicao32;
+
+                    var form = new FrmManipularPrestacaoDeContas(vendedorID);
+                    form.ShowDialog();                    
+                    Listar();
+                }
+                else
+                {
+                    MessageBox.Show("A coluna VendedorID não foi encontrada ou está vazia na linha selecionada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Operação inválida para este formulário.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show($"Erro ao carregar dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }     
         }
         private void ExportarParaExcel()
         {
@@ -451,26 +382,11 @@ namespace ComissPro
                 }
             }
         }
-          
-
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            StatusOperacao = "ALTERAR";
-            CarregaDados();
-        }
-
         private void btnEstornar_Click(object sender, EventArgs e)
-        {
-            StatusOperacao = "ESTORNAR"; // Reverter a prestação
+        {            
             CarregaDados();
         }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            StatusOperacao = "EXCLUSÃO"; // Excluir permanentemente
-            CarregaDados();
-        }
-
+       
         private void btnExcel_Click(object sender, EventArgs e)
         {
             ExportarParaExcel();
@@ -491,7 +407,7 @@ namespace ComissPro
         private void FrmManutencaoPrestacaoDeContasConcluidas_Load(object sender, EventArgs e)
         {
             LogUtil.WriteLog("FrmManutencaoPrestacaoDeContasConcluidas_Load iniciado.");
-            ConfigurarColunasDataGridView(); // Configura as colunas primeiro
+            ConfigurarColunasDataGridView();
             Listar(); // Carrega os dados depois
         }
 

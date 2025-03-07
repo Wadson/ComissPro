@@ -42,11 +42,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotalEntregue = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.lblTituloFaixa = new System.Windows.Forms.Label();
-            this.pnFaixaDestaque = new System.Windows.Forms.Panel();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnAlterarOuExcluir = new System.Windows.Forms.Button();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestacaoDeContas)).BeginInit();
-            this.pnFaixaDestaque.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -69,16 +70,17 @@
             // dgvPrestacaoDeContas
             // 
             this.dgvPrestacaoDeContas.AllowUserToAddRows = false;
+            this.dgvPrestacaoDeContas.AllowUserToDeleteRows = false;
             this.dgvPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPrestacaoDeContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestacaoDeContas.Location = new System.Drawing.Point(0, 26);
+            this.dgvPrestacaoDeContas.Location = new System.Drawing.Point(0, 75);
             this.dgvPrestacaoDeContas.Name = "dgvPrestacaoDeContas";
-            this.dgvPrestacaoDeContas.Size = new System.Drawing.Size(976, 268);
+            this.dgvPrestacaoDeContas.ReadOnly = true;
+            this.dgvPrestacaoDeContas.Size = new System.Drawing.Size(976, 219);
             this.dgvPrestacaoDeContas.TabIndex = 691;
             this.dgvPrestacaoDeContas.TabStop = false;
-            this.dgvPrestacaoDeContas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrestacaoDeContas_CellEndEdit);
-            this.dgvPrestacaoDeContas.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrestacaoDeContas_CellValueChanged);
+            this.dgvPrestacaoDeContas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrestacaoDeContas_CellContentClick);
             // 
             // txtTotalComissao
             // 
@@ -196,8 +198,8 @@
             this.txtTotalDevolvida.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTotalDevolvida.Location = new System.Drawing.Point(254, 320);
             this.txtTotalDevolvida.Name = "txtTotalDevolvida";
+            this.txtTotalDevolvida.ReadOnly = true;
             this.txtTotalDevolvida.Size = new System.Drawing.Size(150, 36);
-            this.txtTotalDevolvida.StateCommon.Back.Color1 = System.Drawing.Color.Orange;
             this.txtTotalDevolvida.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.txtTotalDevolvida.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
             this.txtTotalDevolvida.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -211,7 +213,6 @@
             this.txtTotalDevolvida.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtTotalDevolvida.TabIndex = 692;
             this.txtTotalDevolvida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtTotalDevolvida.Leave += new System.EventHandler(this.txtTotalDevolvida_Leave);
             // 
             // label3
             // 
@@ -268,20 +269,11 @@
             this.lblTituloFaixa.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloFaixa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.lblTituloFaixa.ForeColor = System.Drawing.Color.White;
-            this.lblTituloFaixa.Location = new System.Drawing.Point(411, 0);
+            this.lblTituloFaixa.Location = new System.Drawing.Point(365, 24);
             this.lblTituloFaixa.Name = "lblTituloFaixa";
-            this.lblTituloFaixa.Size = new System.Drawing.Size(86, 20);
+            this.lblTituloFaixa.Size = new System.Drawing.Size(222, 20);
             this.lblTituloFaixa.TabIndex = 613;
-            this.lblTituloFaixa.Text = "ALTERAR";
-            // 
-            // pnFaixaDestaque
-            // 
-            this.pnFaixaDestaque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(0)))));
-            this.pnFaixaDestaque.Controls.Add(this.lblTituloFaixa);
-            this.pnFaixaDestaque.Location = new System.Drawing.Point(-4, 1);
-            this.pnFaixaDestaque.Name = "pnFaixaDestaque";
-            this.pnFaixaDestaque.Size = new System.Drawing.Size(988, 21);
-            this.pnFaixaDestaque.TabIndex = 710;
+            this.lblTituloFaixa.Text = "ESTORNAR LANÇAMENTO";
             // 
             // btnSair
             // 
@@ -316,8 +308,8 @@
             this.btnSair.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateCommon.Border.Rounding = 1;
             this.btnSair.StateCommon.Border.Width = 1;
-            this.btnSair.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnSair.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnSair.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.btnSair.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnSair.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnSair.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
@@ -354,16 +346,30 @@
             this.btnAlterarOuExcluir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
             this.btnAlterarOuExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterarOuExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnAlterarOuExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(252)))));
+            this.btnAlterarOuExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.btnAlterarOuExcluir.Image = global::ComissPro.Properties.Resources.restituicao32;
             this.btnAlterarOuExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAlterarOuExcluir.Location = new System.Drawing.Point(310, 375);
             this.btnAlterarOuExcluir.Name = "btnAlterarOuExcluir";
             this.btnAlterarOuExcluir.Size = new System.Drawing.Size(147, 42);
             this.btnAlterarOuExcluir.TabIndex = 716;
-            this.btnAlterarOuExcluir.Text = "Alterar";
+            this.btnAlterarOuExcluir.Text = "Estornar";
             this.btnAlterarOuExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterarOuExcluir.UseVisualStyleBackColor = false;
             this.btnAlterarOuExcluir.Click += new System.EventHandler(this.btnAlterarOuExcluir_Click);
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel1.Controls.Add(this.lblTituloFaixa);
+            this.kryptonPanel1.Location = new System.Drawing.Point(-6, -2);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
+            this.kryptonPanel1.Size = new System.Drawing.Size(993, 71);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.kryptonPanel1.TabIndex = 717;
             // 
             // FrmManipularPrestacaoDeContas
             // 
@@ -371,9 +377,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(980, 420);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.btnAlterarOuExcluir);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.pnFaixaDestaque);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTotalEntregue);
             this.Controls.Add(this.txtTotalComissao);
@@ -398,12 +404,13 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Text = "Prestacao De Contas";
+            this.Text = "Estorno de lançamentos";
             this.Load += new System.EventHandler(this.FrmPrestacaoDeContasDataGrid_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrestacaoDeContasDataGrid_KeyDown_1);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmManipularPrestacaoDeContas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestacaoDeContas)).EndInit();
-            this.pnFaixaDestaque.ResumeLayout(false);
-            this.pnFaixaDestaque.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,8 +431,8 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtTotalEntregue;
         public System.Windows.Forms.Label lblTituloFaixa;
         public ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvPrestacaoDeContas;
-        public System.Windows.Forms.Panel pnFaixaDestaque;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         public System.Windows.Forms.Button btnAlterarOuExcluir;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }

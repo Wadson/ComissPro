@@ -587,10 +587,12 @@
     <None Include="Resources\Papel de Parede Trevo da Sorte 1002-566.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ARTE SORTE BETS ICO.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\lista-de-controle64.png" />
+    <None Include="Resources\Entrega32.png" />
+    <None Include="Resources\Prestacao.png" />
+    <None Include="Resources\PrestContas32.png" />
+    <None Include="Resources\PrestacaoDeContas32.png" />
     <None Include="Resources\LogoSortBets.ico" />
     <None Include="Resources\LogoWR600x600.png" />
     <None Include="Resources\Logo WR_Transparente.png" />

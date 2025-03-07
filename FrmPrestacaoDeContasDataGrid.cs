@@ -21,10 +21,14 @@ namespace ComissPro
         private bool linhaTotaisAdicionada = false;
         private bool bloqueiaPesquisa = false;
         public bool bloqueiaEventosTextChanged = false;
-        public FrmPrestacaoDeContasDataGrid(string statusOperacao)
+
+        private int? vendedorIDInicial; // Armazena o VendedorID passado, se houver
+        public FrmPrestacaoDeContasDataGrid(string statusOperacao, int? vendedorID = null)
         {
-            this.StatusOperacao = statusOperacao;
+            
             InitializeComponent();
+            this.StatusOperacao = statusOperacao;
+            this.vendedorIDInicial = vendedorID; // Armazena o VendedorID passado   
             txtTotalDevolvida.Leave += txtTotalDevolvida_Leave;
             ConfigurarDataGridView();
             Utilitario.AdicionarEfeitoFocoEmTodos(this);
@@ -39,7 +43,7 @@ namespace ComissPro
             {
                 int NovoCodigo = Utilitario.GerarProximoCodigo(QueryPrestacao);
                 PrestacaoID = NovoCodigo;
-                SelecionarEntregaPendente();
+                SelecionarEntregaPendente(); // Chama o método ajustado
             }
             dgvPrestacaoDeContas.CellValueChanged += dgvPrestacaoDeContas_CellValueChanged;
         }
@@ -48,17 +52,26 @@ namespace ComissPro
         {
             try
             {
-                using (FrmSelecionarEntrega frmSelecionar = new FrmSelecionarEntrega(this, txtLocalizarVendedor.Text))
+                if (vendedorIDInicial.HasValue)
                 {
-                    if (frmSelecionar.ShowDialog() == DialogResult.OK && frmSelecionar.VendedorSelecionadoID.HasValue)
+                    // Se um VendedorID foi passado pelo construtor, usa diretamente
+                    CarregarEntregasNoDataGrid(vendedorIDInicial.Value);
+                }
+                else
+                {
+                    // Caso contrário, abre o FrmSelecionarEntrega como antes
+                    using (FrmSelecionarEntrega frmSelecionar = new FrmSelecionarEntrega(this, txtLocalizarVendedor.Text))
                     {
-                        int vendedorID = frmSelecionar.VendedorSelecionadoID.Value;
-                        CarregarEntregasNoDataGrid(vendedorID); // Usa o método original ajustado
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nenhum vendedor selecionado. Selecione um vendedor para continuar.",
-                            "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (frmSelecionar.ShowDialog() == DialogResult.OK && frmSelecionar.VendedorSelecionadoID.HasValue)
+                        {
+                            int vendedorID = frmSelecionar.VendedorSelecionadoID.Value;
+                            CarregarEntregasNoDataGrid(vendedorID);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nenhum vendedor selecionado. Selecione um vendedor para continuar.",
+                                "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
             }
@@ -88,6 +101,7 @@ namespace ComissPro
                 foreach (var entrega in entregasSelecionadas)
                 {
                     dgvPrestacaoDeContas.Rows.Add(
+                        false, // Checkbox inicialmente desmarcado
                         entrega.EntregaID,
                         entrega.Nome,
                         entrega.NomeProduto,
@@ -118,6 +132,19 @@ namespace ComissPro
         {
             dgvPrestacaoDeContas.AutoGenerateColumns = false;
             dgvPrestacaoDeContas.Columns.Clear();
+
+            // Adicionar coluna de Checkbox
+            var colCheckbox = new DataGridViewCheckBoxColumn
+            {
+                Name = "Selecionado",
+                HeaderText = "Sel.",
+                Width = 50,
+                ReadOnly = false,
+                DefaultCellStyle = { Alignment = DataGridViewContentAlignment.MiddleCenter },
+                HeaderCell = { Style = { Alignment = DataGridViewContentAlignment.MiddleCenter } }
+            };
+            dgvPrestacaoDeContas.Columns.Add(colCheckbox);           
+            // Adicionar colunas Acima do DataGridView em 06/03/2025
 
             var colEntregaID = new DataGridViewTextBoxColumn { Name = "EntregaID", HeaderText = "ID\nEntrega", ReadOnly = true, Visible = false };
             colEntregaID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -217,6 +244,7 @@ namespace ComissPro
 
             int index = dgvPrestacaoDeContas.Rows.Add();
             var rowTotal = dgvPrestacaoDeContas.Rows[index];
+            rowTotal.Cells["Selecionado"].Value = null; // Sem checkbox na linha de totais
             rowTotal.Cells["Nome"].Value = "Totais";
             rowTotal.Cells["QuantidadeEntregue"].Value = totalBilhetesEntregues.ToString();
             rowTotal.Cells["QuantidadeVendida"].Value = totalBilhetesVendidos.ToString();
@@ -263,7 +291,7 @@ namespace ComissPro
             AplicarEstiloLinhaTotais();
         }
 
-        private void AtualizarTotaisNosTextBoxes()
+        private void AtualizarTotaisNosTextBoxes(bool apenasMarcadas = false)
         {
             int totalBilhetesEntregues = 0;
             int totalBilhetesVendidos = 0;
@@ -271,7 +299,11 @@ namespace ComissPro
             double totalRecebido = 0;
             double totalComissao = 0;
 
-            foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
+            var linhas = apenasMarcadas
+                ? dgvPrestacaoDeContas.Rows.Cast<DataGridViewRow>().Where(row => row.Cells["Selecionado"].Value != null && (bool)row.Cells["Selecionado"].Value)
+                : dgvPrestacaoDeContas.Rows.Cast<DataGridViewRow>();
+
+            foreach (DataGridViewRow row in linhas)
             {
                 if (row.Cells["Nome"].Value?.ToString() != "Totais")
                 {
@@ -304,46 +336,51 @@ namespace ComissPro
         }
 
 
-
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (dgvPrestacaoDeContas.Rows.Count == 0)
+            var linhasMarcadas = dgvPrestacaoDeContas.Rows.Cast<DataGridViewRow>()
+     .Where(row => row.Cells["Selecionado"].Value != null && (bool)row.Cells["Selecionado"].Value
+                && row.Cells["Nome"].Value?.ToString() != "Totais")
+     .ToList();
+
+            if (linhasMarcadas.Count == 0)
             {
-                MessageBox.Show("Nenhuma entrega selecionada para prestar contas!");
+                MessageBox.Show("Nenhuma entrega marcada para prestar contas! Marque pelo menos uma linha.",
+                    "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             var prestacaoDAL = new PrestacaoDeContasDAL();
             var fluxoCaixaDAL = new FluxoCaixaDAL();
+            var entregasRemover = new List<int>(); // Lista para armazenar os EntregaID a remover
 
-            foreach (DataGridViewRow row in dgvPrestacaoDeContas.Rows)
+            // Salvar as prestações e coletar os IDs a remover
+            foreach (DataGridViewRow row in linhasMarcadas)
             {
-                if (row.Cells["Nome"].Value?.ToString() == "Totais") continue;
-
+                var entregaID = int.Parse(row.Cells["EntregaID"].Value?.ToString() ?? "0");
                 var prestacao = new PrestacaoContasModel
                 {
-                    EntregaID = int.Parse(row.Cells["EntregaID"].Value?.ToString() ?? "0"),
+                    EntregaID = entregaID,
                     QuantidadeVendida = int.Parse(row.Cells["QuantidadeVendida"].Value?.ToString() ?? "0"),
                     QuantidadeDevolvida = int.Parse(row.Cells["QuantidadeDevolvida"].Value?.ToString() ?? "0"),
                     ValorRecebido = double.Parse(row.Cells["ValorRecebido"].Value?.ToString().Replace("R$", "").Trim() ?? "0", NumberStyles.Currency),
                     Comissao = double.Parse(row.Cells["Comissao"].Value?.ToString().Replace("R$", "").Trim() ?? "0", NumberStyles.Currency),
                     DataPrestacao = DateTime.Parse(row.Cells["DataPrestacao"].Value?.ToString() ?? DateTime.Now.ToString("dd/MM/yyyy")),
                     Nome = row.Cells["Nome"].Value?.ToString(),
-                    VendedorID = entregasSelecionadas.Find(entrega => entrega.EntregaID == int.Parse(row.Cells["EntregaID"].Value.ToString())).VendedorID
+                    VendedorID = entregasSelecionadas.Find(entrega => entrega.EntregaID == entregaID).VendedorID
                 };
 
                 // Salvar a prestação e obter o PrestacaoID gerado
                 prestacaoDAL.SalvarPrestacaoDeContas(prestacao);
 
-                // Usar o PrestacaoID gerado para registrar movimentações no fluxo de caixa
+                // Registrar movimentações no fluxo de caixa
                 fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
                 {
                     TipoMovimentacao = "ENTRADA",
                     Valor = prestacao.ValorRecebido,
                     DataMovimentacao = prestacao.DataPrestacao,
                     Descricao = $"Prestação de contas - {prestacao.Nome}",
-                    PrestacaoID = prestacao.PrestacaoID // Usar o ID atualizado
+                    PrestacaoID = prestacao.PrestacaoID
                 });
 
                 fluxoCaixaDAL.RegistrarMovimentacao(new FluxoCaixaModel
@@ -352,25 +389,43 @@ namespace ComissPro
                     Valor = prestacao.Comissao,
                     DataMovimentacao = prestacao.DataPrestacao,
                     Descricao = $"Comissão paga - {prestacao.Nome}",
-                    PrestacaoID = prestacao.PrestacaoID // Usar o ID atualizado
+                    PrestacaoID = prestacao.PrestacaoID
                 });
+
+                entregasRemover.Add(entregaID); // Adicionar o EntregaID à lista de remoção
             }
 
             MessageBox.Show("Prestações de contas salvas com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ((FrmManutencaodeEntregaBilhetes)Application.OpenForms["FrmManutencaodeEntregaBilhetes"])?.HabilitarTimer(true);
 
-            // Limpar o DataGridView
-            dgvPrestacaoDeContas.Rows.Clear();
-            linhaTotaisAdicionada = false;
-            entregasSelecionadas = null;
+            // Remover as linhas do DataGridView e da lista de entregas usando os IDs coletados
+            foreach (var entregaID in entregasRemover)
+            {
+                var rowToRemove = dgvPrestacaoDeContas.Rows.Cast<DataGridViewRow>()
+                    .FirstOrDefault(row => row.Cells["EntregaID"].Value != null && int.Parse(row.Cells["EntregaID"].Value.ToString()) == entregaID);
+                if (rowToRemove != null)
+                {
+                    dgvPrestacaoDeContas.Rows.Remove(rowToRemove);
+                }
+                entregasSelecionadas.RemoveAll(entrega => entrega.EntregaID == entregaID);
+            }
 
-            // Zerar os TextBox explicitamente
-            txtTotalEntregue.Text = "0";
-            txtTotalVendida.Text = "0";
-            txtTotalDevolvida.Text = "0";
-            txtTotalRecebido.Text = 0.ToString("C");
-            txtTotalComissao.Text = 0.ToString("C");
-            txtLocalizarVendedor.Text = "";
+            // Atualizar a linha de totais e os TextBox
+            if (dgvPrestacaoDeContas.Rows.Count > 1) // Se ainda houver linhas além da "Totais"
+            {
+                AtualizarLinhaTotais();
+                AtualizarTotaisNosTextBoxes();
+            }
+            else
+            {
+                dgvPrestacaoDeContas.Rows.Clear();
+                linhaTotaisAdicionada = false;
+                txtTotalEntregue.Text = "0";
+                txtTotalVendida.Text = "0";
+                txtTotalDevolvida.Text = "0";
+                txtTotalRecebido.Text = 0.ToString("C");
+                txtTotalComissao.Text = 0.ToString("C");
+            }
 
             Utilitario.LimpaCampoKrypton(this);
             txtLocalizarVendedor.Focus();
@@ -569,63 +624,17 @@ namespace ComissPro
 
         private void dgvPrestacaoDeContas_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            AtualizarTotaisNosTextBoxes();
+            if (e.ColumnIndex == dgvPrestacaoDeContas.Columns["Selecionado"].Index)
+            {
+                AtualizarTotaisNosTextBoxes(true); // Atualizar apenas com base nas linhas marcadas
+            }
+            else
+            {
+                AtualizarTotaisNosTextBoxes(); // Atualizar normalmente
+            }
         }
 
-        //private void CarregarDadosEntrega(int entregaID)
-        //{
-        //    try
-        //    {
-        //        EntregasDal dao = new EntregasDal();
-        //        var entrega = dao.CarregarEntregasNaoPrestadas().FirstOrDefault(e => e.EntregaID == entregaID);
-        //        if (entrega != null)
-        //        {
-        //            // Configura o DataGridView com as colunas existentes
-        //            ConfigurarDataGridView();
-
-        //            // Cria o DataTable com as colunas correspondentes ao ConfigurarDataGridView
-        //            DataTable dt = new DataTable();
-        //            dt.Columns.Add("EntregaID", typeof(int));
-        //            dt.Columns.Add("Nome", typeof(string));
-        //            dt.Columns.Add("NomeProduto", typeof(string));
-        //            dt.Columns.Add("QuantidadeEntregue", typeof(int));
-        //            dt.Columns.Add("PrecoUnit", typeof(double));
-        //            dt.Columns.Add("DataEntrega", typeof(DateTime));
-        //            dt.Columns.Add("QuantidadeDevolvida", typeof(int));
-        //            dt.Columns.Add("QuantidadeVendida", typeof(int));
-        //            dt.Columns.Add("ValorRecebido", typeof(double));
-        //            dt.Columns.Add("PercentualComissao", typeof(double));
-        //            dt.Columns.Add("Comissao", typeof(double));
-        //            dt.Columns.Add("DataPrestacao", typeof(DateTime));
-
-        //            // Adiciona a linha da entrega
-        //            DataRow row = dt.NewRow();
-        //            row["EntregaID"] = entrega.EntregaID;
-        //            row["Nome"] = entrega.Nome;
-        //            row["NomeProduto"] = entrega.NomeProduto;
-        //            row["QuantidadeEntregue"] = entrega.QuantidadeEntregue;
-        //            row["PrecoUnit"] = entrega.Preco;
-        //            row["DataEntrega"] = entrega.DataEntrega;
-        //            row["QuantidadeDevolvida"] = 0; // Inicialmente 0, editável
-        //            row["QuantidadeVendida"] = 0; // Inicialmente 0, editável
-        //            row["ValorRecebido"] = 0.0; // Inicialmente 0, editável
-        //            row["PercentualComissao"] = 0.0; // Inicialmente 0, editável
-        //            row["Comissao"] = 0.0; // Calculado posteriormente
-        //            row["DataPrestacao"] = DateTime.Now; // Data atual como padrão, editável
-        //            dt.Rows.Add(row);
-
-        //            dgvPrestacaoDeContas.DataSource = dt;
-
-        //            // Atualiza os TextBox com os totais iniciais
-        //            AtualizarTotaisNosTextBoxes();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Erro ao carregar dados da entrega: {ex.Message}", "Erro",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+       
 
     }
 

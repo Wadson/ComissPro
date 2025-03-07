@@ -48,16 +48,16 @@ namespace ComissPro
             dgv.Columns[0].Name = "ProdutoID";
             dgv.Columns[1].Name = "Nome";
             dgv.Columns[2].Name = "Preco";
-            dgv.Columns[3].Name = "Unidade";            
+            dgv.Columns[3].Name = "Unidade";
 
-            // Ajustar colunas automaticamente
-            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            // Remover o AutoSizeColumnsMode para permitir larguras fixas
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None; // Ou ajuste conforme necessário
 
             // Tornar o grid somente leitura
             dgv.ReadOnly = true;
 
             // Centralizar colunas de IDs e Quantidade
-            dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;            
+            dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgv.Columns["Preco"].DefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Italic); // Fonte Arial, 10, Italic
             dgv.Columns["Preco"].DefaultCellStyle.ForeColor = System.Drawing.Color.DarkGreen; // Cor da fonte: Verde Escuro
@@ -72,16 +72,21 @@ namespace ComissPro
             dgv.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow; // Fundo amarelo claro
 
             // Ajustar largura do cabeçalho da linha
-            dgv.RowHeadersWidth = 10; // Definir largura do cabeçalho da linha
-                                      // Ajustar largura dos cabeçalhos das colunas
+            dgv.RowHeadersWidth = 20; // Aumentei de 10 para 20 para mais visibilidade
+
+            // Ajustar largura das colunas individualmente
+            dgv.Columns["Nome"].Width = 300;     // Aumentar para 200 pixels (exemplo)
+            dgv.Columns["Preco"].Width = 120;    // Aumentar para 150 pixels (exemplo)
+            dgv.Columns["Unidade"].Width = 110;  // Aumentar para 120 pixels (exemplo)
+
+            // Configurar cabeçalhos das colunas
             foreach (DataGridViewColumn column in dgv.Columns)
             {
                 column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centralizar cabeçalho da coluna
                 column.HeaderCell.Style.WrapMode = DataGridViewTriState.False; // Evitar quebra de texto no cabeçalho
-                column.Width = 100; // Definir largura específica para cada coluna
             }
         }
-       
+
         private void SelecionarProduto()
         {
             // Verifica se o processo de seleção de produto já está em andamento

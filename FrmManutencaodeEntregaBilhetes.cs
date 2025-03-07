@@ -32,11 +32,7 @@ namespace ComissPro
             timer1.Tick += timer1_Tick; // Garante que o evento está associado
             txtPesquisa.TextChanged += txtPesquisa_TextChanged; // Adicionar o evento aqui           
 
-            this.StatusOperacao = statusOperacao;
-            //Centraliza o Label dentro do Panel
-            label28.Location = new Point(
-                (kryptonPanel2.Width - label28.Width) / 2,
-                (kryptonPanel2.Height - label28.Height) / 2);
+            this.StatusOperacao = statusOperacao;            
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
@@ -447,7 +443,19 @@ namespace ComissPro
 
         private void btnPrestacaoDeContas_Click(object sender, EventArgs e)
         {
-            FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao);
+            if (dataGridManutencaoEntregas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione uma entrega no grid para prestar contas.", "Atenção",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Obter o VendedorID da linha selecionada
+            DataGridViewRow selectedRow = dataGridManutencaoEntregas.SelectedRows[0];
+            int vendedorID = Convert.ToInt32(selectedRow.Cells["VendedorID"].Value);
+
+            // Abrir o formulário de prestação de contas passando o VendedorID
+            FrmPrestacaoDeContasDataGrid formPrestacao = new FrmPrestacaoDeContasDataGrid(StatusOperacao, vendedorID);
             formPrestacao.ShowDialog();
         }
 

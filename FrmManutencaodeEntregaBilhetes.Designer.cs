@@ -39,7 +39,6 @@
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnExcel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnNovo = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -52,8 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridManutencaoEntregas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
-            this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).BeginInit();
             this.kryptonPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -64,8 +61,8 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(252)))));
-            this.label28.Location = new System.Drawing.Point(324, 1);
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.label28.Location = new System.Drawing.Point(288, 10);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(228, 24);
             this.label28.TabIndex = 600;
@@ -76,7 +73,7 @@
             this.lblTotalRegistros.AutoSize = true;
             this.lblTotalRegistros.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblTotalRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblTotalRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.lblTotalRegistros.Location = new System.Drawing.Point(9, 4);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
             this.lblTotalRegistros.Size = new System.Drawing.Size(15, 20);
@@ -102,14 +99,14 @@
             // 
             this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonPanel1.Controls.Add(this.btnRefresh);
+            this.kryptonPanel1.Controls.Add(this.label28);
             this.kryptonPanel1.Controls.Add(this.label1);
             this.kryptonPanel1.Controls.Add(this.txtPesquisa);
-            this.kryptonPanel1.Location = new System.Drawing.Point(12, 38);
+            this.kryptonPanel1.Location = new System.Drawing.Point(12, -3);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
-            this.kryptonPanel1.Size = new System.Drawing.Size(841, 47);
+            this.kryptonPanel1.Size = new System.Drawing.Size(841, 88);
             this.kryptonPanel1.StateNormal.Color1 = System.Drawing.Color.LightBlue;
             this.kryptonPanel1.StateNormal.Color2 = System.Drawing.Color.LightBlue;
             this.kryptonPanel1.TabIndex = 618;
@@ -117,7 +114,8 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(740, 3);
+            this.btnRefresh.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Alternate;
+            this.btnRefresh.Location = new System.Drawing.Point(703, 191);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRefresh.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -134,12 +132,12 @@
             this.btnRefresh.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnRefresh.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
-            this.btnRefresh.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnRefresh.Size = new System.Drawing.Size(43, 41);
+            this.btnRefresh.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnRefresh.Size = new System.Drawing.Size(147, 41);
             this.btnRefresh.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRefresh.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnRefresh.StateCommon.Back.ColorAngle = 45F;
-            this.btnRefresh.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.btnRefresh.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnRefresh.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnRefresh.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -147,13 +145,13 @@
             this.btnRefresh.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnRefresh.StateCommon.Border.Rounding = 1;
             this.btnRefresh.StateCommon.Border.Width = 1;
-            this.btnRefresh.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.btnRefresh.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnRefresh.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.btnRefresh.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.btnRefresh.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnRefresh.StateNormal.Back.Color1 = System.Drawing.Color.Transparent;
             this.btnRefresh.StateNormal.Back.Color2 = System.Drawing.Color.Transparent;
-            this.btnRefresh.StateNormal.Border.Color1 = System.Drawing.Color.Transparent;
-            this.btnRefresh.StateNormal.Border.Color2 = System.Drawing.Color.Transparent;
+            this.btnRefresh.StateNormal.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnRefresh.StateNormal.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnRefresh.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -185,7 +183,7 @@
             this.btnRefresh.TabStop = false;
             this.toolTip1.SetToolTip(this.btnRefresh, "Atualizar Grid");
             this.btnRefresh.Values.Image = global::ComissPro.Properties.Resources.atualizar32;
-            this.btnRefresh.Values.Text = "";
+            this.btnRefresh.Values.Text = "Refresch";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label1
@@ -193,8 +191,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.label1.Location = new System.Drawing.Point(3, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 24);
             this.label1.TabIndex = 601;
@@ -208,7 +206,7 @@
             this.txtPesquisa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisa.ForeColor = System.Drawing.Color.OrangeRed;
-            this.txtPesquisa.Location = new System.Drawing.Point(102, 19);
+            this.txtPesquisa.Location = new System.Drawing.Point(102, 59);
             this.txtPesquisa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(465, 22);
@@ -219,20 +217,6 @@
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // kryptonPanel2
-            // 
-            this.kryptonPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonPanel2.Controls.Add(this.label28);
-            this.kryptonPanel2.Location = new System.Drawing.Point(-4, 4);
-            this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
-            this.kryptonPanel2.Size = new System.Drawing.Size(882, 26);
-            this.kryptonPanel2.StateNormal.Color1 = System.Drawing.Color.LightBlue;
-            this.kryptonPanel2.StateNormal.Color2 = System.Drawing.Color.LightBlue;
-            this.kryptonPanel2.TabIndex = 626;
             // 
             // btnSair
             // 
@@ -255,7 +239,7 @@
             this.btnSair.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnSair.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnSair.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnSair.Size = new System.Drawing.Size(147, 42);
+            this.btnSair.Size = new System.Drawing.Size(147, 41);
             this.btnSair.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnSair.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnSair.StateCommon.Back.ColorAngle = 45F;
@@ -267,7 +251,7 @@
             this.btnSair.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateCommon.Border.Rounding = 1;
             this.btnSair.StateCommon.Border.Width = 1;
-            this.btnSair.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnSair.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnSair.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnSair.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
@@ -304,7 +288,7 @@
             // btnExcel
             // 
             this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcel.Location = new System.Drawing.Point(705, 286);
+            this.btnExcel.Location = new System.Drawing.Point(703, 338);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExcel.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -322,7 +306,7 @@
             this.btnExcel.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnExcel.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnExcel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnExcel.Size = new System.Drawing.Size(147, 42);
+            this.btnExcel.Size = new System.Drawing.Size(147, 41);
             this.btnExcel.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExcel.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExcel.StateCommon.Back.ColorAngle = 45F;
@@ -334,7 +318,7 @@
             this.btnExcel.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnExcel.StateCommon.Border.Rounding = 1;
             this.btnExcel.StateCommon.Border.Width = 1;
-            this.btnExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExcel.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnExcel.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnExcel.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
@@ -365,13 +349,13 @@
             this.btnExcel.TabStop = false;
             this.toolTip1.SetToolTip(this.btnExcel, "Exportar para Excel");
             this.btnExcel.Values.Image = global::ComissPro.Properties.Resources.xls;
-            this.btnExcel.Values.Text = "Excel";
+            this.btnExcel.Values.Text = "            Excel";
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // btnNovo
             // 
             this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovo.Location = new System.Drawing.Point(705, 93);
+            this.btnNovo.Location = new System.Drawing.Point(703, 93);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -389,12 +373,12 @@
             this.btnNovo.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnNovo.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnNovo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNovo.Size = new System.Drawing.Size(147, 42);
+            this.btnNovo.Size = new System.Drawing.Size(147, 41);
             this.btnNovo.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnNovo.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnNovo.StateCommon.Back.ColorAngle = 45F;
-            this.btnNovo.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
-            this.btnNovo.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnNovo.StateCommon.Border.Color1 = System.Drawing.Color.Orange;
+            this.btnNovo.StateCommon.Border.Color2 = System.Drawing.Color.Orange;
             this.btnNovo.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -403,7 +387,7 @@
             this.btnNovo.StateCommon.Border.Width = 1;
             this.btnNovo.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnNovo.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnNovo.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
             this.btnNovo.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
             this.btnNovo.StatePressed.Back.ColorAngle = 135F;
@@ -430,13 +414,13 @@
             this.btnNovo.TabIndex = 635;
             this.toolTip1.SetToolTip(this.btnNovo, "Nova entrega de bilhetes");
             this.btnNovo.Values.Image = global::ComissPro.Properties.Resources.tarefa32;
-            this.btnNovo.Values.Text = "Registrar";
+            this.btnNovo.Values.Text = "    Registrar";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAltera
             // 
             this.btnAltera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAltera.Location = new System.Drawing.Point(705, 141);
+            this.btnAltera.Location = new System.Drawing.Point(703, 240);
             this.btnAltera.Name = "btnAltera";
             this.btnAltera.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAltera.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -454,7 +438,7 @@
             this.btnAltera.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnAltera.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnAltera.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnAltera.Size = new System.Drawing.Size(147, 42);
+            this.btnAltera.Size = new System.Drawing.Size(147, 41);
             this.btnAltera.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAltera.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnAltera.StateCommon.Back.ColorAngle = 45F;
@@ -466,7 +450,7 @@
             this.btnAltera.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnAltera.StateCommon.Border.Rounding = 1;
             this.btnAltera.StateCommon.Border.Width = 1;
-            this.btnAltera.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnAltera.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnAltera.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnAltera.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAltera.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
@@ -497,13 +481,13 @@
             this.btnAltera.TabStop = false;
             this.toolTip1.SetToolTip(this.btnAltera, "Alterar registro");
             this.btnAltera.Values.Image = global::ComissPro.Properties.Resources.alterar32;
-            this.btnAltera.Values.Text = "Alterar";
+            this.btnAltera.Values.Text = "        Alterar";
             this.btnAltera.Click += new System.EventHandler(this.btnAltera_Click);
             // 
             // btnExclui
             // 
             this.btnExclui.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExclui.Location = new System.Drawing.Point(705, 190);
+            this.btnExclui.Location = new System.Drawing.Point(703, 289);
             this.btnExclui.Name = "btnExclui";
             this.btnExclui.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExclui.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -521,7 +505,7 @@
             this.btnExclui.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnExclui.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnExclui.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnExclui.Size = new System.Drawing.Size(147, 42);
+            this.btnExclui.Size = new System.Drawing.Size(147, 41);
             this.btnExclui.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExclui.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnExclui.StateCommon.Back.ColorAngle = 45F;
@@ -533,7 +517,7 @@
             this.btnExclui.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnExclui.StateCommon.Border.Rounding = 1;
             this.btnExclui.StateCommon.Border.Width = 1;
-            this.btnExclui.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnExclui.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnExclui.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnExclui.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Leelawadee UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExclui.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
@@ -564,25 +548,24 @@
             this.btnExclui.TabStop = false;
             this.toolTip1.SetToolTip(this.btnExclui, "Excluir registro");
             this.btnExclui.Values.Image = global::ComissPro.Properties.Resources.deletar32;
-            this.btnExclui.Values.Text = "Excluir";
+            this.btnExclui.Values.Text = "         Excluir";
             this.btnExclui.Click += new System.EventHandler(this.btnExclui_Click);
             // 
             // btnPrestacaoDeContas
             // 
             this.btnPrestacaoDeContas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrestacaoDeContas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(166)))), ((int)(((byte)(35)))));
             this.btnPrestacaoDeContas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnPrestacaoDeContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrestacaoDeContas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnPrestacaoDeContas.ForeColor = System.Drawing.Color.White;
-            this.btnPrestacaoDeContas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrestacaoDeContas.ImageIndex = 0;
+            this.btnPrestacaoDeContas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
+            this.btnPrestacaoDeContas.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnPrestacaoDeContas.ImageIndex = 1;
             this.btnPrestacaoDeContas.ImageList = this.imageList1;
-            this.btnPrestacaoDeContas.Location = new System.Drawing.Point(703, 236);
+            this.btnPrestacaoDeContas.Location = new System.Drawing.Point(703, 142);
             this.btnPrestacaoDeContas.Name = "btnPrestacaoDeContas";
-            this.btnPrestacaoDeContas.Size = new System.Drawing.Size(150, 44);
+            this.btnPrestacaoDeContas.Size = new System.Drawing.Size(147, 41);
             this.btnPrestacaoDeContas.TabIndex = 725;
-            this.btnPrestacaoDeContas.Text = "Prest. Cts";
+            this.btnPrestacaoDeContas.Text = "    Prest. Cts";
             this.btnPrestacaoDeContas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.toolTip1.SetToolTip(this.btnPrestacaoDeContas, "Prestação de contas");
             this.btnPrestacaoDeContas.UseVisualStyleBackColor = false;
@@ -592,7 +575,8 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Comissao64.png");
+            this.imageList1.Images.SetKeyName(0, "lista-de-controle32.png");
+            this.imageList1.Images.SetKeyName(1, "Prestacao.png");
             // 
             // kryptonPanel3
             // 
@@ -613,13 +597,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(874, 465);
             this.Controls.Add(this.btnPrestacaoDeContas);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.kryptonPanel3);
             this.Controls.Add(this.btnExclui);
             this.Controls.Add(this.btnAltera);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.dataGridManutencaoEntregas);
             this.Controls.Add(this.kryptonPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -632,9 +616,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
-            this.kryptonPanel2.ResumeLayout(false);
-            this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel3)).EndInit();
             this.kryptonPanel3.ResumeLayout(false);
             this.kryptonPanel3.PerformLayout();
@@ -650,7 +631,6 @@
         public System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Timer timer1;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private System.Windows.Forms.Label label1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnExcel;

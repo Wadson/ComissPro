@@ -141,6 +141,7 @@
             this.btnFluxoCaixa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnFluxoCaixa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnFluxoCaixa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFluxoCaixa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnFluxoCaixa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnFluxoCaixa.ImageIndex = 11;
             this.btnFluxoCaixa.ImageList = this.imageList1;
@@ -170,6 +171,7 @@
             this.imageList1.Images.SetKeyName(9, "Vendedores64.png");
             this.imageList1.Images.SetKeyName(10, "Bilhete64.png");
             this.imageList1.Images.SetKeyName(11, "PrestacaoDeconta64.png");
+            this.imageList1.Images.SetKeyName(12, "Comissao64.png");
             // 
             // btnFerramentas
             // 
@@ -180,6 +182,7 @@
             this.btnFerramentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnFerramentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnFerramentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFerramentas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnFerramentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnFerramentas.ImageIndex = 3;
             this.btnFerramentas.ImageList = this.imageList1;
@@ -202,6 +205,7 @@
             this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRelatorios.ImageIndex = 1;
             this.btnRelatorios.ImageList = this.imageList1;
@@ -224,6 +228,7 @@
             this.btnVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnVendedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnVendedor.ImageIndex = 9;
             this.btnVendedor.ImageList = this.imageList1;
@@ -247,6 +252,7 @@
             this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSair.ImageIndex = 7;
             this.btnSair.ImageList = this.imageList1;
@@ -268,8 +274,9 @@
             this.btnPrestacaoContas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPrestacaoContas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnPrestacaoContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrestacaoContas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnPrestacaoContas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrestacaoContas.ImageIndex = 2;
+            this.btnPrestacaoContas.ImageIndex = 12;
             this.btnPrestacaoContas.ImageList = this.imageList1;
             this.btnPrestacaoContas.Location = new System.Drawing.Point(231, 4);
             this.btnPrestacaoContas.Name = "btnPrestacaoContas";
@@ -291,6 +298,7 @@
             this.btnProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnProduto.ImageIndex = 10;
             this.btnProduto.ImageList = this.imageList1;
@@ -314,6 +322,7 @@
             this.btnManutencaoEntregas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnManutencaoEntregas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManutencaoEntregas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManutencaoEntregas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
             this.btnManutencaoEntregas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnManutencaoEntregas.ImageIndex = 8;
             this.btnManutencaoEntregas.ImageList = this.imageList1;

@@ -15,11 +15,7 @@ namespace ComissPro
         public FrmManutProduto(string statusOperacao)
         {
             this.StatusOperacao = statusOperacao;
-            InitializeComponent();
-            //Centraliza o Label dentro do Panel
-            label28.Location = new Point(
-                (kryptonPanel2.Width - label28.Width) / 2,
-                (kryptonPanel2.Height - label28.Height) / 2);
+            InitializeComponent();    
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
